@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
+		F599A8D1105EFCE8003CD1C0 /* GITRepo.h in Headers */ = {isa = PBXBuildFile; fileRef = F599A8CF105EFCE8003CD1C0 /* GITRepo.h */; };
+		F599A8D2105EFCE8003CD1C0 /* GITRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = F599A8D0105EFCE8003CD1C0 /* GITRepo.m */; };
 		F599A9FB10601ECA003CD1C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F599A9FA10601ECA003CD1C0 /* Foundation.framework */; };
 		F599AA971060264D003CD1C0 /* assertions.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AA8C1060264D003CD1C0 /* assertions.h */; };
 		F599AA981060264D003CD1C0 /* assertions.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AA8D1060264D003CD1C0 /* assertions.m */; };
@@ -20,6 +22,8 @@
 		F599AA9F1060264D003CD1C0 /* objc.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AA941060264D003CD1C0 /* objc.h */; };
 		F599AAA01060264D003CD1C0 /* OBUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AA951060264D003CD1C0 /* OBUtilities.h */; };
 		F599AAA11060264D003CD1C0 /* OBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AA961060264D003CD1C0 /* OBUtilities.m */; };
+		F599AAA6106026ED003CD1C0 /* GITError.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AAA4106026ED003CD1C0 /* GITError.h */; };
+		F599AAA7106026ED003CD1C0 /* GITError.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AAA5106026ED003CD1C0 /* GITError.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,8 @@
 		32DBCF5E0370ADEE00C91783 /* Git_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Git_Prefix.pch; path = Source/Git_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resource/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Git.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Git.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F599A8CF105EFCE8003CD1C0 /* GITRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRepo.h; path = Source/GITRepo.h; sourceTree = "<group>"; };
+		F599A8D0105EFCE8003CD1C0 /* GITRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRepo.m; path = Source/GITRepo.m; sourceTree = "<group>"; };
 		F599A9FA10601ECA003CD1C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F599AA8C1060264D003CD1C0 /* assertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assertions.h; sourceTree = "<group>"; };
 		F599AA8D1060264D003CD1C0 /* assertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = assertions.m; sourceTree = "<group>"; };
@@ -39,6 +45,8 @@
 		F599AA941060264D003CD1C0 /* objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objc.h; sourceTree = "<group>"; };
 		F599AA951060264D003CD1C0 /* OBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtilities.h; sourceTree = "<group>"; };
 		F599AA961060264D003CD1C0 /* OBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUtilities.m; sourceTree = "<group>"; };
+		F599AAA4106026ED003CD1C0 /* GITError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITError.h; path = Source/GITError.h; sourceTree = "<group>"; };
+		F599AAA5106026ED003CD1C0 /* GITError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITError.m; path = Source/GITError.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,8 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F599A8CF105EFCE8003CD1C0 /* GITRepo.h */,
+				F599A8D0105EFCE8003CD1C0 /* GITRepo.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				32DBCF5E0370ADEE00C91783 /* Git_Prefix.pch */,
+				F599AAA4106026ED003CD1C0 /* GITError.h */,
+				F599AAA5106026ED003CD1C0 /* GITError.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -164,12 +176,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F599A8D1105EFCE8003CD1C0 /* GITRepo.h in Headers */,
 				F599AA971060264D003CD1C0 /* assertions.h in Headers */,
 				F599AA991060264D003CD1C0 /* NSError-OBExtensions.h in Headers */,
 				F599AA9B1060264D003CD1C0 /* OBBacktraceBuffer.h in Headers */,
 				F599AA9D1060264D003CD1C0 /* OBError.h in Headers */,
 				F599AA9F1060264D003CD1C0 /* objc.h in Headers */,
 				F599AAA01060264D003CD1C0 /* OBUtilities.h in Headers */,
+				F599AAA6106026ED003CD1C0 /* GITError.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,11 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F599A8D2105EFCE8003CD1C0 /* GITRepo.m in Sources */,
 				F599AA981060264D003CD1C0 /* assertions.m in Sources */,
 				F599AA9A1060264D003CD1C0 /* NSError-OBExtensions.m in Sources */,
 				F599AA9C1060264D003CD1C0 /* OBBacktraceBuffer.m in Sources */,
 				F599AA9E1060264D003CD1C0 /* OBError.m in Sources */,
 				F599AAA11060264D003CD1C0 /* OBUtilities.m in Sources */,
+				F599AAA7106026ED003CD1C0 /* GITError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
