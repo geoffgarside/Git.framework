@@ -1,92 +1,97 @@
 require File.dirname(__FILE__) +'/../TestHelper.rb'
 
-class GITRepoTests < Test::Unit::TestCase
-  context "GITRepo" do
-    context "+repo" do
-      setup do
-        Dir.chdir(TEST_REPO) do
-          @repo = GITRepo.repo
-        end
-      end
-      should "open repo in current directory" do
-        assert @repo.root == TEST_REPO + "/.git", "#{@repo.root} did not match #{TEST_REPO}/.git"
-      end
+describe "GITRepo +repo" do
+  before do
+    Dir.chdir(TEST_REPO) do
+      @repo = GITRepo.repo
     end
-    # context "+repoWithRoot:" do
-    #   context "with valid repo" do
-    #     setup do
-    #       @repo = GITRepo.repoWithRoot(TEST_REPO)
-    #     end
-    #     should "open repo at #{TEST_REPO}" do
-    #       assert @repo.root == TEST_REPO
-    #     end
-    #   end
-    #   context "with invalid repo" do
-    #     setup do
-    #       @repo = GITRepo.repoWithRoot('/tmp/nonexistent')
-    #     end
-    #     should "return nil" do
-    #       assert_nil @repo
-    #     end
-    #   end
-    # end
-    # context "+repoWithRoot:error:" do
-    #   setup do
-    #     @error = Pointer.new(:object)
-    #   end
-    #   context "with valid repo" do
-    #     setup do
-    #       @repo = GITRepo.repoWithRoot('', error:@error)
-    #     end
-    #     should "open repo at " do
-    #       assert @repo.root = ''
-    #     end
-    #     should "not raise an error" do
-    #       assert_nil @error[0]
-    #     end
-    #   end
-    #   context "with nonexistent path" do
-    #     setup do
-    #       @repo = GITRepo.repoWithRoot('/tmp/git-repo', error:@error)
-    #     end
-    #     should "return nil" do
-    #       assert_nil @repo
-    #     end
-    #     should "raise an error" do
-    #       assert_not_nil @error[0]
-    #     end
-    #     should "raise a path error" do
-    #       assert @error.code == GITRepoErrorRootDoesNotExist
-    #     end
-    #   end
-    #   context "with disallowed path (permissions)" do
-    #     setup do
-    #       @repo = GITRepo.repoWithRoot('', error:@error)
-    #     end
-    #     should "return nil" do
-    #       assert_nil @repo
-    #     end
-    #     should "raise an error" do
-    #       assert_not_nil @error[0]
-    #     end
-    #     should "raise a permission error" do
-    #       assert @error.code == GITRepoErrorRootNotAccessible
-    #     end
-    #   end
-    #   context "with no permission to path" do
-    #     setup do
-    #       @repo = GITRepo.repoWithRoot('', error:@error)
-    #     end
-    #     should "return nil" do
-    #       assert_nil @repo
-    #     end
-    #     should "raise an error" do
-    #       assert_not_nil @error[0]
-    #     end
-    #     should "raise a permission error" do
-    #       assert @error.code == GITRepoErrorRootInsane
-    #     end
-    #   end
-    # end
+  end
+
+  should 'open the repo in the current directory' do
+    @repo.root.should.equal TEST_REPO_ROOT
+  end
+end
+
+describe "GITRepo +repoWithRoot:" do
+  describe "with valid repository" do
+    before do
+      @repo = GITRepo.repoWithRoot(TEST_REPO)
+    end
+
+    should "open repo in #{TEST_REPO}" do
+      @repo.root.should.equal TEST_REPO_ROOT
+    end
+  end
+  describe "with nonexistent repository" do
+    before do
+      @repo = GITRepo.repoWithRoot("/nonexistent")
+    end
+
+    should "be nil" do
+      @repo.should.be.nil
+    end
+  end
+end
+
+describe "GITRepo +repoWithRoot:error:" do
+  before do
+    @error = Pointer.new(:object)
+  end
+  describe "with valid repository" do
+    before do
+      @repo = GITRepo.repoWithRoot(TEST_REPO, error:@error)
+    end
+
+    should "open repo at " do
+      @repo.root.should.equal TEST_REPO_ROOT
+    end
+    should "not raise an error" do
+      @error[0].should.be.nil
+    end
+  end
+  describe "with nonexistent path" do
+    before do
+      @repo = GITRepo.repoWithRoot('/nonexistent', error:@error)
+    end
+
+    should "return nil" do
+      @repo.should.be.nil
+    end
+    should "raise an error" do
+      @error[0].should.not.be.nil
+    end
+    should "raise a path error" do
+      @error[0].code.should.equal GITRepoErrorRootDoesNotExist
+    end
+  end
+  describe "with no permission to path" do
+    before do
+      @repo = GITRepo.repoWithRoot(File.join(TEST_VOLUME, 'NoPermission'), error:@error)
+    end
+
+    should "return nil" do
+      @repo.should.be.nil
+    end
+    should "raise an error" do
+      @error[0].should.not.be.nil
+    end
+    should "raise a path error" do
+      @error[0].code.should.equal GITRepoErrorRootNotAccessible
+    end
+  end
+  describe "with insane looking repository" do
+    before do
+      @repo = GITRepo.repoWithRoot(File.join(TEST_VOLUME, 'Insane'), error:@error)
+    end
+
+    should "return nil" do
+      @repo.should.be.nil
+    end
+    should "raise an error" do
+      @error[0].should.not.be.nil
+    end
+    should "raise a path error" do
+      @error[0].code.should.equal GITRepoErrorRootInsane
+    end
   end
 end
