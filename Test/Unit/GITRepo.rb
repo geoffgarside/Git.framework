@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) +'/../TestHelper.rb'
+require File.expand_path(File.dirname(__FILE__) +'/../TestHelper.rb')
 
 describe "GITRepo +repo" do
   before do
