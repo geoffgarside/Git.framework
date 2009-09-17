@@ -40,20 +40,23 @@
 		return nil;
     
 	self.root = [theRoot stringByStandardizingPath];
-	self.bare = [self.root hasSuffix:@".git"];	// otherwise repo is in self.root + '/.git'
-    
-	// Wrap these checks in an autorelease pool
-	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+
+    if ( !(self.bare = [self.root hasSuffix:@".git"]) ) {
+        self.root = [self.root stringByAppendingPathComponent:@".git"];
+    }
+
 	if ( ![self rootExists] ) {
 		GITError(theError, GITRepoErrorRootDoesNotExist, NSLocalizedString(@"Path to repository does not exist", @"GITRepoErrorRootDoesNotExist"));
+        return nil;
 	}
 	if ( ![self rootIsAccessible] ) {
 		GITError(theError, GITRepoErrorRootNotAccessible, NSLocalizedString(@"Path to repository could not be opened, check permissions", @"GITRepoErrorRootNotAccessible"));
+        return nil;
 	}
 	if ( ![self rootDoesLookSane] ) {
 		GITError(theError, GITRepoErrorRootInsane, NSLocalizedString(@"Path does not appear to be a git repository", @"GITRepoErrorRootInsane"));
+        return nil;
 	}
-	[pool drain];
     
 	return self;
 }
@@ -75,27 +78,33 @@
 
 - (BOOL)rootDoesLookSane {
 	NSString *path;
+    BOOL isSane = NO;
 	BOOL isDirectory;
-    
+
 	NSFileManager *fm = [NSFileManager defaultManager];
-    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
 	NSArray *fileChecks = [NSArray arrayWithObjects: @"HEAD", @"config", @"index", nil];
 	for ( NSString *pathComponent in fileChecks ) {
 		isDirectory = NO;
 		path = [self.root stringByAppendingPathComponent: pathComponent];
 		if ( ![fm fileExistsAtPath: path isDirectory:&isDirectory] || isDirectory )
-			return NO;
+			goto done;
 	}
-    
+
 	NSArray *dirChecks  = [NSArray arrayWithObjects: @"refs", @"objects", nil];
 	for ( NSString *pathComponent in dirChecks ) {
 		isDirectory = NO;
 		path = [self.root stringByAppendingPathComponent: pathComponent];
 		if ( ![fm fileExistsAtPath: path isDirectory:&isDirectory] || !isDirectory )
-			return NO;
+			goto done;
 	}
-    
-	return YES;
+
+	isSane = YES;
+
+done:
+    [pool drain];
+    return isSane;
 }
 
 @end
