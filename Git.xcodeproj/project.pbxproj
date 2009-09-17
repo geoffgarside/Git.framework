@@ -6,6 +6,21 @@
 	objectVersion = 45;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F5BBC17B1062EF1000EF21A8 /* Tests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F5BBC1811062EF5E00EF21A8 /* Build configuration list for PBXAggregateTarget "Tests" */;
+			buildPhases = (
+				F5BBC17A1062EF1000EF21A8 /* ShellScript */,
+			);
+			dependencies = (
+				F5BBC17F1062EF2800EF21A8 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		F599A8D1105EFCE8003CD1C0 /* GITRepo.h in Headers */ = {isa = PBXBuildFile; fileRef = F599A8CF105EFCE8003CD1C0 /* GITRepo.h */; };
@@ -25,6 +40,16 @@
 		F599AAA6106026ED003CD1C0 /* GITError.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AAA4106026ED003CD1C0 /* GITError.h */; };
 		F599AAA7106026ED003CD1C0 /* GITError.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AAA5106026ED003CD1C0 /* GITError.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F5BBC17E1062EF2800EF21A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* Git */;
+			remoteInfo = Git;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		089C1667FE841158C02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Resource/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -47,6 +72,10 @@
 		F599AA961060264D003CD1C0 /* OBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUtilities.m; sourceTree = "<group>"; };
 		F599AAA4106026ED003CD1C0 /* GITError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITError.h; path = Source/GITError.h; sourceTree = "<group>"; };
 		F599AAA5106026ED003CD1C0 /* GITError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITError.m; path = Source/GITError.m; sourceTree = "<group>"; };
+		F5BBC1901062F02500EF21A8 /* GITError.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITError.rb; sourceTree = "<group>"; };
+		F5BBC1921062F02500EF21A8 /* repos.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = repos.dmg; sourceTree = "<group>"; };
+		F5BBC1931062F02500EF21A8 /* TestHelper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TestHelper.rb; sourceTree = "<group>"; };
+		F5BBC1951062F02500EF21A8 /* GITRepo.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRepo.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +101,7 @@
 		0867D691FE84028FC02AAC07 /* Git */ = {
 			isa = PBXGroup;
 			children = (
+				F5BBC18E1062F02500EF21A8 /* Test */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
@@ -169,6 +199,41 @@
 			path = Source/Vendor/OmniGroup/OmniBase;
 			sourceTree = "<group>";
 		};
+		F5BBC18E1062F02500EF21A8 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				F5BBC18F1062F02500EF21A8 /* Helpers */,
+				F5BBC1911062F02500EF21A8 /* Resource */,
+				F5BBC1931062F02500EF21A8 /* TestHelper.rb */,
+				F5BBC1941062F02500EF21A8 /* Unit */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		F5BBC18F1062F02500EF21A8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F5BBC1901062F02500EF21A8 /* GITError.rb */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F5BBC1911062F02500EF21A8 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F5BBC1921062F02500EF21A8 /* repos.dmg */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F5BBC1941062F02500EF21A8 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				F5BBC1951062F02500EF21A8 /* GITRepo.rb */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -226,6 +291,7 @@
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* Git */,
+				F5BBC17B1062EF1000EF21A8 /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,6 +306,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F5BBC17A1062EF1000EF21A8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/local/bin/macruby;
+			shellScript = "Dir['Test/Unit/*.rb'].each do |testfile|\n  load testfile\nend\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8DC2EF540486A6940098B216 /* Sources */ = {
@@ -257,6 +339,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F5BBC17F1062EF2800EF21A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* Git */;
+			targetProxy = F5BBC17E1062EF2800EF21A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C1666FE841158C02AAC07 /* InfoPlist.strings */ = {
@@ -341,6 +431,27 @@
 			};
 			name = Release;
 		};
+		F5BBC17C1062EF1000EF21A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Tests;
+			};
+			name = Debug;
+		};
+		F5BBC17D1062EF1000EF21A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = Tests;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -358,6 +469,15 @@
 			buildConfigurations = (
 				1DEB91B208733DA50010E9CD /* Debug */,
 				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5BBC1811062EF5E00EF21A8 /* Build configuration list for PBXAggregateTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5BBC17C1062EF1000EF21A8 /* Debug */,
+				F5BBC17D1062EF1000EF21A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
