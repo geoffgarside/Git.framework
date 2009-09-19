@@ -23,87 +23,87 @@
 @synthesize bare;
 
 + (GITRepo *)repo {
-	return [[[GITRepo alloc] initWithRoot:[[NSFileManager defaultManager] currentDirectoryPath] error: NULL] autorelease];
+    return [[[GITRepo alloc] initWithRoot:[[NSFileManager defaultManager] currentDirectoryPath] error: NULL] autorelease];
 }
 + (GITRepo *)repoWithRoot: (NSString *)theRoot {
-	return [[[GITRepo alloc] initWithRoot: theRoot error: NULL] autorelease];
+    return [[[GITRepo alloc] initWithRoot: theRoot error: NULL] autorelease];
 }
 + (GITRepo *)repoWithRoot: (NSString *)theRoot error: (NSError **)theError {
-	return [[[GITRepo alloc] initWithRoot: theRoot error: theError] autorelease];
+    return [[[GITRepo alloc] initWithRoot: theRoot error: theError] autorelease];
 }
 
 - (id)initWithRoot: (NSString *)theRoot {
-	return [self initWithRoot: theRoot error: NULL];
+    return [self initWithRoot: theRoot error: NULL];
 }
 - (id)initWithRoot: (NSString *)theRoot error: (NSError **)theError {
-	if ( ![super init] )
-		return nil;
+    if ( ![super init] )
+        return nil;
     
-	self.root = [theRoot stringByStandardizingPath];
+    self.root = [theRoot stringByStandardizingPath];
 
     if ( !(self.bare = [self.root hasSuffix:@".git"]) ) {
         self.root = [self.root stringByAppendingPathComponent:@".git"];
     }
 
-	if ( ![self rootExists] ) {
-		GITError(theError, GITRepoErrorRootDoesNotExist, NSLocalizedString(@"Path to repository does not exist", @"GITRepoErrorRootDoesNotExist"));
+    if ( ![self rootExists] ) {
+        GITError(theError, GITRepoErrorRootDoesNotExist, NSLocalizedString(@"Path to repository does not exist", @"GITRepoErrorRootDoesNotExist"));
         [self release];
         return nil;
-	}
-	if ( ![self rootIsAccessible] ) {
-		GITError(theError, GITRepoErrorRootNotAccessible, NSLocalizedString(@"Path to repository could not be opened, check permissions", @"GITRepoErrorRootNotAccessible"));
+    }
+    if ( ![self rootIsAccessible] ) {
+        GITError(theError, GITRepoErrorRootNotAccessible, NSLocalizedString(@"Path to repository could not be opened, check permissions", @"GITRepoErrorRootNotAccessible"));
         [self release];
         return nil;
-	}
-	if ( ![self rootDoesLookSane] ) {
-		GITError(theError, GITRepoErrorRootInsane, NSLocalizedString(@"Path does not appear to be a git repository", @"GITRepoErrorRootInsane"));
+    }
+    if ( ![self rootDoesLookSane] ) {
+        GITError(theError, GITRepoErrorRootInsane, NSLocalizedString(@"Path does not appear to be a git repository", @"GITRepoErrorRootInsane"));
         [self release];
         return nil;
-	}
+    }
     
-	return self;
+    return self;
 }
 
 - (void)dealloc {
-	self.root = nil;
-	[super dealloc];
+    self.root = nil;
+    [super dealloc];
 }
 
 - (BOOL)rootExists {
-	BOOL isDirectory;
-	return [[NSFileManager defaultManager] fileExistsAtPath:self.root isDirectory:&isDirectory] && isDirectory;
+    BOOL isDirectory;
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.root isDirectory:&isDirectory] && isDirectory;
 }
 
 - (BOOL)rootIsAccessible {
-	return [[NSFileManager defaultManager] isReadableFileAtPath:self.root] &&
-    [[NSFileManager defaultManager] isWritableFileAtPath:self.root];
+    return [[NSFileManager defaultManager] isReadableFileAtPath:self.root] &&
+        [[NSFileManager defaultManager] isWritableFileAtPath:self.root];
 }
 
 - (BOOL)rootDoesLookSane {
-	NSString *path;
+    NSString *path;
     BOOL isSane = NO;
-	BOOL isDirectory;
+    BOOL isDirectory;
 
-	NSFileManager *fm = [NSFileManager defaultManager];
+    NSFileManager *fm = [NSFileManager defaultManager];
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-	NSArray *fileChecks = [NSArray arrayWithObjects: @"HEAD", @"config", @"index", nil];
-	for ( NSString *pathComponent in fileChecks ) {
-		isDirectory = NO;
-		path = [self.root stringByAppendingPathComponent: pathComponent];
-		if ( ![fm fileExistsAtPath: path isDirectory:&isDirectory] || isDirectory )
-			goto done;
-	}
+    NSArray *fileChecks = [NSArray arrayWithObjects: @"HEAD", @"config", @"index", nil];
+    for ( NSString *pathComponent in fileChecks ) {
+        isDirectory = NO;
+        path = [self.root stringByAppendingPathComponent: pathComponent];
+        if ( ![fm fileExistsAtPath: path isDirectory:&isDirectory] || isDirectory )
+            goto done;
+    }
 
-	NSArray *dirChecks  = [NSArray arrayWithObjects: @"refs", @"objects", nil];
-	for ( NSString *pathComponent in dirChecks ) {
-		isDirectory = NO;
-		path = [self.root stringByAppendingPathComponent: pathComponent];
-		if ( ![fm fileExistsAtPath: path isDirectory:&isDirectory] || !isDirectory )
-			goto done;
-	}
+    NSArray *dirChecks  = [NSArray arrayWithObjects: @"refs", @"objects", nil];
+    for ( NSString *pathComponent in dirChecks ) {
+        isDirectory = NO;
+        path = [self.root stringByAppendingPathComponent: pathComponent];
+        if ( ![fm fileExistsAtPath: path isDirectory:&isDirectory] || !isDirectory )
+            goto done;
+    }
 
-	isSane = YES;
+    isSane = YES;
 
 done:
     [pool drain];
