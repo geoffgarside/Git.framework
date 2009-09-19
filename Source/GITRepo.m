@@ -9,7 +9,7 @@
 #import "GITRepo.h"
 #import "GITError.h"
 
-@interface GITRepo (Private)
+@interface GITRepo ()
 
 - (BOOL)rootExists;
 - (BOOL)rootIsAccessible;
