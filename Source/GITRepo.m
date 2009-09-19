@@ -47,14 +47,17 @@
 
 	if ( ![self rootExists] ) {
 		GITError(theError, GITRepoErrorRootDoesNotExist, NSLocalizedString(@"Path to repository does not exist", @"GITRepoErrorRootDoesNotExist"));
+        [self release];
         return nil;
 	}
 	if ( ![self rootIsAccessible] ) {
 		GITError(theError, GITRepoErrorRootNotAccessible, NSLocalizedString(@"Path to repository could not be opened, check permissions", @"GITRepoErrorRootNotAccessible"));
+        [self release];
         return nil;
 	}
 	if ( ![self rootDoesLookSane] ) {
 		GITError(theError, GITRepoErrorRootInsane, NSLocalizedString(@"Path does not appear to be a git repository", @"GITRepoErrorRootInsane"));
+        [self release];
         return nil;
 	}
     
