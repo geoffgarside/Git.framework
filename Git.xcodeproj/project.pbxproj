@@ -39,6 +39,8 @@
 		F599AAA11060264D003CD1C0 /* OBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AA961060264D003CD1C0 /* OBUtilities.m */; };
 		F599AAA6106026ED003CD1C0 /* GITError.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AAA4106026ED003CD1C0 /* GITError.h */; };
 		F599AAA7106026ED003CD1C0 /* GITError.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AAA5106026ED003CD1C0 /* GITError.m */; };
+		F5AC4DEF106C501D0083212A /* NSData+Searching.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AC4DED106C501D0083212A /* NSData+Searching.h */; };
+		F5AC4DF0106C501D0083212A /* NSData+Searching.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AC4DEE106C501D0083212A /* NSData+Searching.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		F599AA961060264D003CD1C0 /* OBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUtilities.m; sourceTree = "<group>"; };
 		F599AAA4106026ED003CD1C0 /* GITError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITError.h; path = Source/GITError.h; sourceTree = "<group>"; };
 		F599AAA5106026ED003CD1C0 /* GITError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITError.m; path = Source/GITError.m; sourceTree = "<group>"; };
+		F5AC4DED106C501D0083212A /* NSData+Searching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Searching.h"; path = "Source/Category/NSData/NSData+Searching.h"; sourceTree = "<group>"; };
+		F5AC4DEE106C501D0083212A /* NSData+Searching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Searching.m"; path = "Source/Category/NSData/NSData+Searching.m"; sourceTree = "<group>"; };
 		F5BBC1901062F02500EF21A8 /* GITError.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITError.rb; sourceTree = "<group>"; };
 		F5BBC1921062F02500EF21A8 /* repos.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = repos.dmg; sourceTree = "<group>"; };
 		F5BBC1931062F02500EF21A8 /* TestHelper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TestHelper.rb; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				F5AC4DEC106C50040083212A /* Category */,
 				32DBCF5E0370ADEE00C91783 /* Git_Prefix.pch */,
 				F599AAA4106026ED003CD1C0 /* GITError.h */,
 				F599AAA5106026ED003CD1C0 /* GITError.m */,
@@ -197,6 +202,23 @@
 			);
 			name = OmniBase;
 			path = Source/Vendor/OmniGroup/OmniBase;
+			sourceTree = "<group>";
+		};
+		F5AC4DEC106C50040083212A /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F5AC4DF1106C50230083212A /* NSData */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		F5AC4DF1106C50230083212A /* NSData */ = {
+			isa = PBXGroup;
+			children = (
+				F5AC4DED106C501D0083212A /* NSData+Searching.h */,
+				F5AC4DEE106C501D0083212A /* NSData+Searching.m */,
+			);
+			name = NSData;
 			sourceTree = "<group>";
 		};
 		F5BBC18E1062F02500EF21A8 /* Test */ = {
@@ -249,6 +271,7 @@
 				F599AA9F1060264D003CD1C0 /* objc.h in Headers */,
 				F599AAA01060264D003CD1C0 /* OBUtilities.h in Headers */,
 				F599AAA6106026ED003CD1C0 /* GITError.h in Headers */,
+				F5AC4DEF106C501D0083212A /* NSData+Searching.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +358,7 @@
 				F599AA9E1060264D003CD1C0 /* OBError.m in Sources */,
 				F599AAA11060264D003CD1C0 /* OBUtilities.m in Sources */,
 				F599AAA7106026ED003CD1C0 /* GITError.m in Sources */,
+				F5AC4DF0106C501D0083212A /* NSData+Searching.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
