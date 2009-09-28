@@ -23,3 +23,7 @@ unless File.exist? TEST_VOLUME
 end
 
 require File.expand_path(File.dirname(__FILE__) +'/Helpers/GITError.rb')
+
+def default_repository
+  GITRepo.repoWithRoot(TEST_REPO)
+end
