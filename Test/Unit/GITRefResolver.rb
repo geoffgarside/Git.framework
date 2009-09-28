@@ -27,4 +27,17 @@ describe "GITRefResolver -resolveRefWithName:" do
       @ref.name.should == 'HEAD'
     end
   end
+
+  describe "refs/heads/master" do
+    before do
+      @ref = @resolver.resolveRefWithName("refs/heads/master")
+    end
+
+    should "not be nil" do
+      @ref.should.not.be.nil
+    end
+    should "have name 'refs/heads/master'" do
+      @ref.name.should == 'refs/heads/master'
+    end
+  end
 end
