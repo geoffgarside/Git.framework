@@ -19,8 +19,12 @@ TEST_REPO_ROOT = "#{TEST_REPO}/.git"
 
 unless File.exist? TEST_VOLUME
   puts 'Mounting git repository disk image'
+  # Maybe add -mountroot #{File.join(File.dirname(__FILE__), 'Resource/Repos')}
   `hdiutil attach #{File.join(File.dirname(__FILE__), 'Resource/repos.dmg')}`
 end
+
+# Ideally we'd like to umount the repos image as well
+# `hdiutil detach #{TEST_VOLUME}`
 
 require File.expand_path(File.dirname(__FILE__) +'/Helpers/GITError.rb')
 
