@@ -9,14 +9,18 @@
 #import <Foundation/Foundation.h>
 
 
+@class GITRepo;
 @interface GITRef : NSObject {
+    GITRepo *repo;
+
     NSString *name;
 }
 
+@property (retain) GITRepo *repo;
 @property (copy) NSString *name;
 
-+ (id)refWithName: (NSString *)theName;
++ (id)refWithName: (NSString *)theName inRepo: (GITRepo *)theRepo;
 
-- (id)initWithName: (NSString *)theName;
+- (id)initWithName: (NSString *)theName inRepo: (GITRepo *)theRepo;
 
 @end

@@ -11,22 +11,24 @@
 
 @implementation GITRef
 
-@synthesize name;
+@synthesize repo, name;
 
-+ (id)refWithName: (NSString *)theName {
-    return [[[GITRef alloc] initWithName:theName] autorelease];
++ (id)refWithName: (NSString *)theName inRepo: (GITRepo *)theRepo {
+    return [[[GITRef alloc] initWithName:theName inRepo:theRepo] autorelease];
 }
 
-- (id)initWithName:(NSString *)theName {
+- (id)initWithName:(NSString *)theName inRepo: (GITRepo *)theRepo {
     if ( ![super init] )
         return nil;
 
+    self.repo = theRepo;
     self.name = theName;
 
     return self;
 }
 
 - (void)dealloc {
+    self.repo = nil;
     self.name = nil;
     [super dealloc];
 }

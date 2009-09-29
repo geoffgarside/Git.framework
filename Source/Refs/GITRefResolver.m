@@ -34,7 +34,7 @@
 }
 
 - (GITRef *)resolveRefWithName: (NSString *)theName {
-    return [GITRef refWithName:theName];
+    return [GITRef refWithName:theName inRepo:self.repo];
 }
 
 @end
