@@ -9,6 +9,14 @@
 #import "GITRefResolver.h"
 #import "GITRepo.h"
 #import "GITRef.h"
+#import "GITError.h"
+
+
+@interface GITRefResolver ()
+
+- (BOOL)referenceExistsWithName:(NSString *)theName isPacked:(BOOL *)isPacked;
+
+@end
 
 
 @implementation GITRefResolver
@@ -34,7 +42,31 @@
 }
 
 - (GITRef *)resolveRefWithName: (NSString *)theName {
-    return [GITRef refWithName:theName inRepo:self.repo];
+    return [self resolveRefWithName:theName error:NULL];
+}
+
+- (GITRef *)resolveRefWithName: (NSString *)theName error: (NSError **)theError {
+    BOOL isPacked = NO;
+    if ( [self referenceExistsWithName:theName isPacked:&isPacked] )
+        return [GITRef refWithName:theName inRepo:self.repo];
+    else {
+        NSString *errorDesc = [NSString stringWithFormat:NSLocalizedString(@"Could not resolve ref @%", @"GITRefResolverErrorRefNotFound"), theName];
+        GITError(theError, GITRefResolverErrorRefNotFound, errorDesc);
+        return nil;
+    }
+}
+
+- (BOOL)referenceExistsWithName: (NSString *)theName isPacked: (BOOL *)isPacked {
+    BOOL isDirectory = NO;
+    NSString *path = [self.repo.root stringByAppendingPathComponent:theName];
+    if ( [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory] && !isDirectory ) {
+        *isPacked = NO;
+        return YES;
+    } else {
+        // TODO: Add test for ref existence in .git/packed-refs
+    }
+
+    return NO; // could not resolve reference
 }
 
 @end

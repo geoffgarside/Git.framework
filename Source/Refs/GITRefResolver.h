@@ -20,5 +20,6 @@
 - (id)initWithResolverForRepo: (GITRepo *)theRepo;
 
 - (GITRef *)resolveRefWithName: (NSString *)theName;
+- (GITRef *)resolveRefWithName: (NSString *)theName error: (NSError **)theError;
 
 @end

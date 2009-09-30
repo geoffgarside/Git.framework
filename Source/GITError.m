@@ -18,5 +18,8 @@ __git_error(GITRepoErrorRootDoesNotExist, -1);
 __git_error(GITRepoErrorRootNotAccessible, -2);
 __git_error(GITRepoErrorRootInsane, -3);
 
+#pragma mark GITRefResolver Errors
+__git_error(GITRefResolverErrorRefNotFound, -4);
+
 #undef __git_error
 #undef __git_error_domain
