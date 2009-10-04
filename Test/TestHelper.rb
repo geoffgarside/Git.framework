@@ -30,6 +30,4 @@ Dir[File.expand_path(File.dirname(__FILE__) +'/Helpers/*.rb')].each do |helper|
   require helper
 end
 
-def default_repository
-  GITRepo.repoWithRoot(TEST_REPO)
-end
+DefaultRepository = GITRepo.repoWithRoot(TEST_REPO)
