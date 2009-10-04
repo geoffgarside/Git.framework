@@ -29,7 +29,7 @@
 
 @implementation GITRefResolver
 
-@synthesize repo, hasPackedRefs, packedRefsCache;
+@synthesize repo, packedRefsCache;
 
 + (GITRefResolver *)resolverForRepo:(GITRepo *)theRepo {
     return [[[GITRefResolver alloc] initWithResolverForRepo:theRepo] autorelease];
@@ -40,12 +40,6 @@
         return nil;
 
     self.repo = theRepo;
-    self.hasPackedRefs = NO;
-
-    if ( [[NSFileManager defaultManager] fileExistsAtPath:[self packedRefsPath]] ) {
-        self.hasPackedRefs = YES;
-        self.packedRefsCache = [NSMutableDictionary dictionaryWithCapacity:1]; // odds are we'll need to look up at least one
-    }
 
     return self;
 }
@@ -54,10 +48,6 @@
     self.repo = nil;
     self.packedRefsCache = nil;
     [super dealloc];
-}
-
-- (NSString *)packedRefsPath {
-    return [self.repo.root stringByAppendingPathComponent:@"packed-refs"];
 }
 
 - (GITRef *)resolveRefWithName: (NSString *)theName {
@@ -101,6 +91,8 @@
 
         NSString *sha1 = [line substringToIndex:40];
 
+        if ( !packedRefsCache )
+            self.packedRefsCache = [NSMutableDictionary dictionaryWithCapacity:1];
         [self.packedRefsCache setObject:[sha1 copy] forKey:theName];
         return YES;
     }
