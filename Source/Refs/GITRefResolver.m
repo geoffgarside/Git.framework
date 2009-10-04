@@ -52,6 +52,7 @@
 
 - (void)dealloc {
     self.repo = nil;
+    self.packedRefsCache = nil;
     [super dealloc];
 }
 
