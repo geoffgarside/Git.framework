@@ -39,6 +39,8 @@
 		F599AAA11060264D003CD1C0 /* OBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AA961060264D003CD1C0 /* OBUtilities.m */; };
 		F599AAA6106026ED003CD1C0 /* GITError.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AAA4106026ED003CD1C0 /* GITError.h */; };
 		F599AAA7106026ED003CD1C0 /* GITError.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AAA5106026ED003CD1C0 /* GITError.m */; };
+		F5AA6AC61078C864001110FE /* GITPackedRefsEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AA6AC41078C864001110FE /* GITPackedRefsEnumerator.h */; };
+		F5AA6AC71078C864001110FE /* GITPackedRefsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */; };
 		F5AC4DEF106C501D0083212A /* NSData+Searching.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AC4DED106C501D0083212A /* NSData+Searching.h */; };
 		F5AC4DF0106C501D0083212A /* NSData+Searching.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AC4DEE106C501D0083212A /* NSData+Searching.m */; };
 		F5BBC1A61063753400EF21A8 /* GITRefResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1A41063753400EF21A8 /* GITRefResolver.h */; };
@@ -79,6 +81,9 @@
 		F599AAA4106026ED003CD1C0 /* GITError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITError.h; path = Source/GITError.h; sourceTree = "<group>"; };
 		F599AAA5106026ED003CD1C0 /* GITError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITError.m; path = Source/GITError.m; sourceTree = "<group>"; };
 		F5AA6ABC1078BBF6001110FE /* GITRef.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRef.rb; sourceTree = "<group>"; };
+		F5AA6AC41078C864001110FE /* GITPackedRefsEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackedRefsEnumerator.h; path = Source/Refs/GITPackedRefsEnumerator.h; sourceTree = "<group>"; };
+		F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackedRefsEnumerator.m; path = Source/Refs/GITPackedRefsEnumerator.m; sourceTree = "<group>"; };
+		F5AA6B0B1078E11E001110FE /* GITPackedRefsEnumerator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackedRefsEnumerator.rb; sourceTree = "<group>"; };
 		F5AC4DED106C501D0083212A /* NSData+Searching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Searching.h"; path = "Source/Category/NSData/NSData+Searching.h"; sourceTree = "<group>"; };
 		F5AC4DEE106C501D0083212A /* NSData+Searching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Searching.m"; path = "Source/Category/NSData/NSData+Searching.m"; sourceTree = "<group>"; };
 		F5AC4E31107179770083212A /* GITRefResolver.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRefResolver.rb; sourceTree = "<group>"; };
@@ -154,6 +159,8 @@
 				F5BBC1A51063753400EF21A8 /* GITRefResolver.m */,
 				F5BBC1DC10659C3100EF21A8 /* GITRef.h */,
 				F5BBC1DD10659C3100EF21A8 /* GITRef.m */,
+				F5AA6AC41078C864001110FE /* GITPackedRefsEnumerator.h */,
+				F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 		F5BBC1941062F02500EF21A8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				F5AA6B0B1078E11E001110FE /* GITPackedRefsEnumerator.rb */,
 				F5AC4E4C1072BF940083212A /* GITRef.rb */,
 				F5AC4E31107179770083212A /* GITRefResolver.rb */,
 				F5BBC1951062F02500EF21A8 /* GITRepo.rb */,
@@ -292,6 +300,7 @@
 				F5BBC1A61063753400EF21A8 /* GITRefResolver.h in Headers */,
 				F5BBC1DE10659C3100EF21A8 /* GITRef.h in Headers */,
 				F5AC4DEF106C501D0083212A /* NSData+Searching.h in Headers */,
+				F5AA6AC61078C864001110FE /* GITPackedRefsEnumerator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +390,7 @@
 				F5BBC1A71063753400EF21A8 /* GITRefResolver.m in Sources */,
 				F5BBC1DF10659C3100EF21A8 /* GITRef.m in Sources */,
 				F5AC4DF0106C501D0083212A /* NSData+Searching.m in Sources */,
+				F5AA6AC71078C864001110FE /* GITPackedRefsEnumerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
