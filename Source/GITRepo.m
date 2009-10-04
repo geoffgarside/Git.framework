@@ -70,6 +70,7 @@
 
 - (void)dealloc {
     self.root = nil;
+    self.refResolver = nil;
     [super dealloc];
 }
 
