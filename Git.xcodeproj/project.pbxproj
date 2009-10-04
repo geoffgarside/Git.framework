@@ -372,6 +372,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/local/bin/macruby;
 			shellScript = "Dir['Test/Unit/*.rb'].each do |testfile|\n  load testfile\nend\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -447,8 +448,8 @@
 				FRAMEWORK_VERSION = A;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Git_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_PREFIX_HEADER = Source/Git_Prefix.pch;
+				INFOPLIST_FILE = Resource/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Frameworks";
 				PRODUCT_NAME = Git;
 				WRAPPER_EXTENSION = framework;
