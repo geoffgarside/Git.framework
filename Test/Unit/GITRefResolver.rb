@@ -53,4 +53,17 @@ describe "GITRefResolver -resolveRefWithName:" do
       @ref.name.should == 'refs/heads/master'
     end
   end
+
+  describe "packed ref tags/v0.0.0" do
+    before do
+      @ref = @resolver.resolveRefWithName("tags/v0.0.0")
+    end
+
+    should "not be nil" do
+      @ref.should.not.be.nil
+    end
+    should "have name 'refs/tags/v0.0.0'" do
+      @ref.name.should == 'refs/tags/v0.0.0'
+    end
+  end
 end
