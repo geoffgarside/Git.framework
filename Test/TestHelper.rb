@@ -26,7 +26,9 @@ end
 # Ideally we'd like to umount the repos image as well
 # `hdiutil detach #{TEST_VOLUME}`
 
-require File.expand_path(File.dirname(__FILE__) +'/Helpers/GITError.rb')
+Dir[File.expand_path(File.dirname(__FILE__) +'/Helpers/*.rb')].each do |helper|
+  require helper
+end
 
 def default_repository
   GITRepo.repoWithRoot(TEST_REPO)

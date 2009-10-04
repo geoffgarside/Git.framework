@@ -78,6 +78,7 @@
 		F599AA961060264D003CD1C0 /* OBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUtilities.m; sourceTree = "<group>"; };
 		F599AAA4106026ED003CD1C0 /* GITError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITError.h; path = Source/GITError.h; sourceTree = "<group>"; };
 		F599AAA5106026ED003CD1C0 /* GITError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITError.m; path = Source/GITError.m; sourceTree = "<group>"; };
+		F5AA6ABC1078BBF6001110FE /* GITRef.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRef.rb; sourceTree = "<group>"; };
 		F5AC4DED106C501D0083212A /* NSData+Searching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Searching.h"; path = "Source/Category/NSData/NSData+Searching.h"; sourceTree = "<group>"; };
 		F5AC4DEE106C501D0083212A /* NSData+Searching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Searching.m"; path = "Source/Category/NSData/NSData+Searching.m"; sourceTree = "<group>"; };
 		F5AC4E31107179770083212A /* GITRefResolver.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRefResolver.rb; sourceTree = "<group>"; };
@@ -250,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				F5BBC1901062F02500EF21A8 /* GITError.rb */,
+				F5AA6ABC1078BBF6001110FE /* GITRef.rb */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

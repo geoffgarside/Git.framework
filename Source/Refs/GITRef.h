@@ -14,13 +14,17 @@
     GITRepo *repo;
 
     NSString *name;
+    BOOL link;
+    NSString *targetName;
 }
 
 @property (retain) GITRepo *repo;
 @property (copy) NSString *name;
+@property (assign, getter=isLink) BOOL link;
+@property (copy) NSString *targetName;
 
-+ (id)refWithName: (NSString *)theName inRepo: (GITRepo *)theRepo;
++ (id)refWithName: (NSString *)theName andTarget: (NSString *)theTarget inRepo: (GITRepo *)theRepo;
 
-- (id)initWithName: (NSString *)theName inRepo: (GITRepo *)theRepo;
+- (id)initWithName: (NSString *)theName andTarget: (NSString *)theTarget inRepo: (GITRepo *)theRepo;
 
 @end
