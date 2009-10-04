@@ -11,9 +11,11 @@
 @class GITRepo, GITRef;
 @interface GITRefResolver : NSObject {
     GITRepo *repo;
+    BOOL hasPackedRefs;
 }
 
 @property (assign) GITRepo *repo;
+@property (assign) BOOL hasPackedRefs;
 
 + (GITRefResolver *)resolverForRepo: (GITRepo *)theRepo;
 
@@ -21,5 +23,7 @@
 
 - (GITRef *)resolveRefWithName: (NSString *)theName;
 - (GITRef *)resolveRefWithName: (NSString *)theName error: (NSError **)theError;
+
+- (NSString *)packedRefsPath;
 
 @end

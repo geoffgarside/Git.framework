@@ -21,7 +21,7 @@
 
 @implementation GITRefResolver
 
-@synthesize repo;
+@synthesize repo, hasPackedRefs;
 
 + (GITRefResolver *)resolverForRepo:(GITRepo *)theRepo {
     return [[[GITRefResolver alloc] initWithResolverForRepo:theRepo] autorelease];
@@ -32,6 +32,11 @@
         return nil;
 
     self.repo = theRepo;
+    self.hasPackedRefs = NO;
+
+    if ( [[NSFileManager defaultManager] fileExistsAtPath:[self packedRefsPath]] ) {
+        self.hasPackedRefs = YES;
+    }
 
     return self;
 }
@@ -39,6 +44,10 @@
 - (void)dealloc {
     self.repo = nil;
     [super dealloc];
+}
+
+- (NSString *)packedRefsPath {
+    return [self.repo.root stringByAppendingPathComponent:@"packed-refs"];
 }
 
 - (GITRef *)resolveRefWithName: (NSString *)theName {
