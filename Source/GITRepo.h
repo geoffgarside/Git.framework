@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 
+@class GITRefResolver;
 @interface GITRepo : NSObject {
     NSString *root;
     BOOL bare;
+
+    GITRefResolver *refResolver;
 }
 
 @property (copy) NSString *root;

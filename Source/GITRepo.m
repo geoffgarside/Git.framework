@@ -8,8 +8,11 @@
 
 #import "GITRepo.h"
 #import "GITError.h"
+#import "GITRefResolver.h"
 
 @interface GITRepo ()
+
+@property (retain) GITRefResolver *refResolver;
 
 - (BOOL)rootExists;
 - (BOOL)rootIsAccessible;
@@ -21,6 +24,7 @@
 
 @synthesize root;
 @synthesize bare;
+@synthesize refResolver;
 
 + (GITRepo *)repo {
     return [[[GITRepo alloc] initWithRoot:[[NSFileManager defaultManager] currentDirectoryPath] error: NULL] autorelease];
@@ -108,6 +112,12 @@
 done:
     [pool drain];
     return isSane;
+}
+
+- (GITRefResolver *)refResolver {
+    if ( !refResolver )
+        self.refResolver = [GITRefResolver resolverForRepo:self];
+    return refResolver;
 }
 
 @end
