@@ -77,8 +77,7 @@
                 return nil;
             return [GITRef refWithName:refName andTarget:contents inRepo:self.repo];
         }
-    }
-    else {
+    } else {
         NSString *errorDesc = [NSString stringWithFormat:NSLocalizedString(@"Could not resolve ref @%", @"GITRefResolverErrorRefNotFound"), theName];
         GITError(theError, GITRefResolverErrorRefNotFound, errorDesc);
         return nil;
