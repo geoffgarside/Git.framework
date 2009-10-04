@@ -10,7 +10,7 @@
 #import "GITRepo.h"
 #import "GITRef.h"
 #import "GITError.h"
-#import "NSData+Searching.h"
+#import "GITPackedRefsEnumerator.h"
 
 
 @interface GITRefResolver ()
@@ -95,32 +95,14 @@
 }
 
 - (BOOL)packedReferenceExistsWithName: (NSString *)theName error: (NSError **)theError {
-    if ( !self.hasPackedRefs )
-        return NO;
+    GITPackedRefsEnumerator *packedRefsEnumerator = [GITPackedRefsEnumerator enumeratorForRepo:self.repo];
 
-    NSData *packedRefs = [NSData dataWithContentsOfFile:[self packedRefsPath] options:NSDataReadingMapped error:theError];
-    if ( !packedRefs )
-        return NO;
+    for (NSString *line in packedRefsEnumerator) {
+        if ( ![line hasSuffix:theName] ) continue;
 
-    NSRange rangeOfLine = [packedRefs rangeFrom:0 toByte:'\n'];
-    for ( rangeOfLine; rangeOfLine.location + rangeOfLine.length < [packedRefs length];
-         rangeOfLine = [packedRefs rangeFrom:rangeOfLine.location + rangeOfLine.length toByte:'\n'] ) {
-        NSData *lineData = [packedRefs subdataWithRange:rangeOfLine];
-        NSString *line   = [[NSString alloc] initWithData:lineData encoding:NSUTF8StringEncoding];
+        NSString *sha1 = [line substringToIndex:40];
 
-        if ( [line hasPrefix:@"#"] ) { // its a comment
-            [line release];
-            continue;
-        }
-
-        if ( ![line hasSuffix:theName] ) { // these aren't the lines we're looking for... move along
-            [line release];
-            continue;
-        }
-
-        // Cache the ref mapping
-        [self.packedRefsCache setObject:[line copy] forKey:theName];
-        [line release];
+        [self.packedRefsCache setObject:[sha1 copy] forKey:theName];
         return YES;
     }
 
