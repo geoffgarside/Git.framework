@@ -69,9 +69,13 @@
     NSString *refName = [self resolvedNameOfReferenceWithName:theName isPacked:&isPacked error:theError];
     if ( refName ) {
         if ( isPacked ) {
-            return [GITRef refWithName:refName inRepo:self.repo];
+            return [GITRef refWithName:refName andTarget:[self.packedRefsCache objectForKey:refName] inRepo:self.repo];
         } else {
-            return [GITRef refWithName:refName inRepo:self.repo];
+            NSString *contents = [NSString stringWithContentsOfFile:[self.repo.root stringByAppendingPathComponent:refName]
+                                                           encoding:NSUTF8StringEncoding error:theError];
+            if ( !contents )
+                return nil;
+            return [GITRef refWithName:refName andTarget:contents inRepo:self.repo];
         }
     }
     else {
