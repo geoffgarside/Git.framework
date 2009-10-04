@@ -21,7 +21,7 @@
 
 @implementation GITRefResolver
 
-@synthesize repo, hasPackedRefs;
+@synthesize repo, hasPackedRefs, packedRefsCache;
 
 + (GITRefResolver *)resolverForRepo:(GITRepo *)theRepo {
     return [[[GITRefResolver alloc] initWithResolverForRepo:theRepo] autorelease];
@@ -36,6 +36,7 @@
 
     if ( [[NSFileManager defaultManager] fileExistsAtPath:[self packedRefsPath]] ) {
         self.hasPackedRefs = YES;
+        self.packedRefsCache = [NSMutableDictionary dictionaryWithCapacity:1]; // odds are we'll need to look up at least one
     }
 
     return self;

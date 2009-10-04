@@ -12,10 +12,12 @@
 @interface GITRefResolver : NSObject {
     GITRepo *repo;
     BOOL hasPackedRefs;
+    NSMutableDictionary *packedRefsCache;
 }
 
 @property (assign) GITRepo *repo;
 @property (assign) BOOL hasPackedRefs;
+@property (retain) NSMutableDictionary *packedRefsCache;
 
 + (GITRefResolver *)resolverForRepo: (GITRepo *)theRepo;
 
