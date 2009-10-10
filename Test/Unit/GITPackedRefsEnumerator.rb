@@ -1,5 +1,3 @@
-require File.expand_path(File.dirname(__FILE__) +'/../TestHelper.rb')
-
 describe "GITPackedRefsEnumerator" do
   before do
     @enumerator = GITPackedRefsEnumerator.enumeratorForRepo(default_repository)

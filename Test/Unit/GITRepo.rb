@@ -1,5 +1,3 @@
-require File.expand_path(File.dirname(__FILE__) +'/../TestHelper.rb')
-
 describe "GITRepo +repo" do
   before do
     Dir.chdir(TEST_REPO) do
@@ -93,19 +91,5 @@ describe "GITRepo +repoWithRoot:error:" do
     should "raise a path error" do
       @error[0].code.should.equal GITRepoErrorRootInsane
     end
-  end
-end
-
-describe "GITRepo -branches" do
-  before do
-    @repo = default_repository
-    @branches = @repo.branches
-  end
-
-  should "include 'master'" do
-    @branches.should.include 'master'
-  end
-  should "include 'another'" do
-    @branches.should.include 'another'
   end
 end
