@@ -82,7 +82,6 @@
 		F599AA961060264D003CD1C0 /* OBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUtilities.m; sourceTree = "<group>"; };
 		F599AAA4106026ED003CD1C0 /* GITError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITError.h; path = Source/GITError.h; sourceTree = "<group>"; };
 		F599AAA5106026ED003CD1C0 /* GITError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITError.m; path = Source/GITError.m; sourceTree = "<group>"; };
-		F5AA6ABC1078BBF6001110FE /* GITRef.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRef.rb; sourceTree = "<group>"; };
 		F5AA6AC41078C864001110FE /* GITPackedRefsEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackedRefsEnumerator.h; path = Source/Refs/GITPackedRefsEnumerator.h; sourceTree = "<group>"; };
 		F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackedRefsEnumerator.m; path = Source/Refs/GITPackedRefsEnumerator.m; sourceTree = "<group>"; };
 		F5AA6B0B1078E11E001110FE /* GITPackedRefsEnumerator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackedRefsEnumerator.rb; sourceTree = "<group>"; };
@@ -90,7 +89,6 @@
 		F5AC4DEE106C501D0083212A /* NSData+Searching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Searching.m"; path = "Source/Category/NSData/NSData+Searching.m"; sourceTree = "<group>"; };
 		F5AC4E31107179770083212A /* GITRefResolver.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRefResolver.rb; sourceTree = "<group>"; };
 		F5AC4E4C1072BF940083212A /* GITRef.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRef.rb; sourceTree = "<group>"; };
-		F5BBC1901062F02500EF21A8 /* GITError.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITError.rb; sourceTree = "<group>"; };
 		F5BBC1921062F02500EF21A8 /* repos.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = repos.dmg; sourceTree = "<group>"; };
 		F5BBC1931062F02500EF21A8 /* TestHelper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TestHelper.rb; sourceTree = "<group>"; };
 		F5BBC1951062F02500EF21A8 /* GITRepo.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRepo.rb; sourceTree = "<group>"; };
@@ -248,21 +246,11 @@
 		F5BBC18E1062F02500EF21A8 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				F5BBC18F1062F02500EF21A8 /* Helpers */,
 				F5BBC1911062F02500EF21A8 /* Resource */,
 				F5BBC1931062F02500EF21A8 /* TestHelper.rb */,
 				F5BBC1941062F02500EF21A8 /* Unit */,
 			);
 			path = Test;
-			sourceTree = "<group>";
-		};
-		F5BBC18F1062F02500EF21A8 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				F5BBC1901062F02500EF21A8 /* GITError.rb */,
-				F5AA6ABC1078BBF6001110FE /* GITRef.rb */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F5BBC1911062F02500EF21A8 /* Resource */ = {
