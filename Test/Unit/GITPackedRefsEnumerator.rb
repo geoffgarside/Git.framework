@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) +'/../TestHelper.rb')
 
 describe "GITPackedRefsEnumerator" do
   before do
-    @enumerator = GITPackedRefsEnumerator.enumeratorForRepo(DefaultRepository)
+    @enumerator = GITPackedRefsEnumerator.enumeratorForRepo(default_repository)
   end
 
   should "not be nil" do

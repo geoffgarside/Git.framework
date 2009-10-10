@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) +'/../TestHelper.rb')
 describe "GITRef +refWithName:andTarget:inRepo:" do
   describe "ref HEAD" do
     before do
-      @ref = GITRef.refWithName("HEAD", andTarget:"ref: refs/heads/master", inRepo:DefaultRepository)
+      @ref = GITRef.refWithName("HEAD", andTarget:"ref: refs/heads/master", inRepo:default_repository)
     end
 
     should "not be nil" do
@@ -18,7 +18,7 @@ describe "GITRef +refWithName:andTarget:inRepo:" do
   end
   describe "ref refs/heads/master" do
     before do
-      @ref = GITRef.refWithName("refs/heads/master", andTarget:"6c20014aaa67fc2ac4958f899b6d5494cb30331f", inRepo:DefaultRepository)
+      @ref = GITRef.refWithName("refs/heads/master", andTarget:"6c20014aaa67fc2ac4958f899b6d5494cb30331f", inRepo:default_repository)
     end
 
     should "not be nil" do

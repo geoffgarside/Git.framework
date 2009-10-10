@@ -11,7 +11,9 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = F5BBC1811062EF5E00EF21A8 /* Build configuration list for PBXAggregateTarget "Tests" */;
 			buildPhases = (
-				F5BBC17A1062EF1000EF21A8 /* ShellScript */,
+				F5A8DD8110800A580022EDA0 /* Attach DMG */,
+				F5BBC17A1062EF1000EF21A8 /* Run MacRuby */,
+				F5A8DD9210800D590022EDA0 /* Detach DMG */,
 			);
 			dependencies = (
 				F5BBC17F1062EF2800EF21A8 /* PBXTargetDependency */,
@@ -360,18 +362,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F5BBC17A1062EF1000EF21A8 /* ShellScript */ = {
+		F5A8DD8110800A580022EDA0 /* Attach DMG */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Attach DMG";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Attach the Test DMG\necho Attaching DMG file $SRCROOT/Test/Resource/repos.dmg to $TEST_VOLUME\nhdiutil attach -mountpoint \"$TEST_VOLUME\" $SRCROOT/Test/Resource/repos.dmg";
+			showEnvVarsInLog = 0;
+		};
+		F5A8DD9210800D590022EDA0 /* Detach DMG */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Detach DMG";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Detach Test DMG\nhdiutil detach \"$TEST_VOLUME\"";
+			showEnvVarsInLog = 0;
+		};
+		F5BBC17A1062EF1000EF21A8 /* Run MacRuby */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run MacRuby";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/local/bin/macruby;
-			shellScript = "Dir['Test/Unit/*.rb'].each do |testfile|\n  load testfile\nend\n";
+			shellScript = "require 'bacon'\nframework 'Git'\n\nBacon.extend Bacon::TestUnitOutput  # This doesn't seem to work at the moment, but its how we'd prefer it\nBacon.summary_on_exit\n\nTEST_VOLUME    = ENV['TEST_VOLUME']\nTEST_REPO      = File.join(TEST_VOLUME, 'Test')\nTEST_REPO_ROOT = File.join(TEST_REPO, '.git')\n\nDir['Test/Helpers/*.rb'].each do |helper|\n  require helper\nend\n\nDir['Test/Unit/*.rb'].each do |testfile|\n  load testfile\nend\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -492,9 +525,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				DYLD_FRAMEWORK_PATH = $CONFIGURATION_BUILD_DIR;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = Tests;
+				TEST_VOLUME = $CONFIGURATION_TEMP_DIR/TestVol;
 			};
 			name = Debug;
 		};
@@ -503,6 +538,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLD_FRAMEWORK_PATH = $CONFIGURATION_BUILD_DIR;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = Tests;
 				ZERO_LINK = NO;

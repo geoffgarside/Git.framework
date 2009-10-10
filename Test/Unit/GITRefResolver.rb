@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) +'/../TestHelper.rb')
 
 describe "GITRefResolver +resolverForRepo:" do
   before do
-    @resolver = GITRefResolver.resolverForRepo(DefaultRepository);
+    @resolver = GITRefResolver.resolverForRepo(default_repository);
   end
 
   should "not be nil" do
@@ -12,7 +12,7 @@ end
 
 describe "GITRefResolver -resolveRefWithName:" do
   before do
-    @resolver = GITRefResolver.resolverForRepo(DefaultRepository);
+    @resolver = GITRefResolver.resolverForRepo(default_repository);
   end
 
   describe "HEAD" do
