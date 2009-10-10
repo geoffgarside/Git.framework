@@ -24,4 +24,9 @@
 - (GITRef *)resolveRefWithName: (NSString *)theName;
 - (GITRef *)resolveRefWithName: (NSString *)theName error: (NSError **)theError;
 
+- (NSArray *)allRefs;
+- (NSArray *)tagRefs;
+- (NSArray *)headRefs;
+- (NSArray *)remoteRefs;
+
 @end

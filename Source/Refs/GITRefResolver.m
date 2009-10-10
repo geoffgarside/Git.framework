@@ -26,7 +26,6 @@
 
 @end
 
-
 @implementation GITRefResolver
 
 @synthesize repo, packedRefsCache;
@@ -74,6 +73,61 @@
     }
 }
 
+#pragma mark All Reference Collections
+- (NSArray *)allRefsWithPrefix: (NSString *)thePrefix {
+    NSMutableArray *refs = [NSMutableArray array];
+
+    GITRef *ref;
+
+    // get all file based tag refs
+    NSString *searchPath = [self.repo.root stringByAppendingPathComponent:thePrefix];
+    NSDirectoryEnumerator *directoryEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:searchPath];
+
+    for ( NSString *name in directoryEnumerator ) {
+        NSString *file = [searchPath stringByAppendingPathComponent:name];
+        NSString *sha1 = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:NULL];
+
+        if ( !sha1 )
+            continue;
+
+        ref = [GITRef refWithName:[thePrefix stringByAppendingPathComponent:name] andTarget:sha1 inRepo:self.repo];
+        [refs addObject:ref];
+    }
+
+    // get all packed based tag refs
+    GITPackedRefsEnumerator *packedRefsEnumerator = [GITPackedRefsEnumerator enumeratorForRepo:self.repo];
+
+    for ( NSString *line in packedRefsEnumerator ) {
+        NSString *sha1 = [line substringToIndex:40];
+        NSString *name = [line substringFromIndex:41];
+
+        if ( ![name hasPrefix:thePrefix] )
+            continue;
+
+        ref = [GITRef refWithName:name andTarget:sha1 inRepo:self.repo];
+        [refs addObject:ref];
+    }
+
+    return [NSArray arrayWithArray:refs];
+}
+
+- (NSArray *)allRefs {
+    return [self allRefsWithPrefix:@"refs/"];
+}
+
+- (NSArray *)tagRefs {
+    return [self allRefsWithPrefix:@"refs/tags/"];
+}
+
+- (NSArray *)headRefs {
+    return [self allRefsWithPrefix:@"refs/heads/"];
+}
+
+- (NSArray *)remoteRefs {
+    return [self allRefsWithPrefix:@"refs/remotes/"];
+}
+
+#pragma mark Reference Name Existence Checking
 - (BOOL)unpackedReferenceExistsWithName: (NSString *)theName error: (NSError **)theError {
     BOOL isDirectory = NO;
     NSString *path = [self.repo.root stringByAppendingPathComponent:theName];
@@ -86,7 +140,7 @@
 - (BOOL)packedReferenceExistsWithName: (NSString *)theName error: (NSError **)theError {
     GITPackedRefsEnumerator *packedRefsEnumerator = [GITPackedRefsEnumerator enumeratorForRepo:self.repo];
 
-    for (NSString *line in packedRefsEnumerator) {
+    for ( NSString *line in packedRefsEnumerator ) {
         if ( ![line hasSuffix:theName] ) continue;
 
         NSString *sha1 = [line substringToIndex:40];
@@ -112,6 +166,7 @@
     return NO;
 }
 
+#pragma mark Reference Name Resolving
 - (NSString *)resolvedNameOfReferenceWithName: (NSString *)theName isPacked: (BOOL *)isPacked error: (NSError **)theError {
     NSArray *allowedReferencesInRoot = [NSArray arrayWithObjects:@"HEAD", @"FETCH_HEAD", @"ORIG_HEAD", @"MERGE_HEAD", nil];
     if ( [theName hasPrefix:@"refs/"] || [allowedReferencesInRoot containsObject:theName] ) {

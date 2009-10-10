@@ -67,3 +67,54 @@ describe "GITRefResolver -resolveRefWithName:" do
     end
   end
 end
+
+describe "GITRefResolver -allRefs" do
+  before do
+    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @refs = @resolver.allRefs.map(&:name)
+  end
+
+  should "not be empty" do
+    @refs.should.not.be.empty
+  end
+  should "contain 'refs/heads/master'" do
+    @refs.should.include 'refs/heads/master'
+  end
+  should "contain 'refs/heads/another'" do
+    @refs.should.include 'refs/heads/another'
+  end
+  should "contain 'refs/tags/v0.0.0'" do
+    @refs.should.include 'refs/tags/v0.0.0'
+  end
+end
+
+describe "GITRefResolver -headRefs" do
+  before do
+    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @refs = @resolver.headRefs.map(&:name)
+  end
+
+  should "not be empty" do
+    @refs.should.not.be.empty
+  end
+  should "contain 'refs/heads/master'" do
+    @refs.should.include 'refs/heads/master'
+  end
+  should "contain 'refs/heads/another'" do
+    @refs.should.include 'refs/heads/another'
+  end
+end
+
+describe "GITRefResolver -tagRefs" do
+  before do
+    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @refs = @resolver.tagRefs.map(&:name)
+  end
+
+  should "not be empty" do
+    @refs.should.not.be.empty
+  end
+  should "contain 'refs/tags/v0.0.0'" do
+    @refs.should.include 'refs/tags/v0.0.0'
+  end
+end
