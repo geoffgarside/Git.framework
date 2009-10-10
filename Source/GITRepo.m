@@ -121,4 +121,16 @@ done:
     return refResolver;
 }
 
+- (NSArray *)branches {
+    return [[self refResolver] headRefs];
+}
+
+- (NSArray *)remotes {
+    return [[self refResolver] remoteRefs];
+}
+
+- (NSArray *)tags {
+    return [[self refResolver] tagRefs];
+}
+
 @end

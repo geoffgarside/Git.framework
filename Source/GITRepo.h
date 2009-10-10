@@ -27,4 +27,8 @@
 - (id)initWithRoot: (NSString *)theRoot;
 - (id)initWithRoot: (NSString *)theRoot error: (NSError **)theError;
 
+- (NSArray *)branches;
+- (NSArray *)remotes;
+- (NSArray *)tags;
+
 @end
