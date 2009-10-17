@@ -12,8 +12,6 @@
 
 @interface GITRepo ()
 
-@property (retain) GITRefResolver *refResolver;
-
 - (BOOL)rootExists;
 - (BOOL)rootIsAccessible;
 - (BOOL)rootDoesLookSane;

@@ -19,6 +19,7 @@
 
 @property (copy) NSString *root;
 @property (assign,getter=isBare) BOOL bare;
+@property (retain) GITRefResolver *refResolver;
 
 + (GITRepo *)repo;
 + (GITRepo *)repoWithRoot: (NSString *)theRoot;
