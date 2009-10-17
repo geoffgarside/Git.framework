@@ -25,5 +25,8 @@ describe "GITRef +refWithName:andTarget:inRepo:" do
     should "not be a link" do
       @ref.should.not.be.link
     end
+    should "point to '6c20014aaa67fc2ac4958f899b6d5494cb30331f'" do
+      @ref.targetName.should == '6c20014aaa67fc2ac4958f899b6d5494cb30331f'
+    end
   end
 end
