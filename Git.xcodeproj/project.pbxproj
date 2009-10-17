@@ -41,6 +41,8 @@
 		F599AAA11060264D003CD1C0 /* OBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AA961060264D003CD1C0 /* OBUtilities.m */; };
 		F599AAA6106026ED003CD1C0 /* GITError.h in Headers */ = {isa = PBXBuildFile; fileRef = F599AAA4106026ED003CD1C0 /* GITError.h */; };
 		F599AAA7106026ED003CD1C0 /* GITError.m in Sources */ = {isa = PBXBuildFile; fileRef = F599AAA5106026ED003CD1C0 /* GITError.m */; };
+		F5A6C956108A0DFB00E9B1C7 /* GITBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A6C954108A0DFB00E9B1C7 /* GITBranch.h */; };
+		F5A6C957108A0DFB00E9B1C7 /* GITBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A6C955108A0DFB00E9B1C7 /* GITBranch.m */; };
 		F5AA6AC61078C864001110FE /* GITPackedRefsEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AA6AC41078C864001110FE /* GITPackedRefsEnumerator.h */; };
 		F5AA6AC71078C864001110FE /* GITPackedRefsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */; };
 		F5AC4DEF106C501D0083212A /* NSData+Searching.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AC4DED106C501D0083212A /* NSData+Searching.h */; };
@@ -82,6 +84,9 @@
 		F599AA961060264D003CD1C0 /* OBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUtilities.m; sourceTree = "<group>"; };
 		F599AAA4106026ED003CD1C0 /* GITError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITError.h; path = Source/GITError.h; sourceTree = "<group>"; };
 		F599AAA5106026ED003CD1C0 /* GITError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITError.m; path = Source/GITError.m; sourceTree = "<group>"; };
+		F5A6C954108A0DFB00E9B1C7 /* GITBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITBranch.h; path = Source/GITBranch.h; sourceTree = "<group>"; };
+		F5A6C955108A0DFB00E9B1C7 /* GITBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITBranch.m; path = Source/GITBranch.m; sourceTree = "<group>"; };
+		F5A6C98B108A8BD300E9B1C7 /* GITBranch.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITBranch.rb; sourceTree = "<group>"; };
 		F5AA6AC41078C864001110FE /* GITPackedRefsEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackedRefsEnumerator.h; path = Source/Refs/GITPackedRefsEnumerator.h; sourceTree = "<group>"; };
 		F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackedRefsEnumerator.m; path = Source/Refs/GITPackedRefsEnumerator.m; sourceTree = "<group>"; };
 		F5AA6B0B1078E11E001110FE /* GITPackedRefsEnumerator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackedRefsEnumerator.rb; sourceTree = "<group>"; };
@@ -161,6 +166,8 @@
 				F5BBC1DD10659C3100EF21A8 /* GITRef.m */,
 				F5AA6AC41078C864001110FE /* GITPackedRefsEnumerator.h */,
 				F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */,
+				F5A6C954108A0DFB00E9B1C7 /* GITBranch.h */,
+				F5A6C955108A0DFB00E9B1C7 /* GITBranch.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -264,6 +271,7 @@
 		F5BBC1941062F02500EF21A8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				F5A6C98B108A8BD300E9B1C7 /* GITBranch.rb */,
 				F5AA6B0B1078E11E001110FE /* GITPackedRefsEnumerator.rb */,
 				F5AC4E4C1072BF940083212A /* GITRef.rb */,
 				F5AC4E31107179770083212A /* GITRefResolver.rb */,
@@ -291,6 +299,7 @@
 				F5BBC1DE10659C3100EF21A8 /* GITRef.h in Headers */,
 				F5AC4DEF106C501D0083212A /* NSData+Searching.h in Headers */,
 				F5AA6AC61078C864001110FE /* GITPackedRefsEnumerator.h in Headers */,
+				F5A6C956108A0DFB00E9B1C7 /* GITBranch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +422,7 @@
 				F5BBC1DF10659C3100EF21A8 /* GITRef.m in Sources */,
 				F5AC4DF0106C501D0083212A /* NSData+Searching.m in Sources */,
 				F5AA6AC71078C864001110FE /* GITPackedRefsEnumerator.m in Sources */,
+				F5A6C957108A0DFB00E9B1C7 /* GITBranch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
