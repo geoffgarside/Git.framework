@@ -93,3 +93,17 @@ describe "GITRepo +repoWithRoot:error:" do
     end
   end
 end
+
+describe "GITRepo -branches" do
+  before do
+    @repo = default_repository
+    @branches = @repo.branches.map(&:name)
+  end
+
+  should "include 'master'" do
+    @branches.should.include('master')
+  end
+  should "include 'another'" do
+    @branches.should.include('another')
+  end
+end

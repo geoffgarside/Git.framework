@@ -9,6 +9,7 @@
 #import "GITRepo.h"
 #import "GITError.h"
 #import "GITRefResolver.h"
+#import "GITBranch.h"
 
 @interface GITRepo ()
 
@@ -120,7 +121,14 @@ done:
 }
 
 - (NSArray *)branches {
-    return [[self refResolver] headRefs];
+    NSArray *headRefs = [[self refResolver] headRefs];
+    NSMutableArray *branches = [NSMutableArray arrayWithCapacity:[headRefs count]];
+
+    for ( GITRef *ref in headRefs ) {
+        [branches addObject:[GITBranch branchFromRef:ref]];
+    }
+
+    return [branches copy];
 }
 
 - (NSArray *)remotes {
