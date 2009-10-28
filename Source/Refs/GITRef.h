@@ -27,4 +27,6 @@
 
 - (id)initWithName: (NSString *)theName andTarget: (NSString *)theTarget inRepo: (GITRepo *)theRepo;
 
+- (GITRef*)resolve;
+
 @end

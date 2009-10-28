@@ -7,6 +7,8 @@
 //
 
 #import "GITRef.h"
+#import "GITRepo.h"
+#import "GITRefResolver.h"
 
 
 @implementation GITRef
@@ -37,6 +39,14 @@
     self.name = nil;
     self.targetName = nil;
     [super dealloc];
+}
+
+- (GITRef*)resolve {
+    if ( !link ) {
+        return self;
+    } else {
+        return [[self.repo refResolver] resolveRefWithName:[self.targetName stringByReplacingOccurrencesOfString:@"ref: " withString:@""]];
+    }
 }
 
 @end
