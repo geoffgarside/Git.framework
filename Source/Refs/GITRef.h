@@ -13,8 +13,8 @@
 @interface GITRef : NSObject {
     GITRepo *repo;
 
-    NSString *name;
     BOOL link;
+    NSString *name;
     NSString *targetName;
 }
 
@@ -27,6 +27,8 @@
 
 - (id)initWithName: (NSString *)theName andTarget: (NSString *)theTarget inRepo: (GITRepo *)theRepo;
 
+// Could be a commit, tag
+//- (GIT *)target;
 - (GITRef*)resolve;
 
 @end
