@@ -13,6 +13,12 @@ describe "GITRef +refWithName:andTarget:inRepo:" do
     should "be a link" do
       @ref.should.be.link
     end
+    should "have name 'HEAD'" do
+      @ref.name.should == 'HEAD'
+    end
+    should "target 'ref: refs/heads/master'" do
+      @ref.targetName.should == 'ref: refs/heads/master'
+    end
   end
   describe "ref refs/heads/master" do
     before do
@@ -25,7 +31,10 @@ describe "GITRef +refWithName:andTarget:inRepo:" do
     should "not be a link" do
       @ref.should.not.be.link
     end
-    should "point to '6c20014aaa67fc2ac4958f899b6d5494cb30331f'" do
+    should "have name 'refs/heads/master'" do
+      @ref.name.should == 'refs/heads/master'
+    end
+    should "target '6c20014aaa67fc2ac4958f899b6d5494cb30331f'" do
       @ref.targetName.should == '6c20014aaa67fc2ac4958f899b6d5494cb30331f'
     end
   end
