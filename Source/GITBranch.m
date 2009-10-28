@@ -14,7 +14,7 @@
 
 @implementation GITBranch
 
-@synthesize repo, name;
+@synthesize repo, ref;
 
 + (GITBranch *)branchWithName: (NSString *)theName inRepo: (GITRepo *)theRepo {
     return [[self class] branchFromRef:[[theRepo refResolver] resolveRefWithName:theName]];
@@ -28,9 +28,19 @@
         return nil;
 
     self.repo = [theRef repo];
-    self.name = [[theRef name] stringByReplacingOccurrencesOfString:@"refs/heads/" withString:@""];
+    self.ref = theRef;
 
     return self;
+}
+
+- (NSString *)name {
+    return [[self.ref name] stringByReplacingOccurrencesOfString:@"refs/heads/" withString:@""];
+}
+
+- (void)dealloc {
+    self.repo = nil;
+    self.ref = nil;
+    [super dealloc];
 }
 
 @end

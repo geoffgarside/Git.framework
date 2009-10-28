@@ -12,16 +12,17 @@
 @class GITRepo, GITRef;
 @interface GITBranch : NSObject {
     GITRepo *repo;
-
-    NSString *name;
+    GITRef *ref;
 }
 
 @property (retain) GITRepo *repo;
-@property (copy) NSString *name;
+@property (retain) GITRef *ref;
 
 + (GITBranch *)branchWithName: (NSString *)theName inRepo: (GITRepo *)theRepo;
 + (GITBranch *)branchFromRef: (GITRef *)theRef;
 
 - (id)initFromRef: (GITRef *)theRef;
+
+- (NSString *)name;
 
 @end
