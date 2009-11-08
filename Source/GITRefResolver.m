@@ -20,9 +20,9 @@
 - (BOOL)referenceExistsWithName: (NSString *)theName isPacked: (BOOL *)isPacked error: (NSError **)theError;
 - (NSString *)resolvedNameOfReferenceWithName: (NSString *)theName isPacked: (BOOL *)isPacked error: (NSError **)theError;
 - (NSString *)resolvedNameOfReferenceInRefs: (NSString *)theName isPacked: (BOOL *)isPacked error: (NSError **)theError;
-- (NSString *)resolvedNameOfReferenceInRefsTags:(NSString *)theName isPacked:(BOOL *)isPacked error:(NSError **)theError;
-- (NSString *)resolvedNameOfReferenceInRefsHeads:(NSString *)theName isPacked:(BOOL *)isPacked error:(NSError **)theError;
-- (NSString *)resolvedNameOfReferenceInRefsRemotes:(NSString *)theName isPacked:(BOOL *)isPacked error:(NSError **)theError;
+- (NSString *)resolvedNameOfReferenceInRefsTags: (NSString *)theName isPacked: (BOOL *)isPacked error: (NSError **)theError;
+- (NSString *)resolvedNameOfReferenceInRefsHeads: (NSString *)theName isPacked: (BOOL *)isPacked error: (NSError **)theError;
+- (NSString *)resolvedNameOfReferenceInRefsRemotes: (NSString *)theName isPacked: (BOOL *)isPacked error: (NSError **)theError;
 
 @end
 
