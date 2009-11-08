@@ -112,7 +112,6 @@
 		F5BBC1A51063753400EF21A8 /* GITRefResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRefResolver.m; path = Source/GITRefResolver.m; sourceTree = "<group>"; };
 		F5BBC1DC10659C3100EF21A8 /* GITRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRef.h; path = Source/GITRef.h; sourceTree = "<group>"; };
 		F5BBC1DD10659C3100EF21A8 /* GITRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRef.m; path = Source/GITRef.m; sourceTree = "<group>"; };
-		F5FC290710A64D1500EFB922 /* doxygen.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doxygen.config; path = Documentation/doxygen.config; sourceTree = "<group>"; };
 		F5FC291410A64FC500EFB922 /* GITRepo.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GITRepo.dox; path = Documentation/GITRepo.dox; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,7 +162,6 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F5FC290710A64D1500EFB922 /* doxygen.config */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
 			);
@@ -585,7 +583,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				DOCSET_BUNDLE_ID = uk.co.geoffgarside.framework.Git;
-				DOXYGEN_CONFIG = Resource/doxygen.config;
+				DOXYGEN_CONFIG = Doxyfile;
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -601,7 +599,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DOCSET_BUNDLE_ID = uk.co.geoffgarside.framework.Git;
-				DOXYGEN_CONFIG = Resource/doxygen.config;
+				DOXYGEN_CONFIG = Doxyfile;
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INTERNAL_DOCS = NO;
