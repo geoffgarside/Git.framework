@@ -21,6 +21,17 @@
 			name = Tests;
 			productName = Tests;
 		};
+		F5FC28EA10A649D000EFB922 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F5FC28ED10A649EE00EFB922 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				F5FC28E910A649D000EFB922 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -101,6 +112,8 @@
 		F5BBC1A51063753400EF21A8 /* GITRefResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRefResolver.m; path = Source/GITRefResolver.m; sourceTree = "<group>"; };
 		F5BBC1DC10659C3100EF21A8 /* GITRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRef.h; path = Source/GITRef.h; sourceTree = "<group>"; };
 		F5BBC1DD10659C3100EF21A8 /* GITRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRef.m; path = Source/GITRef.m; sourceTree = "<group>"; };
+		F5FC290710A64D1500EFB922 /* doxygen.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doxygen.config; path = Documentation/doxygen.config; sourceTree = "<group>"; };
+		F5FC291410A64FC500EFB922 /* GITRepo.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GITRepo.dox; path = Documentation/GITRepo.dox; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +142,7 @@
 				F5BBC18E1062F02500EF21A8 /* Test */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
+				F5FC291310A64FA000EFB922 /* Documentation */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
@@ -149,6 +163,7 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F5FC290710A64D1500EFB922 /* doxygen.config */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
 			);
@@ -280,6 +295,14 @@
 			path = Unit;
 			sourceTree = "<group>";
 		};
+		F5FC291310A64FA000EFB922 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				F5FC291410A64FC500EFB922 /* GITRepo.dox */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -343,6 +366,7 @@
 			targets = (
 				8DC2EF4F0486A6940098B216 /* Git */,
 				F5BBC17B1062EF1000EF21A8 /* Tests */,
+				F5FC28EA10A649D000EFB922 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -403,6 +427,19 @@
 			shellPath = /usr/local/bin/macruby;
 			shellScript = "require 'bacon'\nframework 'Git'\n\nBacon.extend Bacon::TestUnitOutput  # This doesn't seem to work at the moment, but its how we'd prefer it\nBacon.summary_on_exit\n\nTEST_VOLUME    = ENV['TEST_VOLUME']\nTEST_REPO      = File.join(TEST_VOLUME, 'Test')\nTEST_REPO_ROOT = File.join(TEST_REPO, '.git')\n\nrequire 'Test/TestHelper.rb'\n\nDir['Test/Unit/*.rb'].each do |testfile|\n  load testfile\nend\n";
 			showEnvVarsInLog = 0;
+		};
+		F5FC28E910A649D000EFB922 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#  Build the doxygen documentation for the project and load the docset into Xcode.\n#  If the DOXYGEN_PATH is not correct for you please check the \"Get Info\" for this\n#  target, the majority of variables for this script have been defined there.\n#\n#  Use the following to adjust the value of the $DOXYGEN_PATH User-Defined Setting:\n#    Binary install location: /Applications/Doxygen.app/Contents/Resources/doxygen\n#    Source build install location: /usr/local/bin/doxygen\n\n#  If the config file doesn't exist, run 'doxygen -g $SOURCE_ROOT/doxygen.config' to \n#   a get default file.\n\nif [ -z $DOXYGEN_PATH ]\nthen\n  echo You must set the DOXYGEN_PATH variable in the Docs target\n  exit 1\nfi\n\nif [ -z $OUTPUT_DIRECTORY ]\nthen\n  echo You must set the OUTPUT_DIRECTORY variable in the Docs target\n  exit 1\nfi\n\nif [ -z $DOXYGEN_CONFIG ]\nthen\n  echo You must set the DOXYGEN_CONFIG variable in the Docs targe\n  exit 1\nfi\n\nif [ -z $DOCSET_BUNDLE_ID ]\nthen\n  echo You must set the DOCSET_BUNDLE_ID variable in the Docs target\n  exit 1\nfi\n\nif [ -z $INTERNAL_DOCS ]\nthen\nINTERNAL_DOCS=\"NO\"\nfi\n\nif ! [ -f $SOURCE_ROOT/$DOXYGEN_CONFIG ] \nthen \n  echo doxygen config file does not exist\n  $DOXYGEN_PATH -g $SOURCE_ROOT/$DOXYGEN_CONFIG\nfi\n\n#  Append the proper input/output directories and docset info to the config file.\n#  This works even though values are assigned higher up in the file. Easier than sed.\n\ncp $SOURCE_ROOT/$DOXYGEN_CONFIG $TEMP_DIR/doxygen.config\n\nif ! [ -d $SOURCE_ROOT/$OUTPUT_DIRECTORY ]\nthen\n  mkdir -p $SOURCE_ROOT/$OUTPUT_DIRECTORY\nfi\n\necho \"INPUT = $SOURCE_ROOT\" >> $TEMP_DIR/doxygen.config\necho \"OUTPUT_DIRECTORY = $SOURCE_ROOT/$OUTPUT_DIRECTORY\" >> $TEMP_DIR/doxygen.config\necho \"GENERATE_DOCSET = YES\" >> $TEMP_DIR/doxygen.config\necho \"DOCSET_BUNDLE_ID = $DOCSET_BUNDLE_ID\" >> $TEMP_DIR/doxygen.config\necho \"INTERNAL_DOCS = $INTERNAL_DOCS\" >> $TEMP_DIR/doxygen.config\n\n#  Run doxygen on the updated config file.\n#  Note: doxygen creates a Makefile that does most of the heavy lifting.\n\n$DOXYGEN_PATH $TEMP_DIR/doxygen.config\n\n#  make will invoke docsetutil. Take a look at the Makefile to see how this is done.\n\nmake -C $SOURCE_ROOT/$OUTPUT_DIRECTORY/html install\n\n#  Construct a temporary applescript file to tell Xcode to load a docset.\n\nrm -f $TEMP_DIR/loadDocSet.scpt\n\necho \"tell application \\\"Xcode\\\"\" >> $TEMP_DIR/loadDocSet.scpt\necho \"load documentation set with path \\\"/Users/$USER/Library/Developer/Shared/Documentation/DocSets/\\\"\" \n     >> $TEMP_DIR/loadDocSet.scpt\necho \"end tell\" >> $TEMP_DIR/loadDocSet.scpt\n\n#  Run the load-docset applescript command.\n\nif [ -n $DOXYGEN_LOAD_DOCSET -a $DOXYGEN_LOAD_DOCSET = \"YES\" ]; then\n\tosascript $TEMP_DIR/loadDocSet.scpt\nfi\n\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -543,6 +580,37 @@
 			};
 			name = Release;
 		};
+		F5FC28EB10A649D000EFB922 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DOCSET_BUNDLE_ID = uk.co.geoffgarside.framework.Git;
+				DOXYGEN_CONFIG = Resource/doxygen.config;
+				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INTERNAL_DOCS = NO;
+				OUTPUT_DIRECTORY = Documentation/Git.docset;
+				PRODUCT_NAME = Documentation;
+			};
+			name = Debug;
+		};
+		F5FC28EC10A649D000EFB922 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DOCSET_BUNDLE_ID = uk.co.geoffgarside.framework.Git;
+				DOXYGEN_CONFIG = Resource/doxygen.config;
+				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				INTERNAL_DOCS = NO;
+				OUTPUT_DIRECTORY = Documentation/Git.docset;
+				PRODUCT_NAME = Documentation;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -569,6 +637,15 @@
 			buildConfigurations = (
 				F5BBC17C1062EF1000EF21A8 /* Debug */,
 				F5BBC17D1062EF1000EF21A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5FC28ED10A649EE00EFB922 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5FC28EB10A649D000EFB922 /* Debug */,
+				F5FC28EC10A649D000EFB922 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
