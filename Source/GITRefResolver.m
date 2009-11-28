@@ -31,10 +31,10 @@
 @synthesize repo, packedRefsCache;
 
 + (GITRefResolver *)resolverForRepo:(GITRepo *)theRepo {
-    return [[[GITRefResolver alloc] initWithResolverForRepo:theRepo] autorelease];
+    return [[[GITRefResolver alloc] initWithRepo:theRepo] autorelease];
 }
 
-- (id)initWithResolverForRepo: (GITRepo *)theRepo {
+- (id)initWithRepo: (GITRepo *)theRepo {
     if ( ![super init] )
         return nil;
 
