@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.custom.Git.docset</string>
+	<string>uk.co.geoffgarside.framework.Git.docset</string>
 	<key>CFBundleName</key>
-	<string>Git</string>
+	<string>Git Framework</string>
 	<key>DocSetFeedName</key>
-	<string>Custom documentation</string>
+	<string>Git Framework Documentation</string>
 </dict>
 </plist>
