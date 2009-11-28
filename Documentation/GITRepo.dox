@@ -1,4 +1,0 @@
-/*!
- * \class GITRepo "Source/GITRepo.h" "Git/GITRepo.h"
- * The GITRepo class declares the programmatic interface to the repository. 
- */
