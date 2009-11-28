@@ -227,7 +227,7 @@
 			children = (
 				F599AA7D10601EE2003CD1C0 /* OmniGroup */,
 			);
-			name = Vendor;
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		F599AA7D10601EE2003CD1C0 /* OmniGroup */ = {
@@ -235,7 +235,7 @@
 			children = (
 				F599AA8B1060264D003CD1C0 /* OmniBase */,
 			);
-			name = OmniGroup;
+			path = OmniGroup;
 			sourceTree = "<group>";
 		};
 		F599AA8B1060264D003CD1C0 /* OmniBase */ = {
@@ -253,8 +253,7 @@
 				F599AA951060264D003CD1C0 /* OBUtilities.h */,
 				F599AA961060264D003CD1C0 /* OBUtilities.m */,
 			);
-			name = OmniBase;
-			path = Source/Vendor/OmniGroup/OmniBase;
+			path = OmniBase;
 			sourceTree = "<group>";
 		};
 		F5AC4DEC106C50040083212A /* Category */ = {
