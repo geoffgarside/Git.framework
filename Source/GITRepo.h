@@ -21,7 +21,7 @@
     GITRefResolver *refResolver;
 }
 
-/// \name Properties
+//! \name Properties
 /*!
  * Path to repository root
  */
@@ -35,7 +35,7 @@
 @property (assign,getter=isBare) BOOL bare;
 @property (retain) GITRefResolver *refResolver;
 
-/// \name Creating and Initialising Repositories
+//! \name Creating and Initialising Repositories
 /*!
  * Returns a repository using the current working directory as the repository root￼.
  *
@@ -93,7 +93,7 @@
  */
 - (id)initWithRoot: (NSString *)theRoot error: (NSError **)theError;
 
-/// \name Instance Methods
+//! \name Instance Methods
 /*!
  * Returns an array containing branches from the receiver￼.
  *

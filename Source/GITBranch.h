@@ -22,7 +22,7 @@
 @property (retain) GITRepo *repo;
 @property (retain) GITRef *ref;
 
-/// \name Creating and Initialising Branches
+//! \name Creating and Initialising Branches
 /*!
  * Creates and returns a branch by the name specified.
  *
@@ -54,7 +54,7 @@
  */
 - (id)initFromRef: (GITRef *)theRef;
 
-/// \name Branch Information
+//! \name Branch Information
 /*!
  * Returns the name of the branch￼.
  *

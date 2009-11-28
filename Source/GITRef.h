@@ -24,7 +24,7 @@
 
 @property (retain) GITRepo *repo;
 
-/// \name Properties
+//! \name Properties
 /*!
  * Name of the reference.
  */
@@ -46,7 +46,7 @@
  */
 @property (copy) NSString *targetName;
 
-/// \name Creating and Initialising References
+//! \name Creating and Initialising References
 /*!
  * Creates an autoreleased reference with the specified name, target and repository￼.
  *
@@ -70,7 +70,7 @@
 
 // Could be a commit, tag
 //- (GIT *)target;
-
+//! \name Resolving Links
 /*!
  * Returns the reference linked to by the receiver, returns the receiver if not a link.
  *

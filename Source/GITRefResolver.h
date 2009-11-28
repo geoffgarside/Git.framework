@@ -23,7 +23,7 @@
 @property (assign) GITRepo *repo;
 @property (retain) NSMutableDictionary *packedRefsCache;
 
-/// \name Creating and Initialising Ref Resolvers
+//! \name Creating and Initialising Ref Resolvers
 /*!
  * Creates and returns an autoreleased Ref Resolver for the
  * given repository￼.
@@ -42,7 +42,7 @@
  */
 - (id)initWithRepo: (GITRepo *)theRepo;
 
-/// \name Reference Resolving
+//! \name Reference Resolving
 /*!
  * Returns a reference by resolving the specified name.
  *
@@ -75,7 +75,7 @@
  */
 - (GITRef *)resolveRefWithName: (NSString *)theName error: (NSError **)theError;
 
-/// \name Gathering References
+//! \name Gathering References
 /*!
  * Returns an array of all the references in the receivers repository￼.
  *
