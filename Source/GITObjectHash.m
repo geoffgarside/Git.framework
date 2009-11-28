@@ -107,6 +107,18 @@ static signed char from_hex[256] = {
     return [packed copy];
 }
 
++ (GITObjectHash *)objectHashWithData: (NSData *)hashData {
+    return [[[self alloc] initWithData:hashData] autorelease];
+}
+
++ (GITObjectHash *)objectHashWithString: (NSString *)hashString {
+    return [[[self alloc] initWithString:hashString] autorelease];
+}
+
++ (GITObjectHash *)objectHashWithObjectData: (NSData *)objectData {
+    return [[[self alloc] initWithObjectData:objectData] autorelease];
+}
+
 - (id)initWithData: (NSData *)hashData {
     NSString *hashString = [[[NSString alloc] initWithData:hashData encoding:NSASCIIStringEncoding] autorelease];
     return [self initWithString:hashString];
