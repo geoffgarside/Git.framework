@@ -140,4 +140,28 @@ static signed char from_hex[256] = {
     return [self initWithString:[objectData sha1DigestString]];
 }
 
+- (NSString *)unpackedString {
+    if ( [self.hash length] == GITObjectHashPackedLength )
+        return [[self class] unpackedStringFromString:self.hash];
+    return self.hash;
+}
+
+- (NSString *)packedString {
+    if ( [self.hash length] == GITObjectHashLength )
+        return [[self class] packedStringFromString:self.hash];
+    return self.hash;
+}
+
+- (NSData *)unpackedData {
+    if ( [self.hash length] == GITObjectHashPackedLength )
+        return [[self class] unpackedDataFromData:[self.hash dataUsingEncoding:NSASCIIStringEncoding]];
+    return [self.hash dataUsingEncoding:NSASCIIStringEncoding];
+}
+
+- (NSData *)packedData {
+    if ( [self.hash length] == GITObjectHashLength )
+        return [[self class] packedDataFromData:[self.hash dataUsingEncoding:NSASCIIStringEncoding]];
+    return [self.hash dataUsingEncoding:NSASCIIStringEncoding];
+}
+
 @end

@@ -138,4 +138,45 @@ extern const NSUInteger GITObjectHashPackedSize;
  */
 - (id)initWithObjectData: (NSData *)objectData;
 
+//! \name Getting Packed and Unpacked Forms
+/*!
+ * Returns the unpacked string of the object hash￼.
+ *
+ * \return unpacked string of the object hash
+ * \sa packedString
+ * \sa unpackedData
+ * \sa packedData
+ */
+- (NSString *)unpackedString;
+
+/*!
+ * Returns the packed string of the object hash￼.
+ *
+ * \return packed string of the object hash
+ * \sa unpackedString
+ * \sa unpackedData
+ * \sa packedData
+ */
+- (NSString *)packedString;
+
+/*!
+ * Returns the unpacked data of the object hash￼.
+ *
+ * \return unpacked data of the object hash
+ * \sa packedData
+ * \sa packedString
+ * \sa unpackedString
+ */
+- (NSData *)unpackedData;
+
+/*!
+ * Returns the packed data of the object hash￼.
+ *
+ * \return packed data of the object hash
+ * \sa unpackedData
+ * \sa packedString
+ * \sa unpackedString
+ */
+- (NSData *)packedData;
+
 @end
