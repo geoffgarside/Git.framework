@@ -36,7 +36,7 @@ namespace :website do
   end
   task :push do
     Dir.chdir('Website') do
-      sh 'git push'
+      sh 'git push origin gh-pages'
     end
   end
 end
