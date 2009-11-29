@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 
-extern const NSUInteger GITObjectHashSize;
-extern const NSUInteger GITObjectHashPackedSize;
+extern const NSUInteger GITObjectHashLength;
+extern const NSUInteger GITObjectHashPackedLength;
 
 /*!
  * The \c GITObjectHash class provides methods for packing and unpacking SHA1
