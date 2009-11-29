@@ -17,7 +17,10 @@
 @synthesize repo, ref;
 
 + (GITBranch *)branchWithName: (NSString *)theName inRepo: (GITRepo *)theRepo {
-    return [[self class] branchFromRef:[[theRepo refResolver] resolveRefWithName:theName]];
+    GITRef *branchRef = [[theRepo refResolver] resolveRefWithName:theName];
+    if ( !branchRef )
+        return nil;
+    return [[self class] branchFromRef:branchRef];
 }
 + (GITBranch *)branchFromRef: (GITRef *)theRef {
     return [[[[self class] alloc] initFromRef:theRef] autorelease];
