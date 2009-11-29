@@ -21,5 +21,17 @@ __git_error(GITRepoErrorRootInsane, -3);
 #pragma mark GITRefResolver Errors
 __git_error(GITRefResolverErrorRefNotFound, -4);
 
+#pragma mark GITPackFile Errors
+__git_error(GITPackFileErrorPathNotFound, -5);
+__git_error(GITPackFileErrorPathIsDirectory, -6);
+__git_error(GITPackFileErrorFileIsInvalid, -7);
+__git_error(GITPackFileErrorVersionUnsupported, -8);
+
+#pragma mark GITPackIndex Errors
+__git_error(GITPackIndexErrorPathNotFound, -9);
+__git_error(GITPackIndexErrorPathIsDirectory, -10);
+__git_error(GITPackIndexErrorVersionUnsupported, -11);
+__git_error(GITPackIndexErrorCorrupt, -12);
+
 #undef __git_error
 #undef __git_error_domain
