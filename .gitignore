@@ -3,3 +3,4 @@
 *.xcodeproj/*.mode1v3
 *.xcodeproj/*.perspectivev3
 build/
+Documentation/
