@@ -25,7 +25,7 @@ static const short _offsetSize      = 4;    //!< Bytes
     return 1;
 }
 
-- (id)initIndexWithData: (NSData *)indexData error: (NSError **)error {
+- (id)initWithData: (NSData *)indexData error: (NSError **)error {
     if ( ![super init] )
         return nil;
     

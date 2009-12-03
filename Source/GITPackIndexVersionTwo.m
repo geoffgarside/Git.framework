@@ -18,7 +18,7 @@
     return 2;
 }
 
-- (id)initIndexWithData: (NSData *)indexData error: (NSError **)error {
+- (id)initWithData: (NSData *)indexData error: (NSError **)error {
     if ( ![super init] )
         return nil;
 
