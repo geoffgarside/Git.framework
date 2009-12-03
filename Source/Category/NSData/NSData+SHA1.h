@@ -29,10 +29,17 @@
 
 #import <Foundation/NSData.h>
 
+/*!
+ * The category provides SHA1 hashing of NSData objects.
+ *
+ * The hashing is implemented using the CommonCrypto API which is
+ * available on both the Mac OS and iPhone OS platforms. It is very
+ * similar to the OpenSSL implementation, the only real difference
+ * being that the CommonCrypto macros are prefixed with \c CC_.
+ */
 @interface NSData (SHA1)
 
-#pragma mark -
-#pragma mark SHA1 Hashing routines
+//! \name Hashing
 /*! Returns the SHA1 digest of the receivers contents.
  * \return SHA1 digest of the receivers contents.
  */

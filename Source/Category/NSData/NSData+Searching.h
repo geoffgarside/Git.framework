@@ -7,22 +7,25 @@
 
 #import <Foundation/NSData.h>
 
+/*!
+ * This category provides ranging and splitting of NSData objects.
+ */
 @interface NSData (Searching)
 
+//! \name Getting ranges of NSData
 /*! Returns the range of bytes up to the first occurrence of byte c from start.
  * \return Range of bytes up to the first occurrence of c from start. If c
  * can not be found then the NSRange.location will be set to NSNotFound.
- * \see memchr
  */
 - (NSRange)rangeFrom:(NSInteger)start toByte:(NSInteger)c;
 
 /*! Returns the range of bytes up to the first NULL byte from start.
  * \return Range of bytes up to the first NULL from start. If no NULL
  * can be found then the NSRange.location will be set to NSNotFound.
- * \see memchr
  */
 - (NSRange)rangeOfNullTerminatedBytesFrom:(NSInteger)start;
 
+//! \name Splitting up NSData
 /*! Returns a data object containing a copy of the receiver's bytes
  * that fall within the limits specified by a given index and the
  * end of the bytes.
