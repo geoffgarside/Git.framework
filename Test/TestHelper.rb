@@ -16,6 +16,8 @@ end
 # Useful string encodings
 NSUTF8StringEncoding = 4
 
+NSNotFound = 0x7fffffffffffffff   # NSNotFound = NSIntegerMax = 0x7fffffffffffffff
+
 class NSObject
   def ==(rhs)
     self.isEqual(rhs) ? true : false
