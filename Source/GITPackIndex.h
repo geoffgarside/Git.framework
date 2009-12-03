@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class GITObjectHash;
+
 /*!
  * The \c GITPackIndex class cluster provides access to the PACK index
  * files for looking up SHA1 object hashes when extracting GIT Objects
@@ -76,6 +79,8 @@
  * \sa fanoutTable
  */
 - (NSArray *)fanoutTable: (NSError **)error;
+
+- (NSUInteger)indexOfSha1: (GITObjectHash *)objectHash;
 
 //! \name Internal Methods
 - (NSRange)rangeOfShasStartingWithByte:(uint8_t)byte;

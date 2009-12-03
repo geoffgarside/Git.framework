@@ -7,6 +7,7 @@
 //
 
 #import "GITPackIndexVersionOne.h"
+#import "GITObjectHash.h"
 #import "GITError.h"
 
 
@@ -14,7 +15,6 @@ static const short _fanOutSize      = 4;    //!< Bytes
 static const short _fanOutCount     = 256;  //!< Number of entries
 static const short _fanOutEnd       = 1024; //!< Size * Count
 static const short _fanOutEntrySize = 24;   //!< Bytes
-static const short _packedShaSize   = 20;   //!< Bytes
 static const short _offsetSize      = 4;    //!< Bytes
 
 @implementation GITPackIndexVersionOne
@@ -76,6 +76,33 @@ static const short _offsetSize      = 4;    //!< Bytes
             return nil;
     }
     return fanoutTable;
+}
+
+- (NSUInteger)indexOfSha1: (GITObjectHash *)objectHash {
+    return [self indexOfPackedSha1:[objectHash packedData]];
+}
+
+- (NSUInteger)indexOfPackedSha1: (NSData *)packedSha {
+    uint8_t *packedShaBytes = (uint8_t *)[packedSha bytes];
+    uint8_t *indexDataBytes = (uint8_t *)[self.data bytes];
+
+    NSRange rangeOfShas = [self rangeOfShasStartingWithByte:packedShaBytes[0]];
+    if ( rangeOfShas.length > 0 ) {
+        NSUInteger lo = rangeOfShas.location;
+        NSUInteger hi = lo + rangeOfShas.length;
+        NSUInteger loc = _fanOutEnd;
+
+        do {
+            NSUInteger mid = (lo + hi) >> 1;    // divide by 2 ;)
+            NSUInteger pos = (mid * _fanOutEntrySize) + loc + _offsetSize;
+            int cmp = memcmp(packedShaBytes, indexDataBytes + pos, GITObjectHashPackedLength);
+            if ( cmp < 0 )          { hi = mid; }
+            else if ( cmp == 0 )    { return mid; }
+            else                    { lo = mid + 1; }
+        } while (lo < hi);
+    }
+
+    return NSNotFound;
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "GITPackIndex.h"
+#import "GITObjectHash.h"
 #import "GITPackIndexPlaceholder.h"
 
 
@@ -62,6 +63,11 @@
     if ( byte != 0x0 )
         prev = [[[self fanoutTable] objectAtIndex:byte - 1] unsignedIntegerValue];
     return NSMakeRange(prev, curr - prev);
+}
+
+- (NSUInteger)indexOfSha1: (GITObjectHash *)objectHash {
+    [self doesNotRecognizeSelector: _cmd];
+    return 0;
 }
 
 @end
