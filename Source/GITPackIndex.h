@@ -56,4 +56,28 @@
  */
 - (NSUInteger)version;
 
+/*!
+ * Returns the contents of the receivers fanout table￼.
+ *
+ * \attention Implementers
+ * If you are using Objective-C 2.0 properties then @synthesize'ing fanoutTable
+ * will overwrite this method with the property version.
+ *
+ * \return contents of the receivers fanout table or nil if an error occurred
+ * \sa offsets:
+ */
+- (NSArray *)fanoutTable;
+
+/*!
+ * Returns the contents of the receivers fanout table￼.
+ *
+ * \param error NSError describing the error which occurred
+ * \return contents of the receivers fanout table or nil if an error occurred
+ * \sa fanoutTable
+ */
+- (NSArray *)fanoutTable: (NSError **)error;
+
+//! \name Internal Methods
+- (NSRange)rangeOfShasStartingWithByte:(uint8_t)byte;
+
 @end

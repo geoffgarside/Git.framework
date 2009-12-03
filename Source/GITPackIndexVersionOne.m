@@ -11,7 +11,7 @@
 
 
 static const short _fanOutSize      = 4;    //!< Bytes
-static const short _fanOutCount     = 256;
+static const short _fanOutCount     = 256;  //!< Number of entries
 static const short _fanOutEnd       = 1024; //!< Size * Count
 static const short _fanOutEntrySize = 24;   //!< Bytes
 static const short _packedShaSize   = 20;   //!< Bytes
@@ -19,7 +19,7 @@ static const short _offsetSize      = 4;    //!< Bytes
 
 @implementation GITPackIndexVersionOne
 
-@synthesize data, offsets;
+@synthesize data, fanoutTable;
 
 - (NSUInteger)version {
     return 1;
@@ -40,43 +40,42 @@ static const short _offsetSize      = 4;    //!< Bytes
     [super dealloc];
 }
 
-// TODO: Examine memory implications of this method
-- (BOOL)parseOffsets: (NSError **)error {
-    uint32_t offsetValue = 0;
+- (BOOL)parseFanoutTable: (NSError **)error {
+    uint32_t numberOfObjects = 0;
     NSUInteger i, last, current;
-    NSMutableArray *newOffsets = [NSMutableArray arrayWithCapacity:_fanOutCount];
+    NSMutableArray *newFanoutTable = [NSMutableArray arrayWithCapacity:_fanOutCount];
 
     last = current = 0;
     for ( i = 0; i < _fanOutCount; i++ ) {
-        [data getBytes:&offsetValue range:NSMakeRange(_fanOutSize * i, _fanOutSize)];
-        current = CFSwapInt32BigToHost(offsetValue);
+        [data getBytes:&numberOfObjects range:NSMakeRange(_fanOutSize * i, _fanOutSize)];
+        current = CFSwapInt32BigToHost(numberOfObjects);
 
         if ( last > current ) {
             GITError(error, GITPackIndexErrorCorrupt, NSLocalizedString(@"PACK Index is corrupt, invalid fan out table", @"GITPackIndexErrorCorrupt"));
             return NO;
         }
 
-        [newOffsets addObject:[NSNumber numberWithUnsignedInteger:current]];
+        [newFanoutTable addObject:[NSNumber numberWithUnsignedInteger:current]];
         last = current;
     }
 
-    self.offsets = newOffsets;
+    self.fanoutTable = [newFanoutTable copy];
     return YES;
 }
 
-- (NSArray *)offsets: (NSError **)error {
-    if ( !offsets ) {
-        [self parseOffsets:error];
+/*!
+ * We have to copy this from GITPackIndex as the @synthesize statement above kills it
+ */
+- (NSArray *)fanoutTable {
+    return [self fanoutTable:NULL];
+}
+
+- (NSArray *)fanoutTable: (NSError **)error {
+    if ( !fanoutTable ) {
+        if ( ![self parseFanoutTable:error] )
+            return nil;
     }
-    return offsets;
-}
-
-- (NSArray *)offsets {
-    return [self offsets:NULL];
-}
-
-- (NSUInteger)indexOfPackedSha1: (uint8_t*)packedSha1 {
-    return 0;
+    return fanoutTable;
 }
 
 @end

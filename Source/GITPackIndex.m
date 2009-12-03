@@ -48,4 +48,20 @@
     return 0;
 }
 
+- (NSArray *)fanoutTable {
+    return [self fanoutTable:NULL];
+}
+
+- (NSArray *)fanoutTable: (NSError **)error {
+    [self doesNotRecognizeSelector: _cmd];
+    return nil;
+}
+
+- (NSRange)rangeOfShasStartingWithByte: (uint8_t)byte {
+    NSUInteger prev = 0, curr = [[[self fanoutTable] objectAtIndex:byte] unsignedIntegerValue];
+    if ( byte != 0x0 )
+        prev = [[[self fanoutTable] objectAtIndex:byte - 1] unsignedIntegerValue];
+    return NSMakeRange(prev, curr - prev);
+}
+
 @end
