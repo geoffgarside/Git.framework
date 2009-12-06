@@ -36,6 +36,8 @@
 
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
+		F5124D5E10CC5423002B834B /* NSRangeEnd.h in Headers */ = {isa = PBXBuildFile; fileRef = F5124D5C10CC5423002B834B /* NSRangeEnd.h */; };
+		F5124D5F10CC5423002B834B /* NSRangeEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D5D10CC5423002B834B /* NSRangeEnd.m */; };
 		F575BBFB10C12799000458EB /* NSData+SHA1.h in Headers */ = {isa = PBXBuildFile; fileRef = F575BBF910C12799000458EB /* NSData+SHA1.h */; };
 		F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = F575BBFA10C12799000458EB /* NSData+SHA1.m */; };
 		F575BC5310C13214000458EB /* GITPackFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136410A5C415003EFA8F /* GITPackFile.m */; };
@@ -98,6 +100,8 @@
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resource/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Git.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Git.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5124D3A10CB3F68002B834B /* GITPackIndex.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackIndex.rb; sourceTree = "<group>"; };
+		F5124D5C10CC5423002B834B /* NSRangeEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSRangeEnd.h; path = Source/Category/NSRange/NSRangeEnd.h; sourceTree = "<group>"; };
+		F5124D5D10CC5423002B834B /* NSRangeEnd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSRangeEnd.m; path = Source/Category/NSRange/NSRangeEnd.m; sourceTree = "<group>"; };
 		F575BBF910C12799000458EB /* NSData+SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SHA1.h"; path = "Source/Category/NSData/NSData+SHA1.h"; sourceTree = "<group>"; };
 		F575BBFA10C12799000458EB /* NSData+SHA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SHA1.m"; path = "Source/Category/NSData/NSData+SHA1.m"; sourceTree = "<group>"; };
 		F575BC6610C136E9000458EB /* GITObjectHash.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITObjectHash.rb; sourceTree = "<group>"; };
@@ -253,6 +257,15 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		F5124D5B10CC53DC002B834B /* NSRange */ = {
+			isa = PBXGroup;
+			children = (
+				F5124D5C10CC5423002B834B /* NSRangeEnd.h */,
+				F5124D5D10CC5423002B834B /* NSRangeEnd.m */,
+			);
+			name = NSRange;
+			sourceTree = "<group>";
+		};
 		F599A8FB10601E9E003CD1C0 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +303,7 @@
 		F5AC4DEC106C50040083212A /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				F5124D5B10CC53DC002B834B /* NSRange */,
 				F5AC4DF1106C50230083212A /* NSData */,
 			);
 			name = Category;
@@ -395,6 +409,7 @@
 				F5FC294B10A784B900EFB922 /* GITObjectHash.h in Headers */,
 				F575BBFB10C12799000458EB /* NSData+SHA1.h in Headers */,
 				F575BC5410C13215000458EB /* GITPackFile.h in Headers */,
+				F5124D5E10CC5423002B834B /* NSRangeEnd.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +556,7 @@
 				F5FC294C10A784B900EFB922 /* GITObjectHash.m in Sources */,
 				F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */,
 				F575BC5310C13214000458EB /* GITPackFile.m in Sources */,
+				F5124D5F10CC5423002B834B /* NSRangeEnd.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
