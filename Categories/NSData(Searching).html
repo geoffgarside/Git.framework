@@ -16,8 +16,9 @@
       </tr>
     </table>
       <h2>Overview</h2>
+<p>This category provides ranging and splitting of <a href="#NSData">NSData</a> objects. </p>
       <h2>Tasks</h2>
-      <h3>Other</h3>
+      <h3>Getting ranges of NSData</h3>
       <ul class="methods">
         <li>
           <span class="tooltipRegion">
@@ -29,6 +30,9 @@
             <code><a href=#rangeOfNullTerminatedBytesFrom:>- rangeOfNullTerminatedBytesFrom:</a></code>
           </span>
         </li>
+      </ul>
+      <h3>Splitting up NSData</h3>
+      <ul class="methods">
         <li>
           <span class="tooltipRegion">
             <code><a href=#subdataFromIndex:>- subdataFromIndex:</a></code>
@@ -49,10 +53,6 @@
 <p>Range of bytes up to the first occurrence of c from start. If c can not be found then the NSRange.location will be set to NSNotFound. </p>
       <h5>Discussion</h5>
 <p>Returns the range of bytes up to the first occurrence of byte c from start. </p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#memchr">memchr</a></code></li>
-      </ul>
       <h5>Declared in</h5>
       <code>NSData+Searching.h</code>
       <h3><a name="rangeOfNullTerminatedBytesFrom:"></a>rangeOfNullTerminatedBytesFrom:</h3>
@@ -62,10 +62,6 @@
 <p>Range of bytes up to the first NULL from start. If no NULL can be found then the NSRange.location will be set to NSNotFound. </p>
       <h5>Discussion</h5>
 <p>Returns the range of bytes up to the first NULL byte from start. </p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#memchr">memchr</a></code></li>
-      </ul>
       <h5>Declared in</h5>
       <code>NSData+Searching.h</code>
       <h3><a name="subdataFromIndex:"></a>subdataFromIndex:</h3>
@@ -107,7 +103,7 @@
       <h5>Declared in</h5>
       <code>NSData+Searching.h</code>
     <hr />
-    <p id="lastUpdated">      (Last updated: 2009-11-29)
+    <p id="lastUpdated">      (Last updated: 2009-12-06)
       <br />
       Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
     </p>
