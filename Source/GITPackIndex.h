@@ -134,6 +134,28 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  */
 - (NSUInteger)indexOfSha1: (GITObjectHash *)objectHash;
 
+/*!
+ * Returns the offset in the PACK file where the object data can be retrieved.
+ *
+ * \param objectHash Object hash to find the PACK offset of
+ * \return the PACK offset where data of the object can be retrieved or NSNotFound on error
+ * \sa packOffsetForSha1:error:
+ */
+- (off_t)packOffsetForSha1: (GITObjectHash *)objectHash;
+
+/*!
+ * Returns the offset in the PACK file where the object data can be retrieved.
+ *
+ * If the object cannot be found in the Index file then a \c GITPackErrorObjectNotFound error
+ * is returned via the \a error argument.
+ *
+ * \param objectHash Object hash to find the PACK offset of
+ * \param error NSError describing the error which occurred
+ * \return the PACK offset where data of the object can be retrieved or NSNotFound on error
+ * \sa packOffsetForSha1:
+ */
+- (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error;
+
 //! \name Internal Methods
 /*!
  * Returns a fanout entry for SHA starting with the specified byte.

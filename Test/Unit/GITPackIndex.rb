@@ -23,6 +23,11 @@ describe "GITPackIndexVersionOne" do
     index = @idx.indexOfSha1(hash)
     index.should.not == NSNotFound
   end
+  should "find a pack offset value of 374 for bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea" do
+    hash = GITObjectHash.objectHashWithString("bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea")
+    offset = @idx.packOffsetForSha1(hash)
+    offset.should == 374
+  end
 end
 
 describe "GITPackIndexVersionTwo" do

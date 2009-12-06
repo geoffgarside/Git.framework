@@ -77,4 +77,13 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
     return 0;
 }
 
+- (off_t)packOffsetForSha1: (GITObjectHash *)objectHash {
+    return [self packOffsetForSha1:objectHash error:NULL];
+}
+
+- (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error {
+    [self doesNotRecognizeSelector: _cmd];
+    return 0;
+}
+
 @end

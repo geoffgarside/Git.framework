@@ -17,6 +17,11 @@ static const short _fanOutEnd       = 1024; //!< Size * Count
 static const short _fanOutEntrySize = 24;   //!< Bytes
 static const short _offsetSize      = 4;    //!< Bytes
 
+typedef struct {
+    uint32_t offset;
+    uint8_t sha[20];
+} GITPackIndexEntry;
+
 @implementation GITPackIndexVersionOne
 
 @synthesize data, fanoutTable;
@@ -102,6 +107,38 @@ static const short _offsetSize      = 4;    //!< Bytes
         } while (lo < hi);
     }
 
+    return NSNotFound;
+}
+
+- (GITPackIndexEntry *)indexEntryAtIndex: (NSUInteger)idx {
+    NSRange index  = [self indexTableRange];
+    NSUInteger pos = idx * _fanOutEntrySize;
+
+    if ( pos >= index.length ) {
+        [NSException raise:NSRangeException format:@"PACK Index Entry %u (offset:%lu) out of bounds (%@)",
+             idx, pos, NSStringFromRange(index)];
+    }
+
+    GITPackIndexEntry entry, *e = &entry;
+    [self.data getBytes:e range:NSMakeRange(index.location + pos, _fanOutEntrySize)];
+    return e;
+}
+
+- (off_t)packOffsetAtIndex: (NSUInteger)idx {
+    GITPackIndexEntry *entry = [self indexEntryAtIndex:idx];
+    return (off_t)CFSwapInt32BigToHost(entry->offset);
+}
+
+- (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error {
+    return [self packOffsetForPackedSha1:[objectHash packedData] error:error];
+}
+
+- (off_t)packOffsetForPackedSha1: (NSData *)packedSha error: (NSError **)error {
+    NSUInteger idx = [self indexOfPackedSha1:packedSha];
+    if ( idx != NSNotFound )
+        return [self packOffsetAtIndex:idx];
+
+    GITError(error, GITPackErrorObjectNotFound, NSLocalizedStringWithArguments(@"Object <%@> not found in PACK Index file", @"GITPackErrorObjectNotFound", [GITObjectHash unpackedStringFromData:packedSha]));
     return NSNotFound;
 }
 

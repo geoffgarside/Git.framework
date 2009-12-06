@@ -47,5 +47,8 @@ __git_error(GITPackIndexErrorPathIsDirectory);
 __git_error(GITPackIndexErrorVersionUnsupported);
 __git_error(GITPackIndexErrorCorrupt);
 
+#pragma mark GITPackFile & GITPackIndex Errors
+__git_error(GITPackErrorObjectNotFound);
+
 #undef __git_error
 #undef __git_error_domain

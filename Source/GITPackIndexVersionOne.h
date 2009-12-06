@@ -45,6 +45,8 @@
  */
 - (NSUInteger)indexOfPackedSha1: (NSData *)packedSha;
 
+- (off_t)packOffsetForPackedSha1: (NSData *)packedSha error: (NSError **)error;
+
 - (NSRange)fanoutTableRange;
 - (NSRange)indexTableRange;
 - (NSRange)packChecksumRange;
