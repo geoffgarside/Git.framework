@@ -1,49 +1,155 @@
-describe "GITObjectHash +unpackedStringFromString:" do
+# encoding: utf-8
+
+describe 'GITObjectHash' do
   before do
-    @hash = "bed4001738fa8dad666d669867afaf9f2c2b8c6a"
-    @pack = "\276\324\000\0278\372\215\255fmf\230g\257\257\237,+\214j"
-    @test = GITObjectHash.unpackedStringFromString(@pack)
+    @sha1_str = 'bed4001738fa8dad666d669867afaf9f2c2b8c6a'
+    @sha1_data = @sha1_str.dataUsingEncoding(NSUTF8StringEncoding)
+    @pack_str = [@sha1_str].pack('H*')
+    @pack_data = @pack_str.dataUsingEncoding(NSUTF8StringEncoding)
+    @hash = GITObjectHash.objectHashWithString(@sha1_str)
   end
 
-  should 'unpack packed string into string' do
-    @test.should === @hash
-  end
-end
+  describe '+unpackedStringFromString:' do
+    before do
+      @subj = GITObjectHash.unpackedStringFromString(@pack_str)
+    end
 
-describe "GITObjectHash +packedStringFromString:" do
-  before do
-    @hash = "bed4001738fa8dad666d669867afaf9f2c2b8c6a"
-    @pack = "\276\324\000\0278\372\215\255fmf\230g\257\257\237,+\214j"
-    @test = GITObjectHash.packedStringFromString(@hash)
-  end
+    should 'return a NSString' do
+      @subj.should.be.kind_of NSString
+    end
 
-  should 'pack unpacked string into string' do
-    @test.should === @pack
-  end
-end
+    should 'return a string 40 characters long' do
+      @subj.length.should == 40
+    end
 
-describe "GITObjectHash +unpackedDataFromData:" do
-  # By implementation this tests +unpackedDataFromBytes:length:
-  before do
-    @hash = "bed4001738fa8dad666d669867afaf9f2c2b8c6a".dataUsingEncoding(NSUTF8StringEncoding)
-    @data = "\276\324\000\0278\372\215\255fmf\230g\257\257\237,+\214j".dataUsingEncoding(NSUTF8StringEncoding)
-    @test = GITObjectHash.unpackedDataFromData(@data)
+    should 'return a string matching sha1_str' do
+      @subj.should === @sha1_str
+    end
   end
 
-  should 'unpack packed data into data' do
-    @test.should === @hash   # maybe use -isEqualToData:
-  end
-end
+  describe '+packedStringFromString:' do
+    before do
+      @subj = GITObjectHash.packedStringFromString(@sha1_str)
+    end
 
-describe "GITObjectHash +packedDataFromData:" do
-  # By implementation this tests +packedDataFromBytes:length:
-  before do
-    @hash = "bed4001738fa8dad666d669867afaf9f2c2b8c6a"
-    @pack = "\276\324\000\0278\372\215\255fmf\230g\257\257\237,+\214j".dataUsingEncoding(NSUTF8StringEncoding)
-    @test = GITObjectHash.packedDataFromData(@hash)
+    should 'return a NSString' do
+      @subj.should.be.kind_of NSString
+    end
+
+    should 'return a string 20 characters long' do
+      @subj.length.should == 20
+    end
+
+    should 'return a string matching pack_str' do
+      @subj.should === @pack_str
+    end
   end
 
-  should 'pack unpacked string into string' do
-    @test.should === @pack
+  describe '+unpackedDataFromData:' do
+    before do
+      @subj = GITObjectHash.unpackedDataFromData(@pack_data)
+    end
+
+    should 'return NSData' do
+      @subj.should.be.kind_of NSData
+    end
+
+    should 'return a string 40 bytes long' do
+      @subj.length.should == 40
+    end
+
+    should 'return a string matching sha1_data' do
+      @subj.should === @sha1_data
+    end
+  end
+
+  describe '+packedDataFromData:' do
+    before do
+      @subj = GITObjectHash.packedDataFromData(@sha1_data)
+    end
+
+    should 'return NSData' do
+      @subj.should.be.kind_of NSData
+    end
+
+    should 'return a string 20 bytes long' do
+      @subj.length.should == 20
+    end
+
+    should 'return a string matching pack_data' do
+      @subj.should === @pack_data
+    end
+  end
+
+  describe '-unpackedString' do
+    before do
+      @subj = @hash.unpackedString
+    end
+
+    should 'return a NSString' do
+      @subj.should.be.kind_of NSString
+    end
+
+    should 'return a string 40 characters long' do
+      @subj.length.should == 40
+    end
+
+    should 'return a string matching sha1_str' do
+      @subj.should === @sha1_str
+    end
+  end
+
+  describe '-packedString' do
+    before do
+      @subj = @hash.packedString
+    end
+
+    should 'return a NSString' do
+      @subj.should.be.kind_of NSString
+    end
+
+    should 'return a string 20 characters long' do
+      @subj.length.should == 20
+    end
+
+    should 'return a string matching pack_str' do
+      @subj.should === @pack_str
+    end
+  end
+
+  describe '-unpackedData' do
+    before do
+      @subj = @hash.unpackedData
+    end
+
+    should 'return NSData' do
+      @subj.should.be.kind_of NSData
+    end
+
+    should 'return a string 40 bytes long' do
+      @subj.length.should == 40
+    end
+
+    should 'return a string matching sha1_data' do
+      @subj.should === @sha1_data
+    end
+  end
+
+  describe '-packedData' do
+    before do
+      @subj = @hash.packedData
+    end
+
+    should 'return NSData' do
+      @subj.should.be.kind_of NSData
+    end
+
+    should 'return a string 20 bytes long' do
+      @subj.length.should == 20
+    end
+
+    should 'return a string matching pack_data' do
+      @subj.should === @pack_data
+    end
   end
 end

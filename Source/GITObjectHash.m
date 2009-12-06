@@ -41,24 +41,17 @@ static signed char from_hex[256] = {
     if ( [str length] == GITObjectHashLength )
         return str;
 
-    NSUInteger i;
-    uint8_t packedBits;
-    NSMutableString *unpacked = [NSMutableString stringWithCapacity:GITObjectHashLength];
-    for ( i = 0; i < GITObjectHashPackedLength; i++ ) {
-        packedBits = [str characterAtIndex:i];
-        [unpacked appendFormat:@"%c", hexchars[packedBits >> 4]];
-        [unpacked appendFormat:@"%c", hexchars[packedBits & 0xf]];
-    }
-
-    return [unpacked copy];
+    NSData *packedData = [str dataUsingEncoding:NSUTF8StringEncoding];
+    return [[[NSString alloc] initWithData:[self unpackedDataFromData:packedData]
+                                  encoding:NSUTF8StringEncoding] autorelease];
 }
 
 + (NSString *)packedStringFromString: (NSString *)str {
     if ( [str length] == GITObjectHashPackedLength )
         return str;
 
-    NSData *unpackedData = [str dataUsingEncoding:NSASCIIStringEncoding];
-    return [[[NSString alloc] initWithData:[[self class] packedDataFromData:unpackedData]
+    NSData *unpackedData = [str dataUsingEncoding:NSUTF8StringEncoding];
+    return [[[NSString alloc] initWithData:[self packedDataFromData:unpackedData]
                                   encoding:NSASCIIStringEncoding] autorelease];
 }
 
@@ -99,8 +92,9 @@ static signed char from_hex[256] = {
 
     /* We assume GITObjectHashPackedLength * 2 == length here */
     for ( i = 0; i < GITObjectHashPackedLength; i++ ) {
-        bits = (from_hex[*bytes++] << 4) | (from_hex[*bytes++]);
+        bits = (from_hex[bytes[0]] << 4) | (from_hex[bytes[1]]);
         if ( bits < 0 ) return nil;
+        bytes += 2;
         packedBytes[i] = (uint8_t)bits;
     }
 
@@ -120,7 +114,7 @@ static signed char from_hex[256] = {
 }
 
 - (id)initWithData: (NSData *)hashData {
-    NSString *hashString = [[[NSString alloc] initWithData:hashData encoding:NSASCIIStringEncoding] autorelease];
+    NSString *hashString = [[[NSString alloc] initWithData:hashData encoding:NSUTF8StringEncoding] autorelease];
     return [self initWithString:hashString];
 }
 
@@ -128,10 +122,7 @@ static signed char from_hex[256] = {
     if ( ![super init] )
         return nil;
 
-    if ( [hashString length] == GITObjectHashPackedLength )
-        self.hash = [[self class] unpackedStringFromString:hashString];
-    else
-        self.hash = hashString;
+    self.hash = hashString;
 
     return self;
 }
@@ -152,16 +143,20 @@ static signed char from_hex[256] = {
     return self.hash;
 }
 
+- (NSData *)hashData {
+    return [self.hash dataUsingEncoding:NSUTF8StringEncoding];
+}
+
 - (NSData *)unpackedData {
     if ( [self.hash length] == GITObjectHashPackedLength )
-        return [[self class] unpackedDataFromData:[self.hash dataUsingEncoding:NSASCIIStringEncoding]];
-    return [self.hash dataUsingEncoding:NSASCIIStringEncoding];
+        return [[self class] unpackedDataFromData:[self hashData]];
+    return [self hashData];
 }
 
 - (NSData *)packedData {
     if ( [self.hash length] == GITObjectHashLength )
-        return [[self class] packedDataFromData:[self.hash dataUsingEncoding:NSASCIIStringEncoding]];
-    return [self.hash dataUsingEncoding:NSASCIIStringEncoding];
+        return [[self class] packedDataFromData:[self hashData]];
+    return [self hashData];
 }
 
 @end
