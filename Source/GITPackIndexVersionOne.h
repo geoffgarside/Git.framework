@@ -45,6 +45,29 @@
  */
 - (NSUInteger)indexOfPackedSha1: (NSData *)packedSha;
 
+/*!
+ * Returns the offset from the entry in the index table at the specified \a idx.
+ *
+ * \param idx Index position of the offset to retrieve
+ * \return the offset from the entry at the specified index position
+ * \sa packOffsetForSha1:error:
+ * \sa packOffsetForSha1:
+ * \internal
+ * This method uses the \c indexEntryAtIndex: method to determine and retrieve the offset
+ * value which corresponds to the index of the Sha entry in the index table.
+ */
+- (off_t)packOffsetAtIndex: (NSUInteger)idx;
+
+/*!
+ * Returns the offset in the PACK file of the object \a packedSha.
+ *
+ * \param packedSha SHA1 of the object to get the offset of
+ * \param error NSError describing the error which occurred
+ * \return offset in the PACK of the object \a packedSha or NSNotFound if an error occurred
+ * \sa packOffsetForSha1:error:
+ * \sa packOffsetForSha1:
+ * \sa packOffsetAtIndex:
+ */
 - (off_t)packOffsetForPackedSha1: (NSData *)packedSha error: (NSError **)error;
 
 - (NSRange)fanoutTableRange;
