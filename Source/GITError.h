@@ -25,6 +25,8 @@ __git_error_domain(GITErrorDomain);
 #define GITError(error, code, description) _OBError(error, GITErrorDomain, code, __FILE__, __LINE__, NSLocalizedDescriptionKey, description, nil)
 #define GITErrorWithInfo(error, code, ...) _OBError(error, GITErrorDomain, code, __FILE__, __LINE__, ## __VA_ARGS__)
 
+#define NSLocalizedStringWithArguments(format, comment, ...) [NSString stringWithFormat:NSLocalizedString(format, comment), ## __VA_ARGS__]
+
 #pragma mark GITRepo Errors
 __git_error(GITRepoErrorRootDoesNotExist);
 __git_error(GITRepoErrorRootNotAccessible);
