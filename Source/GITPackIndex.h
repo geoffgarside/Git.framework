@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+/*!
+ * Structure representing the information in the Index Fanout Table
+ */
+typedef struct {
+    NSUInteger numberOfPriorEntries;
+    NSUInteger numberOfEntries;
+} GITFanoutEntry;
+
+/*!
+ * Creates a new GITFanoutEntry from the specified values￼.
+ *
+ * \return A GITFanoutEntry with numberOfPriorEntries \e prior and numberOfEntries \e entries
+ * \sa GITFanoutEntry
+ */
+GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 
 @class GITObjectHash;
 

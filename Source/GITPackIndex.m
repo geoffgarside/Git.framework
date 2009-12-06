@@ -11,6 +11,13 @@
 #import "GITPackIndexPlaceholder.h"
 
 
+GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
+    GITFanoutEntry e;
+    e.numberOfPriorEntries = prior;
+    e.numberOfEntries = entries;
+    return e;
+}
+
 @implementation GITPackIndex
 
 + (id)alloc {
