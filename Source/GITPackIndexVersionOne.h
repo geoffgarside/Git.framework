@@ -36,7 +36,7 @@
 - (BOOL)parseFanoutTable: (NSError **)error;
 
 /*!
- * Returns the index of the SHA1 contained in \a packedSha.
+ * Returns the index in the index table of the SHA1 \a packedSha.
  *
  * \author Brian Chapados
  * \param packedSha NSData containing the packed SHA1 of the object to return the index of

@@ -39,6 +39,16 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  * \internal
  * Planned features:
  * \li Extracting and Verifying Checksums
+ *
+ * \section How it works
+ * - fanout table (-fanoutTable:)
+ *   - 256 entries
+ *   - entry corresponds to the first byte of a packed SHA
+ *   - value is the number of SHA in INDEX with first byte <= entry
+ * - indexOfSHA
+ *   - returns the index (row) in the Main Index Table where the SHA information can be read
+ * - packOffsetForSha1:error:
+ *   - returns the offset of the SHA object within the associated PACK file
  */
 @interface GITPackIndex : NSObject {
 
@@ -96,7 +106,16 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 - (NSArray *)fanoutTable;
 
 /*!
- * Returns the contents of the receivers fanout table￼.
+ * Returns the contents of the receivers fanout table.
+ *
+ * The fanout table consists of one entry per byte value (0-255). The entry value
+ * indicates the number of SHA1 hashes stored in the Index file which have a first
+ * byte which is less than or equal to the entry index. The contents of the fanout
+ * table are used to determine a bounding box of index positions within the main
+ * index table in which a SHA1 index entry will exist.
+ *
+ * If the offset fanout table is corrupted a GITPackIndexErrorCorrupt NSError will
+ * be returned through the passed \a error.
  *
  * \param error NSError describing the error which occurred
  * \return contents of the receivers fanout table or nil if an error occurred
@@ -104,6 +123,15 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  */
 - (NSArray *)fanoutTable: (NSError **)error;
 
+/*!
+ * Returns the index position of the entry for the object has in the main index table.
+ *
+ * Uses a binary search of the main index table bounded by the range given by the
+ * fanout table.
+ *
+ * \param objectHash Object hash to find the index of
+ * \return index position of the entry in the main index table
+ */
 - (NSUInteger)indexOfSha1: (GITObjectHash *)objectHash;
 
 //! \name Internal Methods
