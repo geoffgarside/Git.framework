@@ -98,6 +98,14 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 - (NSUInteger)indexOfSha1: (GITObjectHash *)objectHash;
 
 //! \name Internal Methods
-- (NSRange)rangeOfShasStartingWithByte:(uint8_t)byte;
+/*!
+ * Returns a fanout entry for SHA starting with the specified byte.
+ *
+ * \param byte The byte corresponding to the fanout entry
+ * \return A fanout entry for the SHA starting with the specified byte
+ * \sa fanoutTable:
+ * \sa fanoutTable
+ */
+- (GITFanoutEntry)fanoutEntryForShasStartingWithByte: (uint8_t)byte;
 
 @end

@@ -37,10 +37,10 @@
     uint8_t *packedShaBytes = (uint8_t*)[packedSha bytes];
     uint8_t *indexDataBytes = (uint8_t*)[self.data bytes];
 
-    NSRange rangeOfShas = [self rangeOfShasStartingWithByte:packedShaBytes[0]];
-    while ( rangeOfShas.length > 0 ) {
-        NSUInteger lo = rangeOfShas.location;
-        NSUInteger hi = lo + rangeOfShas.length;
+    GITFanoutEntry fanoutEntry = [self fanoutEntryForShasStartingWithByte:packedShaBytes[0]];
+    if ( fanoutEntry.numberOfEntries > 0 ) {
+        NSUInteger lo = fanoutEntry.numberOfPriorEntries;
+        NSUInteger hi = lo + fanoutEntry.numberOfEntries;
         NSUInteger loc = 0;    // [self rangeOfSHATable].location;
 
         do {

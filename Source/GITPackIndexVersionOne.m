@@ -83,13 +83,13 @@ static const short _offsetSize      = 4;    //!< Bytes
 }
 
 - (NSUInteger)indexOfPackedSha1: (NSData *)packedSha {
-    uint8_t *packedShaBytes = (uint8_t *)[packedSha bytes];
-    uint8_t *indexDataBytes = (uint8_t *)[self.data bytes];
+    const uint8_t *packedShaBytes = (uint8_t *)[packedSha bytes];
+    const uint8_t *indexDataBytes = (uint8_t *)[self.data bytes];
 
-    NSRange rangeOfShas = [self rangeOfShasStartingWithByte:packedShaBytes[0]];
-    if ( rangeOfShas.length > 0 ) {
-        NSUInteger lo = rangeOfShas.location;
-        NSUInteger hi = lo + rangeOfShas.length;
+    GITFanoutEntry fanoutEntry = [self fanoutEntryForShasStartingWithByte:packedShaBytes[0]];
+    if ( fanoutEntry.numberOfEntries > 0 ) {
+        NSUInteger lo = fanoutEntry.numberOfPriorEntries;
+        NSUInteger hi = lo + fanoutEntry.numberOfEntries;
         NSUInteger loc = _fanOutEnd;
 
         do {
