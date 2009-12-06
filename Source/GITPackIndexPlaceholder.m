@@ -41,28 +41,28 @@ static const uint8_t const GITPackIndexVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 
     if ( !indexData )
         return nil; // No error explanation, seems a bit silly to say "Oi!! indexData was nil."
 
-    uint8_t buf[4]; // to read file signature and version into
+    uint32_t num, *n = &num; // to read file signature and version into
     NSZone *z = [self zone]; [self release];
 
     // Extract possible magic number bytes
-    memset(buf, 0x0, 4);
-    [indexData getBytes:buf range:NSMakeRange(0, 4)];
+    memset(n, 0x0, 4);
+    [indexData getBytes:n range:NSMakeRange(0, 4)];
 
-    if ( memcmp(buf, GITPackIndexMagicNumber, 4) != 0 ) {
+    if ( memcmp(n, GITPackIndexMagicNumber, 4) != 0 ) {
         return [[GITPackIndexVersionOne allocWithZone:z] initWithData:indexData error:error];
     }
 
     // Extract version for v2 and higher index files
-    memset(buf, 0x0, 4);
-    [indexData getBytes:buf range:NSMakeRange(4, 4)];
+    memset(n, 0x0, 4);
+    [indexData getBytes:n range:NSMakeRange(4, 4)];
 
     // Version 2?
-    if ( memcmp(buf, GITPackIndexVersionTwoBytes, 4) == 0 ) {   // Version 2 Index file
+    if ( memcmp(n, GITPackIndexVersionTwoBytes, 4) == 0 ) {   // Version 2 Index file
         return [[GITPackIndexVersionTwo allocWithZone:z] initWithData:indexData error:error];
     }
 
     // Raise error as version not supported
-    NSString *desc = [NSString stringWithFormat:NSLocalizedString(@"PACK Index version %d%d%d%d unsupported", @"GITPackIndexErrorVersionUnsupported"), buf[0], buf[1], buf[2], buf[3]];
+    NSString *desc = [NSString stringWithFormat:NSLocalizedString(@"PACK Index version %u unsupported", @"GITPackIndexErrorVersionUnsupported"), CFSwapInt32BigToHost(num)];
     GITError(error, GITPackIndexErrorVersionUnsupported, desc);
     return nil;
 }
