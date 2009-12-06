@@ -2,5 +2,6 @@
 *.xcodeproj/*.pbxuser
 *.xcodeproj/*.mode1v3
 *.xcodeproj/*.perspectivev3
+*.xcodeproj/*.tm_build_errors
 build/
 Documentation/
