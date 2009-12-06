@@ -34,6 +34,14 @@ extern const NSUInteger GITObjectHashPackedLength;
 + (NSString *)unpackedStringFromString: (NSString *)str;
 
 /*!
+ * Returns a string containing the unpacked SHA1 of the packed data.
+ *
+ * \param data Data containing the packed SHA1
+ * \return NSString containing the unpacked SHA1
+ */
++ (NSString *)unpackedStringFromData: (NSData *)data;
+
+/*!
  * Returns a string containing the packed SHA1 of the unpacked string￼.
  *
  * \param str NSString containing the unpacked SHA1

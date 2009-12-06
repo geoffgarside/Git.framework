@@ -101,6 +101,14 @@ static signed char from_hex[256] = {
     return [packed copy];
 }
 
++ (NSString *)unpackedStringFromData: (NSData *)data {
+    if ( [data length] == GITObjectHashLength )
+        return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+
+    return [[[NSString alloc] initWithData:[self unpackedDataFromData:data]
+                                  encoding:NSUTF8StringEncoding] autorelease];
+}
+
 + (GITObjectHash *)objectHashWithData: (NSData *)hashData {
     return [[[self alloc] initWithData:hashData] autorelease];
 }
