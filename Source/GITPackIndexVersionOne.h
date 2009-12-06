@@ -45,4 +45,9 @@
  */
 - (NSUInteger)indexOfPackedSha1: (NSData *)packedSha;
 
+- (NSRange)fanoutTableRange;
+- (NSRange)indexTableRange;
+- (NSRange)packChecksumRange;
+- (NSRange)indexChecksumRange;
+
 @end

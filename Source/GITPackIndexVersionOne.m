@@ -105,4 +105,23 @@ static const short _offsetSize      = 4;    //!< Bytes
     return NSNotFound;
 }
 
+- (NSRange)fanoutTableRange {
+    return NSMakeRange(0, _fanOutEnd);
+}
+
+- (NSRange)indexTableRange {
+    NSRange fanout = [self fanoutTableRange];
+    NSRange chksum = [self packChecksumRange];
+    NSUInteger loc = fanout.location + fanout.length;
+    return NSMakeRange(loc, chksum.location - loc);
+}
+
+- (NSRange)packChecksumRange {
+    return NSMakeRange([self.data length] - (2 * GITObjectHashPackedLength), GITObjectHashPackedLength);
+}
+
+- (NSRange)indexChecksumRange {
+    return NSMakeRange([self.data length] - GITObjectHashPackedLength, GITObjectHashPackedLength);
+}
+
 @end
