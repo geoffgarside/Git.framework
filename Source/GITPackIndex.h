@@ -30,6 +30,15 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  * The \c GITPackIndex class cluster provides access to the PACK index
  * files for looking up SHA1 object hashes when extracting GIT Objects
  * from PACK files.
+ *
+ * Current features of the PACK Index object include;
+ *
+ * \li Parsing of the Fan Out Table
+ * \li Locating SHA1 entries in the Index
+ *
+ * \internal
+ * Planned features:
+ * \li Extracting and Verifying Checksums
  */
 @interface GITPackIndex : NSObject {
 
