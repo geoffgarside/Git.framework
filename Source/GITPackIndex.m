@@ -65,6 +65,10 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
     return nil;
 }
 
+- (NSUInteger)numberOfObjects {
+    return [[[self fanoutTable] lastObject] unsignedIntegerValue];
+}
+
 - (GITFanoutEntry)fanoutEntryForShasStartingWithByte: (uint8_t)byte {
     NSUInteger prev = 0, curr = [[[self fanoutTable] objectAtIndex:byte] unsignedIntegerValue];
     if ( byte != 0x0 )

@@ -124,6 +124,14 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 - (NSArray *)fanoutTable: (NSError **)error;
 
 /*!
+ * Returns the number of objects stored in the PACK file.
+ *
+ * \return number of objects stored in the PACK file
+ * \sa fanoutTable:
+ */
+- (NSUInteger)numberOfObjects;
+
+/*!
  * Returns the index position of the entry for the object has in the main index table.
  *
  * Uses a binary search of the main index table bounded by the range given by the
