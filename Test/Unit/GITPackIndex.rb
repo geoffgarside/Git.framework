@@ -46,4 +46,18 @@ describe "GITPackIndexVersionTwo" do
   should "be version 2" do
     @idx.version.should == 2
   end
+  should "parse the fanout table" do
+    @idx.fanoutTable(@err).should.not.be.nil
+    @err[0].should.be.nil
+  end
+  should "find index of blob object bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea in index" do
+    hash = GITObjectHash.objectHashWithString("bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea")
+    index = @idx.indexOfSha1(hash)
+    index.should.not == NSNotFound
+  end
+  should "find a pack offset value of 374 for bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea" do
+    hash = GITObjectHash.objectHashWithString("bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea")
+    offset = @idx.packOffsetForSha1(hash)
+    offset.should == 374
+  end
 end
