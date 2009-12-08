@@ -50,8 +50,11 @@
 
 - (GITPackIndex *)index {
     [self doesNotRecognizeSelector: _cmd];
-    [self release];
     return nil;
+}
+
+- (NSUInteger)numberOfObjects {
+    return [[self index] numberOfObjects];
 }
 
 @end

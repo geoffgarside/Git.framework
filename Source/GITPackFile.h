@@ -62,5 +62,6 @@
  */
 - (NSUInteger)version;
 - (GITPackIndex *)index;
+- (NSUInteger)numberOfObjects;
 
 @end
