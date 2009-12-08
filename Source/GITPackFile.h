@@ -25,7 +25,7 @@
 
 //! \name Creating and Initialising PACK Files
 /*!
- * Create an autoreleased PACK file with the specified path￼.
+ * Create an autoreleased PACK file with the specified path.
  *
  * \param packPath Path to the PACK file
  * \param error NSError describing the error that occurred
@@ -35,7 +35,7 @@
 + (id)packWithPath: (NSString *)packPath error: (NSError **)error;
 
 /*!
- * Initialises a PACK file with the specified path￼.
+ * Initialises a PACK file with the specified path.
  *
  * \param packPath Path to the PACK file
  * \param error NSError describing the error that occurred
@@ -45,7 +45,7 @@
 - (id)initWithPath: (NSString *)packPath error: (NSError **)error;
 
 /*!
- * Initialises a PACK file with the specified data and path to index file￼.
+ * Initialises a PACK file with the specified data and path to index file.
  *
  * \param packData NSData object of the PACK file data
  * \param indexPath Path to the PACK files Index file
@@ -56,7 +56,7 @@
 
 //! \name PACK File Information
 /*!
- * Returns the PACK file version￼.
+ * Returns the PACK file version.
  *
  * \return Integer version of the PACK file
  */
