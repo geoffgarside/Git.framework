@@ -97,6 +97,7 @@
             break;
         case GITPackFileDeltaTypeOfs:
         case GITPackFileDeltaTypeRefs:
+            return [self unpackDeltaPackedObjectAtOffset:offset objectHeader:header error:error];
             break;
         default:
             GITError(error, GITPackFileErrorObjectTypeUnknown, NSLocalizedString(@"Unknown packed object type", @"GITPackFileErrorObjectTypeUnknown"));
@@ -104,6 +105,39 @@
     }
 
     return nil;
+}
+
+- (GITPackObject *)unpackDeltaPackedObjectAtOffset: (off_t)offset objectHeader: (GITPackFileObjectHeader *)header error: (NSError **)error {
+    NSData *packedData = [self.data subdataWithRange:NSMakeRange(offset, GITObjectHashPackedLength)];
+    off_t baseOffset;
+
+    if ( header->type == GITPackFileDeltaTypeRefs ) {
+        offset += GITObjectHashPackedLength;        // Annoyingly this GITObjectHash will just be packed again...
+        baseOffset = [self.index packOffsetForSha1:[GITObjectHash objectHashWithData:packedData] error:error];
+    } else if ( header->type == GITPackFileDeltaTypeOfs ) {
+        NSUInteger used = 0;
+        const uint8_t *bytes = [packedData bytes];
+        uint8_t c = bytes[used++];
+        baseOffset = c & 0x7f;
+        while ( (c & 0x80) != 0 ) {
+            baseOffset++;
+            c = bytes[used++];
+            baseOffset <<= 7;
+            baseOffset += c & 0x7f;
+        }
+
+        baseOffset = header->offset - baseOffset;
+        offset += used;
+    }
+
+    GITPackObject *packObject = [self unpackObjectAtOffset:baseOffset error:error];
+    if ( !packObject ) {
+        GITError(error, GITPackErrorObjectNotFound, NSLocalizedString(@"Base object for PACK delta not found", @"GITPackErrorObjectNotFound"));
+        return nil;
+    }
+
+    NSData *deltaData = [[self.data subdataWithRange:NSMakeRange(offset, header->dataSize)] zlibInflate];
+    return [packObject packObjectByDeltaPatchingWithData:deltaData];
 }
 
 - (NSRange)checksumRange {
