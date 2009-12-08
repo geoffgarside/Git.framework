@@ -13,10 +13,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#define __git_error(code) extern const NSInteger code
-#define __git_error_domain(dom) extern NSString * dom
 
-__git_error_domain(GITErrorDomain);
+extern NSString *GITErrorDomain;
 
 #import "NSError-OBExtensions.h"
 #import "OBError.h"
@@ -27,31 +25,30 @@ __git_error_domain(GITErrorDomain);
 
 #define NSLocalizedStringWithArguments(format, comment, ...) [NSString stringWithFormat:NSLocalizedString(format, comment), ## __VA_ARGS__]
 
+enum {
 #pragma mark GITRepo Errors
-__git_error(GITRepoErrorRootDoesNotExist);
-__git_error(GITRepoErrorRootNotAccessible);
-__git_error(GITRepoErrorRootInsane);
+    GITRepoErrorRootDoesNotExist,
+    GITRepoErrorRootNotAccessible,
+    GITRepoErrorRootInsane,
 
 #pragma mark GITRefResolver Errors
-__git_error(GITRefResolverErrorRefNotFound);
+    GITRefResolverErrorRefNotFound,
 
 #pragma mark GITPackFile Errors
-__git_error(GITPackFileErrorPathNotFound);
-__git_error(GITPackFileErrorPathIsDirectory);
-__git_error(GITPackFileErrorFileIsInvalid);
-__git_error(GITPackFileErrorVersionUnsupported);
-__git_error(GITPackFileErrorIndexMissing);
-__git_error(GITPackFileErrorObjectTypeUnknown);
-__git_error(GITPackFileErrorObjectSizeMismatch);
+    GITPackFileErrorPathNotFound,
+    GITPackFileErrorPathIsDirectory,
+    GITPackFileErrorFileIsInvalid,
+    GITPackFileErrorVersionUnsupported,
+    GITPackFileErrorIndexMissing,
+    GITPackFileErrorObjectTypeUnknown,
+    GITPackFileErrorObjectSizeMismatch,
 
 #pragma mark GITPackIndex Errors
-__git_error(GITPackIndexErrorPathNotFound);
-__git_error(GITPackIndexErrorPathIsDirectory);
-__git_error(GITPackIndexErrorVersionUnsupported);
-__git_error(GITPackIndexErrorCorrupt);
+    GITPackIndexErrorPathNotFound,
+    GITPackIndexErrorPathIsDirectory,
+    GITPackIndexErrorVersionUnsupported,
+    GITPackIndexErrorCorrupt,
 
 #pragma mark GITPackFile & GITPackIndex Errors
-__git_error(GITPackErrorObjectNotFound);
-
-#undef __git_error
-#undef __git_error_domain
+    GITPackErrorObjectNotFound,
+};
