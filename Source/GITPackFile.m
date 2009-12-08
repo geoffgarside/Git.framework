@@ -57,4 +57,9 @@
     return [[self index] numberOfObjects];
 }
 
+- (GITPackObject *)unpackObjectWithSha1: (GITObjectHash *)objectHash error: (NSError **)error {
+    [self doesNotRecognizeSelector: _cmd];
+    return nil;
+}
+
 @end

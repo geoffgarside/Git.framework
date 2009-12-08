@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class GITPackIndex;
+
+@class GITPackIndex, GITPackObject, GITObjectHash;
 
 /*!
  * GITPackFile is a class which provides access to individual
@@ -63,5 +64,17 @@
 - (NSUInteger)version;
 - (GITPackIndex *)index;
 - (NSUInteger)numberOfObjects;
+
+//! \name Object Extraction
+/*!
+ * Returns a pack object identified by \a objectHash.
+ *
+ * The pack object consists of the data required to create a proper git object.
+ *
+ * \param objectHash Hash identifying the object data to retrieve
+ * \param error NSError describing the error which occurred
+ * \return pack object for the specified \a objectHash or nil if an error occurred
+ */
+- (GITPackObject *)unpackObjectWithSha1: (GITObjectHash *)objectHash error: (NSError **)error;
 
 @end
