@@ -45,4 +45,12 @@
  */
 - (id)initWithData: (NSData *)packData type: (GITObjectType)objectType;
 
+/*!
+ * Returns a new PACK object by patching the receivers data with \a deltaData.
+ *
+ * \param deltaData Data to patch the receivers data with
+ * \return new PACK object with the result of patching the receivers data with \a deltaData
+ */
+- (GITPackObject *)packObjectByDeltaPatchingWithData: (NSData *)deltaData;
+
 @end

@@ -51,6 +51,8 @@
 		F57EAA3D10CDDFAA00EE2103 /* NSData+Compression.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */; };
 		F57EAA3E10CDDFAA00EE2103 /* NSData+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EAA3C10CDDFAA00EE2103 /* NSData+Compression.m */; };
 		F57EAA5310CDE2FB00EE2103 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F57EAA5210CDE2FB00EE2103 /* libz.dylib */; };
+		F57EAA6710CDF45300EE2103 /* NSData+DeltaPatching.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EAA6510CDF45300EE2103 /* NSData+DeltaPatching.h */; };
+		F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */; };
 		F599A8D1105EFCE8003CD1C0 /* GITRepo.h in Headers */ = {isa = PBXBuildFile; fileRef = F599A8CF105EFCE8003CD1C0 /* GITRepo.h */; };
 		F599A8D2105EFCE8003CD1C0 /* GITRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = F599A8D0105EFCE8003CD1C0 /* GITRepo.m */; };
 		F599A9FB10601ECA003CD1C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F599A9FA10601ECA003CD1C0 /* Foundation.framework */; };
@@ -124,6 +126,8 @@
 		F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Compression.h"; path = "Source/Category/NSData/NSData+Compression.h"; sourceTree = "<group>"; };
 		F57EAA3C10CDDFAA00EE2103 /* NSData+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Compression.m"; path = "Source/Category/NSData/NSData+Compression.m"; sourceTree = "<group>"; };
 		F57EAA5210CDE2FB00EE2103 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		F57EAA6510CDF45300EE2103 /* NSData+DeltaPatching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+DeltaPatching.h"; path = "Source/Category/NSData/NSData+DeltaPatching.h"; sourceTree = "<group>"; };
+		F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+DeltaPatching.m"; path = "Source/Category/NSData/NSData+DeltaPatching.m"; sourceTree = "<group>"; };
 		F599A8CF105EFCE8003CD1C0 /* GITRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRepo.h; path = Source/GITRepo.h; sourceTree = "<group>"; };
 		F599A8D0105EFCE8003CD1C0 /* GITRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRepo.m; path = Source/GITRepo.m; sourceTree = "<group>"; };
 		F599A9FA10601ECA003CD1C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -342,6 +346,8 @@
 				F575BBFA10C12799000458EB /* NSData+SHA1.m */,
 				F5AC4DED106C501D0083212A /* NSData+Searching.h */,
 				F5AC4DEE106C501D0083212A /* NSData+Searching.m */,
+				F57EAA6510CDF45300EE2103 /* NSData+DeltaPatching.h */,
+				F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */,
 			);
 			name = NSData;
 			sourceTree = "<group>";
@@ -442,6 +448,7 @@
 				F57EA9E810CDB4CC00EE2103 /* GITPackReverseIndex.h in Headers */,
 				F57EAA2210CDDB2500EE2103 /* GITObject.h in Headers */,
 				F57EAA3D10CDDFAA00EE2103 /* NSData+Compression.h in Headers */,
+				F57EAA6710CDF45300EE2103 /* NSData+DeltaPatching.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +600,7 @@
 				F57EA9E910CDB4CC00EE2103 /* GITPackReverseIndex.m in Sources */,
 				F57EAA2310CDDB2500EE2103 /* GITObject.m in Sources */,
 				F57EAA3E10CDDFAA00EE2103 /* NSData+Compression.m in Sources */,
+				F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "GITPackObject.h"
+#import "NSData+DeltaPatching.h"
 
 
 @implementation GITPackObject
@@ -31,6 +32,10 @@
     self.type = 0;
     self.data = nil;
     [super dealloc];
+}
+
+- (id)packObjectByDeltaPatchingWithData: (NSData *)deltaData {
+    return [[self class] packObjectWithData:[self.data dataByDeltaPatchingWithData:deltaData] type:self.type];
 }
 
 @end
