@@ -26,15 +26,18 @@ __git_error(GITPackFileErrorPathNotFound, -5);
 __git_error(GITPackFileErrorPathIsDirectory, -6);
 __git_error(GITPackFileErrorFileIsInvalid, -7);
 __git_error(GITPackFileErrorVersionUnsupported, -8);
+__git_error(GITPackFileErrorIndexMissing, -9);
+__git_error(GITPackFileErrorObjectTypeUnknown, -10);
+__git_error(GITPackFileErrorObjectSizeMismatch, -11);
 
 #pragma mark GITPackIndex Errors
-__git_error(GITPackIndexErrorPathNotFound, -9);
-__git_error(GITPackIndexErrorPathIsDirectory, -10);
-__git_error(GITPackIndexErrorVersionUnsupported, -11);
-__git_error(GITPackIndexErrorCorrupt, -12);
+__git_error(GITPackIndexErrorPathNotFound, -12);
+__git_error(GITPackIndexErrorPathIsDirectory, -13);
+__git_error(GITPackIndexErrorVersionUnsupported, -14);
+__git_error(GITPackIndexErrorCorrupt, -15);
 
 #pragma mark GITPackFile & GITPackIndex Errors
-__git_error(GITPackErrorObjectNotFound, -13);
+__git_error(GITPackErrorObjectNotFound, -16);
 
 #undef __git_error
 #undef __git_error_domain

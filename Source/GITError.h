@@ -40,6 +40,9 @@ __git_error(GITPackFileErrorPathNotFound);
 __git_error(GITPackFileErrorPathIsDirectory);
 __git_error(GITPackFileErrorFileIsInvalid);
 __git_error(GITPackFileErrorVersionUnsupported);
+__git_error(GITPackFileErrorIndexMissing);
+__git_error(GITPackFileErrorObjectTypeUnknown);
+__git_error(GITPackFileErrorObjectSizeMismatch);
 
 #pragma mark GITPackIndex Errors
 __git_error(GITPackIndexErrorPathNotFound);
