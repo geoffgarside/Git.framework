@@ -24,7 +24,7 @@ typedef struct {
  */
 GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 
-@class GITObjectHash;
+@class GITObjectHash, GITPackReverseIndex;
 
 /*!
  * The \c GITPackIndex class cluster provides access to the PACK index
@@ -143,6 +143,21 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 - (NSUInteger)indexOfSha1: (GITObjectHash *)objectHash;
 
 /*!
+ * Returns the offset from the entry in the index table at the specified \a idx.
+ *
+ * \param idx Index position of the offset to retrieve
+ * \return the offset from the entry at the specified index position
+ * \sa packOffsetForSha1:error:
+ * \sa packOffsetForSha1:
+ * \internal
+ * In GITPackIndexVersionOne this method uses the \c indexEntryAtIndex: method to determine
+ * and retrieve the offset value which corresponds to the index of the Sha entry in the index
+ * table.
+ *
+ */
+- (off_t)packOffsetAtIndex: (NSUInteger)idx;
+
+/*!
  * Returns the offset in the PACK file where the object data can be retrieved.
  *
  * \param objectHash Object hash to find the PACK offset of
@@ -164,6 +179,18 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  */
 - (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error;
 
+/*!
+ * Returns the next offset after object at \a offset.
+ *
+ * If the \a offset is not found then \c NSNotFound is returned, if the \a offset
+ * is the last offset then \c -1 is returned.
+ *
+ * \param offset offset of the object to get the next offset of
+ * \return offset of the next offset, NSNotFound if not found, -1 if last offset
+ * \sa reverseIndex
+ */
+- (off_t)nextOffsetAfterOffset: (off_t)offset;
+
 //! \name Internal Methods
 /*!
  * Returns a fanout entry for SHA starting with the specified byte.
@@ -174,5 +201,7 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  * \sa fanoutTable
  */
 - (GITFanoutEntry)fanoutEntryForShasStartingWithByte: (uint8_t)byte;
+
+- (GITPackReverseIndex *)reverseIndex;
 
 @end

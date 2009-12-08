@@ -81,6 +81,11 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
     return 0;
 }
 
+- (off_t)packOffsetAtIndex: (NSUInteger)idx {
+    [self doesNotRecognizeSelector: _cmd];
+    return 0;
+}
+
 - (off_t)packOffsetForSha1: (GITObjectHash *)objectHash {
     return [self packOffsetForSha1:objectHash error:NULL];
 }
@@ -88,6 +93,15 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
 - (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error {
     [self doesNotRecognizeSelector: _cmd];
     return 0;
+}
+
+- (off_t)nextOffsetAfterOffset: (off_t)offset {
+    return [[self reverseIndex] nextOffsetAfterOffset:offset];
+}
+
+- (GITPackReverseIndex *)reverseIndex {
+    [self doesNotRecognizeSelector: _cmd];
+    return nil;
 }
 
 @end

@@ -9,13 +9,16 @@
 #import "GITPackIndex.h"
 
 
+@class GITPackReverseIndex;
 @interface GITPackIndexVersionOne : GITPackIndex {
     NSData *data;
     NSArray *fanoutTable;
+    GITPackReverseIndex *reverseIndex;
 }
 
 @property (copy) NSData *data;
 @property (copy) NSArray *fanoutTable;
+@property (retain) GITPackReverseIndex *reverseIndex;
 
 /*!
  * Parses the fanout table.
@@ -44,19 +47,6 @@
  * \sa indexOfSha1:
  */
 - (NSUInteger)indexOfPackedSha1: (NSData *)packedSha;
-
-/*!
- * Returns the offset from the entry in the index table at the specified \a idx.
- *
- * \param idx Index position of the offset to retrieve
- * \return the offset from the entry at the specified index position
- * \sa packOffsetForSha1:error:
- * \sa packOffsetForSha1:
- * \internal
- * This method uses the \c indexEntryAtIndex: method to determine and retrieve the offset
- * value which corresponds to the index of the Sha entry in the index table.
- */
-- (off_t)packOffsetAtIndex: (NSUInteger)idx;
 
 /*!
  * Returns the offset in the PACK file of the object \a packedSha.

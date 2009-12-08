@@ -9,13 +9,16 @@
 #import "GITPackIndex.h"
 
 
+@class GITPackReverseIndex;
 @interface GITPackIndexVersionTwo : GITPackIndex {
     NSData *data;
     NSArray *fanoutTable;
+    GITPackReverseIndex *reverseIndex;
 }
 
 @property (copy) NSData *data;
 @property (copy) NSArray *fanoutTable;
+@property (retain) GITPackReverseIndex *reverseIndex;
 
 /*!
  * Returns the index of the SHA1 contained in \a packedSha.
@@ -26,17 +29,6 @@
  * \sa indexOfSha1:
  */
 - (NSUInteger)indexOfPackedSha1: (NSData *)packedSha;
-
-/*!
- * Returns the offset value from the position in the offset table at the specified \a idx.
- *
- * \param idx Index position of the offset to retrieve
- * \return the offset at the specified index position
- * \sa extendedPackOffsetAtOffset:
- * \sa packOffsetForSha1:error:
- * \sa packOffsetForSha1:
- */
-- (off_t)packOffsetAtIndex: (NSUInteger)idx;
 
 /*!
  * Returns the offset value from the position specified in the extended offset table at the specified \a idx.

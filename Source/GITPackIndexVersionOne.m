@@ -7,6 +7,7 @@
 //
 
 #import "GITPackIndexVersionOne.h"
+#import "GITPackReverseIndex.h"
 #import "GITObjectHash.h"
 #import "GITError.h"
 
@@ -24,7 +25,7 @@ typedef struct {
 
 @implementation GITPackIndexVersionOne
 
-@synthesize data, fanoutTable;
+@synthesize data, fanoutTable, reverseIndex;
 
 - (NSUInteger)version {
     return 1;
@@ -35,12 +36,14 @@ typedef struct {
         return nil;
     
     self.data = indexData;
+    self.reverseIndex = [GITPackReverseIndex reverseIndexWithPackIndex:self];
     
     return self;
 }
 
 - (void)dealloc {
     self.data = nil;
+    self.reverseIndex = nil;
 
     [super dealloc];
 }
