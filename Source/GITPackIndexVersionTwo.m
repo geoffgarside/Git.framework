@@ -45,6 +45,7 @@ static const short _extOffsetSize   = 8;    //!< Bytes
 
 - (void)dealloc {
     self.data = nil;
+    self.fanoutTable = nil;
     self.reverseIndex = nil;
     
     [super dealloc];

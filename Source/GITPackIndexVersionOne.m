@@ -43,6 +43,7 @@ typedef struct {
 
 - (void)dealloc {
     self.data = nil;
+    self.fanoutTable = nil;
     self.reverseIndex = nil;
 
     [super dealloc];
