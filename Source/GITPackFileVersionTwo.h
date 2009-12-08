@@ -9,6 +9,18 @@
 #import "GITPackFile.h"
 
 
+typedef enum {
+    GITPackFileDeltaTypeOfs  = 6,
+    GITPackFileDeltaTypeRefs = 7,
+} GITPackFileDeltaType;
+
+typedef struct {
+    int type;
+    off_t offset;
+    size_t size;
+    size_t dataSize;
+} GITPackFileObjectHeader;
+
 @class GITPackIndex;
 @interface GITPackFileVersionTwo : GITPackFile {
     NSData *data;
@@ -17,5 +29,10 @@
 
 @property (copy) NSData *data;
 @property (retain) GITPackIndex *index;
+
+- (GITPackObject *)unpackObjectAtOffset: (off_t)offset error: (NSError **)error;
+- (GITPackObject *)unpackDeltaPackedObjectAtOffset: (off_t)offset objectHeader: (GITPackFileObjectHeader *)header error: (NSError **)error;
+
+- (NSRange)checksumRange;
 
 @end
