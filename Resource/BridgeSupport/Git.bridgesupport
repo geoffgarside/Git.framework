@@ -1,0 +1,67 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<depends_on path='/System/Library/Frameworks/Foundation.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreFoundation.framework'/>
+<constant name='GITErrorDomain' type='@'/>
+<constant name='GITObjectHashLength' type64='Q' type='I'/>
+<constant name='GITObjectHashPackedLength' type64='Q' type='I'/>
+<constant name='OBErrorDomain' type='@'/>
+<constant name='OBFileNameAndNumberErrorKey' type='@'/>
+<constant name='OBUserCancelledActionErrorKey' type='@'/>
+<enum name='GITObjectTypeBlob' value='3'/>
+<enum name='GITObjectTypeCommit' value='1'/>
+<enum name='GITObjectTypeTag' value='4'/>
+<enum name='GITObjectTypeTree' value='2'/>
+<enum name='GITObjectTypeUnknown' value='0'/>
+<enum name='GITPackErrorObjectNotFound' value='15'/>
+<enum name='GITPackFileErrorFileIsInvalid' value='6'/>
+<enum name='GITPackFileErrorIndexMissing' value='8'/>
+<enum name='GITPackFileErrorObjectSizeMismatch' value='10'/>
+<enum name='GITPackFileErrorObjectTypeUnknown' value='9'/>
+<enum name='GITPackFileErrorPathIsDirectory' value='5'/>
+<enum name='GITPackFileErrorPathNotFound' value='4'/>
+<enum name='GITPackFileErrorVersionUnsupported' value='7'/>
+<enum name='GITPackIndexErrorCorrupt' value='14'/>
+<enum name='GITPackIndexErrorPathIsDirectory' value='12'/>
+<enum name='GITPackIndexErrorPathNotFound' value='11'/>
+<enum name='GITPackIndexErrorVersionUnsupported' value='13'/>
+<enum name='GITRefResolverErrorRefNotFound' value='3'/>
+<enum name='GITRepoErrorRootDoesNotExist' value='0'/>
+<enum name='GITRepoErrorRootInsane' value='2'/>
+<enum name='GITRepoErrorRootNotAccessible' value='1'/>
+<enum name='OBErrorChained' value='1'/>
+<function name='GITMakeFanoutEntry'>
+<arg type64='Q' type='I'/>
+<arg type64='Q' type='I'/>
+<retval type64='{?=QQ}' type='{?=II}'/>
+</function>
+<function name='OBFirstUnchainedError'>
+<arg type='@'/>
+<retval type='@'/>
+</function>
+<class name='GITRef'>
+<method selector='isLink'>
+<retval type='B'/>
+</method>
+<method selector='setLink:'>
+<arg type='B' index='0'/>
+</method>
+</class>
+<class name='GITRepo'>
+<method selector='isBare'>
+<retval type='B'/>
+</method>
+<method selector='setBare:'>
+<arg type='B' index='0'/>
+</method>
+</class>
+<class name='NSError'>
+<method selector='causedByUserCancelling'>
+<retval type='B'/>
+</method>
+<method selector='hasUnderlyingErrorDomain:code:'>
+<retval type='B'/>
+</method>
+</class>
+</signatures>
