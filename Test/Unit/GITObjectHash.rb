@@ -4,9 +4,9 @@ describe 'GITObjectHash' do
   before do
     @sha1_str = 'bed4001738fa8dad666d669867afaf9f2c2b8c6a'
     @sha1_data = @sha1_str.dataUsingEncoding(NSUTF8StringEncoding)
-    @pack_str = [@sha1_str].pack('H*')
-    @pack_data = @pack_str.dataUsingEncoding(NSUTF8StringEncoding)
-    @hash = GITObjectHash.objectHashWithString(@sha1_str)
+    @pack_str = [@sha1_str].pack('H*')                                  # "¾Ô\x00\x178ú\x8D­fmf\x98g¯¯\x9F,+\x8Cj"
+    @pack_data = @pack_str.dataUsingEncoding(NSISOLatin1StringEncoding) # Apparently we need this encoding to work
+    @hash = GITObjectHash.objectHashWithString(@sha1_str)               # with the format created by Array#pack
   end
 
   describe '+unpackedStringFromString:' do

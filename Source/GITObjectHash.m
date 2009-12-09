@@ -41,9 +41,23 @@ static signed char from_hex[256] = {
     if ( [str length] == GITObjectHashLength )
         return str;
 
-    NSData *packedData = [str dataUsingEncoding:NSUTF8StringEncoding];
+/*  For some reason this doesn't work in our tests, it looks like an encoding issue */
+/*  NSData *packedData = [str dataUsingEncoding:NSUTF8StringEncoding];  // NSISOLatin1StringEncoding seems to work...
     return [[[NSString alloc] initWithData:[self unpackedDataFromData:packedData]
-                                  encoding:NSUTF8StringEncoding] autorelease];
+                                  encoding:NSUTF8StringEncoding] autorelease];*/
+
+    NSUInteger i;
+    uint8_t packedBits;
+    NSMutableString *unpacked = [NSMutableString stringWithCapacity:GITObjectHashLength];
+
+    for ( i = 0; i < GITObjectHashPackedLength; i++ ) {
+        packedBits = [str characterAtIndex:i];
+        [unpacked appendFormat:@"%c", hexchars[packedBits >> 4]];
+        [unpacked appendFormat:@"%c", hexchars[packedBits & 0xf]];
+    }
+
+    return [[unpacked copy] autorelease];
+
 }
 
 + (NSString *)packedStringFromString: (NSString *)str {
