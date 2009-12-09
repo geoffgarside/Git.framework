@@ -88,12 +88,12 @@ static signed char from_hex[256] = {
     NSUInteger i;
     NSMutableData *unpacked = [NSMutableData dataWithLength:GITObjectHashLength];
     uint8_t *unpackedBytes = [unpacked mutableBytes];
-    for( i = 0; i < length; i++ ) {
+    for ( i = 0; i < length; i++ ) {
         *unpackedBytes++ = hexchars[bytes[i] >> 4];
         *unpackedBytes++ = hexchars[bytes[i] & 0xf];
     }
 
-    return [unpacked copy];
+    return [[unpacked copy] autorelease];
 }
 
 + (NSData *)packedDataFromBytes: (uint8_t *)bytes length: (NSUInteger)length {
@@ -112,7 +112,7 @@ static signed char from_hex[256] = {
         packedBytes[i] = (uint8_t)bits;
     }
 
-    return [packed copy];
+    return [[packed copy] autorelease];
 }
 
 + (NSString *)unpackedStringFromData: (NSData *)data {
