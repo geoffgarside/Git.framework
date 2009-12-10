@@ -52,52 +52,53 @@
     return [self unpackObjectAtOffset:packOffset error:error];
 }
 
-- (GITPackFileObjectHeader *)unpackEntryHeaderAtOffset: (off_t *)offset {
+- (GITPackFileObjectHeader *)unpackEntryHeaderAtOffset: (off_t *)offset intoHeader: (GITPackFileObjectHeader *)header {
     uint8_t buf;
     size_t shift = 4;
-    GITPackFileObjectHeader header, *h = &header;
 
-    header.offset = *offset;
+    memset(header, 0x0, sizeof(GITPackFileObjectHeader));
+    header->offset = *offset;
 
-    [self.data getBytes:&buf range:NSMakeRange(*offset++, 1)];
+    [self.data getBytes:&buf range:NSMakeRange((*offset)++, 1)];
 
-    header.size = buf & 0xf;
-    header.type = (buf >> 4) & 0x7;
+    header->size = buf & 0xf;
+    header->type = (buf >> 4) & 0x7;
 
     while ( (buf & 0x80) != 0 ) {
-        [self.data getBytes:&buf range:NSMakeRange(*offset++, 1)];
-        header.size |= (buf & 0x7f) << shift;
+        [self.data getBytes:&buf range:NSMakeRange((*offset)++, 1)];
+        header->size |= (buf & 0x7f) << shift;
         shift += 7;
     }
 
     off_t nextOffset = [self.index nextOffsetAfterOffset:*offset];
     if ( nextOffset == -1 )
         nextOffset = [self checksumRange].location;
-    header.dataSize = nextOffset - *offset;
+    header->dataSize = nextOffset - *offset;
 
-    return h;
+    return header;
 }
 
 - (GITPackObject *)unpackObjectAtOffset: (off_t)offset error:(NSError **)error {
-    GITPackFileObjectHeader *header = [self unpackEntryHeaderAtOffset:&offset];
+    GITPackFileObjectHeader header;
+    [self unpackEntryHeaderAtOffset:&offset intoHeader:&header];
 
     NSData *packData;
-    switch ( header->type ) {
+    switch ( header.type ) {
         case GITObjectTypeCommit:
         case GITObjectTypeTree:
         case GITObjectTypeBlob:
         case GITObjectTypeTag:
-            packData = [[self.data subdataWithRange:NSMakeRange(offset, header->dataSize)] zlibInflate];
-            if ( [packData length] != header->size ) {
+            packData = [[self.data subdataWithRange:NSMakeRange(offset, header.dataSize)] zlibInflate];
+            if ( [packData length] != header.size ) {
                 GITError(error, GITPackFileErrorObjectSizeMismatch, NSLocalizedString(@"Object size mismatch", @"GITPackFileErrorObjectSizeMismatch"));
                 return nil;
             }
 
-            return [GITPackObject packObjectWithData:packData type:header->type];
+            return [GITPackObject packObjectWithData:packData type:header.type];
             break;
         case GITPackFileDeltaTypeOfs:
         case GITPackFileDeltaTypeRefs:
-            return [self unpackDeltaPackedObjectAtOffset:offset objectHeader:header error:error];
+            return [self unpackDeltaPackedObjectAtOffset:offset objectHeader:&header error:error];
             break;
         default:
             GITError(error, GITPackFileErrorObjectTypeUnknown, NSLocalizedString(@"Unknown packed object type", @"GITPackFileErrorObjectTypeUnknown"));
