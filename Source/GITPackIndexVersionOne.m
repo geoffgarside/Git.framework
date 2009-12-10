@@ -114,7 +114,7 @@ typedef struct {
     return NSNotFound;
 }
 
-- (GITPackIndexEntry *)indexEntryAtIndex: (NSUInteger)idx {
+- (GITPackIndexEntry *)extractIndexEntryAtIndex: (NSUInteger)idx into: (GITPackIndexEntry *)entry {
     NSRange index  = [self indexTableRange];
     NSUInteger pos = idx * _fanOutEntrySize;
 
@@ -123,14 +123,14 @@ typedef struct {
              idx, pos, NSStringFromRange(index)];
     }
 
-    GITPackIndexEntry entry, *e = &entry;
-    [self.data getBytes:e range:NSMakeRange(index.location + pos, _fanOutEntrySize)];
-    return e;
+    [self.data getBytes:entry range:NSMakeRange(index.location + pos, _fanOutEntrySize)];
+    return entry;
 }
 
 - (off_t)packOffsetAtIndex: (NSUInteger)idx {
-    GITPackIndexEntry *entry = [self indexEntryAtIndex:idx];
-    return (off_t)CFSwapInt32BigToHost(entry->offset);
+    GITPackIndexEntry entry;
+    [self extractIndexEntryAtIndex:idx into:&entry];
+    return (off_t)CFSwapInt32BigToHost(entry.offset);
 }
 
 - (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error {
