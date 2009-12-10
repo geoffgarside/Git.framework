@@ -15,6 +15,12 @@ namespace :build do
   end
 end
 
+namespace :bridgesupport do
+  task :generate => ['build:release'] do
+    sh 'gen_bridge_metadata -f ./build/Release/Git.framework -o ./Resource/BridgeSupport/Git.bridgesupport --64-bit'
+  end
+end
+
 desc "Runs the test suite for the framework (Requires MacRuby)"
 task :test do
   sh 'xcodebuild -target Tests -configuration Debug'
