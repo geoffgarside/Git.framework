@@ -9,6 +9,7 @@
 #import "GITPackIndex.h"
 #import "GITObjectHash.h"
 #import "GITPackIndexPlaceholder.h"
+#import "GITPackReverseIndex.h"
 
 
 GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
