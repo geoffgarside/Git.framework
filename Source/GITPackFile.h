@@ -62,7 +62,19 @@
  * \return Integer version of the PACK file
  */
 - (NSUInteger)version;
+
+/*!
+ * Returns the index of the receiver
+ *
+ * \return index of the receiver
+ */
 - (GITPackIndex *)index;
+
+/*!
+ * Returns the number of objects stored in the receiver
+ *
+ * \return number of objects in the receiver
+ */
 - (NSUInteger)numberOfObjects;
 
 //! \name Object Extraction
