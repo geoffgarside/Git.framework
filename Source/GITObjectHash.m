@@ -57,7 +57,6 @@ static signed char from_hex[256] = {
     }
 
     return [[unpacked copy] autorelease];
-
 }
 
 + (NSString *)packedStringFromString: (NSString *)str {
