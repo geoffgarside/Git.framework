@@ -156,6 +156,9 @@
 		F5AC4DEE106C501D0083212A /* NSData+Searching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Searching.m"; path = "Source/Category/NSData/NSData+Searching.m"; sourceTree = "<group>"; };
 		F5AC4E31107179770083212A /* GITRefResolver.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRefResolver.rb; sourceTree = "<group>"; };
 		F5AC4E4C1072BF940083212A /* GITRef.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRef.rb; sourceTree = "<group>"; };
+		F5B28C6310D1CAE1009A933C /* GITPackFile.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackFile.rb; sourceTree = "<group>"; };
+		F5B28C6410D1CAE1009A933C /* GITPackObject.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackObject.rb; sourceTree = "<group>"; };
+		F5B28C6510D1CAE1009A933C /* GITPackReverseIndex.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackReverseIndex.rb; sourceTree = "<group>"; };
 		F5BBC1921062F02500EF21A8 /* repos.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = repos.dmg; sourceTree = "<group>"; };
 		F5BBC1931062F02500EF21A8 /* TestHelper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TestHelper.rb; sourceTree = "<group>"; };
 		F5BBC1951062F02500EF21A8 /* GITRepo.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRepo.rb; sourceTree = "<group>"; };
@@ -376,6 +379,9 @@
 		F5BBC1941062F02500EF21A8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				F5B28C6310D1CAE1009A933C /* GITPackFile.rb */,
+				F5B28C6410D1CAE1009A933C /* GITPackObject.rb */,
+				F5B28C6510D1CAE1009A933C /* GITPackReverseIndex.rb */,
 				F5124D3A10CB3F68002B834B /* GITPackIndex.rb */,
 				F575BC6610C136E9000458EB /* GITObjectHash.rb */,
 				F5A6C98B108A8BD300E9B1C7 /* GITBranch.rb */,
