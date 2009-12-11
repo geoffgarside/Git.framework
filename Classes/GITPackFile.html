@@ -48,6 +48,24 @@
             <code><a href=#version>- version</a></code>
           </span>
         </li>
+        <li>
+          <span class="tooltipRegion">
+            <code><a href=#index>- index</a></code>
+          </span>
+        </li>
+        <li>
+          <span class="tooltipRegion">
+            <code><a href=#numberOfObjects>- numberOfObjects</a></code>
+          </span>
+        </li>
+      </ul>
+      <h3>Object Extraction</h3>
+      <ul class="methods">
+        <li>
+          <span class="tooltipRegion">
+            <code><a href=#unpackObjectWithSha1:error:>- unpackObjectWithSha1:error:</a></code>
+          </span>
+        </li>
       </ul>
       <h2>Class methods</h2>
       <h3><a name="packWithPath:error:"></a>packWithPath:error:</h3>
@@ -66,7 +84,7 @@
       <h5>Return value</h5>
 <p>PACK File object or nil if an error occurred </p>
       <h5>Discussion</h5>
-<p>Create an autoreleased PACK file with the specified path￼.</p>
+<p>Create an autoreleased PACK file with the specified path.</p>
       <h5>See also</h5>
       <ul class="seeAlso">
         <li><code><a href="#initWithPath:error:">- initWithPath:error:</a></code></li>
@@ -90,7 +108,7 @@
       <h5>Return value</h5>
 <p>PACK File object or nil if an error occurred </p>
       <h5>Discussion</h5>
-<p>Initialises a PACK file with the specified path￼.</p>
+<p>Initialises a PACK file with the specified path.</p>
       <h5>See also</h5>
       <ul class="seeAlso">
         <li><code><a href="#initWithData:indexPath:error:">- initWithData:indexPath:error:</a></code></li>
@@ -117,7 +135,7 @@
       <h5>Return value</h5>
 <p>PACK file object or nil if an error occurred </p>
       <h5>Discussion</h5>
-<p>Initialises a PACK file with the specified data and path to index file￼.</p>
+<p>Initialises a PACK file with the specified data and path to index file.</p>
       <h5>Declared in</h5>
       <code>GITPackFile.h</code>
       <h3><a name="version"></a>version</h3>
@@ -125,11 +143,47 @@
       <h5>Return value</h5>
 <p>Integer version of the PACK file </p>
       <h5>Discussion</h5>
-<p>Returns the PACK file version￼.</p>
+<p>Returns the PACK file version.</p>
+      <h5>Declared in</h5>
+      <code>GITPackFile.h</code>
+      <h3><a name="index"></a>index</h3>
+      <code class="methodDeclaration">- (GITPackIndex *)index</code>
+      <h5>Return value</h5>
+<p>index of the receiver </p>
+      <h5>Discussion</h5>
+<p>Returns the index of the receiver</p>
+      <h5>Declared in</h5>
+      <code>GITPackFile.h</code>
+      <h3><a name="numberOfObjects"></a>numberOfObjects</h3>
+      <code class="methodDeclaration">- (NSUInteger)numberOfObjects</code>
+      <h5>Return value</h5>
+<p>number of objects in the receiver </p>
+      <h5>Discussion</h5>
+<p>Returns the number of objects stored in the receiver</p>
+      <h5>Declared in</h5>
+      <code>GITPackFile.h</code>
+      <h3><a name="unpackObjectWithSha1:error:"></a>unpackObjectWithSha1:error:</h3>
+      <code class="methodDeclaration">- (GITPackObject *)unpackObjectWithSha1:(GITObjectHash *)        <span class="parameter">objectHash</span>
+ error:(NSError **)        <span class="parameter">error</span>
+</code>
+      <h5>Parameters</h5>
+      <dl class="parameterList">
+        <dt>objectHash</dt>
+        <dd><p>Hash identifying the object data to retrieve </p>
+</dd>
+        <dt>error</dt>
+        <dd><p>NSError describing the error which occurred </p>
+</dd>
+      </dl>
+      <h5>Return value</h5>
+<p>pack object for the specified <em>objectHash</em> or nil if an error occurred </p>
+      <h5>Discussion</h5>
+<p>Returns a pack object identified by <em>objectHash</em>.</p>
+<p>The pack object consists of the data required to create a proper git object.</p>
       <h5>Declared in</h5>
       <code>GITPackFile.h</code>
     <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-06)
+    <p id="lastUpdated">      (Last updated: 2009-12-11)
       <br />
       Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
     </p>

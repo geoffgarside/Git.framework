@@ -77,12 +77,22 @@
         </li>
         <li>
           <span class="tooltipRegion">
+            <code><a href=#packOffsetAtIndex:>- packOffsetAtIndex:</a></code>
+          </span>
+        </li>
+        <li>
+          <span class="tooltipRegion">
             <code><a href=#packOffsetForSha1:>- packOffsetForSha1:</a></code>
           </span>
         </li>
         <li>
           <span class="tooltipRegion">
             <code><a href=#packOffsetForSha1:error:>- packOffsetForSha1:error:</a></code>
+          </span>
+        </li>
+        <li>
+          <span class="tooltipRegion">
+            <code><a href=#nextOffsetAfterOffset:>- nextOffsetAfterOffset:</a></code>
           </span>
         </li>
       </ul>
@@ -231,6 +241,26 @@
 <p>Uses a binary search of the main index table bounded by the range given by the fanout table.</p>
       <h5>Declared in</h5>
       <code>GITPackIndex.h</code>
+      <h3><a name="packOffsetAtIndex:"></a>packOffsetAtIndex:</h3>
+      <code class="methodDeclaration">- (off_t)packOffsetAtIndex:(NSUInteger)        <span class="parameter">idx</span>
+</code>
+      <h5>Parameters</h5>
+      <dl class="parameterList">
+        <dt>idx</dt>
+        <dd><p>Index position of the offset to retrieve </p>
+</dd>
+      </dl>
+      <h5>Return value</h5>
+<p>the offset from the entry at the specified index position </p>
+      <h5>Discussion</h5>
+<p>Returns the offset from the entry in the index table at the specified <em>idx</em>.</p>
+      <h5>See also</h5>
+      <ul class="seeAlso">
+        <li><code><a href="#packOffsetForSha1:error:">- packOffsetForSha1:error:</a></code></li>
+        <li><code><a href="#packOffsetForSha1:">- packOffsetForSha1:</a></code></li>
+      </ul>
+      <h5>Declared in</h5>
+      <code>GITPackIndex.h</code>
       <h3><a name="packOffsetForSha1:"></a>packOffsetForSha1:</h3>
       <code class="methodDeclaration">- (off_t)packOffsetForSha1:(GITObjectHash *)        <span class="parameter">objectHash</span>
 </code>
@@ -274,6 +304,26 @@
       </ul>
       <h5>Declared in</h5>
       <code>GITPackIndex.h</code>
+      <h3><a name="nextOffsetAfterOffset:"></a>nextOffsetAfterOffset:</h3>
+      <code class="methodDeclaration">- (off_t)nextOffsetAfterOffset:(off_t)        <span class="parameter">offset</span>
+</code>
+      <h5>Parameters</h5>
+      <dl class="parameterList">
+        <dt>offset</dt>
+        <dd><p>offset of the object to get the next offset of </p>
+</dd>
+      </dl>
+      <h5>Return value</h5>
+<p>offset of the next offset, NSNotFound if not found, -1 if last offset </p>
+      <h5>Discussion</h5>
+<p>Returns the next offset after object at <em>offset</em>.</p>
+<p>If the <em>offset</em> is not found then <code>NSNotFound</code> is returned, if the <em>offset</em> is the last offset then <code>-1</code> is returned.</p>
+      <h5>See also</h5>
+      <ul class="seeAlso">
+        <li><code><a href="#reverseIndex">reverseIndex</a></code></li>
+      </ul>
+      <h5>Declared in</h5>
+      <code>GITPackIndex.h</code>
       <h3><a name="fanoutEntryForShasStartingWithByte:"></a>fanoutEntryForShasStartingWithByte:</h3>
       <code class="methodDeclaration">- (GITFanoutEntry)fanoutEntryForShasStartingWithByte:(uint8_t)        <span class="parameter">byte</span>
 </code>
@@ -295,7 +345,7 @@
       <h5>Declared in</h5>
       <code>GITPackIndex.h</code>
     <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-06)
+    <p id="lastUpdated">      (Last updated: 2009-12-11)
       <br />
       Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
     </p>
