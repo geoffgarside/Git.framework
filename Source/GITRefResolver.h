@@ -81,7 +81,6 @@
  * Returns an array of all the references in the receivers repository￼.
  *
  * \return array of all the references in the receivers repository
- * \sa <#see also#>
  */
 - (NSArray *)allRefs;
 
