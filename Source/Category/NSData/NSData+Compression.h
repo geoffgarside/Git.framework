@@ -18,6 +18,7 @@
 
 #pragma mark -
 #pragma mark Zlib Compression routines
+//! \name Zlib Compression and Decompression
 /*! Returns a data object containing a Zlib decompressed copy of the receivers contents.
  * \returns A data object containing a Zlib decompressed copy of the receivers contents.
  */
@@ -29,6 +30,7 @@
 
 #pragma mark -
 #pragma mark Gzip Compression routines
+//! \name GZip Compression and Decompression
 /*! Returns a data object containing a Gzip decompressed copy of the receivers contents.
  * \returns A data object containing a Gzip decompressed copy of the receivers contents.
  */

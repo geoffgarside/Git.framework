@@ -15,6 +15,7 @@
  */
 @interface NSData (DeltaPatching)
 
+//! \name Patching
 /*!
  * Returns the restored data from patching the \a deltaData with the receiver.
  *
