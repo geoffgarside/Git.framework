@@ -135,8 +135,7 @@ static signed char from_hex[256] = {
 }
 
 - (id)initWithData: (NSData *)hashData {
-    NSString *hashString = [[[NSString alloc] initWithData:hashData encoding:NSUTF8StringEncoding] autorelease];
-    return [self initWithString:hashString];
+    return [self initWithString:[[self class] unpackedStringFromData:hashData]];
 }
 
 - (id)initWithString: (NSString *)hashString {
