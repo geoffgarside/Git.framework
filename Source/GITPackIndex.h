@@ -94,10 +94,10 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 - (NSUInteger)version;
 
 /*!
- * Returns the contents of the receivers fanout table￼.
+ * Returns the contents of the receivers fanout table.
  *
  * \attention Implementers
- * If you are using Objective-C 2.0 properties then @synthesize'ing fanoutTable
+ * If you are using Objective-C 2.0 properties then \@synthesize'ing fanoutTable
  * will overwrite this method with the property version.
  *
  * \return contents of the receivers fanout table or nil if an error occurred
