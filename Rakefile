@@ -16,6 +16,7 @@ namespace :build do
 end
 
 namespace :bridgesupport do
+  desc 'Generate the BridgeSupport MetaData'
   task :generate => ['build:release'] do
     sh 'gen_bridge_metadata -f ./build/Release/Git.framework -o ./Resource/BridgeSupport/Git.bridgesupport --64-bit'
   end
