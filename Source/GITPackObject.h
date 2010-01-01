@@ -24,6 +24,7 @@
 
 @property (assign) GITObjectType type;
 @property (copy) NSData *data;
+@property (readonly,assign) NSUInteger length;      //!< size of the receivers data
 
 /*!
  * Create and return a new PACK object.

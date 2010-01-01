@@ -38,4 +38,8 @@
     return [[self class] packObjectWithData:[self.data dataByDeltaPatchingWithData:deltaData] type:self.type];
 }
 
+- (NSUInteger)length {
+    return [self.data length];
+}
+
 @end
