@@ -18,14 +18,16 @@
  * or \e tag.
  */
 @interface GITPackObject : NSObject {
-    GITObjectType type;
-    NSData *data;
+    GITObjectType type;     //!< Type of the object the data represents
+    NSData *data;           //!< Data of the packed object
 }
 
+//! \name Properties
 @property (assign) GITObjectType type;
 @property (copy) NSData *data;
 @property (readonly,assign) NSUInteger length;      //!< size of the receivers data
 
+//! \name Creating and Initialising GITPackObjects
 /*!
  * Create and return a new PACK object.
  *
@@ -46,6 +48,7 @@
  */
 - (id)initWithData: (NSData *)packData type: (GITObjectType)objectType;
 
+//! \name Patching GITPackObjects
 /*!
  * Returns a new PACK object by patching the receivers data with \a deltaData.
  *
