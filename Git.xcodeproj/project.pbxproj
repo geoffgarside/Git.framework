@@ -46,6 +46,10 @@
 		F5706D5B10FA28F600DCA823 /* GITDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D5910FA28F600DCA823 /* GITDateTime.m */; };
 		F5706D6410FA319300DCA823 /* NSTimeZone+Offset.h in Headers */ = {isa = PBXBuildFile; fileRef = F5706D6210FA319300DCA823 /* NSTimeZone+Offset.h */; };
 		F5706D6510FA319300DCA823 /* NSTimeZone+Offset.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D6310FA319300DCA823 /* NSTimeZone+Offset.m */; };
+		F5706D8810FA4E4B00DCA823 /* GITActor.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8410FA4E4B00DCA823 /* GITActor.rb */; };
+		F5706D8910FA4E4B00DCA823 /* GITBlob.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8510FA4E4B00DCA823 /* GITBlob.rb */; };
+		F5706D8A10FA4E4B00DCA823 /* GITDateTime.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8610FA4E4B00DCA823 /* GITDateTime.rb */; };
+		F5706D8B10FA4E4B00DCA823 /* GITTree.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8710FA4E4B00DCA823 /* GITTree.rb */; };
 		F575BBFB10C12799000458EB /* NSData+SHA1.h in Headers */ = {isa = PBXBuildFile; fileRef = F575BBF910C12799000458EB /* NSData+SHA1.h */; };
 		F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = F575BBFA10C12799000458EB /* NSData+SHA1.m */; };
 		F575BC5310C13214000458EB /* GITPackFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136410A5C415003EFA8F /* GITPackFile.m */; };
@@ -136,6 +140,10 @@
 		F5706D5910FA28F600DCA823 /* GITDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITDateTime.m; path = Source/GITDateTime.m; sourceTree = "<group>"; };
 		F5706D6210FA319300DCA823 /* NSTimeZone+Offset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimeZone+Offset.h"; sourceTree = "<group>"; };
 		F5706D6310FA319300DCA823 /* NSTimeZone+Offset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimeZone+Offset.m"; sourceTree = "<group>"; };
+		F5706D8410FA4E4B00DCA823 /* GITActor.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITActor.rb; sourceTree = "<group>"; };
+		F5706D8510FA4E4B00DCA823 /* GITBlob.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITBlob.rb; sourceTree = "<group>"; };
+		F5706D8610FA4E4B00DCA823 /* GITDateTime.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITDateTime.rb; sourceTree = "<group>"; };
+		F5706D8710FA4E4B00DCA823 /* GITTree.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITTree.rb; sourceTree = "<group>"; };
 		F575BBF910C12799000458EB /* NSData+SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SHA1.h"; path = "Source/Category/NSData/NSData+SHA1.h"; sourceTree = "<group>"; };
 		F575BBFA10C12799000458EB /* NSData+SHA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SHA1.m"; path = "Source/Category/NSData/NSData+SHA1.m"; sourceTree = "<group>"; };
 		F575BC6610C136E9000458EB /* GITObjectHash.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITObjectHash.rb; sourceTree = "<group>"; };
@@ -430,6 +438,10 @@
 		F5BBC1941062F02500EF21A8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				F5706D8410FA4E4B00DCA823 /* GITActor.rb */,
+				F5706D8510FA4E4B00DCA823 /* GITBlob.rb */,
+				F5706D8610FA4E4B00DCA823 /* GITDateTime.rb */,
+				F5706D8710FA4E4B00DCA823 /* GITTree.rb */,
 				F5B28C6310D1CAE1009A933C /* GITPackFile.rb */,
 				F5B28C6410D1CAE1009A933C /* GITPackObject.rb */,
 				F5B28C6510D1CAE1009A933C /* GITPackReverseIndex.rb */,
@@ -571,6 +583,10 @@
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
 				F57EAB8F10D0082600EE2103 /* BridgeSupport in Resources */,
+				F5706D8810FA4E4B00DCA823 /* GITActor.rb in Resources */,
+				F5706D8910FA4E4B00DCA823 /* GITBlob.rb in Resources */,
+				F5706D8A10FA4E4B00DCA823 /* GITDateTime.rb in Resources */,
+				F5706D8B10FA4E4B00DCA823 /* GITTree.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
