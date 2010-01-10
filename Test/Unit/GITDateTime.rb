@@ -52,12 +52,12 @@ describe 'GITDateTime' do
   end
   describe '-description' do
     before do
-      @date = NSDate.date
+      @date = NSDate.dateWithTimeIntervalSince1970(444123000)
       @zone = NSTimeZone.timeZoneWithAbbreviation("GMT")
       @dateTime = GITDateTime.dateTimeWithDate(@date, timeZone:@zone)
     end
     should 'format the date and timezone' do
-      @dateTime.description.should == "#{@date.timeIntervalSince1970.to_i} +0000"
+      @dateTime.description.should == "444123000 +0000"
     end
   end
 end
