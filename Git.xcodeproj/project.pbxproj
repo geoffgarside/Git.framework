@@ -46,10 +46,6 @@
 		F5706D5B10FA28F600DCA823 /* GITDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D5910FA28F600DCA823 /* GITDateTime.m */; };
 		F5706D6410FA319300DCA823 /* NSTimeZone+Offset.h in Headers */ = {isa = PBXBuildFile; fileRef = F5706D6210FA319300DCA823 /* NSTimeZone+Offset.h */; };
 		F5706D6510FA319300DCA823 /* NSTimeZone+Offset.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D6310FA319300DCA823 /* NSTimeZone+Offset.m */; };
-		F5706D8810FA4E4B00DCA823 /* GITActor.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8410FA4E4B00DCA823 /* GITActor.rb */; };
-		F5706D8910FA4E4B00DCA823 /* GITBlob.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8510FA4E4B00DCA823 /* GITBlob.rb */; };
-		F5706D8A10FA4E4B00DCA823 /* GITDateTime.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8610FA4E4B00DCA823 /* GITDateTime.rb */; };
-		F5706D8B10FA4E4B00DCA823 /* GITTree.rb in Resources */ = {isa = PBXBuildFile; fileRef = F5706D8710FA4E4B00DCA823 /* GITTree.rb */; };
 		F575BBFB10C12799000458EB /* NSData+SHA1.h in Headers */ = {isa = PBXBuildFile; fileRef = F575BBF910C12799000458EB /* NSData+SHA1.h */; };
 		F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = F575BBFA10C12799000458EB /* NSData+SHA1.m */; };
 		F575BC5310C13214000458EB /* GITPackFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136410A5C415003EFA8F /* GITPackFile.m */; };
@@ -583,10 +579,6 @@
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
 				F57EAB8F10D0082600EE2103 /* BridgeSupport in Resources */,
-				F5706D8810FA4E4B00DCA823 /* GITActor.rb in Resources */,
-				F5706D8910FA4E4B00DCA823 /* GITBlob.rb in Resources */,
-				F5706D8A10FA4E4B00DCA823 /* GITDateTime.rb in Resources */,
-				F5706D8B10FA4E4B00DCA823 /* GITTree.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
