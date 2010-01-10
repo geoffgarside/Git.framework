@@ -62,7 +62,6 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
             return nil;
         }
 
-        // NSLog(@"GITTree parsing from start: %d (%p) to end: %d (%p) remaining: %d", start, start, end, end, end - start);
         if ( !(hashStr = [self createStringWithObjectRecord:hashParsingRecord bytes:&start]) ) {
             GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing sha1 from tree contents", @"GITObjectErrorParsingFailed"));
             [modeStr release];
@@ -71,8 +70,6 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
             [self release];
             return nil;
         }
-
-        // NSLog(@"GITTree modeStr: '%@' nameStr: '%@' hashStr: '%@' (%d) detected", modeStr, nameStr, hashStr, [hashStr length]);
 
         modeVal = [modeStr integerValue];
         hashVal = [GITObjectHash objectHashWithString:hashStr];
@@ -88,6 +85,11 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
     [newItems release];
 
     return self;
+}
+
+- (void)dealloc {
+    self.items = nil;
+    [super dealloc];
 }
 
 @end

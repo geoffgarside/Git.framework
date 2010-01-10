@@ -24,7 +24,6 @@
  */
 @interface GITTree : GITObject <GITObject> {
     NSArray *items;
-    NSData *cachedRawData;
 }
 
 @property (copy) NSArray *items;
