@@ -40,6 +40,8 @@
 		F5124D5F10CC5423002B834B /* NSRangeEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D5D10CC5423002B834B /* NSRangeEnd.m */; };
 		F5124D9610CC8A2C002B834B /* GITPackObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F5124D9410CC8A2C002B834B /* GITPackObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5124D9710CC8A2C002B834B /* GITPackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D9510CC8A2C002B834B /* GITPackObject.m */; };
+		F5706D4C10FA1E5600DCA823 /* GITActor.h in Headers */ = {isa = PBXBuildFile; fileRef = F5706D4A10FA1E5600DCA823 /* GITActor.h */; };
+		F5706D4D10FA1E5600DCA823 /* GITActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D4B10FA1E5600DCA823 /* GITActor.m */; };
 		F575BBFB10C12799000458EB /* NSData+SHA1.h in Headers */ = {isa = PBXBuildFile; fileRef = F575BBF910C12799000458EB /* NSData+SHA1.h */; };
 		F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = F575BBFA10C12799000458EB /* NSData+SHA1.m */; };
 		F575BC5310C13214000458EB /* GITPackFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136410A5C415003EFA8F /* GITPackFile.m */; };
@@ -124,6 +126,8 @@
 		F5124D5D10CC5423002B834B /* NSRangeEnd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSRangeEnd.m; path = Source/Category/NSRange/NSRangeEnd.m; sourceTree = "<group>"; };
 		F5124D9410CC8A2C002B834B /* GITPackObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackObject.h; path = Source/GITPackObject.h; sourceTree = "<group>"; };
 		F5124D9510CC8A2C002B834B /* GITPackObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackObject.m; path = Source/GITPackObject.m; sourceTree = "<group>"; };
+		F5706D4A10FA1E5600DCA823 /* GITActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITActor.h; path = Source/GITActor.h; sourceTree = "<group>"; };
+		F5706D4B10FA1E5600DCA823 /* GITActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITActor.m; path = Source/GITActor.m; sourceTree = "<group>"; };
 		F575BBF910C12799000458EB /* NSData+SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SHA1.h"; path = "Source/Category/NSData/NSData+SHA1.h"; sourceTree = "<group>"; };
 		F575BBFA10C12799000458EB /* NSData+SHA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SHA1.m"; path = "Source/Category/NSData/NSData+SHA1.m"; sourceTree = "<group>"; };
 		F575BC6610C136E9000458EB /* GITObjectHash.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITObjectHash.rb; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				F5C7EB1310D53BC000B77179 /* GITObject+Parsing.m */,
 				F5C7EB5610D5C5C500B77179 /* GITTreeItem.h */,
 				F5C7EB5710D5C5C500B77179 /* GITTreeItem.m */,
+				F5706D4A10FA1E5600DCA823 /* GITActor.h */,
+				F5706D4B10FA1E5600DCA823 /* GITActor.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				F5B28C7010D4799E009A933C /* GITBlob.h in Headers */,
 				F5C7EB1410D53BC000B77179 /* GITObject+Parsing.h in Headers */,
 				F5C7EB5810D5C5C500B77179 /* GITTreeItem.h in Headers */,
+				F5706D4C10FA1E5600DCA823 /* GITActor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +650,7 @@
 				F5B28C7110D4799E009A933C /* GITBlob.m in Sources */,
 				F5C7EB1510D53BC000B77179 /* GITObject+Parsing.m in Sources */,
 				F5C7EB5910D5C5C500B77179 /* GITTreeItem.m in Sources */,
+				F5706D4D10FA1E5600DCA823 /* GITActor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
