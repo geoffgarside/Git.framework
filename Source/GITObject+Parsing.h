@@ -16,7 +16,7 @@ typedef struct {
     NSInteger startLen;         //!< 
     NSUInteger matchLen;        //!< Length of the target string or ZERO if unknown
     char endChar;               //!< Character to terminate matching at, must be set, -1 if you don't care
- 								//!< in which case matchLen must be set
+                                //!< in which case matchLen must be set
 } parsingRecord;
 
 /*!

@@ -14,50 +14,50 @@
 @synthesize name, email;
 
 + (NSString *)defaultName {
-	return @"User";
+    return @"User";
 }
 
 + (NSString *)defaultEmail {
-	NSProcessInfo *pi = [NSProcessInfo processInfo];
+    NSProcessInfo *pi = [NSProcessInfo processInfo];
     NSDictionary *env = [pi environment];
-	return [NSString stringWithFormat:@"%@@%@", [env objectForKey:@"USER"], [pi hostName]];
+    return [NSString stringWithFormat:@"%@@%@", [env objectForKey:@"USER"], [pi hostName]];
 }
 
 + (GITActor *)actor {
-	return [[[self alloc] initWithName:[self defaultName] email:[self defaultEmail]] autorelease];
+    return [[[self alloc] initWithName:[self defaultName] email:[self defaultEmail]] autorelease];
 }
 
 + (GITActor *)actorWithName: (NSString *)name {
-	return [[[self alloc] initWithName:name] autorelease];
+    return [[[self alloc] initWithName:name] autorelease];
 }
 
 + (GITActor *)actorWithName: (NSString *)name email: (NSString *)email {
-	return [[[self alloc] initWithName:name email:email] autorelease];
+    return [[[self alloc] initWithName:name email:email] autorelease];
 }
 
 - (id)initWithName: (NSString *)theName {
-	NSString *theEmail = [[self class] defaultEmail];
-	return [self initWithName:theName email:theEmail];
+    NSString *theEmail = [[self class] defaultEmail];
+    return [self initWithName:theName email:theEmail];
 }
 
 - (id)initWithName: (NSString *)theName email: (NSString *)theEmail {
-	if ( ![super init] )
-		return nil;
+    if ( ![super init] )
+        return nil;
 
-	self.name  = theName;
-	self.email = theEmail;
+    self.name  = theName;
+    self.email = theEmail;
 
-	return self;
+    return self;
 }
 
 - (void)dealloc {
-	self.name = nil;
-	self.email = nil;
-	[super dealloc];
+    self.name = nil;
+    self.email = nil;
+    [super dealloc];
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"%@ <%@>", self.name, self.email];
+    return [NSString stringWithFormat:@"%@ <%@>", self.name, self.email];
 }
 
 @end

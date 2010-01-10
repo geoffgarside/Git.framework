@@ -45,37 +45,34 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
 
     NSMutableArray *newItems = [[NSMutableArray alloc] initWithCapacity:1];
 
-	// NSLog(@"Preparing to parse tree data");
     const char *start = [data bytes], *end = start + [data length];
     while ( start < end ) {
-		// NSLog(@"GITTree parsing from start: %d (%p) to end: %d (%p) remaining: %d", start, start, end, end, end - start);
         if ( !(modeStr = [self createStringWithObjectRecord:modeParsingRecord bytes:&start]) ) {
-			GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing mode from tree contents", @"GITObjectErrorParsingFailed"));
-			[newItems release];
-			[self release];
-			return nil;
-		}
+            GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing mode from tree contents", @"GITObjectErrorParsingFailed"));
+            [newItems release];
+            [self release];
+            return nil;
+        }
 
-		// NSLog(@"GITTree parsing from start: %d (%p) to end: %d (%p) remaining: %d", start, start, end, end, end - start);
         if ( !(nameStr = [self createStringWithObjectRecord:nameParsingRecord bytes:&start]) ) {
-			GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing name from tree contents", @"GITObjectErrorParsingFailed"));
-			[modeStr release];
-			[newItems release];
-			[self release];
-			return nil;
-		}
+            GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing name from tree contents", @"GITObjectErrorParsingFailed"));
+            [modeStr release];
+            [newItems release];
+            [self release];
+            return nil;
+        }
 
-		// NSLog(@"GITTree parsing from start: %d (%p) to end: %d (%p) remaining: %d", start, start, end, end, end - start);
+        // NSLog(@"GITTree parsing from start: %d (%p) to end: %d (%p) remaining: %d", start, start, end, end, end - start);
         if ( !(hashStr = [self createStringWithObjectRecord:hashParsingRecord bytes:&start]) ) {
-			GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing sha1 from tree contents", @"GITObjectErrorParsingFailed"));
-			[modeStr release];
-			[nameStr release];
-			[newItems release];
-			[self release];
-			return nil;
-		}
+            GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing sha1 from tree contents", @"GITObjectErrorParsingFailed"));
+            [modeStr release];
+            [nameStr release];
+            [newItems release];
+            [self release];
+            return nil;
+        }
 
-		// NSLog(@"GITTree modeStr: '%@' nameStr: '%@' hashStr: '%@' (%d) detected", modeStr, nameStr, hashStr, [hashStr length]);
+        // NSLog(@"GITTree modeStr: '%@' nameStr: '%@' hashStr: '%@' (%d) detected", modeStr, nameStr, hashStr, [hashStr length]);
 
         modeVal = [modeStr integerValue];
         hashVal = [GITObjectHash objectHashWithString:hashStr];
@@ -88,7 +85,7 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
     }
 
     self.items = [newItems copy];
-	[newItems release];
+    [newItems release];
 
     return self;
 }

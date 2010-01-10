@@ -23,7 +23,7 @@
 }
 
 + (GITDateTime *)dateTimeWithTimestamp: (NSTimeInterval)seconds timeZoneOffset: (NSString *)offset {
-	return [[[self alloc] initWithTimestamp:seconds timeZoneOffset:offset] autorelease];
+    return [[[self alloc] initWithTimestamp:seconds timeZoneOffset:offset] autorelease];
 }
 
 - (id)initWithDate: (NSDate *)theDate {

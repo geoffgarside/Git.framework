@@ -23,7 +23,7 @@ typedef enum {
     GITTreeItemMode mode;   //!< File/directory mode of the item
     NSString  *name;        //!< Name of the file or directory
     GITObject *item;        //!< Item being pointed to
-    GITObjectHash *sha1; 	//!< Hash of the item (tree/blob) referred to
+    GITObjectHash *sha1;    //!< Hash of the item (tree/blob) referred to
 }
 
 @property (retain) GITTree *parent;

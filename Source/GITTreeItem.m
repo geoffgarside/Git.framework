@@ -17,25 +17,25 @@
 @synthesize parent, mode, name, item, sha1;
 
 + (GITTreeItem *)itemInTree: (GITTree *)tree withMode: (GITTreeItemMode)mode name: (NSString *)name sha1: (GITObjectHash *)sha1 {
-	return [[[self alloc] initInTree:tree withMode:mode name:name sha1:sha1] autorelease];
+    return [[[self alloc] initInTree:tree withMode:mode name:name sha1:sha1] autorelease];
 }
 
 - (id)initInTree: (GITTree *)tree withMode: (GITTreeItemMode)theMode name: (NSString *)theName sha1: (GITObjectHash *)theSha1 {
-	if ( ![super init] )
-		return nil;
+    if ( ![super init] )
+        return nil;
 
-	self.parent = tree;
-	self.mode = theMode;
-	self.name = theName;
-	self.sha1 = theSha1;
+    self.parent = tree;
+    self.mode = theMode;
+    self.name = theName;
+    self.sha1 = theSha1;
 
-	return self;
+    return self;
 }
 
 // - (GITObject *)item {
-// 	if ( !item )
-// 		// self.item = [[[self parent] repo] object
-// 	return item;
+//  if ( !item )
+//      // self.item = [[[self parent] repo] object
+//  return item;
 // }
 
 @end

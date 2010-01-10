@@ -33,7 +33,7 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
     if ( record.patternLen > 0 && memcmp(buf, record.startPattern, record.patternLen) )
         return NO;
 
-    const char *start;												// Initialise start and determine start position
+    const char *start;                                              // Initialise start and determine start position
     if ( record.startLen > 0 ) { start = buf + record.startLen; }   // offset the buffer by the indicated start position if > 0
     else { start = buf + record.patternLen; }                       // otherwise offset by the pattern length
 
@@ -45,7 +45,7 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
 
         if ( record.startLen < 0 ) {                                // If negative startLen, move the start pointer
             NSUInteger len = end - start;                           // Work out how far from the start the end is
-            start += len + record.startLen;							// Move the start to .startLen bytes before the end
+            start += len + record.startLen;                         // Move the start to .startLen bytes before the end
         }
 
         --end;                                                      // end should point to the delimiting char
@@ -67,8 +67,8 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
     if ( matchLength != NULL )
         *matchLength = matchLen;
     
-	*buffer = end;
-	if ( record.endChar != -1 )
-	 	*buffer += 1; // skip over the delimiting char
+    *buffer = end;
+    if ( record.endChar != -1 )
+        *buffer += 1; // skip over the delimiting char
     return YES;
 }
