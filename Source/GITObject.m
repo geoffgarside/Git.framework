@@ -76,4 +76,14 @@
     return nil;
 }
 
+- (void)dealloc {
+    self.sha1 = nil;
+    self.repo = nil;
+    [super dealloc];
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ <%@>", [self className], [self.sha1 unpackedString]];
+}
+
 @end
