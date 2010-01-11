@@ -90,6 +90,8 @@
 		F5B28C6D10D4798F009A933C /* GITTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C6B10D4798F009A933C /* GITTree.m */; };
 		F5B28C7010D4799E009A933C /* GITBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B28C6E10D4799E009A933C /* GITBlob.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5B28C7110D4799E009A933C /* GITBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C6F10D4799E009A933C /* GITBlob.m */; };
+		F5B28C7410D479AE009A933C /* GITTag.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B28C7210D479AE009A933C /* GITTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5B28C7510D479AE009A933C /* GITTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C7310D479AE009A933C /* GITTag.m */; };
 		F5BBC1A61063753400EF21A8 /* GITRefResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1A41063753400EF21A8 /* GITRefResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5BBC1A71063753400EF21A8 /* GITRefResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BBC1A51063753400EF21A8 /* GITRefResolver.m */; };
 		F5BBC1DE10659C3100EF21A8 /* GITRef.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1DC10659C3100EF21A8 /* GITRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -196,6 +198,8 @@
 		F5B28C6B10D4798F009A933C /* GITTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITTree.m; path = Source/GITTree.m; sourceTree = "<group>"; };
 		F5B28C6E10D4799E009A933C /* GITBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITBlob.h; path = Source/GITBlob.h; sourceTree = "<group>"; };
 		F5B28C6F10D4799E009A933C /* GITBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITBlob.m; path = Source/GITBlob.m; sourceTree = "<group>"; };
+		F5B28C7210D479AE009A933C /* GITTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITTag.h; path = Source/GITTag.h; sourceTree = "<group>"; };
+		F5B28C7310D479AE009A933C /* GITTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITTag.m; path = Source/GITTag.m; sourceTree = "<group>"; };
 		F5BBC1921062F02500EF21A8 /* repos.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = repos.dmg; sourceTree = "<group>"; };
 		F5BBC1931062F02500EF21A8 /* TestHelper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TestHelper.rb; sourceTree = "<group>"; };
 		F5BBC1951062F02500EF21A8 /* GITRepo.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRepo.rb; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				F5B28C6B10D4798F009A933C /* GITTree.m */,
 				F5B28C6E10D4799E009A933C /* GITBlob.h */,
 				F5B28C6F10D4799E009A933C /* GITBlob.m */,
+				F5B28C7210D479AE009A933C /* GITTag.h */,
+				F5B28C7310D479AE009A933C /* GITTag.m */,
 				F5C7EB1210D53BC000B77179 /* GITObject+Parsing.h */,
 				F5C7EB1310D53BC000B77179 /* GITObject+Parsing.m */,
 				F5C7EB5610D5C5C500B77179 /* GITTreeItem.h */,
@@ -534,6 +540,7 @@
 				F5B28C6810D47980009A933C /* GITCommit.h in Headers */,
 				F5B28C6C10D4798F009A933C /* GITTree.h in Headers */,
 				F5B28C7010D4799E009A933C /* GITBlob.h in Headers */,
+				F5B28C7410D479AE009A933C /* GITTag.h in Headers */,
 				F5C7EB1410D53BC000B77179 /* GITObject+Parsing.h in Headers */,
 				F5C7EB5810D5C5C500B77179 /* GITTreeItem.h in Headers */,
 				F5706D4C10FA1E5600DCA823 /* GITActor.h in Headers */,
@@ -696,6 +703,7 @@
 				F5B28C6910D47980009A933C /* GITCommit.m in Sources */,
 				F5B28C6D10D4798F009A933C /* GITTree.m in Sources */,
 				F5B28C7110D4799E009A933C /* GITBlob.m in Sources */,
+				F5B28C7510D479AE009A933C /* GITTag.m in Sources */,
 				F5C7EB1510D53BC000B77179 /* GITObject+Parsing.m in Sources */,
 				F5C7EB5910D5C5C500B77179 /* GITTreeItem.m in Sources */,
 				F5706D4D10FA1E5600DCA823 /* GITActor.m in Sources */,
