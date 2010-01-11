@@ -124,7 +124,7 @@ typedef enum {
  * purpose is to initialise the fields common to all of the GITObject children.
  *
  * \param type Type of object
- * \param object Hash Hash of the object
+ * \param objectHash Hash of the object
  * \param repo Repository the object is a member of
  * \return object initialised with the provided values
  */
