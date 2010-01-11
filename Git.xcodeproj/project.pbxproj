@@ -46,6 +46,8 @@
 		F5706D5B10FA28F600DCA823 /* GITDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D5910FA28F600DCA823 /* GITDateTime.m */; };
 		F5706D6410FA319300DCA823 /* NSTimeZone+Offset.h in Headers */ = {isa = PBXBuildFile; fileRef = F5706D6210FA319300DCA823 /* NSTimeZone+Offset.h */; };
 		F5706D6510FA319300DCA823 /* NSTimeZone+Offset.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D6310FA319300DCA823 /* NSTimeZone+Offset.m */; };
+		F5706DA210FA7C2C00DCA823 /* GITActor+Parsing.h in Headers */ = {isa = PBXBuildFile; fileRef = F5706DA010FA7C2C00DCA823 /* GITActor+Parsing.h */; };
+		F5706DA310FA7C2C00DCA823 /* GITActor+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706DA110FA7C2C00DCA823 /* GITActor+Parsing.m */; };
 		F575BBFB10C12799000458EB /* NSData+SHA1.h in Headers */ = {isa = PBXBuildFile; fileRef = F575BBF910C12799000458EB /* NSData+SHA1.h */; };
 		F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = F575BBFA10C12799000458EB /* NSData+SHA1.m */; };
 		F575BC5310C13214000458EB /* GITPackFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136410A5C415003EFA8F /* GITPackFile.m */; };
@@ -82,6 +84,8 @@
 		F5AA6AC71078C864001110FE /* GITPackedRefsEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6AC51078C864001110FE /* GITPackedRefsEnumerator.m */; };
 		F5AC4DEF106C501D0083212A /* NSData+Searching.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AC4DED106C501D0083212A /* NSData+Searching.h */; };
 		F5AC4DF0106C501D0083212A /* NSData+Searching.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AC4DEE106C501D0083212A /* NSData+Searching.m */; };
+		F5B28C6810D47980009A933C /* GITCommit.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B28C6610D47980009A933C /* GITCommit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5B28C6910D47980009A933C /* GITCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C6710D47980009A933C /* GITCommit.m */; };
 		F5B28C6C10D4798F009A933C /* GITTree.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B28C6A10D4798F009A933C /* GITTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5B28C6D10D4798F009A933C /* GITTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C6B10D4798F009A933C /* GITTree.m */; };
 		F5B28C7010D4799E009A933C /* GITBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B28C6E10D4799E009A933C /* GITBlob.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -140,6 +144,9 @@
 		F5706D8510FA4E4B00DCA823 /* GITBlob.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITBlob.rb; sourceTree = "<group>"; };
 		F5706D8610FA4E4B00DCA823 /* GITDateTime.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITDateTime.rb; sourceTree = "<group>"; };
 		F5706D8710FA4E4B00DCA823 /* GITTree.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITTree.rb; sourceTree = "<group>"; };
+		F5706DA010FA7C2C00DCA823 /* GITActor+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GITActor+Parsing.h"; path = "Source/GITActor+Parsing.h"; sourceTree = "<group>"; };
+		F5706DA110FA7C2C00DCA823 /* GITActor+Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GITActor+Parsing.m"; path = "Source/GITActor+Parsing.m"; sourceTree = "<group>"; };
+		F5706DB010FAA25800DCA823 /* GITCommit.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITCommit.rb; sourceTree = "<group>"; };
 		F575BBF910C12799000458EB /* NSData+SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SHA1.h"; path = "Source/Category/NSData/NSData+SHA1.h"; sourceTree = "<group>"; };
 		F575BBFA10C12799000458EB /* NSData+SHA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SHA1.m"; path = "Source/Category/NSData/NSData+SHA1.m"; sourceTree = "<group>"; };
 		F575BC6610C136E9000458EB /* GITObjectHash.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITObjectHash.rb; sourceTree = "<group>"; };
@@ -183,6 +190,8 @@
 		F5B28C6310D1CAE1009A933C /* GITPackFile.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackFile.rb; sourceTree = "<group>"; };
 		F5B28C6410D1CAE1009A933C /* GITPackObject.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackObject.rb; sourceTree = "<group>"; };
 		F5B28C6510D1CAE1009A933C /* GITPackReverseIndex.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackReverseIndex.rb; sourceTree = "<group>"; };
+		F5B28C6610D47980009A933C /* GITCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITCommit.h; path = Source/GITCommit.h; sourceTree = "<group>"; };
+		F5B28C6710D47980009A933C /* GITCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITCommit.m; path = Source/GITCommit.m; sourceTree = "<group>"; };
 		F5B28C6A10D4798F009A933C /* GITTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITTree.h; path = Source/GITTree.h; sourceTree = "<group>"; };
 		F5B28C6B10D4798F009A933C /* GITTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITTree.m; path = Source/GITTree.m; sourceTree = "<group>"; };
 		F5B28C6E10D4799E009A933C /* GITBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITBlob.h; path = Source/GITBlob.h; sourceTree = "<group>"; };
@@ -292,6 +301,8 @@
 				F5124D9510CC8A2C002B834B /* GITPackObject.m */,
 				F57EAA2010CDDB2500EE2103 /* GITObject.h */,
 				F57EAA2110CDDB2500EE2103 /* GITObject.m */,
+				F5B28C6610D47980009A933C /* GITCommit.h */,
+				F5B28C6710D47980009A933C /* GITCommit.m */,
 				F5B28C6A10D4798F009A933C /* GITTree.h */,
 				F5B28C6B10D4798F009A933C /* GITTree.m */,
 				F5B28C6E10D4799E009A933C /* GITBlob.h */,
@@ -304,6 +315,8 @@
 				F5706D4B10FA1E5600DCA823 /* GITActor.m */,
 				F5706D5810FA28F600DCA823 /* GITDateTime.h */,
 				F5706D5910FA28F600DCA823 /* GITDateTime.m */,
+				F5706DA010FA7C2C00DCA823 /* GITActor+Parsing.h */,
+				F5706DA110FA7C2C00DCA823 /* GITActor+Parsing.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -434,6 +447,7 @@
 		F5BBC1941062F02500EF21A8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				F5706DB010FAA25800DCA823 /* GITCommit.rb */,
 				F5706D8410FA4E4B00DCA823 /* GITActor.rb */,
 				F5706D8510FA4E4B00DCA823 /* GITBlob.rb */,
 				F5706D8610FA4E4B00DCA823 /* GITDateTime.rb */,
@@ -517,6 +531,7 @@
 				F57EAA2210CDDB2500EE2103 /* GITObject.h in Headers */,
 				F57EAA3D10CDDFAA00EE2103 /* NSData+Compression.h in Headers */,
 				F57EAA6710CDF45300EE2103 /* NSData+DeltaPatching.h in Headers */,
+				F5B28C6810D47980009A933C /* GITCommit.h in Headers */,
 				F5B28C6C10D4798F009A933C /* GITTree.h in Headers */,
 				F5B28C7010D4799E009A933C /* GITBlob.h in Headers */,
 				F5C7EB1410D53BC000B77179 /* GITObject+Parsing.h in Headers */,
@@ -524,6 +539,7 @@
 				F5706D4C10FA1E5600DCA823 /* GITActor.h in Headers */,
 				F5706D5A10FA28F600DCA823 /* GITDateTime.h in Headers */,
 				F5706D6410FA319300DCA823 /* NSTimeZone+Offset.h in Headers */,
+				F5706DA210FA7C2C00DCA823 /* GITActor+Parsing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +693,7 @@
 				F57EAA2310CDDB2500EE2103 /* GITObject.m in Sources */,
 				F57EAA3E10CDDFAA00EE2103 /* NSData+Compression.m in Sources */,
 				F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */,
+				F5B28C6910D47980009A933C /* GITCommit.m in Sources */,
 				F5B28C6D10D4798F009A933C /* GITTree.m in Sources */,
 				F5B28C7110D4799E009A933C /* GITBlob.m in Sources */,
 				F5C7EB1510D53BC000B77179 /* GITObject+Parsing.m in Sources */,
@@ -684,6 +701,7 @@
 				F5706D4D10FA1E5600DCA823 /* GITActor.m in Sources */,
 				F5706D5B10FA28F600DCA823 /* GITDateTime.m in Sources */,
 				F5706D6510FA319300DCA823 /* NSTimeZone+Offset.m in Sources */,
+				F5706DA310FA7C2C00DCA823 /* GITActor+Parsing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
