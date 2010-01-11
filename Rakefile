@@ -93,8 +93,10 @@ pre_commit = <<EOF
 
 found = []
 `git diff --staged --name-only`.split("\\n").each do |srcfile|
+  next unless File.file?(srcfile)
   next if srcfile =~ /project\.pbxproj$/
   next if srcfile =~ /\.dmg$/
+  next if srcfile =~ /^\.git/
   line_number = 0
   File.readlines(srcfile).each do |line|
     line_number += 1
