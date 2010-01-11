@@ -1,3 +1,6 @@
 [submodule "Website"]
 	path = Website
 	url = git@github.com:geoffgarside/Git.framework.git
+[submodule "Documentation/doxyclean"]
+	path = Documentation/doxyclean
+	url = git://github.com/geoffgarside/doxyclean.git

@@ -27,14 +27,14 @@ task :test do
   sh 'xcodebuild -target Tests -configuration Debug'
 end
 
-desc "Generates the documentation for the framework (Requires Doxygen and appledoc)"
+desc "Generates the documentation for the framework (Requires Doxygen)"
 task :documentation => ['documentation:release']
 namespace :documentation do
-  desc "Generates the debug version of the documentation for the framework (Requires Doxygen and appledoc)"
+  desc "Generates the debug version of the documentation for the framework (Requires Doxygen)"
   task :debug do
     sh 'xcodebuild -target Documentation -configuration Debug'
   end
-  desc "Generates the release version of the documentation for the framework (Requires Doxygen and appledoc)"
+  desc "Generates the release version of the documentation for the framework (Requires Doxygen)"
   task :release do
     sh 'xcodebuild -target Documentation -configuration Release'
   end
@@ -43,7 +43,7 @@ end
 namespace :website do
   desc "Update the website data from the generated documentation"
   task :update => [:documentation] do
-    sh 'rsync -tav --delete --exclude .git Documentation/cxhtml/ Website/'
+    sh 'rsync -tav --delete --exclude .git Documentation/html/ Website/'
   end
   desc "Commit the updated website data"
   task :commit => :update do
