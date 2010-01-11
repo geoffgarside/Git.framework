@@ -9,6 +9,7 @@
 <constant name='OBErrorDomain' type='@'/>
 <constant name='OBFileNameAndNumberErrorKey' type='@'/>
 <constant name='OBUserCancelledActionErrorKey' type='@'/>
+<enum name='GITObjectErrorParsingFailed' value='16'/>
 <enum name='GITObjectTypeBlob' value='3'/>
 <enum name='GITObjectTypeCommit' value='1'/>
 <enum name='GITObjectTypeTag' value='4'/>
@@ -30,6 +31,11 @@
 <enum name='GITRepoErrorRootDoesNotExist' value='0'/>
 <enum name='GITRepoErrorRootInsane' value='2'/>
 <enum name='GITRepoErrorRootNotAccessible' value='1'/>
+<enum name='GITTreeItemModeDir' value='16384'/>
+<enum name='GITTreeItemModeFile' value='32768'/>
+<enum name='GITTreeItemModeLink' value='40960'/>
+<enum name='GITTreeItemModeMod' value='57344'/>
+<enum name='GITTreeItemModeType' value='61440'/>
 <enum name='OBErrorChained' value='1'/>
 <function name='GITMakeFanoutEntry'>
 <arg type64='Q' type='I'/>
@@ -64,4 +70,9 @@
 <retval type='B'/>
 </method>
 </class>
+<informal_protocol name='NSObject'>
+<method type='@20@0:4@8@12^@16' selector='initFromData:repo:error:'/>
+<method type='i8@0:4' selector='type' class_method='true'/>
+<method type='@8@0:4' selector='typeName' class_method='true'/>
+</informal_protocol>
 </signatures>
