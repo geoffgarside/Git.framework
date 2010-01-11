@@ -6,3 +6,4 @@
 *.TM_Completions.txt.gz
 build/
 Documentation/
+!Documentation/doxyclean
