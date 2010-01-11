@@ -1,251 +1,281 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 STRICT//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html><html>
 <head>
-  <title>GITRepo class reference</title>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/screen.css" />
-  <meta name="generator" content="appledoc" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITRepo Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
 </head>
 <body>
-  <div id="mainContainer">
-    <h1>GITRepo class reference</h1>
-    <table summary="Basic information" id="classInfo">
-      <tr class="alt">
-        <td><label id="classDeclaration">Inherits from</label></td>
-        <td>NSObject</td>
-      </tr>
-      <tr>
-        <td><label id="classDeclaration">Declared in</label></td>
-        <td>GITRepo.h</td>
-      </tr>
-    </table>
-      <h2>Overview</h2>
-<p>The <a href="">GITRepo</a> class declares the programmatic interface to the repository. </p>
-      <h2>Tasks</h2>
-      <h3>Properties</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#root>root</a></code>
-            <span class="specialType">property</span>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#bare>bare</a></code>
-            <span class="specialType">property</span>
-          </span>
-        </li>
-      </ul>
-      <h3>Creating and Initialising Repositories</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#repo>+ repo</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#repoWithRoot:>+ repoWithRoot:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#repoWithRoot:error:>+ repoWithRoot:error:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initWithRoot:>- initWithRoot:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initWithRoot:error:>- initWithRoot:error:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Instance Methods</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#branches>- branches</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#remotes>- remotes</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#tags>- tags</a></code>
-          </span>
-        </li>
-      </ul>
-      <h2>Class methods</h2>
-      <h3><a name="repo"></a>repo</h3>
-      <code class="methodDeclaration">+ (GITRepo *)repo</code>
-      <h5>Return value</h5>
-<p>repository initialised at the current directory, or nil if an error occurred </p>
-      <h5>Discussion</h5>
-<p>Returns a repository using the current working directory as the repository root￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#repoWithRoot:">+ repoWithRoot:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h3><a name="repoWithRoot:"></a>repoWithRoot:</h3>
-      <code class="methodDeclaration">+ (GITRepo *)repoWithRoot:(NSString *)        <span class="parameter">theRoot</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRoot</dt>
-        <dd><p>Path to the repository root </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>repository initialised at the specified path, or nil if an error occurred </p>
-      <h5>Discussion</h5>
-<p>Returns a repository with theRoot as the repository root￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#repoWithRoot:error:">+ repoWithRoot:error:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h3><a name="repoWithRoot:error:"></a>repoWithRoot:error:</h3>
-      <code class="methodDeclaration">+ (GITRepo *)repoWithRoot:(NSString *)        <span class="parameter">theRoot</span>
- error:(NSError **)        <span class="parameter">theError</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRoot</dt>
-        <dd><p>Path to the repository root </p>
-</dd>
-        <dt>theError</dt>
-        <dd><p>NSError describing any errors which occurred during initialisation </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>repository initialised at the specified path, or nil if an error occurred </p>
-      <h5>Discussion</h5>
-<p>Returns a repository with theRoot as the repository root￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithRoot:error:">- initWithRoot:error:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h2>Instance methods</h2>
-      <h3><a name="initWithRoot:"></a>initWithRoot:</h3>
-      <code class="methodDeclaration">- (id)initWithRoot:(NSString *)        <span class="parameter">theRoot</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRoot</dt>
-        <dd><p>Path to the repository root </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>repository initialised at the specified path, or nil if an error occurred </p>
-      <h5>Discussion</h5>
-<p>Returns a repository initialised with the root specified by <em>theRoot￼</em>.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithRoot:error:">- initWithRoot:error:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h3><a name="initWithRoot:error:"></a>initWithRoot:error:</h3>
-      <code class="methodDeclaration">- (id)initWithRoot:(NSString *)        <span class="parameter">theRoot</span>
- error:(NSError **)        <span class="parameter">theError</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRoot</dt>
-        <dd><p>Path to the repository root </p>
-</dd>
-        <dt>theError</dt>
-        <dd><p>NSError describing the error which occurred during initialisation </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>repository initialised at the specified path, or nil if an error occurred </p>
-      <h5>Discussion</h5>
-<p>Returns a repository initialised with the root specified by <em>theRoot￼</em>.</p>
-<p>If the path specified by <em>theRoot</em> ends in ".git" then the repository is assumed to be a bare repository, if it doesn't then ".git" is appended to <em>theRoot</em> as a path component. The directory at the path specified is subjected to the following tests</p>
-<p><ul>
-<li><p>the path specified exists and is a directory </p>
-</li>
-<li><p>the path specified is both readable and writable by the current user </p>
-</li>
-<li><p>the path looks like a git directory, ie has a certain structure and files</p>
-</li>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITRepo Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="properties">Properties</option>
+<option value="root">    root</option>
+<option value="bare">    bare</option>
+<option value="classMethods">Class Methods</option>
+<option value="repo">    + repo</option>
+<option value="repoWithRoot:">    + repoWithRoot:</option>
+<option value="repoWithRoot:error:">    + repoWithRoot:error:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithRoot:">    - initWithRoot:</option>
+<option value="initWithRoot:error:">    - initWithRoot:error:</option>
+<option value="branches">    - branches</option>
+<option value="remotes">    - remotes</option>
+<option value="tags">    - tags</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Properties">Properties</a></li>
+<li><a href="#Creating_and_Initialising_Repositories">Creating and Initialising Repositories</a></li>
+<li><a href="#Instance_Methods">Instance Methods</a></li>
 </ul>
-
-provided the path specified passes these tests then the repository object is returned. If any fail then nil is returned and the NSError is filled with details.</p>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h3><a name="branches"></a>branches</h3>
-      <code class="methodDeclaration">- (NSArray *)branches</code>
-      <h5>Return value</h5>
-<p>array of branches from the receiver </p>
-      <h5>Discussion</h5>
-<p>Returns an array containing branches from the receiver￼.</p>
-<p>The <a href="GITBranch.html">GITBranch</a> objects in the array are created from the array of <a href="GITRef.html">GITRef</a> objects returned by <a href="GITRefResolver.html#headRefs">-[GITRefResolver headRefs]</a> processing of <code>refs/heads</code>.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="GITRefResolver.html">GITRefResolver</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h3><a name="remotes"></a>remotes</h3>
-      <code class="methodDeclaration">- (NSArray *)remotes</code>
-      <h5>Return value</h5>
-<p>array of remotes from the receiver </p>
-      <h5>Discussion</h5>
-<p>Returns an array containing remotes from the receiver￼.</p>
-<p>The GITRemote objects in the array are created from the array of <a href="GITRef.html">GITRef</a> objects returned by <a href="GITRefResolver.html#remoteRefs">-[GITRefResolver remoteRefs]</a> processing of <code>refs/remotes</code>.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="GITRefResolver.html">GITRefResolver</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h3><a name="tags"></a>tags</h3>
-      <code class="methodDeclaration">- (NSArray *)tags</code>
-      <h5>Return value</h5>
-<p>array of tags from the receiver </p>
-      <h5>Discussion</h5>
-<p>Returns an array containing tags from the receiver￼.</p>
-<p>The GITTag objects in the array are created from the array of <a href="GITRef.html">GITRef</a> objects returned by <a href="GITRefResolver.html#tagRefs">-[GITRefResolver tagRefs]</a> processing of <code>refs/tags</code>.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="GITRefResolver.html">GITRefResolver</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h2>Properties</h2>
-      <h3><a name="root"></a>root</h3>
-      <code class="methodDeclaration">@property NSString *root</code>
-      <h5>Discussion</h5>
-<p>Path to repository root </p>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-      <h3><a name="bare"></a>bare</h3>
-      <code class="methodDeclaration">@property BOOL bare</code>
-      <h5>Discussion</h5>
-<p>Flag indicating if repository is bare or not.</p>
-<p>Accessor for this property is <code>-isBare</code></p>
-      <h5>Declared in</h5>
-      <code>GITRepo.h</code>
-    <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-11)
-      <br />
-      Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
-    </p>
-  </div>
+</li>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;">
+<li><a href="#root">root</a></li>
+<li><a href="#bare">bare</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;">
+<li><a href="#repo">repo</a></li>
+<li><a href="#repoWithRoot:">repoWithRoot:</a></li>
+<li><a href="#repoWithRoot:error:">repoWithRoot:error:</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithRoot:">initWithRoot:</a></li>
+<li><a href="#initWithRoot:error:">initWithRoot:error:</a></li>
+<li><a href="#branches">branches</a></li>
+<li><a href="#remotes">remotes</a></li>
+<li><a href="#tags">tags</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITRepo Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITRepo.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p>The <code>GITRepo</code> class declares the programmatic interface to the repository. </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Properties">
+<h3>Properties</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#root">root</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#bare">bare</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Creating_and_Initialising_Repositories">
+<h3>Creating and Initialising Repositories</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#repo">+ repo</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#repoWithRoot:">+ repoWithRoot:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#repoWithRoot:error:">+ repoWithRoot:error:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithRoot:">- initWithRoot:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithRoot:error:">- initWithRoot:error:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Instance_Methods">
+<h3>Instance Methods</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#branches">- branches</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#remotes">- remotes</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#tags">- tags</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+  </ul>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="root"><h3>root</h3>
+<code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *root</code><h5>Discussion</h5>
+            <p>Path to repository root </p>
+          <h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="bare"><h3>bare</h3>
+<code class="methodDeclaration">@property BOOL bare</code><h5>Discussion</h5>
+            <p>Flag indicating if repository is bare or not.</p>
+            <p>Accessor for this property is <code>-isBare</code></p>
+          <h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="repo"><h3>repo</h3>
+<code class="methodDeclaration">+ (<code>GITRepo</code> *)repo</code><h5>Return Value</h5>
+          <p>repository initialised at the current directory, or nil if an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Returns a repository using the current working directory as the repository root￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#repoWithRoot:">
+            + repoWithRoot:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="repoWithRoot:"><h3>repoWithRoot:</h3>
+<code class="methodDeclaration">+ (GITRepo *)repoWithRoot:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theRoot</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRoot</dt>
+<dd>
+              <p>Path to the repository root </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>repository initialised at the specified path, or nil if an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Returns a repository with theRoot as the repository root￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#repoWithRoot:error:">
+            + repoWithRoot:error:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="repoWithRoot:error:"><h3>repoWithRoot:error:</h3>
+<code class="methodDeclaration">+ (GITRepo *)repoWithRoot:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theRoot</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">theError</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRoot</dt>
+<dd>
+              <p>Path to the repository root </p>
+            </dd>
+          <dt>theError</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any errors which occurred during initialisation </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>repository initialised at the specified path, or nil if an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Returns a repository with theRoot as the repository root￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithRoot:error:">
+            - initWithRoot:error:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithRoot:"><h3>initWithRoot:</h3>
+<code class="methodDeclaration">- (id)initWithRoot:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theRoot</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRoot</dt>
+<dd>
+              <p>Path to the repository root </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>repository initialised at the specified path, or nil if an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Returns a repository initialised with the root specified by theRoot￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithRoot:error:">
+            - initWithRoot:error:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="initWithRoot:error:"><h3>initWithRoot:error:</h3>
+<code class="methodDeclaration">- (id)initWithRoot:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theRoot</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">theError</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRoot</dt>
+<dd>
+              <p>Path to the repository root </p>
+            </dd>
+          <dt>theError</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error which occurred during initialisation </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>repository initialised at the specified path, or nil if an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Returns a repository initialised with the root specified by theRoot￼.</p>
+            <p>If the path specified by theRoot ends in ".git" then the repository is assumed to be a bare repository, if it doesn't then ".git" is appended to theRoot as a path component. The directory at the path specified is subjected to the following tests</p>
+            <p><ul>
+<li><p>the path specified exists and is a directory </p></li>
+<li><p>the path specified is both readable and writable by the current user </p></li>
+<li><p>the path looks like a git directory, ie has a certain structure and files</p></li>
+</ul>
+provided the path specified passes these tests then the repository object is returned. If any fail then nil is returned and the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> is filled with details.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="branches"><h3>branches</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)branches</code><h5>Return Value</h5>
+          <p>array of branches from the receiver </p>
+        <h5>Discussion</h5>
+            <p>Returns an array containing branches from the receiver￼.</p>
+            <p>The GITBranch objects in the array are created from the array of GITRef objects returned by headRefs (<code><a href="../Classes/GITRefResolver.html">GITRefResolver</a></code>) processing of <code>refs/heads</code>.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#GITRefResolver">
+            <code><a href="../Classes/GITRefResolver.html">GITRefResolver</a></code>
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="remotes"><h3>remotes</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)remotes</code><h5>Return Value</h5>
+          <p>array of remotes from the receiver </p>
+        <h5>Discussion</h5>
+            <p>Returns an array containing remotes from the receiver￼.</p>
+            <p>The GITRemote objects in the array are created from the array of GITRef objects returned by remoteRefs (<code><a href="../Classes/GITRefResolver.html">GITRefResolver</a></code>) processing of <code>refs/remotes</code>.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#GITRefResolver">
+            <code><a href="../Classes/GITRefResolver.html">GITRefResolver</a></code>
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="tags"><h3>tags</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)tags</code><h5>Return Value</h5>
+          <p>array of tags from the receiver </p>
+        <h5>Discussion</h5>
+            <p>Returns an array containing tags from the receiver￼.</p>
+            <p>The GITTag objects in the array are created from the array of GITRef objects returned by tagRefs (<code><a href="../Classes/GITRefResolver.html">GITRefResolver</a></code>) processing of <code>refs/tags</code>.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#GITRefResolver">
+            <code><a href="../Classes/GITRefResolver.html">GITRefResolver</a></code>
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITRepo Class Reference</a></li>
+</ul></footer>
 </body>
 </html>

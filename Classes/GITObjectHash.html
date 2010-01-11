@@ -1,438 +1,486 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 STRICT//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html><html>
 <head>
-  <title>GITObjectHash class reference</title>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/screen.css" />
-  <meta name="generator" content="appledoc" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITObjectHash Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
 </head>
 <body>
-  <div id="mainContainer">
-    <h1>GITObjectHash class reference</h1>
-    <table summary="Basic information" id="classInfo">
-      <tr class="alt">
-        <td><label id="classDeclaration">Inherits from</label></td>
-        <td>NSObject</td>
-      </tr>
-      <tr>
-        <td><label id="classDeclaration">Declared in</label></td>
-        <td>GITObjectHash.h</td>
-      </tr>
-    </table>
-      <h2>Overview</h2>
-<p>The <code><a href="">GITObjectHash</a></code> class provides methods for packing and unpacking SHA1 hashes in both NSString and <a href="#NSData">NSData</a> forms. <code><a href="">GITObjectHash</a></code> objects provide </p>
-      <h2>Tasks</h2>
-      <h3>Packing and Unpacking SHA1 Hashes</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#unpackedStringFromString:>+ unpackedStringFromString:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#unpackedStringFromData:>+ unpackedStringFromData:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#packedStringFromString:>+ packedStringFromString:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#unpackedDataFromData:>+ unpackedDataFromData:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#packedDataFromData:>+ packedDataFromData:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#unpackedDataFromBytes:length:>+ unpackedDataFromBytes:length:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#packedDataFromBytes:length:>+ packedDataFromBytes:length:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Creating and Initialising Object Hashes</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#objectHashWithData:>+ objectHashWithData:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#objectHashWithString:>+ objectHashWithString:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#objectHashWithObjectData:>+ objectHashWithObjectData:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initWithData:>- initWithData:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initWithString:>- initWithString:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initWithObjectData:>- initWithObjectData:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Getting Packed and Unpacked Forms</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#unpackedString>- unpackedString</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#packedString>- packedString</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#unpackedData>- unpackedData</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#packedData>- packedData</a></code>
-          </span>
-        </li>
-      </ul>
-      <h2>Class methods</h2>
-      <h3><a name="unpackedStringFromString:"></a>unpackedStringFromString:</h3>
-      <code class="methodDeclaration">+ (NSString *)unpackedStringFromString:(NSString *)        <span class="parameter">str</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>str</dt>
-        <dd><p>NSString containing the packed SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>NSString containing the unpacked SHA1 </p>
-      <h5>Discussion</h5>
-<p>Returns a string containing the unpacked SHA1 of the packed string￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#packedStringFromString:">+ packedStringFromString:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="unpackedStringFromData:"></a>unpackedStringFromData:</h3>
-      <code class="methodDeclaration">+ (NSString *)unpackedStringFromData:(NSData *)        <span class="parameter">data</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>data</dt>
-        <dd><p>Data containing the packed SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>NSString containing the unpacked SHA1 </p>
-      <h5>Discussion</h5>
-<p>Returns a string containing the unpacked SHA1 of the packed data.</p>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="packedStringFromString:"></a>packedStringFromString:</h3>
-      <code class="methodDeclaration">+ (NSString *)packedStringFromString:(NSString *)        <span class="parameter">str</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>str</dt>
-        <dd><p>NSString containing the unpacked SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>NSString containing the packed SHA1 </p>
-      <h5>Discussion</h5>
-<p>Returns a string containing the packed SHA1 of the unpacked string￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#unpackedStringFromString:">+ unpackedStringFromString:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="unpackedDataFromData:"></a>unpackedDataFromData:</h3>
-      <code class="methodDeclaration">+ (NSData *)unpackedDataFromData:(NSData *)        <span class="parameter">data</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>data</dt>
-        <dd><p><a href="#NSData">NSData</a> object containing packed SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p><a href="#NSData">NSData</a> object containing unpacked SHA1 </p>
-      <h5>Discussion</h5>
-<p>Returns an <a href="#NSData">NSData</a> object containing the unpacked SHA1 of the packed data￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#packedDataFromData:">+ packedDataFromData:</a></code></li>
-        <li><code><a href="#unpackedDataFromBytes:length:">+ unpackedDataFromBytes:length:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="packedDataFromData:"></a>packedDataFromData:</h3>
-      <code class="methodDeclaration">+ (NSData *)packedDataFromData:(NSData *)        <span class="parameter">data</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>data</dt>
-        <dd><p><a href="#NSData">NSData</a> object containing unpacked SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p><a href="#NSData">NSData</a> object containing packed SHA1 </p>
-      <h5>Discussion</h5>
-<p>Returns an <a href="#NSData">NSData</a> object containing the packed SHA1 of the unpacked data￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#unpackedDataFromData:">+ unpackedDataFromData:</a></code></li>
-        <li><code><a href="#packedDataFromBytes:length:">+ packedDataFromBytes:length:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="unpackedDataFromBytes:length:"></a>unpackedDataFromBytes:length:</h3>
-      <code class="methodDeclaration">+ (NSData *)unpackedDataFromBytes:(uint8_t *)        <span class="parameter">bytes</span>
- length:(NSUInteger)        <span class="parameter">length</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>bytes</dt>
-        <dd><p>Byte array containing the packed SHA1 </p>
-</dd>
-        <dt>length</dt>
-        <dd><p>Size of the byte array </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p><a href="#NSData">NSData</a> object containing unpacked SHA1 </p>
-      <h5>Discussion</h5>
-<p>Returns an <a href="#NSData">NSData</a> object containing the unpacked SHA1 of the packed bytes￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#packedDataFromBytes:length:">+ packedDataFromBytes:length:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="packedDataFromBytes:length:"></a>packedDataFromBytes:length:</h3>
-      <code class="methodDeclaration">+ (NSData *)packedDataFromBytes:(uint8_t *)        <span class="parameter">bytes</span>
- length:(NSUInteger)        <span class="parameter">length</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>bytes</dt>
-        <dd><p>Byte array containing the unpacked SHA1 </p>
-</dd>
-        <dt>length</dt>
-        <dd><p>Size of the byte array </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p><a href="#NSData">NSData</a> object containing packed SHA1 </p>
-      <h5>Discussion</h5>
-<p>Returns an <a href="#NSData">NSData</a> object containing the packed SHA1 of the unpacked bytes￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#unpackedDataFromBytes:length:">+ unpackedDataFromBytes:length:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="objectHashWithData:"></a>objectHashWithData:</h3>
-      <code class="methodDeclaration">+ (GITObjectHash *)objectHashWithData:(NSData *)        <span class="parameter">hashData</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>hashData</dt>
-        <dd><p><a href="#NSData">NSData</a> containing a packed or unpacked SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>object hash with the <a href="#NSData">NSData</a> object </p>
-      <h5>Discussion</h5>
-<p>Creates an autoreleased object hash with an <a href="#NSData">NSData</a> containing a packed or unpacked SHA1￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithData:">- initWithData:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="objectHashWithString:"></a>objectHashWithString:</h3>
-      <code class="methodDeclaration">+ (GITObjectHash *)objectHashWithString:(NSString *)        <span class="parameter">hashString</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>hashString</dt>
-        <dd><p>String containing a packed or unpacked SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>object hash with the string </p>
-      <h5>Discussion</h5>
-<p>Returns an object hash with a string containing a packed or unpacked SHA1.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithString:">- initWithString:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="objectHashWithObjectData:"></a>objectHashWithObjectData:</h3>
-      <code class="methodDeclaration">+ (GITObjectHash *)objectHashWithObjectData:(NSData *)        <span class="parameter">objectData</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>objectData</dt>
-        <dd><p>Object data to create <a href="">GITObjectHash</a> of </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>object hash of the data object </p>
-      <h5>Discussion</h5>
-<p>Returns an object hash from the SHA1 Hash of the ￼provided data object.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithObjectData:">- initWithObjectData:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h2>Instance methods</h2>
-      <h3><a name="initWithData:"></a>initWithData:</h3>
-      <code class="methodDeclaration">- (id)initWithData:(NSData *)        <span class="parameter">hashData</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>hashData</dt>
-        <dd><p><a href="#NSData">NSData</a> containing a packed or unpacked SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>object hash with the <a href="#NSData">NSData</a> object </p>
-      <h5>Discussion</h5>
-<p>Returns an object hash with an <a href="#NSData">NSData</a> containing ￼a packed or unpacked SHA1.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithString:">- initWithString:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="initWithString:"></a>initWithString:</h3>
-      <code class="methodDeclaration">- (id)initWithString:(NSString *)        <span class="parameter">hashString</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>hashString</dt>
-        <dd><p>String containing a packed or unpacked SHA1 </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>object hash with the string </p>
-      <h5>Discussion</h5>
-<p>Returns an object hash with a string containing a packed or unpacked SHA1.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithData:">- initWithData:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="initWithObjectData:"></a>initWithObjectData:</h3>
-      <code class="methodDeclaration">- (id)initWithObjectData:(NSData *)        <span class="parameter">objectData</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>objectData</dt>
-        <dd><p>Object data to create <a href="">GITObjectHash</a> of </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>object hash of the data object </p>
-      <h5>Discussion</h5>
-<p>Returns an object hash from the SHA1 Hash of the ￼provided data object.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithString:">- initWithString:</a></code></li>
-        <li><code><a href="#initWithData:">- initWithData:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="unpackedString"></a>unpackedString</h3>
-      <code class="methodDeclaration">- (NSString *)unpackedString</code>
-      <h5>Return value</h5>
-<p>unpacked string of the object hash </p>
-      <h5>Discussion</h5>
-<p>Returns the unpacked string of the object hash￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#packedString">- packedString</a></code></li>
-        <li><code><a href="#unpackedData">- unpackedData</a></code></li>
-        <li><code><a href="#packedData">- packedData</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="packedString"></a>packedString</h3>
-      <code class="methodDeclaration">- (NSString *)packedString</code>
-      <h5>Return value</h5>
-<p>packed string of the object hash </p>
-      <h5>Discussion</h5>
-<p>Returns the packed string of the object hash￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#unpackedString">- unpackedString</a></code></li>
-        <li><code><a href="#unpackedData">- unpackedData</a></code></li>
-        <li><code><a href="#packedData">- packedData</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="unpackedData"></a>unpackedData</h3>
-      <code class="methodDeclaration">- (NSData *)unpackedData</code>
-      <h5>Return value</h5>
-<p>unpacked data of the object hash </p>
-      <h5>Discussion</h5>
-<p>Returns the unpacked data of the object hash￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#packedData">- packedData</a></code></li>
-        <li><code><a href="#packedString">- packedString</a></code></li>
-        <li><code><a href="#unpackedString">- unpackedString</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-      <h3><a name="packedData"></a>packedData</h3>
-      <code class="methodDeclaration">- (NSData *)packedData</code>
-      <h5>Return value</h5>
-<p>packed data of the object hash </p>
-      <h5>Discussion</h5>
-<p>Returns the packed data of the object hash￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#unpackedData">- unpackedData</a></code></li>
-        <li><code><a href="#packedString">- packedString</a></code></li>
-        <li><code><a href="#unpackedString">- unpackedString</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITObjectHash.h</code>
-    <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-11)
-      <br />
-      Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
-    </p>
-  </div>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITObjectHash Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="classMethods">Class Methods</option>
+<option value="unpackedStringFromString:">    + unpackedStringFromString:</option>
+<option value="unpackedStringFromData:">    + unpackedStringFromData:</option>
+<option value="packedStringFromString:">    + packedStringFromString:</option>
+<option value="unpackedDataFromData:">    + unpackedDataFromData:</option>
+<option value="packedDataFromData:">    + packedDataFromData:</option>
+<option value="unpackedDataFromBytes:length:">    + unpackedDataFromBytes:length:</option>
+<option value="packedDataFromBytes:length:">    + packedDataFromBytes:length:</option>
+<option value="objectHashWithData:">    + objectHashWithData:</option>
+<option value="objectHashWithString:">    + objectHashWithString:</option>
+<option value="objectHashWithObjectData:">    + objectHashWithObjectData:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithData:">    - initWithData:</option>
+<option value="initWithString:">    - initWithString:</option>
+<option value="initWithObjectData:">    - initWithObjectData:</option>
+<option value="unpackedString">    - unpackedString</option>
+<option value="packedString">    - packedString</option>
+<option value="unpackedData">    - unpackedData</option>
+<option value="packedData">    - packedData</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Packing_and_Unpacking_SHA1_Hashes">Packing and Unpacking SHA1 Hashes</a></li>
+<li><a href="#Creating_and_Initialising_Object_Hashes">Creating and Initialising Object Hashes</a></li>
+<li><a href="#Getting_Packed_and_Unpacked_Forms">Getting Packed and Unpacked Forms</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;">
+<li><a href="#unpackedStringFromString:">unpackedStringFromString:</a></li>
+<li><a href="#unpackedStringFromData:">unpackedStringFromData:</a></li>
+<li><a href="#packedStringFromString:">packedStringFromString:</a></li>
+<li><a href="#unpackedDataFromData:">unpackedDataFromData:</a></li>
+<li><a href="#packedDataFromData:">packedDataFromData:</a></li>
+<li><a href="#unpackedDataFromBytes:length:">unpackedDataFromBytes:length:</a></li>
+<li><a href="#packedDataFromBytes:length:">packedDataFromBytes:length:</a></li>
+<li><a href="#objectHashWithData:">objectHashWithData:</a></li>
+<li><a href="#objectHashWithString:">objectHashWithString:</a></li>
+<li><a href="#objectHashWithObjectData:">objectHashWithObjectData:</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithData:">initWithData:</a></li>
+<li><a href="#initWithString:">initWithString:</a></li>
+<li><a href="#initWithObjectData:">initWithObjectData:</a></li>
+<li><a href="#unpackedString">unpackedString</a></li>
+<li><a href="#packedString">packedString</a></li>
+<li><a href="#unpackedData">unpackedData</a></li>
+<li><a href="#packedData">packedData</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITObjectHash Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITObjectHash.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p>The <code><code>GITObjectHash</code></code> class provides methods for packing and unpacking SHA1 hashes in both NSString and <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> forms. <code><code>GITObjectHash</code></code> objects provide </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Packing_and_Unpacking_SHA1_Hashes">
+<h3>Packing and Unpacking SHA1 Hashes</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#unpackedStringFromString:">+ unpackedStringFromString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#unpackedStringFromData:">+ unpackedStringFromData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packedStringFromString:">+ packedStringFromString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#unpackedDataFromData:">+ unpackedDataFromData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packedDataFromData:">+ packedDataFromData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#unpackedDataFromBytes:length:">+ unpackedDataFromBytes:length:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packedDataFromBytes:length:">+ packedDataFromBytes:length:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Creating_and_Initialising_Object_Hashes">
+<h3>Creating and Initialising Object Hashes</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#objectHashWithData:">+ objectHashWithData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#objectHashWithString:">+ objectHashWithString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#objectHashWithObjectData:">+ objectHashWithObjectData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithData:">- initWithData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithString:">- initWithString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithObjectData:">- initWithObjectData:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Getting_Packed_and_Unpacked_Forms">
+<h3>Getting Packed and Unpacked Forms</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#unpackedString">- unpackedString</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packedString">- packedString</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#unpackedData">- unpackedData</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packedData">- packedData</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+  </ul>
+<section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="unpackedStringFromString:"><h3>unpackedStringFromString:</h3>
+<code class="methodDeclaration">+ (NSString *)unpackedStringFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>str</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the packed SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the unpacked SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns a string containing the unpacked SHA1 of the packed string￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#packedStringFromString:">
+            + packedStringFromString:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedStringFromData:"><h3>unpackedStringFromData:</h3>
+<code class="methodDeclaration">+ (NSString *)unpackedStringFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>data</dt>
+<dd>
+              <p>Data containing the packed SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the unpacked SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns a string containing the unpacked SHA1 of the packed data.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedStringFromString:"><h3>packedStringFromString:</h3>
+<code class="methodDeclaration">+ (NSString *)packedStringFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>str</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the packed SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns a string containing the packed SHA1 of the unpacked string￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#unpackedStringFromString:">
+            + unpackedStringFromString:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedDataFromData:"><h3>unpackedDataFromData:</h3>
+<code class="methodDeclaration">+ (NSData *)unpackedDataFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>data</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing packed SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing unpacked SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the unpacked SHA1 of the packed data￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#packedDataFromData:">
+            + packedDataFromData:
+          </a></code></li>
+<li><code><a href="#unpackedDataFromBytes:length:">
+            + unpackedDataFromBytes:length:
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedDataFromData:"><h3>packedDataFromData:</h3>
+<code class="methodDeclaration">+ (NSData *)packedDataFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>data</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing packed SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the packed SHA1 of the unpacked data￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#unpackedDataFromData:">
+            + unpackedDataFromData:
+          </a></code></li>
+<li><code><a href="#packedDataFromBytes:length:">
+            + packedDataFromBytes:length:
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedDataFromBytes:length:"><h3>unpackedDataFromBytes:length:</h3>
+<code class="methodDeclaration">+ (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)unpackedDataFromBytes:(uint8_t *)<span class="parameter">bytes</span> length:(NSUInteger)<span class="parameter">length</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>bytes</dt>
+<dd>
+              <p>Byte array containing the packed SHA1 </p>
+            </dd>
+          <dt>length</dt>
+<dd>
+              <p>Size of the byte array </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing unpacked SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the unpacked SHA1 of the packed bytes￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#packedDataFromBytes:length:">
+            + packedDataFromBytes:length:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedDataFromBytes:length:"><h3>packedDataFromBytes:length:</h3>
+<code class="methodDeclaration">+ (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)packedDataFromBytes:(uint8_t *)<span class="parameter">bytes</span> length:(NSUInteger)<span class="parameter">length</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>bytes</dt>
+<dd>
+              <p>Byte array containing the unpacked SHA1 </p>
+            </dd>
+          <dt>length</dt>
+<dd>
+              <p>Size of the byte array </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing packed SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the packed SHA1 of the unpacked bytes￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#unpackedDataFromBytes:length:">
+            + unpackedDataFromBytes:length:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="objectHashWithData:"><h3>objectHashWithData:</h3>
+<code class="methodDeclaration">+ (GITObjectHash *)objectHashWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">hashData</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>hashData</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing a packed or unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object hash with the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object </p>
+        <h5>Discussion</h5>
+            <p>Creates an autoreleased object hash with an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing a packed or unpacked SHA1￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithData:">
+            - initWithData:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="objectHashWithString:"><h3>objectHashWithString:</h3>
+<code class="methodDeclaration">+ (GITObjectHash *)objectHashWithString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">hashString</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>hashString</dt>
+<dd>
+              <p>String containing a packed or unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object hash with the string </p>
+        <h5>Discussion</h5>
+            <p>Returns an object hash with a string containing a packed or unpacked SHA1.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithString:">
+            - initWithString:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="objectHashWithObjectData:"><h3>objectHashWithObjectData:</h3>
+<code class="methodDeclaration">+ (GITObjectHash *)objectHashWithObjectData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">objectData</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>objectData</dt>
+<dd>
+              <p>Object data to create <code>GITObjectHash</code> of </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object hash of the data object </p>
+        <h5>Discussion</h5>
+            <p>Returns an object hash from the SHA1 Hash of the ￼provided data object.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithObjectData:">
+            - initWithObjectData:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithData:"><h3>initWithData:</h3>
+<code class="methodDeclaration">- (id)initWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">hashData</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>hashData</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing a packed or unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object hash with the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object </p>
+        <h5>Discussion</h5>
+            <p>Returns an object hash with an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing ￼a packed or unpacked SHA1.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithString:">
+            - initWithString:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="initWithString:"><h3>initWithString:</h3>
+<code class="methodDeclaration">- (id)initWithString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">hashString</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>hashString</dt>
+<dd>
+              <p>String containing a packed or unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object hash with the string </p>
+        <h5>Discussion</h5>
+            <p>Returns an object hash with a string containing a packed or unpacked SHA1.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithData:">
+            - initWithData:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="initWithObjectData:"><h3>initWithObjectData:</h3>
+<code class="methodDeclaration">- (id)initWithObjectData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">objectData</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>objectData</dt>
+<dd>
+              <p>Object data to create <code>GITObjectHash</code> of </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object hash of the data object </p>
+        <h5>Discussion</h5>
+            <p>Returns an object hash from the SHA1 Hash of the ￼provided data object.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#initWithString:">
+            - initWithString:
+          </a></code></li>
+<li><code><a href="#initWithData:">
+            - initWithData:
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedString"><h3>unpackedString</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)unpackedString</code><h5>Return Value</h5>
+          <p>unpacked string of the object hash </p>
+        <h5>Discussion</h5>
+            <p>Returns the unpacked string of the object hash￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#packedString">
+            - packedString
+          </a></code></li>
+<li><code><a href="#unpackedData">
+            - unpackedData
+          </a></code></li>
+<li><code><a href="#packedData">
+            - packedData
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedString"><h3>packedString</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)packedString</code><h5>Return Value</h5>
+          <p>packed string of the object hash </p>
+        <h5>Discussion</h5>
+            <p>Returns the packed string of the object hash￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#unpackedString">
+            - unpackedString
+          </a></code></li>
+<li><code><a href="#unpackedData">
+            - unpackedData
+          </a></code></li>
+<li><code><a href="#packedData">
+            - packedData
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedData"><h3>unpackedData</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)unpackedData</code><h5>Return Value</h5>
+          <p>unpacked data of the object hash </p>
+        <h5>Discussion</h5>
+            <p>Returns the unpacked data of the object hash￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#packedData">
+            - packedData
+          </a></code></li>
+<li><code><a href="#packedString">
+            - packedString
+          </a></code></li>
+<li><code><a href="#unpackedString">
+            - unpackedString
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedData"><h3>packedData</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)packedData</code><h5>Return Value</h5>
+          <p>packed data of the object hash </p>
+        <h5>Discussion</h5>
+            <p>Returns the packed data of the object hash￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#unpackedData">
+            - unpackedData
+          </a></code></li>
+<li><code><a href="#packedString">
+            - packedString
+          </a></code></li>
+<li><code><a href="#unpackedString">
+            - unpackedString
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITObjectHash Class Reference</a></li>
+</ul></footer>
 </body>
 </html>

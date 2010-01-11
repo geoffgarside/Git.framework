@@ -1,0 +1,143 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITTag Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
+</head>
+<body>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITTag Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="properties">Properties</option>
+<option value="name">    name</option>
+<option value="target">    target</option>
+<option value="tagger">    tagger</option>
+<option value="taggerDate">    taggerDate</option>
+<option value="message">    message</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;"><li><a href="#Properties">Properties</a></li></ul>
+</li>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;">
+<li><a href="#name">name</a></li>
+<li><a href="#target">target</a></li>
+<li><a href="#tagger">tagger</a></li>
+<li><a href="#taggerDate">taggerDate</a></li>
+<li><a href="#message">message</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITTag Class Reference</h1>
+<table id="metadata">
+<tr class="alt">
+<th>Inherits from</th>
+<td><ul class="inheritance"><li><code><a href="../Protocols/GITObject.html">GITObject</a></code></li></ul></td>
+</tr>
+<tr>
+<th>Conforms to</th>
+<td><ul><li><code><a href="../Protocols/GITObject.html">GITObject</a></code></li></ul></td>
+</tr>
+<tr class="alt">
+<th>Declared in</th>
+<td>GITTag.h</td>
+</tr>
+</table>
+<h2 id="overview">Overview</h2>
+      <p>
+ * object 1615307cc4523f183e777df67f168c86908e8007
+ * type commit
+ * tag v1.0.0
+ * tagger A. Developer &lt;dev@example.com&gt; 444123000 +0000
+ *
+ * A tag message meant to describe what this tag defines
+ * </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Properties">
+<h3>Properties</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#name">name</a></code> <span class="specialType">property</span><span class="tooltip">
+            Name of the tag. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#target">target</a></code> <span class="specialType">property</span><span class="tooltip">
+            Cache of the target once we've found it. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#tagger">tagger</a></code> <span class="specialType">property</span><span class="tooltip">
+            Actor who created the tag. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#taggerDate">taggerDate</a></code> <span class="specialType">property</span><span class="tooltip">
+            Date the tag was created. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#message">message</a></code> <span class="specialType">property</span><span class="tooltip">
+            Tag message. 
+          </span></span></li>
+</ul>
+</li>
+  </ul>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="name"><h3>name</h3>
+            <p>Name of the tag. </p>
+          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *name</code><h5>Declared In</h5>
+<code><code>GITTag</code>.h</code></section><section class="definition" id="target"><h3>target</h3>
+            <p>Cache of the target once we've found it. </p>
+          <code class="methodDeclaration">@property <code><a href="../Protocols/GITObject.html">GITObject</a></code> *target</code><h5>Declared In</h5>
+<code><code>GITTag</code>.h</code></section><section class="definition" id="tagger"><h3>tagger</h3>
+            <p>Actor who created the tag. </p>
+          <code class="methodDeclaration">@property GITActor *tagger</code><h5>Declared In</h5>
+<code><code>GITTag</code>.h</code></section><section class="definition" id="taggerDate"><h3>taggerDate</h3>
+            <p>Date the tag was created. </p>
+          <code class="methodDeclaration">@property <code><a href="../Classes/GITDateTime.html">GITDateTime</a></code> *taggerDate</code><h5>Declared In</h5>
+<code><code>GITTag</code>.h</code></section><section class="definition" id="message"><h3>message</h3>
+            <p>Tag message. </p>
+          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *message</code><h5>Declared In</h5>
+<code><code>GITTag</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITTag Class Reference</a></li>
+</ul></footer>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITPackReverseIndex Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
+</head>
+<body>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITPackReverseIndex Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="classMethods">Class Methods</option>
+<option value="reverseIndexWithPackIndex:">    + reverseIndexWithPackIndex:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithPackIndex:">    - initWithPackIndex:</option>
+<option value="indexWithOffset:">    - indexWithOffset:</option>
+<option value="nextOffsetAfterOffset:">    - nextOffsetAfterOffset:</option>
+<option value="baseOffsetWithOffset:">    - baseOffsetWithOffset:</option>
+<option value="compileReverseIndexTable">    - compileReverseIndexTable</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Creating_and_Initialising_Reverse_Indexes">Creating and Initialising Reverse Indexes</a></li>
+<li><a href="#Finding_Indexes_for_Offsets">Finding Indexes for Offsets</a></li>
+<li><a href="#Determining_related_offsets_for_offsets">Determining related offsets for offsets</a></li>
+<li><a href="#Internal_Methods">Internal Methods</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#reverseIndexWithPackIndex:">reverseIndexWithPackIndex:</a></li></ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithPackIndex:">initWithPackIndex:</a></li>
+<li><a href="#indexWithOffset:">indexWithOffset:</a></li>
+<li><a href="#nextOffsetAfterOffset:">nextOffsetAfterOffset:</a></li>
+<li><a href="#baseOffsetWithOffset:">baseOffsetWithOffset:</a></li>
+<li><a href="#compileReverseIndexTable">compileReverseIndexTable</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITPackReverseIndex Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITPackReverseIndex.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p>This class provides a mapping between offsets and SHA1 objects.</p>
+      <p>In contrast to the PACK Index which maps SHA1 objects to their offsets in a PACK file the Reverse Index allows for fast lookups of <ul>
+<li><p>an objects SHA1 given its offset </p></li>
+<li><p>the offset of adjacent objects</p></li>
+</ul>
+The latter of these allows the packed size of an object to be easily determined by locating the next offset and subtracting the current offset from it. As the PACK object header only records the objects decompressed size this is the only way to quickly obtain the packed size.</p>
+      <p>The <code>GITPackReverseIndex</code> was originally developed by Brian Chapados in the CocoaGit project which was the fore-runner to this project. </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Creating_and_Initialising_Reverse_Indexes">
+<h3>Creating and Initialising Reverse Indexes</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#reverseIndexWithPackIndex:">+ reverseIndexWithPackIndex:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithPackIndex:">- initWithPackIndex:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Finding_Indexes_for_Offsets">
+<h3>Finding Indexes for Offsets</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#indexWithOffset:">- indexWithOffset:</a></code><span class="tooltip"></span></span></li></ul>
+</li>
+    <li id="Determining_related_offsets_for_offsets">
+<h3>Determining related offsets for offsets</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#nextOffsetAfterOffset:">- nextOffsetAfterOffset:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#baseOffsetWithOffset:">- baseOffsetWithOffset:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Internal_Methods">
+<h3>Internal Methods</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#compileReverseIndexTable">- compileReverseIndexTable</a></code><span class="tooltip"></span></span></li></ul>
+</li>
+  </ul>
+<section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="reverseIndexWithPackIndex:"><h3>reverseIndexWithPackIndex:</h3>
+<code class="methodDeclaration">+ (GITPackReverseIndex *)reverseIndexWithPackIndex:(<code><a href="../Classes/GITPackIndex.html">GITPackIndex</a></code> *)<span class="parameter">packIndex</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>packIndex</dt>
+<dd>
+              <p>The PACK Index the reverse index is based on </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>Reverse index object with the packIndex</p>
+        <h5>Discussion</h5>
+            <p>Creates and returns a reverse index object with the packIndex.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithPackIndex:">
+            - initWithPackIndex:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITPackReverseIndex</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithPackIndex:"><h3>initWithPackIndex:</h3>
+<code class="methodDeclaration">- (id)initWithPackIndex:(<code><a href="../Classes/GITPackIndex.html">GITPackIndex</a></code> *)<span class="parameter">packIndex</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>packIndex</dt>
+<dd>
+              <p>The PACK Index the reverse index is based on </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>Reverse index object with the packIndex</p>
+        <h5>Discussion</h5>
+            <p>Returns a reverse index object with the packIndex.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#reverseIndexWithPackIndex:">
+            + reverseIndexWithPackIndex:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITPackReverseIndex</code>.h</code></section><section class="definition" id="indexWithOffset:"><h3>indexWithOffset:</h3>
+<code class="methodDeclaration">- (NSUInteger)indexWithOffset:(off_t)<span class="parameter">offset</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>offset</dt>
+<dd>
+              <p>offset to find the index of </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>index in the PACK Index of the offset</p>
+        <h5>Discussion</h5>
+            <p>Returns the index of the offset in the PACK Index Main Table.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITPackReverseIndex</code>.h</code></section><section class="definition" id="nextOffsetAfterOffset:"><h3>nextOffsetAfterOffset:</h3>
+<code class="methodDeclaration">- (off_t)nextOffsetAfterOffset:(off_t)<span class="parameter">offset</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>offset</dt>
+<dd>
+              <p>offset of the object to get the next offset of </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>offset of the next offset, NSNotFound if not found, -1 if last offset </p>
+        <h5>Discussion</h5>
+            <p>Returns the next offset after object at offset.</p>
+            <p>If the offset is not found then <code>NSNotFound</code> is returned, if the offset is the last offset then <code>-1</code> is returned.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITPackReverseIndex</code>.h</code></section><section class="definition" id="baseOffsetWithOffset:"><h3>baseOffsetWithOffset:</h3>
+<code class="methodDeclaration">- (off_t)baseOffsetWithOffset:(off_t)<span class="parameter">offset</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>offset</dt>
+<dd>
+              <p>offset </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>start of object data range containing offset or per discussion </p>
+        <h5>Discussion</h5>
+            <p>Returns the offset marking the start of the range describing the object which contains offset.</p>
+            <p>Returns the offset of the last object if the offset is greater than the offset of the last object and the offset of the first offset if the offset is less than the offset of the first object.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITPackReverseIndex</code>.h</code></section><section class="definition" id="compileReverseIndexTable"><h3>compileReverseIndexTable</h3>
+<code class="methodDeclaration">- (BOOL)compileReverseIndexTable</code><h5>Return Value</h5>
+          <p>YES if successfully created, NO if an error occured </p>
+        <h5>Discussion</h5>
+            <p>Creates the reverse index offsets table.</p>
+            <p>Creates the table describing the mapping from offsets to SHA1 objects based on the contents of the associated <code><a href="../Classes/GITPackIndex.html">GITPackIndex</a></code>.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithPackIndex:">
+            - initWithPackIndex:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITPackReverseIndex</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITPackReverseIndex Class Reference</a></li>
+</ul></footer>
+</body>
+</html>

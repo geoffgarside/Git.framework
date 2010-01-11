@@ -1,225 +1,246 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 STRICT//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html><html>
 <head>
-  <title>GITRefResolver class reference</title>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/screen.css" />
-  <meta name="generator" content="appledoc" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITRefResolver Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
 </head>
 <body>
-  <div id="mainContainer">
-    <h1>GITRefResolver class reference</h1>
-    <table summary="Basic information" id="classInfo">
-      <tr class="alt">
-        <td><label id="classDeclaration">Inherits from</label></td>
-        <td>NSObject</td>
-      </tr>
-      <tr>
-        <td><label id="classDeclaration">Declared in</label></td>
-        <td>GITRefResolver.h</td>
-      </tr>
-    </table>
-      <h2>Overview</h2>
-<p>The <em><a href="">GITRefResolver</a></em> class provides methods to return <a href="GITRef.html">GITRef</a> objects by their name. The class also provides methods to obtain arrays of <a href="GITRef.html">GITRef</a> objects by <code>tags</code>, <code>heads</code> and <code>remotes</code>. </p>
-      <h2>Tasks</h2>
-      <h3>Creating and Initialising Ref Resolvers</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#resolverForRepo:>+ resolverForRepo:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initWithRepo:>- initWithRepo:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Reference Resolving</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#resolveRefWithName:>- resolveRefWithName:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#resolveRefWithName:error:>- resolveRefWithName:error:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Gathering References</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#allRefs>- allRefs</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#tagRefs>- tagRefs</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#headRefs>- headRefs</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#remoteRefs>- remoteRefs</a></code>
-          </span>
-        </li>
-      </ul>
-      <h2>Class methods</h2>
-      <h3><a name="resolverForRepo:"></a>resolverForRepo:</h3>
-      <code class="methodDeclaration">+ (GITRefResolver *)resolverForRepo:(GITRepo *)        <span class="parameter">theRepo</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRepo</dt>
-        <dd><p>The repository the receiver will resolve with </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>resolver initialised with the specified repository </p>
-      <h5>Discussion</h5>
-<p>Creates and returns an autoreleased Ref Resolver for the given repository￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithRepo:">- initWithRepo:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-      <h2>Instance methods</h2>
-      <h3><a name="initWithRepo:"></a>initWithRepo:</h3>
-      <code class="methodDeclaration">- (id)initWithRepo:(GITRepo *)        <span class="parameter">theRepo</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRepo</dt>
-        <dd><p>The repository the receiver will resolve with </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>resolver initialised with the specified repository </p>
-      <h5>Discussion</h5>
-<p>Creates and returns a Ref Resolver for the given repository￼.</p>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-      <h3><a name="resolveRefWithName:"></a>resolveRefWithName:</h3>
-      <code class="methodDeclaration">- (GITRef *)resolveRefWithName:(NSString *)        <span class="parameter">theName</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theName</dt>
-        <dd><p>Name of the reference to resolve </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>Reference resolved from the specified name, or nil if the reference cannot be found or if an error occurred </p>
-      <h5>Discussion</h5>
-<p>Returns a reference by resolving the specified name.</p>
-<p>Resolves references in the following order: <ul>
-<li><p><code>refs/</code></p>
-</li>
-<li><p><code>refs/tags/</code></p>
-</li>
-<li><p><code>refs/heads/</code></p>
-</li>
-<li><p><code>refs/remotes/</code></p>
-</li>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITRefResolver Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="classMethods">Class Methods</option>
+<option value="resolverForRepo:">    + resolverForRepo:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithRepo:">    - initWithRepo:</option>
+<option value="resolveRefWithName:">    - resolveRefWithName:</option>
+<option value="resolveRefWithName:error:">    - resolveRefWithName:error:</option>
+<option value="allRefs">    - allRefs</option>
+<option value="tagRefs">    - tagRefs</option>
+<option value="headRefs">    - headRefs</option>
+<option value="remoteRefs">    - remoteRefs</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Creating_and_Initialising_Ref_Resolvers">Creating and Initialising Ref Resolvers</a></li>
+<li><a href="#Reference_Resolving">Reference Resolving</a></li>
+<li><a href="#Gathering_References">Gathering References</a></li>
 </ul>
-</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#resolveRefWithName:error:">- resolveRefWithName:error:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-      <h3><a name="resolveRefWithName:error:"></a>resolveRefWithName:error:</h3>
-      <code class="methodDeclaration">- (GITRef *)resolveRefWithName:(NSString *)        <span class="parameter">theName</span>
- error:(NSError **)        <span class="parameter">theError</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theName</dt>
-        <dd><p>Name of the reference to resolve </p>
-</dd>
-        <dt>theError</dt>
-        <dd><p>NSError describing the error that occurred </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>Reference resolved from the specified name, or nil if the reference cannot be found or if an error occurred </p>
-      <h5>Discussion</h5>
-<p>Returns a reference by resolving the specified name￼.</p>
-<p>Resolves references in the following order: <ul>
-<li><p><code>refs/</code></p>
 </li>
-<li><p><code>refs/tags/</code></p>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#resolverForRepo:">resolverForRepo:</a></li></ul>
 </li>
-<li><p><code>refs/heads/</code></p>
-</li>
-<li><p><code>refs/remotes/</code></p>
-</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithRepo:">initWithRepo:</a></li>
+<li><a href="#resolveRefWithName:">resolveRefWithName:</a></li>
+<li><a href="#resolveRefWithName:error:">resolveRefWithName:error:</a></li>
+<li><a href="#allRefs">allRefs</a></li>
+<li><a href="#tagRefs">tagRefs</a></li>
+<li><a href="#headRefs">headRefs</a></li>
+<li><a href="#remoteRefs">remoteRefs</a></li>
 </ul>
-</p>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-      <h3><a name="allRefs"></a>allRefs</h3>
-      <code class="methodDeclaration">- (NSArray *)allRefs</code>
-      <h5>Return value</h5>
-<p>array of all the references in the receivers repository </p>
-      <h5>Discussion</h5>
-<p>Returns an array of all the references in the receivers repository￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><see also#>()</code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-      <h3><a name="tagRefs"></a>tagRefs</h3>
-      <code class="methodDeclaration">- (NSArray *)tagRefs</code>
-      <h5>Return value</h5>
-<p>array of all the <code>tag</code> references in the receivers repository </p>
-      <h5>Discussion</h5>
-<p>Returns an array of all the <code>tag</code> references in the receivers repository￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#allRefs">- allRefs</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-      <h3><a name="headRefs"></a>headRefs</h3>
-      <code class="methodDeclaration">- (NSArray *)headRefs</code>
-      <h5>Return value</h5>
-<p>array of all the <code>head</code> references in the receivers repository </p>
-      <h5>Discussion</h5>
-<p>Returns an array of all the <code>head</code> references in the receivers repository￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#allRefs">- allRefs</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-      <h3><a name="remoteRefs"></a>remoteRefs</h3>
-      <code class="methodDeclaration">- (NSArray *)remoteRefs</code>
-      <h5>Return value</h5>
-<p>array of all the <code>head</code> references in the receivers repository </p>
-      <h5>Discussion</h5>
-<p>Returns an array of all the <code>head</code> references in the receivers repository￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#allRefs">- allRefs</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRefResolver.h</code>
-    <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-11)
-      <br />
-      Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
-    </p>
-  </div>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITRefResolver Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITRefResolver.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p>The GITRefResolver class provides methods to return GITRef objects by their name. The class also provides methods to obtain arrays of <code><a href="../Classes/GITRef.html">GITRef</a></code> objects by <code>tags</code>, <code>heads</code> and <code>remotes</code>. </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Creating_and_Initialising_Ref_Resolvers">
+<h3>Creating and Initialising Ref Resolvers</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#resolverForRepo:">+ resolverForRepo:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithRepo:">- initWithRepo:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Reference_Resolving">
+<h3>Reference Resolving</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#resolveRefWithName:">- resolveRefWithName:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#resolveRefWithName:error:">- resolveRefWithName:error:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Gathering_References">
+<h3>Gathering References</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#allRefs">- allRefs</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#tagRefs">- tagRefs</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#headRefs">- headRefs</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#remoteRefs">- remoteRefs</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+  </ul>
+<section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="resolverForRepo:"><h3>resolverForRepo:</h3>
+<code class="methodDeclaration">+ (GITRefResolver *)resolverForRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRepo</dt>
+<dd>
+              <p>The repository the receiver will resolve with </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>resolver initialised with the specified repository </p>
+        <h5>Discussion</h5>
+            <p>Creates and returns an autoreleased Ref Resolver for the given repository￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithRepo:">
+            - initWithRepo:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithRepo:"><h3>initWithRepo:</h3>
+<code class="methodDeclaration">- (id)initWithRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRepo</dt>
+<dd>
+              <p>The repository the receiver will resolve with </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>resolver initialised with the specified repository </p>
+        <h5>Discussion</h5>
+            <p>Creates and returns a Ref Resolver for the given repository￼.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section><section class="definition" id="resolveRefWithName:"><h3>resolveRefWithName:</h3>
+<code class="methodDeclaration">- (GITRef *)resolveRefWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theName</dt>
+<dd>
+              <p>Name of the reference to resolve </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>Reference resolved from the specified name, or nil if the reference cannot be found or if an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Returns a reference by resolving the specified name.</p>
+            <p>Resolves references in the following order: <ul>
+<li><p><code>refs/</code></p></li>
+<li><p><code>refs/tags/</code></p></li>
+<li><p><code>refs/heads/</code></p></li>
+<li><p><code>refs/remotes/</code></p></li>
+</ul></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#resolveRefWithName:error:">
+            - resolveRefWithName:error:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section><section class="definition" id="resolveRefWithName:error:"><h3>resolveRefWithName:error:</h3>
+<code class="methodDeclaration">- (GITRef *)resolveRefWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">theError</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theName</dt>
+<dd>
+              <p>Name of the reference to resolve </p>
+            </dd>
+          <dt>theError</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>Reference resolved from the specified name, or nil if the reference cannot be found or if an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Returns a reference by resolving the specified name￼.</p>
+            <p>Resolves references in the following order: <ul>
+<li><p><code>refs/</code></p></li>
+<li><p><code>refs/tags/</code></p></li>
+<li><p><code>refs/heads/</code></p></li>
+<li><p><code>refs/remotes/</code></p></li>
+</ul></p>
+          <h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section><section class="definition" id="allRefs"><h3>allRefs</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)allRefs</code><h5>Return Value</h5>
+          <p>array of all the references in the receivers repository </p>
+        <h5>Discussion</h5>
+            <p>Returns an array of all the references in the receivers repository￼.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section><section class="definition" id="tagRefs"><h3>tagRefs</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)tagRefs</code><h5>Return Value</h5>
+          <p>array of all the <code>tag</code> references in the receivers repository </p>
+        <h5>Discussion</h5>
+            <p>Returns an array of all the <code>tag</code> references in the receivers repository￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#allRefs">
+            - allRefs
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section><section class="definition" id="headRefs"><h3>headRefs</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)headRefs</code><h5>Return Value</h5>
+          <p>array of all the <code>head</code> references in the receivers repository </p>
+        <h5>Discussion</h5>
+            <p>Returns an array of all the <code>head</code> references in the receivers repository￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#allRefs">
+            - allRefs
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section><section class="definition" id="remoteRefs"><h3>remoteRefs</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)remoteRefs</code><h5>Return Value</h5>
+          <p>array of all the <code>head</code> references in the receivers repository </p>
+        <h5>Discussion</h5>
+            <p>Returns an array of all the <code>head</code> references in the receivers repository￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#allRefs">
+            - allRefs
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRefResolver</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITRefResolver Class Reference</a></li>
+</ul></footer>
 </body>
 </html>

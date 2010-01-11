@@ -1,127 +1,177 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 STRICT//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html><html>
 <head>
-  <title>GITBranch class reference</title>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/screen.css" />
-  <meta name="generator" content="appledoc" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITBranch Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
 </head>
 <body>
-  <div id="mainContainer">
-    <h1>GITBranch class reference</h1>
-    <table summary="Basic information" id="classInfo">
-      <tr class="alt">
-        <td><label id="classDeclaration">Inherits from</label></td>
-        <td>NSObject</td>
-      </tr>
-      <tr>
-        <td><label id="classDeclaration">Declared in</label></td>
-        <td>GITBranch.h</td>
-      </tr>
-    </table>
-      <h2>Overview</h2>
-<p><code><a href="">GITBranch</a></code> objects provide an interface to branches. </p>
-      <h2>Tasks</h2>
-      <h3>Creating and Initialising Branches</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#branchWithName:inRepo:>+ branchWithName:inRepo:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#branchFromRef:>+ branchFromRef:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initFromRef:>- initFromRef:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Branch Information</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#name>- name</a></code>
-          </span>
-        </li>
-      </ul>
-      <h2>Class methods</h2>
-      <h3><a name="branchWithName:inRepo:"></a>branchWithName:inRepo:</h3>
-      <code class="methodDeclaration">+ (GITBranch *)branchWithName:(NSString *)        <span class="parameter">theName</span>
- inRepo:(GITRepo *)        <span class="parameter">theRepo</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theName</dt>
-        <dd><p>Name of the branch </p>
-</dd>
-        <dt>theRepo</dt>
-        <dd><p>Repository to resolve the branch in </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>branch initialised with the name specified, or nil if the branch can't be resolved </p>
-      <h5>Discussion</h5>
-<p>Creates and returns a branch by the name specified.</p>
-<p>The name of the branch is used to resolve the reference for the branch, the resolved reference is used to create the <a href="">GITBranch</a>.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#branchFromRef:">+ branchFromRef:</a></code></li>
-        <li><code><a href="#initFromRef:">- initFromRef:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITBranch.h</code>
-      <h3><a name="branchFromRef:"></a>branchFromRef:</h3>
-      <code class="methodDeclaration">+ (GITBranch *)branchFromRef:(GITRef *)        <span class="parameter">theRef</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRef</dt>
-        <dd><p><a href="GITRef.html">GITRef</a> describing the branch </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>branch initialised with the reference </p>
-      <h5>Discussion</h5>
-<p>Creates and returns an autoreleased branch using the reference specified￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initFromRef:">- initFromRef:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITBranch.h</code>
-      <h2>Instance methods</h2>
-      <h3><a name="initFromRef:"></a>initFromRef:</h3>
-      <code class="methodDeclaration">- (id)initFromRef:(GITRef *)        <span class="parameter">theRef</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theRef</dt>
-        <dd><p><a href="GITRef.html">GITRef</a> describing the branch </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>branch initialised with the reference </p>
-      <h5>Discussion</h5>
-<p>Creates and returns a branch for the specified reference￼.</p>
-      <h5>Declared in</h5>
-      <code>GITBranch.h</code>
-      <h3><a name="name"></a>name</h3>
-      <code class="methodDeclaration">- (NSString *)name</code>
-      <h5>Return value</h5>
-<p>name of the branch </p>
-      <h5>Discussion</h5>
-<p>Returns the name of the branch￼.</p>
-      <h5>Declared in</h5>
-      <code>GITBranch.h</code>
-    <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-11)
-      <br />
-      Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
-    </p>
-  </div>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITBranch Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="classMethods">Class Methods</option>
+<option value="branchWithName:inRepo:">    + branchWithName:inRepo:</option>
+<option value="branchFromRef:">    + branchFromRef:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initFromRef:">    - initFromRef:</option>
+<option value="name">    - name</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Creating_and_Initialising_Branches">Creating and Initialising Branches</a></li>
+<li><a href="#Branch_Information">Branch Information</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;">
+<li><a href="#branchWithName:inRepo:">branchWithName:inRepo:</a></li>
+<li><a href="#branchFromRef:">branchFromRef:</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initFromRef:">initFromRef:</a></li>
+<li><a href="#name">name</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITBranch Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITBranch.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p><code><code>GITBranch</code></code> objects provide an interface to branches. </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Creating_and_Initialising_Branches">
+<h3>Creating and Initialising Branches</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#branchWithName:inRepo:">+ branchWithName:inRepo:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#branchFromRef:">+ branchFromRef:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initFromRef:">- initFromRef:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Branch_Information">
+<h3>Branch Information</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#name">- name</a></code><span class="tooltip"></span></span></li></ul>
+</li>
+  </ul>
+<section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="branchWithName:inRepo:"><h3>branchWithName:inRepo:</h3>
+<code class="methodDeclaration">+ (GITBranch *)branchWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> inRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theName</dt>
+<dd>
+              <p>Name of the branch </p>
+            </dd>
+          <dt>theRepo</dt>
+<dd>
+              <p>Repository to resolve the branch in </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>branch initialised with the name specified, or nil if the branch can't be resolved </p>
+        <h5>Discussion</h5>
+            <p>Creates and returns a branch by the name specified.</p>
+            <p>The name of the branch is used to resolve the reference for the branch, the resolved reference is used to create the <code>GITBranch</code>.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#branchFromRef:">
+            + branchFromRef:
+          </a></code></li>
+<li><code><a href="#initFromRef:">
+            - initFromRef:
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section><section class="definition" id="branchFromRef:"><h3>branchFromRef:</h3>
+<code class="methodDeclaration">+ (GITBranch *)branchFromRef:(<code><a href="../Classes/GITRef.html">GITRef</a></code> *)<span class="parameter">theRef</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRef</dt>
+<dd>
+              <p><code><a href="../Classes/GITRef.html">GITRef</a></code> describing the branch </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>branch initialised with the reference </p>
+        <h5>Discussion</h5>
+            <p>Creates and returns an autoreleased branch using the reference specified￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initFromRef:">
+            - initFromRef:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initFromRef:"><h3>initFromRef:</h3>
+<code class="methodDeclaration">- (id)initFromRef:(<code><a href="../Classes/GITRef.html">GITRef</a></code> *)<span class="parameter">theRef</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theRef</dt>
+<dd>
+              <p><code><a href="../Classes/GITRef.html">GITRef</a></code> describing the branch </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>branch initialised with the reference </p>
+        <h5>Discussion</h5>
+            <p>Creates and returns a branch for the specified reference￼.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section><section class="definition" id="name"><h3>name</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)name</code><h5>Return Value</h5>
+          <p>name of the branch </p>
+        <h5>Discussion</h5>
+            <p>Returns the name of the branch￼.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITBranch Class Reference</a></li>
+</ul></footer>
 </body>
 </html>

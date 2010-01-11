@@ -1,0 +1,122 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITTreeItem Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
+</head>
+<body>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITTreeItem Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="tasks">Tasks</option>
+<option value="properties">Properties</option>
+<option value="parent">    parent</option>
+<option value="mode">    mode</option>
+<option value="name">    name</option>
+<option value="item">    item</option>
+<option value="sha1">    sha1</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;"><li><a href="#Other">Other</a></li></ul>
+</li>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;">
+<li><a href="#parent">parent</a></li>
+<li><a href="#mode">mode</a></li>
+<li><a href="#name">name</a></li>
+<li><a href="#item">item</a></li>
+<li><a href="#sha1">sha1</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITTreeItem Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITTreeItem.h</td>
+</tr></table>
+<h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Other">
+<h3>Other</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#parent">parent</a></code> <span class="specialType">property</span><span class="tooltip">
+            Tree the item belongs to. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#mode">mode</a></code> <span class="specialType">property</span><span class="tooltip">
+            File/directory mode of the item. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#name">name</a></code> <span class="specialType">property</span><span class="tooltip">
+            Name of the file or directory. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#item">item</a></code> <span class="specialType">property</span><span class="tooltip">
+            Item being pointed to. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#sha1">sha1</a></code> <span class="specialType">property</span><span class="tooltip">
+            Hash of the item (tree/blob) referred to. 
+          </span></span></li>
+</ul>
+</li>
+  </ul>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="parent"><h3>parent</h3>
+            <p>Tree the item belongs to. </p>
+          <code class="methodDeclaration">@property <code><a href="../Classes/GITTree.html">GITTree</a></code> *parent</code><h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section><section class="definition" id="mode"><h3>mode</h3>
+            <p>File/directory mode of the item. </p>
+          <code class="methodDeclaration">@property <code>GITTreeItem</code>Mode mode</code><h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section><section class="definition" id="name"><h3>name</h3>
+            <p>Name of the file or directory. </p>
+          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *name</code><h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section><section class="definition" id="item"><h3>item</h3>
+            <p>Item being pointed to. </p>
+          <code class="methodDeclaration">@property <code><a href="../Protocols/GITObject.html">GITObject</a></code> *item</code><h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section><section class="definition" id="sha1"><h3>sha1</h3>
+            <p>Hash of the item (tree/blob) referred to. </p>
+          <code class="methodDeclaration">@property <code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *sha1</code><h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITTreeItem Class Reference</a></li>
+</ul></footer>
+</body>
+</html>

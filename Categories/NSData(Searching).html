@@ -1,112 +1,150 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 STRICT//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html><html>
 <head>
-  <title>NSData(Searching) category reference</title>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/screen.css" />
-  <meta name="generator" content="appledoc" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>NSData(Searching) Category Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
 </head>
 <body>
-  <div id="mainContainer">
-    <h1>NSData(Searching) category reference</h1>
-    <table summary="Basic information" id="classInfo">
-      <tr class="alt">
-        <td><label id="classDeclaration">Declared in</label></td>
-        <td>NSData+Searching.h</td>
-      </tr>
-    </table>
-      <h2>Overview</h2>
-<p>This category provides ranging and splitting of <a href="#NSData">NSData</a> objects. </p>
-      <h2>Tasks</h2>
-      <h3>Getting ranges of NSData</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#rangeFrom:toByte:>- rangeFrom:toByte:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#rangeOfNullTerminatedBytesFrom:>- rangeOfNullTerminatedBytesFrom:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Splitting up NSData</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#subdataFromIndex:>- subdataFromIndex:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#subdataToIndex:>- subdataToIndex:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h2>Instance methods</h2>
-      <h3><a name="rangeFrom:toByte:"></a>rangeFrom:toByte:</h3>
-      <code class="methodDeclaration">- (NSRange)rangeFrom:(NSInteger)        <span class="parameter">start</span>
- toByte:(NSInteger)        <span class="parameter">c</span>
-</code>
-      <h5>Return value</h5>
-<p>Range of bytes up to the first occurrence of c from start. If c can not be found then the NSRange.location will be set to NSNotFound. </p>
-      <h5>Discussion</h5>
-<p>Returns the range of bytes up to the first occurrence of byte c from start. </p>
-      <h5>Declared in</h5>
-      <code>NSData+Searching.h</code>
-      <h3><a name="rangeOfNullTerminatedBytesFrom:"></a>rangeOfNullTerminatedBytesFrom:</h3>
-      <code class="methodDeclaration">- (NSRange)rangeOfNullTerminatedBytesFrom:(NSInteger)        <span class="parameter">start</span>
-</code>
-      <h5>Return value</h5>
-<p>Range of bytes up to the first NULL from start. If no NULL can be found then the NSRange.location will be set to NSNotFound. </p>
-      <h5>Discussion</h5>
-<p>Returns the range of bytes up to the first NULL byte from start. </p>
-      <h5>Declared in</h5>
-      <code>NSData+Searching.h</code>
-      <h3><a name="subdataFromIndex:"></a>subdataFromIndex:</h3>
-      <code class="methodDeclaration">- (NSData *)subdataFromIndex:(NSUInteger)        <span class="parameter">index</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>index</dt>
-        <dd><p>Start of the range which defines the limits to extract. </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>A data object containing a copy of the receiver's bytes that fall within the limits of index and the end of the bytes. </p>
-      <h5>Discussion</h5>
-<p>Returns a data object containing a copy of the receiver's bytes that fall within the limits specified by a given index and the end of the bytes. </p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#-subdataWithRange:">-subdataWithRange:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>NSData+Searching.h</code>
-      <h3><a name="subdataToIndex:"></a>subdataToIndex:</h3>
-      <code class="methodDeclaration">- (NSData *)subdataToIndex:(NSUInteger)        <span class="parameter">index</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>index</dt>
-        <dd><p>End of the range which defines the limits to extract. </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>A data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
-      <h5>Discussion</h5>
-<p>Returns a data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#-subdataWithRange:">-subdataWithRange:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>NSData+Searching.h</code>
-    <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-11)
-      <br />
-      Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
-    </p>
-  </div>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">NSData(Searching) Category Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="rangeFrom:toByte:">    - rangeFrom:toByte:</option>
+<option value="rangeOfNullTerminatedBytesFrom:">    - rangeOfNullTerminatedBytesFrom:</option>
+<option value="subdataFromIndex:">    - subdataFromIndex:</option>
+<option value="subdataToIndex:">    - subdataToIndex:</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Getting_ranges_of_NSData">Getting ranges of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code></a></li>
+<li><a href="#Splitting_up_NSData">Splitting up <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code></a></li>
+</ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#rangeFrom:toByte:">rangeFrom:toByte:</a></li>
+<li><a href="#rangeOfNullTerminatedBytesFrom:">rangeOfNullTerminatedBytesFrom:</a></li>
+<li><a href="#subdataFromIndex:">subdataFromIndex:</a></li>
+<li><a href="#subdataToIndex:">subdataToIndex:</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">NSData(Searching) Category Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>NSData+Searching.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p>This category provides ranging and splitting of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> objects. </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Getting_ranges_of_NSData">
+<h3>Getting ranges of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>
+</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#rangeFrom:toByte:">- rangeFrom:toByte:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#rangeOfNullTerminatedBytesFrom:">- rangeOfNullTerminatedBytesFrom:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Splitting_up_NSData">
+<h3>Splitting up <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>
+</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#subdataFromIndex:">- subdataFromIndex:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#subdataToIndex:">- subdataToIndex:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+  </ul>
+<section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="rangeFrom:toByte:"><h3>rangeFrom:toByte:</h3>
+<code class="methodDeclaration">- (NSRange)rangeFrom:(NSInteger)<span class="parameter">start</span> toByte:(NSInteger)<span class="parameter">c</span> </code><h5>Return Value</h5>
+          <p>Range of bytes up to the first occurrence of c from start. If c can not be found then the NSRange.location will be set to NSNotFound. </p>
+        <h5>Discussion</h5>
+            <p>Returns the range of bytes up to the first occurrence of byte c from start. </p>
+          <h5>Declared In</h5>
+<code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section><section class="definition" id="rangeOfNullTerminatedBytesFrom:"><h3>rangeOfNullTerminatedBytesFrom:</h3>
+<code class="methodDeclaration">- (NSRange)rangeOfNullTerminatedBytesFrom:(NSInteger)<span class="parameter">start</span> </code><h5>Return Value</h5>
+          <p>Range of bytes up to the first NULL from start. If no NULL can be found then the NSRange.location will be set to NSNotFound. </p>
+        <h5>Discussion</h5>
+            <p>Returns the range of bytes up to the first NULL byte from start. </p>
+          <h5>Declared In</h5>
+<code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section><section class="definition" id="subdataFromIndex:"><h3>subdataFromIndex:</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)subdataFromIndex:(NSUInteger)<span class="parameter">index</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>index</dt>
+<dd>
+              <p>Start of the range which defines the limits to extract. </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>A data object containing a copy of the receiver's bytes that fall within the limits of index and the end of the bytes. </p>
+        <h5>Discussion</h5>
+            <p>Returns a data object containing a copy of the receiver's bytes that fall within the limits specified by a given index and the end of the bytes. </p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#subdataWithRange:">-subdataWithRange: </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section><section class="definition" id="subdataToIndex:"><h3>subdataToIndex:</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)subdataToIndex:(NSUInteger)<span class="parameter">index</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>index</dt>
+<dd>
+              <p>End of the range which defines the limits to extract. </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>A data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
+        <h5>Discussion</h5>
+            <p>Returns a data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#subdataWithRange:">-subdataWithRange: </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">NSData(Searching) Category Reference</a></li>
+</ul></footer>
 </body>
 </html>

@@ -1,155 +1,195 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 STRICT//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html><html>
 <head>
-  <title>GITRef class reference</title>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/screen.css" />
-  <meta name="generator" content="appledoc" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITRef Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
 </head>
 <body>
-  <div id="mainContainer">
-    <h1>GITRef class reference</h1>
-    <table summary="Basic information" id="classInfo">
-      <tr class="alt">
-        <td><label id="classDeclaration">Inherits from</label></td>
-        <td>NSObject</td>
-      </tr>
-      <tr>
-        <td><label id="classDeclaration">Declared in</label></td>
-        <td>GITRef.h</td>
-      </tr>
-    </table>
-      <h2>Overview</h2>
-<p><em><a href="">GITRef</a></em> objects provide access to git references. </p>
-      <h2>Tasks</h2>
-      <h3>Properties</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#name>name</a></code>
-            <span class="specialType">property</span>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#link>link</a></code>
-            <span class="specialType">property</span>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#targetName>targetName</a></code>
-            <span class="specialType">property</span>
-          </span>
-        </li>
-      </ul>
-      <h3>Creating and Initialising References</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#refWithName:andTarget:inRepo:>+ refWithName:andTarget:inRepo:</a></code>
-          </span>
-        </li>
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#initWithName:andTarget:inRepo:>- initWithName:andTarget:inRepo:</a></code>
-          </span>
-        </li>
-      </ul>
-      <h3>Resolving Links</h3>
-      <ul class="methods">
-        <li>
-          <span class="tooltipRegion">
-            <code><a href=#resolve>- resolve</a></code>
-          </span>
-        </li>
-      </ul>
-      <h2>Class methods</h2>
-      <h3><a name="refWithName:andTarget:inRepo:"></a>refWithName:andTarget:inRepo:</h3>
-      <code class="methodDeclaration">+ (id)refWithName:(NSString *)        <span class="parameter">theName</span>
- andTarget:(NSString *)        <span class="parameter">theTarget</span>
- inRepo:(GITRepo *)        <span class="parameter">theRepo</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theName</dt>
-        <dd><p>Name of the reference </p>
-</dd>
-        <dt>theTarget</dt>
-        <dd><p>Link target or SHA1 hash of object </p>
-</dd>
-        <dt>theRepo</dt>
-        <dd><p>Repository the reference exists in </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>reference with the specified name, target and repository￼ </p>
-      <h5>Discussion</h5>
-<p>Creates an autoreleased reference with the specified name, target and repository￼.</p>
-      <h5>See also</h5>
-      <ul class="seeAlso">
-        <li><code><a href="#initWithName:andTarget:inRepo:">- initWithName:andTarget:inRepo:</a></code></li>
-      </ul>
-      <h5>Declared in</h5>
-      <code>GITRef.h</code>
-      <h2>Instance methods</h2>
-      <h3><a name="initWithName:andTarget:inRepo:"></a>initWithName:andTarget:inRepo:</h3>
-      <code class="methodDeclaration">- (id)initWithName:(NSString *)        <span class="parameter">theName</span>
- andTarget:(NSString *)        <span class="parameter">theTarget</span>
- inRepo:(GITRepo *)        <span class="parameter">theRepo</span>
-</code>
-      <h5>Parameters</h5>
-      <dl class="parameterList">
-        <dt>theName</dt>
-        <dd><p>Name of the reference </p>
-</dd>
-        <dt>theTarget</dt>
-        <dd><p>Link target or SHA1 hash of object </p>
-</dd>
-        <dt>theRepo</dt>
-        <dd><p>Repository the reference exists in </p>
-</dd>
-      </dl>
-      <h5>Return value</h5>
-<p>reference with the specified name, target and repository￼ </p>
-      <h5>Discussion</h5>
-<p>Initialises a reference with the specified name, target and repository￼</p>
-      <h5>Declared in</h5>
-      <code>GITRef.h</code>
-      <h3><a name="resolve"></a>resolve</h3>
-      <code class="methodDeclaration">- (GITRef *)resolve</code>
-      <h5>Return value</h5>
-<p>reference linked to by the receiver, returns the receiver if not a link </p>
-      <h5>Discussion</h5>
-<p>Returns the reference linked to by the receiver, returns the receiver if not a link.</p>
-      <h5>Declared in</h5>
-      <code>GITRef.h</code>
-      <h2>Properties</h2>
-      <h3><a name="name"></a>name</h3>
-      <code class="methodDeclaration">@property NSString *name</code>
-      <h5>Discussion</h5>
-<p>Name of the reference. </p>
-      <h5>Declared in</h5>
-      <code>GITRef.h</code>
-      <h3><a name="link"></a>link</h3>
-      <code class="methodDeclaration">@property BOOL link</code>
-      <h5>Discussion</h5>
-<p>Flag indicating if the reference is a link to another reference or not.</p>
-<p>The accessor for this property is <code>isLink</code></p>
-      <h5>Declared in</h5>
-      <code>GITRef.h</code>
-      <h3><a name="targetName"></a>targetName</h3>
-      <code class="methodDeclaration">@property NSString *targetName</code>
-      <h5>Discussion</h5>
-<p>Value of the reference.</p>
-<p>If the receiver is a link then <code>targetName</code> contains the name of the reference it points to. If the receiver is not a link then <code>targetName</code> contains the SHA1 hash of the <a href="#GITObject">GITObject</a> the reference points to. </p>
-      <h5>Declared in</h5>
-      <code>GITRef.h</code>
-    <hr />
-    <p id="lastUpdated">      (Last updated: 2009-12-11)
-      <br />
-      Back to <a href="../index.html">index</a> / <a href="../hierarchy.html">hierarchy</a>.
-    </p>
-  </div>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITRef Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="properties">Properties</option>
+<option value="name">    name</option>
+<option value="link">    link</option>
+<option value="targetName">    targetName</option>
+<option value="classMethods">Class Methods</option>
+<option value="refWithName:andTarget:inRepo:">    + refWithName:andTarget:inRepo:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithName:andTarget:inRepo:">    - initWithName:andTarget:inRepo:</option>
+<option value="resolve">    - resolve</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Properties">Properties</a></li>
+<li><a href="#Creating_and_Initialising_References">Creating and Initialising References</a></li>
+<li><a href="#Resolving_Links">Resolving Links</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;">
+<li><a href="#name">name</a></li>
+<li><a href="#link">link</a></li>
+<li><a href="#targetName">targetName</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#refWithName:andTarget:inRepo:">refWithName:andTarget:inRepo:</a></li></ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithName:andTarget:inRepo:">initWithName:andTarget:inRepo:</a></li>
+<li><a href="#resolve">resolve</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITRef Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITRef.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p><code>GITRef</code> objects provide access to git references. </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Properties">
+<h3>Properties</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#name">name</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#link">link</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#targetName">targetName</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Creating_and_Initialising_References">
+<h3>Creating and Initialising References</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#refWithName:andTarget:inRepo:">+ refWithName:andTarget:inRepo:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithName:andTarget:inRepo:">- initWithName:andTarget:inRepo:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Resolving_Links">
+<h3>Resolving Links</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#resolve">- resolve</a></code><span class="tooltip"></span></span></li></ul>
+</li>
+  </ul>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="name"><h3>name</h3>
+<code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *name</code><h5>Discussion</h5>
+            <p>Name of the reference. </p>
+          <h5>Declared In</h5>
+<code><code>GITRef</code>.h</code></section><section class="definition" id="link"><h3>link</h3>
+<code class="methodDeclaration">@property BOOL link</code><h5>Discussion</h5>
+            <p>Flag indicating if the reference is a link to another reference or not.</p>
+            <p>The accessor for this property is <code>isLink</code></p>
+          <h5>Declared In</h5>
+<code><code>GITRef</code>.h</code></section><section class="definition" id="targetName"><h3>targetName</h3>
+<code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *targetName</code><h5>Discussion</h5>
+            <p>Value of the reference.</p>
+            <p>If the receiver is a link then <code>targetName</code> contains the name of the reference it points to. If the receiver is not a link then <code>targetName</code> contains the SHA1 hash of the <code><a href="../Protocols/GITObject.html">GITObject</a></code> the reference points to. </p>
+          <h5>Declared In</h5>
+<code><code>GITRef</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="refWithName:andTarget:inRepo:"><h3>refWithName:andTarget:inRepo:</h3>
+<code class="methodDeclaration">+ (id)refWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> andTarget:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theTarget</span> inRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theName</dt>
+<dd>
+              <p>Name of the reference </p>
+            </dd>
+          <dt>theTarget</dt>
+<dd>
+              <p>Link target or SHA1 hash of object </p>
+            </dd>
+          <dt>theRepo</dt>
+<dd>
+              <p>Repository the reference exists in </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>reference with the specified name, target and repository￼ </p>
+        <h5>Discussion</h5>
+            <p>Creates an autoreleased reference with the specified name, target and repository￼.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithName:andTarget:inRepo:">
+            - initWithName:andTarget:inRepo:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRef</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithName:andTarget:inRepo:"><h3>initWithName:andTarget:inRepo:</h3>
+<code class="methodDeclaration">- (id)initWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> andTarget:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theTarget</span> inRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>theName</dt>
+<dd>
+              <p>Name of the reference </p>
+            </dd>
+          <dt>theTarget</dt>
+<dd>
+              <p>Link target or SHA1 hash of object </p>
+            </dd>
+          <dt>theRepo</dt>
+<dd>
+              <p>Repository the reference exists in </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>reference with the specified name, target and repository￼ </p>
+        <h5>Discussion</h5>
+            <p>Initialises a reference with the specified name, target and repository￼</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITRef</code>.h</code></section><section class="definition" id="resolve"><h3>resolve</h3>
+<code class="methodDeclaration">- (<code>GITRef</code> *)resolve</code><h5>Return Value</h5>
+          <p>reference linked to by the receiver, returns the receiver if not a link </p>
+        <h5>Discussion</h5>
+            <p>Returns the reference linked to by the receiver, returns the receiver if not a link.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITRef</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-1-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITRef Class Reference</a></li>
+</ul></footer>
 </body>
 </html>
