@@ -48,6 +48,9 @@
 <li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
 <option value="overview">Overview</option>
 <option value="tasks">Tasks</option>
+<option value="properties">Properties</option>
+<option value="repo">    repo</option>
+<option value="ref">    ref</option>
 <option value="classMethods">Class Methods</option>
 <option value="branchWithName:inRepo:">    + branchWithName:inRepo:</option>
 <option value="branchFromRef:">    + branchFromRef:</option>
@@ -58,8 +61,15 @@
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Properties">Properties</a></li>
 <li><a href="#Creating_and_Initialising_Branches">Creating and Initialising Branches</a></li>
 <li><a href="#Branch_Information">Branch Information</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;">
+<li><a href="#repo">repo</a></li>
+<li><a href="#ref">ref</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
@@ -81,9 +91,21 @@
 <td>GITBranch.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p><code><code>GITBranch</code></code> objects provide an interface to branches. </p>
+      <p>This class represents <code><code>GITBranch</code></code> objects.</p>
+      <p>Branches are threads of commits in a repository, they refer to the HEAD of a thread. </p>
     <h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
+    <li id="Properties">
+<h3>Properties</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#repo">repo</a></code> <span class="specialType">property</span><span class="tooltip">
+            Repository the branch is part of. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#ref">ref</a></code> <span class="specialType">property</span><span class="tooltip">
+            Ref the branch points to. 
+          </span></span></li>
+</ul>
+</li>
     <li id="Creating_and_Initialising_Branches">
 <h3>Creating and Initialising Branches</h3>
 <ul class="methods">
@@ -97,7 +119,14 @@
 <ul class="methods"><li><span class="tooltipRegion"><code><a href="#name">- name</a></code><span class="tooltip"></span></span></li></ul>
 </li>
   </ul>
-<section id="classMethods"><h2>Class Methods</h2>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="repo"><h3>repo</h3>
+            <p>Repository the branch is part of. </p>
+          <code class="methodDeclaration">@property <code><a href="../Classes/GITRepo.html">GITRepo</a></code> *repo</code><h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section><section class="definition" id="ref"><h3>ref</h3>
+            <p>Ref the branch points to. </p>
+          <code class="methodDeclaration">@property <code><a href="../Classes/GITRef.html">GITRef</a></code> *ref</code><h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="branchWithName:inRepo:"><h3>branchWithName:inRepo:</h3>
 <code class="methodDeclaration">+ (GITBranch *)branchWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> inRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
@@ -156,18 +185,18 @@
 <h5>Return Value</h5>
           <p>branch initialised with the reference </p>
         <h5>Discussion</h5>
-            <p>Creates and returns a branch for the specified reference￼.</p>
+            <p>Creates and returns a branch for the specified reference.</p>
             <p></p>
           <h5>Declared In</h5>
 <code><code>GITBranch</code>.h</code></section><section class="definition" id="name"><h3>name</h3>
 <code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)name</code><h5>Return Value</h5>
           <p>name of the branch </p>
         <h5>Discussion</h5>
-            <p>Returns the name of the branch￼.</p>
+            <p>Returns the name of the branch.</p>
             <p></p>
           <h5>Declared In</h5>
 <code><code>GITBranch</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-11</p>
+<p id="lastUpdated">Last updated: 2010-1-13</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

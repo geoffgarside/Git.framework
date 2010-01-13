@@ -55,11 +55,18 @@
 <option value="committer">    committer</option>
 <option value="authorDate">    authorDate</option>
 <option value="committerDate">    committerDate</option>
-<option value="message">    message</option></select></li>
+<option value="message">    message</option>
+<option value="classMethods">Class Methods</option>
+<option value="commitFromData:repo:error:">    + commitFromData:repo:error:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="parentSha1">    - parentSha1</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
-<a href="#tasks">Tasks</a><ul style="display: none;"><li><a href="#Properties">Properties</a></li></ul>
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Properties">Properties</a></li>
+<li><a href="#Creating_and_Initialising_Commits">Creating and Initialising Commits</a></li>
+</ul>
 </li>
 <li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
 <a href="#properties">Properties</a><ul style="display: none;">
@@ -71,6 +78,12 @@
 <li><a href="#committerDate">committerDate</a></li>
 <li><a href="#message">message</a></li>
 </ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#commitFromData:repo:error:">commitFromData:repo:error:</a></li></ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;"><li><a href="#parentSha1">parentSha1</a></li></ul>
 </li>
 </ul></nav><div id="contents">
 <h1 id="classTitle">GITCommit Class Reference</h1>
@@ -90,7 +103,8 @@
 </table>
 <h2 id="overview">Overview</h2>
       <p>This class represents Commit objects in a git repository.</p>
-      <p>Commit objects look like the following, parent may be repeated. tree80655da8d80aaaf92ce5357e7828dc09adb00993parentd8fd39d0bbdd2dcf322d8b11390a4c5825b11495authorA.Developer&lt;dev@example.com&gt;444123000+0000committerA.Developer&lt;dev@example.com&gt;444123000+0000Acommitmessagemeanttodescribewhatthiscommitisallabout</p>
+      <p>Commit objects are markers of the state of a repository at a specific moment in time, they reference trees which define the file system structure of a repository at a given point.</p>
+      <p>Commit objects look like the following, the parent may be repeated. tree80655da8d80aaaf92ce5357e7828dc09adb00993parentd8fd39d0bbdd2dcf322d8b11390a4c5825b11495authorA.Developer&lt;dev@example.com&gt;444123000+0000committerA.Developer&lt;dev@example.com&gt;444123000+0000Acommitmessagemeanttodescribewhatthiscommitisallabout</p>
     <h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
     <li id="Properties">
@@ -117,7 +131,12 @@
 <li><span class="tooltipRegion"><code><a href="#message">message</a></code> <span class="specialType">property</span><span class="tooltip">
             Commit message. 
           </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#parentSha1">- parentSha1</a></code><span class="tooltip"></span></span></li>
 </ul>
+</li>
+    <li id="Creating_and_Initialising_Commits">
+<h3>Creating and Initialising Commits</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#commitFromData:repo:error:">+ commitFromData:repo:error:</a></code><span class="tooltip"></span></span></li></ul>
 </li>
   </ul>
 <section id="properties"><h2>Properties</h2>
@@ -142,8 +161,44 @@
 <code><code>GITCommit</code>.h</code></section><section class="definition" id="message"><h3>message</h3>
             <p>Commit message. </p>
           <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *message</code><h5>Declared In</h5>
+<code><code>GITCommit</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="commitFromData:repo:error:"><h3>commitFromData:repo:error:</h3>
+<code class="methodDeclaration">+ (GITCommit *)commitFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>data</dt>
+<dd>
+              <p>The data describing the commit </p>
+            </dd>
+          <dt>repo</dt>
+<dd>
+              <p>The repository the commit is a member of </p>
+            </dd>
+          <dt>error</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>A commit object from the data</p>
+        <h5>Discussion</h5>
+            <p>Creates and returns a commit from the data.</p>
+            <p>The data content is parsed to extract the information about the commit such as the referenced tree, parents, author, committer, dates and the commit message.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITCommit</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="parentSha1"><h3>parentSha1</h3>
+<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)parentSha1</code><h5>Return Value</h5>
+          <p>SHA1 of the parent commit </p>
+        <h5>Discussion</h5>
+            <p>Returns the last SHA1 in the list of parent commits.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#parentShas">
+            parentShas
+          </a></code></li></ul>
+<h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-11</p>
+<p id="lastUpdated">Last updated: 2010-1-13</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

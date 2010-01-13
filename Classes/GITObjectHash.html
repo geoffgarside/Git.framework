@@ -48,6 +48,8 @@
 <li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
 <option value="overview">Overview</option>
 <option value="tasks">Tasks</option>
+<option value="properties">Properties</option>
+<option value="hash">    hash</option>
 <option value="classMethods">Class Methods</option>
 <option value="unpackedStringFromString:">    + unpackedStringFromString:</option>
 <option value="unpackedStringFromData:">    + unpackedStringFromData:</option>
@@ -71,10 +73,14 @@
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Properties">Properties</a></li>
 <li><a href="#Packing_and_Unpacking_SHA1_Hashes">Packing and Unpacking SHA1 Hashes</a></li>
 <li><a href="#Creating_and_Initialising_Object_Hashes">Creating and Initialising Object Hashes</a></li>
 <li><a href="#Getting_Packed_and_Unpacked_Forms">Getting Packed and Unpacked Forms</a></li>
 </ul>
+</li>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;"><li><a href="#hash">hash</a></li></ul>
 </li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
 <a href="#classMethods">Class Methods</a><ul style="display: none;">
@@ -111,6 +117,12 @@
       <p>The <code><code>GITObjectHash</code></code> class provides methods for packing and unpacking SHA1 hashes in both NSString and <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> forms. <code><code>GITObjectHash</code></code> objects provide </p>
     <h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
+    <li id="Properties">
+<h3>Properties</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#hash">hash</a></code> <span class="specialType">property</span><span class="tooltip">
+            The hash in packed or unpacked form. 
+          </span></span></li></ul>
+</li>
     <li id="Packing_and_Unpacking_SHA1_Hashes">
 <h3>Packing and Unpacking SHA1 Hashes</h3>
 <ul class="methods">
@@ -144,7 +156,11 @@
 </ul>
 </li>
   </ul>
-<section id="classMethods"><h2>Class Methods</h2>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="hash"><h3>hash</h3>
+            <p>The hash in packed or unpacked form. </p>
+          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *hash</code><h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="unpackedStringFromString:"><h3>unpackedStringFromString:</h3>
 <code class="methodDeclaration">+ (NSString *)unpackedStringFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
@@ -476,7 +492,7 @@
 </ul>
 <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-11</p>
+<p id="lastUpdated">Last updated: 2010-1-13</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

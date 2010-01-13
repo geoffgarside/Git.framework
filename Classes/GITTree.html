@@ -48,15 +48,23 @@
 <li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
 <option value="overview">Overview</option>
 <option value="tasks">Tasks</option>
-<option value="instanceMethods">Instance Methods</option>
-<option value="initFromData:repo:error:">    - initFromData:repo:error:</option></select></li>
+<option value="properties">Properties</option>
+<option value="items">    items</option>
+<option value="classMethods">Class Methods</option>
+<option value="treeFromData:repo:error:">    + treeFromData:repo:error:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
-<a href="#tasks">Tasks</a><ul style="display: none;"><li><a href="#Other">Other</a></li></ul>
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Properties">Properties</a></li>
+<li><a href="#Creating_and_Initialising_Trees">Creating and Initialising Trees</a></li>
+</ul>
 </li>
-<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
-<a href="#instanceMethods">Instance Methods</a><ul style="display: none;"><li><a href="#initFromData:repo:error:">initFromData:repo:error:</a></li></ul>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;"><li><a href="#items">items</a></li></ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#treeFromData:repo:error:">treeFromData:repo:error:</a></li></ul>
 </li>
 </ul></nav><div id="contents">
 <h1 id="classTitle">GITTree Class Reference</h1>
@@ -76,28 +84,39 @@
 </table>
 <h2 id="overview">Overview</h2>
       <p>This class represents Tree objects in a git repository.</p>
+      <p>Tree objects store the file system structure of a repository at the point at which the tree is created. They represent directories or folders and contain references to items in the directory/folder which may be other trees, directory/folder, or blobs, files.</p>
       <p>Tree objects store a list of directory items with their associated modes and SHA1 references. The SHA1 references are in the packed form. 
  * 100644 .gitignore a5cc2925ca8258af241be7e5b0381edf30266302
  * 100644 README 69e27356ef629022720d868ab0c0e3394775b6c1
  * </p>
     <h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Other">
-<h3>Other</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#initFromData:repo:error:">- initFromData:repo:error:</a></code><span class="tooltip"></span></span></li></ul>
+    <li id="Properties">
+<h3>Properties</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#items">items</a></code> <span class="specialType">property</span><span class="tooltip">
+            The items in the tree. 
+          </span></span></li></ul>
+</li>
+    <li id="Creating_and_Initialising_Trees">
+<h3>Creating and Initialising Trees</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#treeFromData:repo:error:">+ treeFromData:repo:error:</a></code><span class="tooltip"></span></span></li></ul>
 </li>
   </ul>
-<section id="instanceMethods"><h2>Instance Methods</h2>
-<section class="definition" id="initFromData:repo:error:"><h3>initFromData:repo:error:</h3>
-<code class="methodDeclaration">- (id)initFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="items"><h3>items</h3>
+            <p>The items in the tree. </p>
+          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *items</code><h5>Declared In</h5>
+<code><code>GITTree</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="treeFromData:repo:error:"><h3>treeFromData:repo:error:</h3>
+<code class="methodDeclaration">+ (GITTree *)treeFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
           <dt>data</dt>
 <dd>
-              <p>Data containing the representation of the object to create </p>
+              <p>The data to create the tree from </p>
             </dd>
           <dt>repo</dt>
 <dd>
-              <p>Repository parent of the object </p>
+              <p>The repository the tree is a member of </p>
             </dd>
           <dt>error</dt>
 <dd>
@@ -105,14 +124,14 @@
             </dd>
         </dl>
 <h5>Return Value</h5>
-          <p>Instance of the receiving class </p>
+          <p>A tree object </p>
         <h5>Discussion</h5>
-            <p>Creates and returns an instance of the receiving class.</p>
-            <p>The data contains the representation of the object to create, the repo specifies the parent repository and where any additional objects associated with the object may be loaded from.</p>
+            <p>Creates and returns a tree from the data.</p>
+            <p>The data is parsed to extract the references to the tree contents, the contents are then stored in the <code>items</code> array as <code><a href="../Classes/GITTreeItem.html">GITTreeItem</a></code> objects.</p>
             <p></p>
           <h5>Declared In</h5>
 <code><code>GITTree</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-11</p>
+<p id="lastUpdated">Last updated: 2010-1-13</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
