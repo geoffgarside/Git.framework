@@ -18,9 +18,10 @@ extern const NSUInteger GITObjectHashPackedLength;
  * 
  */
 @interface GITObjectHash : NSObject {
-    NSString *hash;
+    NSString *hash;             //!< The hash in packed or unpacked form
 }
 
+//! \name Properties
 @property (copy) NSString *hash;
 
 //! \name Packing and Unpacking SHA1 Hashes

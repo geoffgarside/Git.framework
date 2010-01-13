@@ -10,8 +10,15 @@
 #import "GITActor.h"
 
 
+/*!
+ * This category provides additional initialisers for GITActor.
+ *
+ * These initialisers aid in creating GITActor objects from the kind of
+ * content typically retrieved by the GITObject(Parsing) category methods.
+ */
 @interface GITActor (Parsing)
 
+//! \name Creating and Initialising Actors from Parsed Strings
 /*!
  * Creates and returns an actor object by parsing the name and email from
  * a string contained in a GITCommit header (author or committer) line.

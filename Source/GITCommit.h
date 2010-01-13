@@ -15,7 +15,11 @@
 /*!
  * This class represents \e Commit objects in a git repository.
  *
- * Commit objects look like the following, parent may be repeated.
+ * Commit objects are markers of the state of a repository at a
+ * specific moment in time, they reference trees which define the
+ * file system structure of a repository at a given point.
+ *
+ * Commit objects look like the following, the parent may be repeated.
  * \code
  * tree 80655da8d80aaaf92ce5357e7828dc09adb00993
  * parent d8fd39d0bbdd2dcf322d8b11390a4c5825b11495
@@ -52,8 +56,27 @@
 @property (retain) GITDateTime *committerDate;
 @property (copy) NSString *message;
 
+//! \name Creating and Initialising Commits
+/*!
+ * Creates and returns a commit from the \a data.
+ *
+ * The \a data content is parsed to extract the information about the commit such
+ * as the referenced tree, parents, author, committer, dates and the commit message.
+ *
+ * \param data The data describing the commit
+ * \param repo The repository the commit is a member of
+ * \param error NSError describing the error that occurred
+ * \return A commit object from the \a data
+ */
 + (GITCommit *)commitFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
 
+//! \name Properties
+/*!
+ * Returns the last SHA1 in the list of parent commits.
+ *
+ * \return SHA1 of the parent commit
+ * \sa parentShas
+ */
 - (NSString *)parentSha1;
 
 @end

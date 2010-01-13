@@ -15,6 +15,11 @@
 /*!
  * This class represents \e Tree objects in a git repository.
  *
+ * Tree objects store the file system structure of a repository at the
+ * point at which the tree is created. They represent directories or
+ * folders and contain references to items in the directory/folder which
+ * may be other trees, directory/folder, or blobs, files.
+ *
  * Tree objects store a list of directory items with their associated
  * modes and SHA1 references. The SHA1 references are in the packed form.
  * \verbatim
@@ -23,13 +28,24 @@
  * \endverbatim
  */
 @interface GITTree : GITObject <GITObject> {
-    NSArray *items;
+    NSArray *items;     //!< The items in the tree
 }
 
+//! \name Properties
 @property (copy) NSArray *items;
 
+//! \name Creating and Initialising Trees
+/*!
+ * Creates and returns a tree from the \a data.
+ *
+ * The \a data is parsed to extract the references to the tree contents, the
+ * contents are then stored in the \c items array as GITTreeItem objects.
+ *
+ * \param data The data to create the tree from
+ * \param repo The repository the tree is a member of
+ * \param error NSError describing any errors which occurred
+ * \return A tree object
+ */
 + (GITTree *)treeFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
-
-- (id)initFromData: (NSData *)data repo: (GITRepo *)theRepo error: (NSError **)error;
 
 @end

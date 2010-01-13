@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 
+/*!
+ * This class describes people who have made a contribution to a repository.
+ *
+ * People are committers and authors, they have names and e-mail addresses,
+ * this class collects these two pieces of information.
+ */
 @interface GITActor : NSObject {
     NSString *name;         //!< Name of the actor
     NSString *email;        //!< Email address of the actor

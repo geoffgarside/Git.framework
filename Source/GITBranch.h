@@ -12,13 +12,17 @@
 @class GITRepo, GITRef;
 
 /*!
- * \c GITBranch objects provide an interface to branches.
+ * This class represents \c GITBranch objects.
+ *
+ * Branches are threads of commits in a repository, they refer to the
+ * HEAD of a thread.
  */
 @interface GITBranch : NSObject {
-    GITRepo *repo;
-    GITRef *ref;
+    GITRepo *repo;      //!< Repository the branch is part of
+    GITRef *ref;        //!< Ref the branch points to
 }
 
+//! \name Properties
 @property (retain) GITRepo *repo;
 @property (retain) GITRef *ref;
 
@@ -47,7 +51,7 @@
 + (GITBranch *)branchFromRef: (GITRef *)theRef;
 
 /*!
- * Creates and returns a branch for the specified reference￼.
+ * Creates and returns a branch for the specified reference.
  *
  * \param theRef GITRef describing the branch
  * \return branch initialised with the reference
@@ -56,7 +60,7 @@
 
 //! \name Branch Information
 /*!
- * Returns the name of the branch￼.
+ * Returns the name of the branch.
  *
  * \return name of the branch
  */
