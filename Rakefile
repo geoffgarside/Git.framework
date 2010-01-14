@@ -38,6 +38,13 @@ namespace :documentation do
   task :release do
     sh 'xcodebuild -target Documentation -configuration Release'
   end
+  task :clean do
+    sh 'rm -r Documentation/{html,tmp,xml}'
+  end
+  file 'Documentation/html/index.html' => 'documentation:release'
+  task :open => 'Documentation/html/index.html' do
+    sh 'open Documentation/html/index.html'
+  end
 end
 
 namespace :website do
