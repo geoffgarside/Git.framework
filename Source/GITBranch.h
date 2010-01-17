@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@class GITRepo, GITRef;
+@class GITRepo, GITRef, GITCommit;
 
 /*!
  * This class represents \c GITBranch objects.
@@ -65,5 +65,12 @@
  * \return name of the branch
  */
 - (NSString *)name;
+
+/*!
+ * Returns the commit which represents the HEAD of the receiver.
+ *
+ * \return Commit HEAD of the receiver
+ */
+- (GITCommit *)head;
 
 @end

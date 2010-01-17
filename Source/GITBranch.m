@@ -10,6 +10,7 @@
 #import "GITRepo.h"
 #import "GITRef.h"
 #import "GITRefResolver.h"
+#import "GITCommit.h"
 
 
 @implementation GITBranch
@@ -44,6 +45,10 @@
     self.repo = nil;
     self.ref = nil;
     [super dealloc];
+}
+
+- (GITCommit *)head {
+    return (GITCommit *)[self.ref target];
 }
 
 @end
