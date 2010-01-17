@@ -15,7 +15,7 @@
 
 @implementation GITBranch
 
-@synthesize repo, ref;
+@synthesize repo, ref, remote;
 
 + (GITBranch *)branchWithName: (NSString *)theName inRepo: (GITRepo *)theRepo {
     GITRef *branchRef = [[theRepo refResolver] resolveRefWithName:theName];
@@ -23,6 +23,7 @@
         return nil;
     return [[self class] branchFromRef:branchRef];
 }
+
 + (GITBranch *)branchFromRef: (GITRef *)theRef {
     return [[[[self class] alloc] initFromRef:theRef] autorelease];
 }
@@ -33,12 +34,16 @@
 
     self.repo = [theRef repo];
     self.ref = theRef;
+    self.remote = [[self.ref name] rangeOfString:@"remotes"].location != NSNotFound;
 
     return self;
 }
 
 - (NSString *)name {
-    return [[self.ref name] stringByReplacingOccurrencesOfString:@"refs/heads/" withString:@""];
+    if ( remote )
+        return [[self.ref name] stringByReplacingOccurrencesOfString:@"refs/remotes/" withString:@""];
+    else
+        return [[self.ref name] stringByReplacingOccurrencesOfString:@"refs/heads/" withString:@""];
 }
 
 - (void)dealloc {

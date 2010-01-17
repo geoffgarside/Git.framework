@@ -20,11 +20,13 @@
 @interface GITBranch : NSObject {
     GITRepo *repo;      //!< Repository the branch is part of
     GITRef *ref;        //!< Ref the branch points to
+    BOOL remote;        //!< Flag indicating if the branch is a remote branch
 }
 
 //! \name Properties
 @property (retain) GITRepo *repo;
 @property (retain) GITRef *ref;
+@property (assign,getter=isRemote) BOOL remote;
 
 //! \name Creating and Initialising Branches
 /*!
