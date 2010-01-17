@@ -55,6 +55,10 @@ enum {
 #pragma mark GITPackCollection Errors
     GITPackCollectionErrorDirectoryDoesNotExist,
 
+#pragma mark GITLooseObject Errors
+    GITLooseObjectErrorDirectoryDoesNotExist,
+    GITLooseObjectErrorObjectNotFound,
+
 #pragma mark GITObject Parsing Errors
     GITObjectErrorParsingFailed,
 };
