@@ -16,6 +16,10 @@
  * The class combines the data of the object and the indicated type for later
  * conversion into a normal git object type such as \e commit, \e tree, \e blob
  * or \e tag.
+ *
+ * When loading an object from a PACK file you do not create instances of this
+ * class directly, rather you call the -unpackObjectWithSha1:error: method on
+ * the GITPackFile and an instance of this class is returned.
  */
 @interface GITPackObject : NSObject {
     GITObjectType type;     //!< Type of the object the data represents
@@ -47,6 +51,17 @@
  * \sa packObjectWithData:type:
  */
 - (id)initWithData: (NSData *)packData type: (GITObjectType)objectType;
+
+//! \name Obtaining the contained object
+/*!
+ * Returns the object contained in the receiver and sets the \a repo of the object.
+ *
+ * \param repo Repository the object should belong to
+ * \param error NSError describing any errors which occurred
+ * \return object in the \a repo
+ * \sa GITPackFile::unpackObjectWithSha1
+ */
+- (GITObject *)objectInRepo: (GITRepo *)repo error: (NSError **)error;
 
 //! \name Patching GITPackObjects
 /*!

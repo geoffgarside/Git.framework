@@ -42,4 +42,8 @@
     return [self.data length];
 }
 
+- (GITObject *)objectInRepo: (GITRepo *)repo error: (NSError **)error {
+    return [GITObject objectOfType:self.type withData:self.data repo:repo error:error];
+}
+
 @end
