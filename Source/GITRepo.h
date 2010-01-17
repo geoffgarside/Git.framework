@@ -15,29 +15,20 @@
  * The GITRepo class declares the programmatic interface to the repository.
  */
 @interface GITRepo : NSObject {
-    NSString *root;
-    BOOL bare;
+    NSString *root;                         //!< Path to the repository root
+    BOOL bare;                              //!< Flag indicating if the repo is bare, accessor isBare
 
-    GITRefResolver *refResolver;
+    GITRefResolver *refResolver;            //!< Refs Resolver for the repo
 }
 
 //! \name Properties
-/*!
- * Path to repository root
- */
 @property (copy) NSString *root;
-
-/*!
- * Flag indicating if repository is bare or not.
- *
- * Accessor for this property is \c -isBare
- */
 @property (assign,getter=isBare) BOOL bare;
 @property (retain) GITRefResolver *refResolver;
 
 //! \name Creating and Initialising Repositories
 /*!
- * Returns a repository using the current working directory as the repository root￼.
+ * Returns a repository using the current working directory as the repository root.
  *
  * \return repository initialised at the current directory, or nil if an error occurred
  * \sa repoWithRoot:
@@ -45,7 +36,7 @@
 + (GITRepo *)repo;
 
 /*!
- * Returns a repository with theRoot as the repository root￼.
+ * Returns a repository with theRoot as the repository root.
  *
  * \param theRoot Path to the repository root
  * \return repository initialised at the specified path, or nil if an error occurred
@@ -54,7 +45,7 @@
 + (GITRepo *)repoWithRoot: (NSString *)theRoot;
 
 /*!
- * Returns a repository with theRoot as the repository root￼.
+ * Returns a repository with theRoot as the repository root.
  *
  * \param theRoot Path to the repository root
  * \param theError NSError describing any errors which occurred during initialisation
@@ -64,7 +55,7 @@
 + (GITRepo *)repoWithRoot: (NSString *)theRoot error: (NSError **)theError;
 
 /*!
- * Returns a repository initialised with the root specified by \a theRoot￼.
+ * Returns a repository initialised with the root specified by \a theRoot.
  *
  * \param theRoot Path to the repository root
  * \return repository initialised at the specified path, or nil if an error occurred
@@ -73,7 +64,7 @@
 - (id)initWithRoot: (NSString *)theRoot;
 
 /*!
- * Returns a repository initialised with the root specified by \a theRoot￼.
+ * Returns a repository initialised with the root specified by \a theRoot.
  *
  * If the path specified by \a theRoot ends in ".git" then the repository is assumed
  * to be a bare repository, if it doesn't then ".git" is appended to \a theRoot as a
@@ -95,7 +86,7 @@
 
 //! \name Instance Methods
 /*!
- * Returns an array containing branches from the receiver￼.
+ * Returns an array containing branches from the receiver.
  *
  * The GITBranch objects in the array are created from the array of GITRef objects
  * returned by GITRefResolver::headRefs processing of <code>refs/heads</code>.
@@ -106,7 +97,7 @@
 - (NSArray *)branches;
 
 /*!
- * Returns an array containing remotes from the receiver￼.
+ * Returns an array containing remotes from the receiver.
  *
  * The GITRemote objects in the array are created from the array of GITRef objects
  * returned by GITRefResolver::remoteRefs processing of <code>refs/remotes</code>.
@@ -117,7 +108,7 @@
 - (NSArray *)remotes;
 
 /*!
- * Returns an array containing tags from the receiver￼.
+ * Returns an array containing tags from the receiver.
  *
  * The GITTag objects in the array are created from the array of GITRef objects
  * returned by GITRefResolver::tagRefs processing of <code>refs/tags</code>.
