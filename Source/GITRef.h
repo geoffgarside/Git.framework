@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@class GITRepo;
+@class GITRepo, GITObject;
 
 /*!
  * \e GITRef objects provide access to git references.
@@ -68,8 +68,6 @@
  */
 - (id)initWithName: (NSString *)theName andTarget: (NSString *)theTarget inRepo: (GITRepo *)theRepo;
 
-// Could be a commit, tag
-//- (GIT *)target;
 //! \name Resolving Links
 /*!
  * Returns the reference linked to by the receiver, returns the receiver if not a link.
@@ -79,5 +77,13 @@
  * \return reference linked to by the receiver, returns the receiver if not a link
  */
 - (GITRef *)resolve;
+
+/*!
+ * Returns the object referenced by resolving the receiver.
+ *
+ * \return Object the resolved receiver references
+ * \sa resolve
+ */
+- (GITObject *)target;
 
 @end

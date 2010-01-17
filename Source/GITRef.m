@@ -9,6 +9,7 @@
 #import "GITRef.h"
 #import "GITRepo.h"
 #import "GITRefResolver.h"
+#import "GITObjectHash.h"
 
 
 @implementation GITRef
@@ -47,6 +48,11 @@
     } else {
         return [[[self.repo refResolver] resolveRefWithName:[self.targetName stringByReplacingOccurrencesOfString:@"ref: " withString:@""]] resolve];
     }
+}
+
+- (GITObject *)target {
+    GITRef *end = [self resolve];
+    return [self.repo objectWithSha1:[GITObjectHash objectHashWithString:end.targetName] error:NULL];
 }
 
 @end
