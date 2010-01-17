@@ -14,6 +14,7 @@
 #import "GITActor.h"
 #import "GITError.h"
 #import "GITActor+Parsing.h"
+#import "GITRepo.h"
 
 
 // { (char*).startPattern, (NSUI).patternLen, (NSI).startLen, (NSUI).matchLen, (char).endChar}
@@ -109,34 +110,34 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
 }
 
 // Lazy object loaders
-// - (GITTree *)tree {
-//     if ( !tree && self.treeSha1 )
-//         self.tree = 
-//     return tree;
-// }
-// 
+- (GITTree *)tree {
+    if ( !tree && self.treeSha1 )
+        self.tree = (GITTree *)[self.repo objectWithSha1:self.treeSha1 error:NULL];
+    return tree;
+}
+
 - (NSString *)parentSha1 {
     return [self.parentShas lastObject];
 }
-// 
-// - (GITCommit *)parent {
-//     return [self.parents lastObject];
-// }
-// 
-// - (NSArray *)parents {
-//     if ( !parents && self.parentShas ) {
-//         NSMutableArray *newParents = [[NSMutableArray alloc] initWithCapacity:[self.parentShas count]];
-//         for ( NSString *parentSha1 in self.parentShas ) {
-//             GITCommit *parent = 
-//             [newParents addObject:parent];
-//         }
-// 
-//         self.parents = newParents;
-//         [newParents release];
-//     }
-// 
-//     return parents;
-// }
+
+- (GITCommit *)parent {
+    return [self.parents lastObject];
+}
+
+- (NSArray *)parents {
+    if ( !parents && self.parentShas ) {
+        NSMutableArray *newParents = [[NSMutableArray alloc] initWithCapacity:[self.parentShas count]];
+        for ( GITObjectHash *parentSha1 in self.parentShas ) {
+            GITCommit *parent = (GITCommit *)[self.repo objectWithSha1:parentSha1 error:NULL];
+            [newParents addObject:parent];
+        }
+
+        self.parents = newParents;
+        [newParents release];
+    }
+
+    return parents;
+}
 
 // Lazily loaded properties
 - (GITActor *)author {

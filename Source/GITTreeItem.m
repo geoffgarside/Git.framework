@@ -32,10 +32,10 @@
     return self;
 }
 
-// - (GITObject *)item {
-//  if ( !item )
-//      // self.item = [[[self parent] repo] object
-//  return item;
-// }
+- (GITObject *)item {
+    if ( !item )
+        self.item = [self.parent.repo objectWithSha1:self.sha1 error:NULL];
+    return item;
+}
 
 @end

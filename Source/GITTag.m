@@ -100,6 +100,18 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
     [super dealloc];
 }
 
+// Lazy object loaders
+- (GITObject *)target {
+    if ( !target ) {
+        self.target = [self.repo objectWithSha1:self.targetSha1 error:NULL];
+        if ( [self.target type] != self.targetType ) {
+            self.target = nil;
+        }
+    }
+
+    return nil;
+}
+
 // Lazily loaded properties
 - (GITActor *)tagger {
     if ( !tagger )
