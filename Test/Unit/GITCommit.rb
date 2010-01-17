@@ -2,9 +2,9 @@ describe 'GITCommit' do
   before do
     @err = Pointer.new(:object)
     @repo = default_repository
-    @commitData = NSData.dataWithContentsOfFile("#{TEST_REPO}/.git/objects/fb/473b1d24812eb1b212d444b7be8e651c6077ca").zlibInflate
+    @commitData = NSData.dataWithContentsOfFile("#{@repo.root}/objects/fb/473b1d24812eb1b212d444b7be8e651c6077ca").zlibInflate
     @data = @commitData.subdataWithRange(NSMakeRange(11, 248))    # This is specific to this object
-    @commit = GITCommit.commitFromData(@data, repo:@repo, error:@err)
+    @commit = GITCommit.commitFromData(@data, sha1:GITObjectHash.objectHashWithString("fb473b1d24812eb1b212d444b7be8e651c6077ca"), repo:@repo, error:@err)
     @date = GITDateTime.dateTimeWithTimestamp(1263165097, timeZoneOffset:"+0000")
   end
   should 'not be nil' do

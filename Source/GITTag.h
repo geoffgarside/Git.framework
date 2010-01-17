@@ -64,6 +64,6 @@
  * \param error NSError describing the error that occurred
  * \return A tag object from the \a data
  */
-+ (GITTag *)tagFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
++ (GITTag *)tagFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
 @end

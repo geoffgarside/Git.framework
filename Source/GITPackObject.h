@@ -24,11 +24,13 @@
 @interface GITPackObject : NSObject {
     GITObjectType type;     //!< Type of the object the data represents
     NSData *data;           //!< Data of the packed object
+    GITObjectHash *sha1;    //!< SHA1 Hash of the packed object
 }
 
 //! \name Properties
 @property (assign) GITObjectType type;
 @property (copy) NSData *data;
+@property (retain) GITObjectHash *sha1;
 @property (readonly,assign) NSUInteger length;      //!< size of the receivers data
 
 //! \name Creating and Initialising GITPackObjects
@@ -40,7 +42,7 @@
  * \return new pack object
  * \sa initWithData:type:
  */
-+ (GITPackObject *)packObjectWithData: (NSData *)packData type: (GITObjectType)objectType;
++ (GITPackObject *)packObjectWithData: (NSData *)packData sha1: (GITObjectHash *)objectHash type: (GITObjectType)objectType;
 
 /*!
  * Create and return a new PACK object.
@@ -50,7 +52,7 @@
  * \return new pack object
  * \sa packObjectWithData:type:
  */
-- (id)initWithData: (NSData *)packData type: (GITObjectType)objectType;
+- (id)initWithData: (NSData *)packData sha1: (GITObjectHash *)objectHash type: (GITObjectType)objectType;
 
 //! \name Obtaining the contained object
 /*!

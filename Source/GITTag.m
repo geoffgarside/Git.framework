@@ -48,12 +48,12 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
     return GITObjectTypeTag;
 }
 
-+ (GITTag *)tagFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error {
-    return [[[self alloc] initFromData:data repo:repo error:error] autorelease];
++ (GITTag *)tagFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error {
+    return [[[self alloc] initFromData:data sha1:objectHash repo:repo error:error] autorelease];
 }
 
-- (id)initFromData: (NSData *)data repo: (GITRepo *)theRepo error: (NSError **)error {
-    if ( ![super initWithType:GITObjectTypeTag sha1:[GITObjectHash objectHashWithData:[data sha1Digest]] repo:theRepo] )
+- (id)initFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)theRepo error: (NSError **)error {
+    if ( ![super initWithType:GITObjectTypeTag sha1:objectHash repo:theRepo] )
         return nil;
 
     const char *dataBytes = [data bytes], *start = dataBytes;

@@ -68,7 +68,7 @@
  * \param error NSError describing the error that occurred
  * \return A commit object from the \a data
  */
-+ (GITCommit *)commitFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
++ (GITCommit *)commitFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
 //! \name Properties
 /*!

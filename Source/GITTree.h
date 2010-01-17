@@ -46,6 +46,6 @@
  * \param error NSError describing any errors which occurred
  * \return A tree object
  */
-+ (GITTree *)treeFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
++ (GITTree *)treeFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
 @end

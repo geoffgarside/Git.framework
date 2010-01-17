@@ -54,9 +54,9 @@
     }
 }
 
-+ (id)objectOfType: (GITObjectType)type withData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error {
++ (id)objectOfType: (GITObjectType)type withData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error {
     Class objectClass = [self objectClassForType:type];
-    return [[[objectClass alloc] initFromData:data repo:repo error:error] autorelease];
+    return [[[objectClass alloc] initFromData:data sha1:objectHash repo:repo error:error] autorelease];
 }
 
 - (id)initWithType: (GITObjectType)theType sha1: (GITObjectHash *)theSha1 repo: (GITRepo *)theRepo {

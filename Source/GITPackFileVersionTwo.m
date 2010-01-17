@@ -49,7 +49,7 @@
     off_t packOffset = [self.index packOffsetForSha1:objectHash error:error];
     if ( packOffset == NSNotFound )
         return nil;
-    return [self unpackObjectAtOffset:packOffset error:error];
+    return [self unpackObjectAtOffset:packOffset sha1:objectHash error:error];
 }
 
 - (GITPackFileObjectHeader *)unpackEntryHeaderAtOffset: (off_t *)offset intoHeader: (GITPackFileObjectHeader *)header {
@@ -78,7 +78,7 @@
     return header;
 }
 
-- (GITPackObject *)unpackObjectAtOffset: (off_t)offset error:(NSError **)error {
+- (GITPackObject *)unpackObjectAtOffset: (off_t)offset sha1: (GITObjectHash *)objectHash error:(NSError **)error {
     GITPackFileObjectHeader header;
     [self unpackEntryHeaderAtOffset:&offset intoHeader:&header];
 
@@ -94,11 +94,11 @@
                 return nil;
             }
 
-            return [GITPackObject packObjectWithData:packData type:header.type];
+            return [GITPackObject packObjectWithData:packData sha1:objectHash type:header.type];
             break;
         case GITPackFileDeltaTypeOfs:
         case GITPackFileDeltaTypeRefs:
-            return [self unpackDeltaPackedObjectAtOffset:offset objectHeader:&header error:error];
+            return [self unpackDeltaPackedObjectAtOffset:offset objectHeader:&header sha1:objectHash error:error];
             break;
         default:
             GITError(error, GITPackFileErrorObjectTypeUnknown, NSLocalizedString(@"Unknown packed object type", @"GITPackFileErrorObjectTypeUnknown"));
@@ -108,7 +108,7 @@
     return nil;
 }
 
-- (GITPackObject *)unpackDeltaPackedObjectAtOffset: (off_t)offset objectHeader: (GITPackFileObjectHeader *)header error: (NSError **)error {
+- (GITPackObject *)unpackDeltaPackedObjectAtOffset: (off_t)offset objectHeader: (GITPackFileObjectHeader *)header sha1: (GITObjectHash *)objectHash error: (NSError **)error {
     NSData *packedData = [self.data subdataWithRange:NSMakeRange(offset, GITObjectHashPackedLength)];
     off_t baseOffset;
 
@@ -131,7 +131,7 @@
         offset += used;
     }
 
-    GITPackObject *packObject = [self unpackObjectAtOffset:baseOffset error:error];
+    GITPackObject *packObject = [self unpackObjectAtOffset:baseOffset sha1:objectHash error:error];
     if ( !packObject ) {
         GITError(error, GITPackErrorObjectNotFound, NSLocalizedString(@"Base object for PACK delta not found", @"GITPackErrorObjectNotFound"));
         return nil;

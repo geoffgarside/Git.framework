@@ -38,6 +38,6 @@
  * \param error NSError describing the error if one occurs
  * \return A blob object
  */
-+ (GITBlob *)blobFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
++ (GITBlob *)blobFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
 @end

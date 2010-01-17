@@ -4,7 +4,7 @@ describe 'GITTag' do
     @repo = default_repository
     @tagData = NSData.dataWithContentsOfFile("#{TEST_REPO}/.git/objects/e5/0d1a7b4659ad79d146cb75177ba65b045381dd").zlibInflate
     @data = @tagData.subdataWithRange(NSMakeRange(8, 144))    # This is specific to this object
-    @tag = GITTag.tagFromData(@data, repo:@repo, error:@err)
+    @tag = GITTag.tagFromData(@data, sha1:GITObjectHash.objectHashWithString("e50d1a7b4659ad79d146cb75177ba65b045381dd"), repo:@repo, error:@err)
     @date = GITDateTime.dateTimeWithTimestamp(1254663297, timeZoneOffset:"+0100")
   end
   should 'not be nil' do

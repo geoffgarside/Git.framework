@@ -10,7 +10,7 @@ describe 'GITBlob' do
     @err = Pointer.new(:object)
     @repo = default_repository
     @data = BLOB_CONTENTS.dataUsingEncoding(NSUTF8StringEncoding)
-    @blob = GITBlob.blobFromData(@data, repo:@repo, error:@err)
+    @blob = GITBlob.blobFromData(@data, sha1:GITObjectHash.objectHashWithString(@sha), repo:@repo, error:@err)
   end
   should 'not be nil' do
     @blob.should.not.be.nil

@@ -23,12 +23,14 @@
  */
 @interface GITLooseObject : NSObject {
     GITObjectType type;     //!< Type of the object the data represents
-    NSData *data;           //!< Data of the packed object
+    NSData *data;           //!< Data of the object
+    GITObjectHash *sha1;    //!< SHA1 hash of the object
 }
 
 //! \name Properties
 @property (assign) GITObjectType type;
 @property (copy) NSData *data;
+@property (retain) GITObjectHash *sha1;
 @property (assign,readonly) NSUInteger length;  //!< Size of the receivers data
 
 //! \name Creating and Initialising Loose Objects

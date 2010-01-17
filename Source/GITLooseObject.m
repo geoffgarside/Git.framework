@@ -16,7 +16,7 @@
 
 @implementation GITLooseObject
 
-@synthesize type, data;
+@synthesize type, data, sha1;
 
 + (GITLooseObject *)looseObjectWithSha1: (GITObjectHash *)objectHash from: (NSString *)directory error: (NSError **)error {
     return [[[self alloc] initWithSha1:objectHash from:directory error:error] autorelease];
@@ -34,7 +34,9 @@
         return nil;
     }
 
-    NSString *sha1String = [objectHash unpackedString];
+    self.sha1 = objectHash;
+
+    NSString *sha1String = [self.sha1 unpackedString];
     NSString *pathSuffix = [NSString stringWithFormat:@"%@/%@", [sha1String substringToIndex:2], [sha1String substringFromIndex:2]];
     NSString *objectPath = [directory stringByAppendingPathComponent:pathSuffix];
 
@@ -56,10 +58,16 @@
     [typeStr release];
 
     NSRange prefixRange = [fileData rangeFrom:NSRangeEnd(typeRange) toByte:0x0];   // We don't care about the size
-    self.data = [fileData subdataFromIndex:NSRangeEnd(prefixRange)];
+    self.data = [fileData subdataFromIndex:NSRangeEnd(prefixRange) + 1];
     [fileData release];
 
     return self;
+}
+
+- (void)dealloc {
+    self.data = nil;
+    self.sha1 = nil;
+    [super dealloc];
 }
 
 - (NSUInteger)length {
@@ -67,7 +75,7 @@
 }
 
 - (GITObject *)objectInRepo: (GITRepo *)repo error: (NSError **)error {
-    return [GITObject objectOfType:self.type withData:self.data repo:repo error:error];
+    return [GITObject objectOfType:self.type withData:self.data sha1:self.sha1 repo:repo error:error];
 }
 
 @end

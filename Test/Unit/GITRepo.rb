@@ -107,3 +107,22 @@ describe "GITRepo -branches" do
     @branches.should.include('another')
   end
 end
+
+describe "GITRepo -objectWithSha1:error:" do
+  before do
+    @err = Pointer.new(:object)
+    @repo = default_repository
+    @sha1 = GITObjectHash.objectHashWithString("fb473b1d24812eb1b212d444b7be8e651c6077ca")
+    @commit = @repo.objectWithSha1(@sha1, error:@err)
+  end
+
+  should 'not be nil' do
+    @commit.should.not.be.nil
+  end
+  should 'not have an error' do
+    @err[0].should.be.nil
+  end
+  should 'have sha1' do
+    @commit.sha1.unpackedString.should == @sha1.unpackedString
+  end
+end

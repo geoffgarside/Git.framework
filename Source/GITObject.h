@@ -58,7 +58,7 @@ typedef enum {
  * \param[out] error NSError describing any errors which occurred
  * \return Instance of the receiving class
  */
-- (id)initFromData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
+- (id)initFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
 @end
 
@@ -115,7 +115,7 @@ typedef enum {
  * \param error NSError describing the error which occurred
  * \return object from the \a type from the \a data
  */
-+ (id)objectOfType: (GITObjectType)type withData: (NSData *)data repo: (GITRepo *)repo error: (NSError **)error;
++ (id)objectOfType: (GITObjectType)type withData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
 /*!
  * Returns a GITObject initialised with the \a type, \a objectHash and \a repo.
