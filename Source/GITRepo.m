@@ -150,8 +150,15 @@ done:
     return [[branches copy] autorelease];
 }
 
-- (NSArray *)remotes {
-    return [[self refResolver] remoteRefs];
+- (NSArray *)remoteBranches {
+    NSArray *remoteRefs = [[self refResolver] remoteRefs];
+    NSMutableArray *branches = [NSMutableArray arrayWithCapacity:[remoteRefs count]];
+
+    for ( GITRef *ref in remoteRefs ) {
+        [branches addObject:[GITBranch branchFromRef:ref]];
+    }
+
+    return [[branches copy] autorelease];
 }
 
 - (NSArray *)tags {

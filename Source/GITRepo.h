@@ -108,7 +108,7 @@
  * \return array of remotes from the receiver
  * \sa GITRefResolver
  */
-- (NSArray *)remotes;
+- (NSArray *)remoteBranches;
 
 /*!
  * Returns an array containing tags from the receiver.
