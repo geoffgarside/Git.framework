@@ -41,11 +41,11 @@
     [super dealloc];
 }
 
-- (GITRef*)resolve {
+- (GITRef *)resolve {
     if ( !link ) {
         return self;
     } else {
-        return [[self.repo refResolver] resolveRefWithName:[self.targetName stringByReplacingOccurrencesOfString:@"ref: " withString:@""]];
+        return [[[self.repo refResolver] resolveRefWithName:[self.targetName stringByReplacingOccurrencesOfString:@"ref: " withString:@""]] resolve];
     }
 }
 

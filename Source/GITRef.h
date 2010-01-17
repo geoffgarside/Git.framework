@@ -74,8 +74,10 @@
 /*!
  * Returns the reference linked to by the receiver, returns the receiver if not a link.
  *
+ * The links will be resolved until the first non-link ref is found.
+ *
  * \return reference linked to by the receiver, returns the receiver if not a link
  */
-- (GITRef*)resolve;
+- (GITRef *)resolve;
 
 @end
