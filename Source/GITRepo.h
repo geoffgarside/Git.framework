@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@class GITRefResolver;
+@class GITRefResolver, GITPackCollection, GITObject, GITObjectHash;
 
 /*!
  * The GITRepo class declares the programmatic interface to the repository.
@@ -120,5 +120,18 @@
  * \sa GITRefResolver
  */
 - (NSArray *)tags;
+
+//! \name Retrieving Objects
+/*!
+ * Returns the GITObject identified by the \a objectHash.
+ *
+ * Attempts to load the object from the file system first, if this fails then it turns to the
+ * packCollection to attempt loading from the repositories PACK files.
+ *
+ * \param objectHash Hash identifying the object to retrieve
+ * \param error NSError describing any errors which occur
+ * \return object identified by \a objectHash or nil if it can't be found or an error occurred
+ */
+- (GITObject *)objectWithSha1: (GITObjectHash *)objectHash error: (NSError **)error;
 
 @end

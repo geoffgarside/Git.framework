@@ -10,6 +10,10 @@
 #import "GITError.h"
 #import "GITRefResolver.h"
 #import "GITBranch.h"
+#import "GITObject.h"
+#import "GITObjectHash.h"
+#import "GITPackObject.h"
+#import "GITLooseObject.h"
 #import "GITPackCollection.h"
 
 
@@ -152,6 +156,19 @@ done:
 
 - (NSArray *)tags {
     return [[self refResolver] tagRefs];
+}
+
+- (GITObject *)objectWithSha1: (GITObjectHash *)objectHash error: (NSError **)error {
+    // Need to load it from the file system
+    GITLooseObject *looseObject = [GITLooseObject looseObjectWithSha1:objectHash from:self.objectsDirectory error:error];
+    if ( looseObject )      // Should really return the error if it was something bad
+        return [looseObject objectInRepo:self error:error];
+
+    // Need to load it from the pack collection
+    GITPackObject *packObject = [self.packCollection unpackObjectWithSha1:objectHash error:error];
+    if ( !packObject )
+        return nil;
+    return [packObject objectInRepo:self error:error];
 }
 
 @end
