@@ -18,7 +18,10 @@
     NSString *root;                         //!< Path to the repository root
     BOOL bare;                              //!< Flag indicating if the repo is bare, accessor isBare
 
+    NSString *objectsDirectory;             //!< Cached path to the .git/objects directory
+
     GITRefResolver *refResolver;            //!< Refs Resolver for the repo
+    GITPackCollection *packCollection;      //!< PACK files collection
 }
 
 //! \name Properties

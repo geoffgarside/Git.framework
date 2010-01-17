@@ -10,8 +10,12 @@
 #import "GITError.h"
 #import "GITRefResolver.h"
 #import "GITBranch.h"
+#import "GITPackCollection.h"
+
 
 @interface GITRepo ()
+@property (copy) NSString *objectsDirectory;
+@property (retain) GITPackCollection *packCollection;
 
 - (BOOL)rootExists;
 - (BOOL)rootIsAccessible;
@@ -24,6 +28,8 @@
 @synthesize root;
 @synthesize bare;
 @synthesize refResolver;
+@synthesize packCollection;
+@synthesize objectsDirectory;
 
 + (GITRepo *)repo {
     return [[[GITRepo alloc] initWithRoot:[[NSFileManager defaultManager] currentDirectoryPath] error: NULL] autorelease];
@@ -63,12 +69,21 @@
         [self release];
         return nil;
     }
+
+    self.objectsDirectory = [self.root stringByAppendingPathComponent:@"objects"];
+    self.packCollection = [GITPackCollection collectionWithContentsOfDirectory:[self.objectsDirectory stringByAppendingPathComponent:@"pack"] error:theError];
+    if ( !packCollection ) {
+        [self release];
+        return nil;
+    }
     
     return self;
 }
 
 - (void)dealloc {
     self.root = nil;
+    self.objectsDirectory = nil;
+    self.packCollection = nil;
     self.refResolver = nil;
     [super dealloc];
 }
