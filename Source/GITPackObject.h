@@ -38,6 +38,7 @@
  * Create and return a new PACK object.
  *
  * \param packData Data to create the PACK object from
+ * \param objectHash The SHA1 hash of the object
  * \param objectType Type of object the \a packData represents
  * \return new pack object
  * \sa initWithData:type:
@@ -48,6 +49,7 @@
  * Create and return a new PACK object.
  *
  * \param packData Data of the object
+ * \param objectHash The SHA1 hash of the object
  * \param objectType Type of the object the \a packData represents
  * \return new pack object
  * \sa packObjectWithData:type:

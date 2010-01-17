@@ -60,6 +60,7 @@
  * as the name, referenced object, tagger, dates and the tag message.
  *
  * \param data The data describing the tag
+ * \param objectHash The SHA1 hash of the receiver
  * \param repo The repository the tag is a member of
  * \param error NSError describing the error that occurred
  * \return A tag object from the \a data

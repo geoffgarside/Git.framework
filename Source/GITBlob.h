@@ -34,6 +34,7 @@
  * blob object.
  *
  * \param data The data to create the receiver with
+ * \param objectHash The SHA1 hash of the receiver
  * \param repo The repository the receiver is a member of
  * \param error NSError describing the error if one occurs
  * \return A blob object

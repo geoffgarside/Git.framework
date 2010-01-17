@@ -54,6 +54,7 @@ typedef enum {
  * with the object may be loaded from.
  *
  * \param data Data containing the representation of the object to create
+ * \param objectHash The SHA1 hash of the receiver
  * \param repo Repository parent of the object
  * \param[out] error NSError describing any errors which occurred
  * \return Instance of the receiving class
@@ -111,6 +112,7 @@ typedef enum {
  *
  * \param type The type of the object to create
  * \param data The data composing the object
+ * \param objectHash The SHA1 hash of the object
  * \param repo The repository the object is a member of
  * \param error NSError describing the error which occurred
  * \return object from the \a type from the \a data

@@ -64,6 +64,7 @@
  * as the referenced tree, parents, author, committer, dates and the commit message.
  *
  * \param data The data describing the commit
+ * \param objectHash The SHA1 hash of the receiver
  * \param repo The repository the commit is a member of
  * \param error NSError describing the error that occurred
  * \return A commit object from the \a data

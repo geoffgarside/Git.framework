@@ -42,6 +42,7 @@
  * contents are then stored in the \c items array as GITTreeItem objects.
  *
  * \param data The data to create the tree from
+ * \param objectHash The SHA1 hash of the receiver
  * \param repo The repository the tree is a member of
  * \param error NSError describing any errors which occurred
  * \return A tree object
