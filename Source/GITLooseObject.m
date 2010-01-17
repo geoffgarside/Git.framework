@@ -11,6 +11,7 @@
 #import "GITError.h"
 #import "NSData+Searching.h"
 #import "NSRangeEnd.h"
+#import "NSData+Compression.h"
 
 
 @implementation GITLooseObject
@@ -43,7 +44,11 @@
         return nil;
     }
 
-    NSData *fileData  = [[NSData alloc] initWithContentsOfFile:objectPath options:NSDataReadingMapped error:error];
+    NSData *zlibData  = [[NSData alloc] initWithContentsOfFile:objectPath options:NSDataReadingMapped error:error];
+    if ( !zlibData )    // If there was a problem reading the data...
+        return nil;
+
+    NSData *fileData  = [zlibData zlibInflate]; [zlibData release];
     NSRange typeRange = [fileData rangeFrom:0 toByte:' '];
     NSString *typeStr = [[NSString alloc] initWithBytes:[fileData bytes] length:NSRangeEnd(typeRange) encoding:NSASCIIStringEncoding];
 
