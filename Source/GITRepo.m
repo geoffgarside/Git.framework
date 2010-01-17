@@ -147,7 +147,7 @@ done:
         [branches addObject:[GITBranch branchFromRef:ref]];
     }
 
-    return [branches copy];
+    return [[branches copy] autorelease];
 }
 
 - (NSArray *)remotes {
