@@ -52,7 +52,7 @@
 <option value="typeName">    + typeName</option>
 <option value="type">    + type</option>
 <option value="instanceMethods">Instance Methods</option>
-<option value="initFromData:repo:error:">    - initFromData:repo:error:</option></select></li>
+<option value="initFromData:sha1:repo:error:">    - initFromData:sha1:repo:error:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
@@ -68,7 +68,7 @@
 </ul>
 </li>
 <li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
-<a href="#instanceMethods">Instance Methods</a><ul style="display: none;"><li><a href="#initFromData:repo:error:">initFromData:repo:error:</a></li></ul>
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;"><li><a href="#initFromData:sha1:repo:error:">initFromData:sha1:repo:error:</a></li></ul>
 </li>
 </ul></nav><div id="contents">
 <h1 id="classTitle">GITObject Protocol Reference</h1>
@@ -90,7 +90,7 @@
 </li>
     <li id="Initialisers">
 <h3>Initialisers</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#initFromData:repo:error:">- initFromData:repo:error:</a></code> <span class="specialType">required</span><span class="tooltip"></span></span></li></ul>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#initFromData:sha1:repo:error:">- initFromData:sha1:repo:error:</a></code> <span class="specialType">required</span><span class="tooltip"></span></span></li></ul>
 </li>
   </ul>
 <section id="classMethods"><h2>Class Methods</h2>
@@ -117,12 +117,16 @@
           </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITObject</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
-<section class="definition" id="initFromData:repo:error:"><h3>initFromData:repo:error:</h3>
-<code class="methodDeclaration">- (id)initFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<section class="definition" id="initFromData:sha1:repo:error:"><h3>initFromData:sha1:repo:error:</h3>
+<code class="methodDeclaration">- (id)initFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
           <dt>data</dt>
 <dd>
               <p>Data containing the representation of the object to create </p>
+            </dd>
+          <dt>objectHash</dt>
+<dd>
+              <p>The SHA1 hash of the receiver </p>
             </dd>
           <dt>repo</dt>
 <dd>
@@ -141,7 +145,7 @@
             <p></p>
           <h5>Declared In</h5>
 <code><code>GITObject</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-13</p>
+<p id="lastUpdated">Last updated: 2010-1-17</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

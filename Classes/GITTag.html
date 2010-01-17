@@ -55,7 +55,7 @@
 <option value="taggerDate">    taggerDate</option>
 <option value="message">    message</option>
 <option value="classMethods">Class Methods</option>
-<option value="tagFromData:repo:error:">    + tagFromData:repo:error:</option></select></li>
+<option value="tagFromData:sha1:repo:error:">    + tagFromData:sha1:repo:error:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
@@ -74,7 +74,7 @@
 </ul>
 </li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
-<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#tagFromData:repo:error:">tagFromData:repo:error:</a></li></ul>
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#tagFromData:sha1:repo:error:">tagFromData:sha1:repo:error:</a></li></ul>
 </li>
 </ul></nav><div id="contents">
 <h1 id="classTitle">GITTag Class Reference</h1>
@@ -127,7 +127,7 @@
 </li>
     <li id="Creating_and_Initialising_Tags">
 <h3>Creating and Initialising Tags</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#tagFromData:repo:error:">+ tagFromData:repo:error:</a></code><span class="tooltip"></span></span></li></ul>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#tagFromData:sha1:repo:error:">+ tagFromData:sha1:repo:error:</a></code><span class="tooltip"></span></span></li></ul>
 </li>
   </ul>
 <section id="properties"><h2>Properties</h2>
@@ -147,12 +147,16 @@
             <p>Tag message. </p>
           <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *message</code><h5>Declared In</h5>
 <code><code>GITTag</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
-<section class="definition" id="tagFromData:repo:error:"><h3>tagFromData:repo:error:</h3>
-<code class="methodDeclaration">+ (GITTag *)tagFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<section class="definition" id="tagFromData:sha1:repo:error:"><h3>tagFromData:sha1:repo:error:</h3>
+<code class="methodDeclaration">+ (GITTag *)tagFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
           <dt>data</dt>
 <dd>
               <p>The data describing the tag </p>
+            </dd>
+          <dt>objectHash</dt>
+<dd>
+              <p>The SHA1 hash of the receiver </p>
             </dd>
           <dt>repo</dt>
 <dd>
@@ -171,7 +175,7 @@
             <p></p>
           <h5>Declared In</h5>
 <code><code>GITTag</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-13</p>
+<p id="lastUpdated">Last updated: 2010-1-17</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

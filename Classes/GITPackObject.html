@@ -51,11 +51,13 @@
 <option value="properties">Properties</option>
 <option value="type">    type</option>
 <option value="data">    data</option>
+<option value="sha1">    sha1</option>
 <option value="length">    length</option>
 <option value="classMethods">Class Methods</option>
-<option value="packObjectWithData:type:">    + packObjectWithData:type:</option>
+<option value="packObjectWithData:sha1:type:">    + packObjectWithData:sha1:type:</option>
 <option value="instanceMethods">Instance Methods</option>
-<option value="initWithData:type:">    - initWithData:type:</option>
+<option value="initWithData:sha1:type:">    - initWithData:sha1:type:</option>
+<option value="objectInRepo:error:">    - objectInRepo:error:</option>
 <option value="packObjectByDeltaPatchingWithData:">    - packObjectByDeltaPatchingWithData:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
@@ -63,6 +65,7 @@
 <a href="#tasks">Tasks</a><ul style="display: none;">
 <li><a href="#Properties">Properties</a></li>
 <li><a href="#Creating_and_Initialising_GITPackObjects">Creating and Initialising <code>GITPackObject</code>s</a></li>
+<li><a href="#Obtaining_the_contained_object">Obtaining the contained object</a></li>
 <li><a href="#Patching_GITPackObjects">Patching <code>GITPackObject</code>s</a></li>
 </ul>
 </li>
@@ -70,15 +73,17 @@
 <a href="#properties">Properties</a><ul style="display: none;">
 <li><a href="#type">type</a></li>
 <li><a href="#data">data</a></li>
+<li><a href="#sha1">sha1</a></li>
 <li><a href="#length">length</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
-<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#packObjectWithData:type:">packObjectWithData:type:</a></li></ul>
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#packObjectWithData:sha1:type:">packObjectWithData:sha1:type:</a></li></ul>
 </li>
 <li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
-<li><a href="#initWithData:type:">initWithData:type:</a></li>
+<li><a href="#initWithData:sha1:type:">initWithData:sha1:type:</a></li>
+<li><a href="#objectInRepo:error:">objectInRepo:error:</a></li>
 <li><a href="#packObjectByDeltaPatchingWithData:">packObjectByDeltaPatchingWithData:</a></li>
 </ul>
 </li>
@@ -90,7 +95,8 @@
 </tr></table>
 <h2 id="overview">Overview</h2>
       <p>The <code>GITPackObject</code> class aids in the extraction of objects from PACK files.</p>
-      <p>The class combines the data of the object and the indicated type for later conversion into a normal git object type such as commit, tree, blob or tag. </p>
+      <p>The class combines the data of the object and the indicated type for later conversion into a normal git object type such as commit, tree, blob or tag.</p>
+      <p>When loading an object from a PACK file you do not create instances of this class directly, rather you call the -unpackObjectWithSha1:error: method on the <code><a href="../Classes/GITPackFile.html">GITPackFile</a></code> and an instance of this class is returned. </p>
     <h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
     <li id="Properties">
@@ -102,6 +108,9 @@
 <li><span class="tooltipRegion"><code><a href="#data">data</a></code> <span class="specialType">property</span><span class="tooltip">
             Data of the packed object. 
           </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#sha1">sha1</a></code> <span class="specialType">property</span><span class="tooltip">
+            SHA1 Hash of the packed object. 
+          </span></span></li>
 <li><span class="tooltipRegion"><code><a href="#length">length</a></code> <span class="specialType">property</span><span class="tooltip">
             size of the receivers data 
           </span></span></li>
@@ -110,9 +119,13 @@
     <li id="Creating_and_Initialising_GITPackObjects">
 <h3>Creating and Initialising <code>GITPackObject</code>s</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#packObjectWithData:type:">+ packObjectWithData:type:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithData:type:">- initWithData:type:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packObjectWithData:sha1:type:">+ packObjectWithData:sha1:type:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithData:sha1:type:">- initWithData:sha1:type:</a></code><span class="tooltip"></span></span></li>
 </ul>
+</li>
+    <li id="Obtaining_the_contained_object">
+<h3>Obtaining the contained object</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#objectInRepo:error:">- objectInRepo:error:</a></code><span class="tooltip"></span></span></li></ul>
 </li>
     <li id="Patching_GITPackObjects">
 <h3>Patching <code>GITPackObject</code>s</h3>
@@ -126,16 +139,23 @@
 <code><code>GITPackObject</code>.h</code></section><section class="definition" id="data"><h3>data</h3>
             <p>Data of the packed object. </p>
           <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *data</code><h5>Declared In</h5>
+<code><code>GITPackObject</code>.h</code></section><section class="definition" id="sha1"><h3>sha1</h3>
+            <p>SHA1 Hash of the packed object. </p>
+          <code class="methodDeclaration">@property <code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *sha1</code><h5>Declared In</h5>
 <code><code>GITPackObject</code>.h</code></section><section class="definition" id="length"><h3>length</h3>
             <p>size of the receivers data </p>
           <code class="methodDeclaration">@property NSUInteger length</code><h5>Declared In</h5>
 <code><code>GITPackObject</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
-<section class="definition" id="packObjectWithData:type:"><h3>packObjectWithData:type:</h3>
-<code class="methodDeclaration">+ (GITPackObject *)packObjectWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">packData</span> type:(<code><a href="../Protocols/GITObject.html">GITObject</a></code>Type)<span class="parameter">objectType</span> </code><h5>Parameters</h5>
+<section class="definition" id="packObjectWithData:sha1:type:"><h3>packObjectWithData:sha1:type:</h3>
+<code class="methodDeclaration">+ (GITPackObject *)packObjectWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">packData</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> type:(<code><a href="../Protocols/GITObject.html">GITObject</a></code>Type)<span class="parameter">objectType</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
           <dt>packData</dt>
 <dd>
               <p>Data to create the PACK object from </p>
+            </dd>
+          <dt>objectHash</dt>
+<dd>
+              <p>The SHA1 hash of the object </p>
             </dd>
           <dt>objectType</dt>
 <dd>
@@ -148,17 +168,19 @@
             <p>Create and return a new PACK object.</p>
             <p></p>
           <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithData:type:">
-            - initWithData:type:
-          </a></code></li></ul>
+<ul class="seeAlso"><li><code><a href="#initWithData:type:">initWithData:type: </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackObject</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
-<section class="definition" id="initWithData:type:"><h3>initWithData:type:</h3>
-<code class="methodDeclaration">- (id)initWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">packData</span> type:(<code><a href="../Protocols/GITObject.html">GITObject</a></code>Type)<span class="parameter">objectType</span> </code><h5>Parameters</h5>
+<section class="definition" id="initWithData:sha1:type:"><h3>initWithData:sha1:type:</h3>
+<code class="methodDeclaration">- (id)initWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">packData</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> type:(<code><a href="../Protocols/GITObject.html">GITObject</a></code>Type)<span class="parameter">objectType</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
           <dt>packData</dt>
 <dd>
               <p>Data of the object </p>
+            </dd>
+          <dt>objectHash</dt>
+<dd>
+              <p>The SHA1 hash of the object </p>
             </dd>
           <dt>objectType</dt>
 <dd>
@@ -171,9 +193,27 @@
             <p>Create and return a new PACK object.</p>
             <p></p>
           <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#packObjectWithData:type:">
-            + packObjectWithData:type:
-          </a></code></li></ul>
+<ul class="seeAlso"><li><code><a href="#packObjectWithData:type:">packObjectWithData:type: </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITPackObject</code>.h</code></section><section class="definition" id="objectInRepo:error:"><h3>objectInRepo:error:</h3>
+<code class="methodDeclaration">- (GITObject *)objectInRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>repo</dt>
+<dd>
+              <p>Repository the object should belong to </p>
+            </dd>
+          <dt>error</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any errors which occurred </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object in the repo</p>
+        <h5>Discussion</h5>
+            <p>Returns the object contained in the receiver and sets the repo of the object.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#GITPackFile::unpackObjectWithSha1"><code><a href="../Classes/GITPackFile.html">GITPackFile</a></code>::unpackObjectWithSha1 </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackObject</code>.h</code></section><section class="definition" id="packObjectByDeltaPatchingWithData:"><h3>packObjectByDeltaPatchingWithData:</h3>
 <code class="methodDeclaration">- (GITPackObject *)packObjectByDeltaPatchingWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">deltaData</span> </code><h5>Parameters</h5>
@@ -190,7 +230,7 @@
             <p></p>
           <h5>Declared In</h5>
 <code><code>GITPackObject</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-13</p>
+<p id="lastUpdated">Last updated: 2010-1-17</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
