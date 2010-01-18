@@ -104,6 +104,7 @@ found = []
   next if srcfile =~ /project\.pbxproj$/
   next if srcfile =~ /\.dmg$/
   next if srcfile =~ /^\.git/
+  next if srcfile =~ /\.plist$/
   line_number = 0
   File.readlines(srcfile).each do |line|
     line_number += 1
