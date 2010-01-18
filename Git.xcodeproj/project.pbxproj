@@ -794,6 +794,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				BUNDLE_ID_PREFIX = uk.co.geoffgarside.framework;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.framework *.gch *.xcode* (*) CVS .svn .git";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -811,6 +812,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				BUNDLE_ID_PREFIX = uk.co.geoffgarside.framework;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.framework *.gch *.xcode* (*) CVS .svn .git";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -850,7 +852,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				DOCSET_BUNDLE_ID = uk.co.geoffgarside.framework.Git;
+				DOCSET_BUNDLE_ID = "$(BUNDLE_ID_PREFIX).$(PROJECT_NAME)";
 				DOCSET_FEEDNAME = "$(PROJECT_NAME) Framework";
 				DOCSET_INFO_PLIST = "Resource/DocSet-Info.plist";
 				DOXYCLEAN = "$(SRCROOT)/Documentation/doxyclean";
@@ -871,7 +873,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DOCSET_BUNDLE_ID = uk.co.geoffgarside.framework.Git;
+				DOCSET_BUNDLE_ID = "$(BUNDLE_ID_PREFIX).$(PROJECT_NAME)";
 				DOCSET_FEEDNAME = "$(PROJECT_NAME) Framework";
 				DOCSET_INFO_PLIST = "Resource/DocSet-Info.plist";
 				DOXYCLEAN = "$(SRCROOT)/Documentation/doxyclean";
