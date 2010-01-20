@@ -14,6 +14,7 @@ Planned Features
 -----------------
 Features which will be implemented at some point (in no particular order)
 
+  * Rev-list Support
   * Pulling changes from a remote repository via either ssh:// or git://
   * Pushing changes to a remote repository via ssh://
   * Mutable objects to enable writing new objects to the repository
