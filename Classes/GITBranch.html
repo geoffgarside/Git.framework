@@ -51,12 +51,14 @@
 <option value="properties">Properties</option>
 <option value="repo">    repo</option>
 <option value="ref">    ref</option>
+<option value="remote">    remote</option>
 <option value="classMethods">Class Methods</option>
 <option value="branchWithName:inRepo:">    + branchWithName:inRepo:</option>
 <option value="branchFromRef:">    + branchFromRef:</option>
 <option value="instanceMethods">Instance Methods</option>
 <option value="initFromRef:">    - initFromRef:</option>
-<option value="name">    - name</option></select></li>
+<option value="name">    - name</option>
+<option value="head">    - head</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
@@ -70,6 +72,7 @@
 <a href="#properties">Properties</a><ul style="display: none;">
 <li><a href="#repo">repo</a></li>
 <li><a href="#ref">ref</a></li>
+<li><a href="#remote">remote</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
@@ -82,6 +85,7 @@
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
 <li><a href="#initFromRef:">initFromRef:</a></li>
 <li><a href="#name">name</a></li>
+<li><a href="#head">head</a></li>
 </ul>
 </li>
 </ul></nav><div id="contents">
@@ -104,6 +108,9 @@
 <li><span class="tooltipRegion"><code><a href="#ref">ref</a></code> <span class="specialType">property</span><span class="tooltip">
             Ref the branch points to. 
           </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#remote">remote</a></code> <span class="specialType">property</span><span class="tooltip">
+            Flag indicating if the branch is a remote branch. 
+          </span></span></li>
 </ul>
 </li>
     <li id="Creating_and_Initialising_Branches">
@@ -116,7 +123,10 @@
 </li>
     <li id="Branch_Information">
 <h3>Branch Information</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#name">- name</a></code><span class="tooltip"></span></span></li></ul>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#name">- name</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#head">- head</a></code><span class="tooltip"></span></span></li>
+</ul>
 </li>
   </ul>
 <section id="properties"><h2>Properties</h2>
@@ -126,6 +136,9 @@
 <code><code>GITBranch</code>.h</code></section><section class="definition" id="ref"><h3>ref</h3>
             <p>Ref the branch points to. </p>
           <code class="methodDeclaration">@property <code><a href="../Classes/GITRef.html">GITRef</a></code> *ref</code><h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section><section class="definition" id="remote"><h3>remote</h3>
+            <p>Flag indicating if the branch is a remote branch. </p>
+          <code class="methodDeclaration">@property BOOL remote</code><h5>Declared In</h5>
 <code><code>GITBranch</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="branchWithName:inRepo:"><h3>branchWithName:inRepo:</h3>
 <code class="methodDeclaration">+ (GITBranch *)branchWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> inRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
@@ -195,8 +208,15 @@
             <p>Returns the name of the branch.</p>
             <p></p>
           <h5>Declared In</h5>
+<code><code>GITBranch</code>.h</code></section><section class="definition" id="head"><h3>head</h3>
+<code class="methodDeclaration">- (<code><a href="../Classes/GITCommit.html">GITCommit</a></code> *)head</code><h5>Return Value</h5>
+          <p>Commit HEAD of the receiver </p>
+        <h5>Discussion</h5>
+            <p>Returns the commit which represents the HEAD of the receiver.</p>
+            <p></p>
+          <h5>Declared In</h5>
 <code><code>GITBranch</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-17</p>
+<p id="lastUpdated">Last updated: 2010-1-21</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

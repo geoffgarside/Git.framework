@@ -56,7 +56,8 @@
 <option value="refWithName:andTarget:inRepo:">    + refWithName:andTarget:inRepo:</option>
 <option value="instanceMethods">Instance Methods</option>
 <option value="initWithName:andTarget:inRepo:">    - initWithName:andTarget:inRepo:</option>
-<option value="resolve">    - resolve</option></select></li>
+<option value="resolve">    - resolve</option>
+<option value="target">    - target</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
@@ -80,6 +81,7 @@
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
 <li><a href="#initWithName:andTarget:inRepo:">initWithName:andTarget:inRepo:</a></li>
 <li><a href="#resolve">resolve</a></li>
+<li><a href="#target">target</a></li>
 </ul>
 </li>
 </ul></nav><div id="contents">
@@ -109,7 +111,10 @@
 </li>
     <li id="Resolving_Links">
 <h3>Resolving Links</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#resolve">- resolve</a></code><span class="tooltip"></span></span></li></ul>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#resolve">- resolve</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#target">- target</a></code><span class="tooltip"></span></span></li>
+</ul>
 </li>
   </ul>
 <section id="properties"><h2>Properties</h2>
@@ -182,10 +187,22 @@
           <p>reference linked to by the receiver, returns the receiver if not a link </p>
         <h5>Discussion</h5>
             <p>Returns the reference linked to by the receiver, returns the receiver if not a link.</p>
+            <p>The links will be resolved until the first non-link ref is found.</p>
             <p></p>
           <h5>Declared In</h5>
+<code><code>GITRef</code>.h</code></section><section class="definition" id="target"><h3>target</h3>
+<code class="methodDeclaration">- (<code><a href="../Protocols/GITObject.html">GITObject</a></code> *)target</code><h5>Return Value</h5>
+          <p>Object the resolved receiver references </p>
+        <h5>Discussion</h5>
+            <p>Returns the object referenced by resolving the receiver.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#resolve">
+            - resolve
+          </a></code></li></ul>
+<h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-17</p>
+<p id="lastUpdated">Last updated: 2010-1-21</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
