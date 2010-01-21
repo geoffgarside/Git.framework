@@ -59,7 +59,6 @@
 
     NSRange prefixRange = [fileData rangeFrom:NSRangeEnd(typeRange) toByte:0x0];   // We don't care about the size
     self.data = [fileData subdataFromIndex:NSRangeEnd(prefixRange) + 1];
-    [fileData release];
 
     return self;
 }
