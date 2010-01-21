@@ -783,6 +783,7 @@
 				INFOPLIST_FILE = Resource/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Frameworks";
 				PRODUCT_NAME = Git;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -801,6 +802,7 @@
 				INFOPLIST_FILE = Resource/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Frameworks";
 				PRODUCT_NAME = Git;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
