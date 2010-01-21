@@ -147,7 +147,7 @@
 
         if ( !packedRefsCache )
             self.packedRefsCache = [NSMutableDictionary dictionaryWithCapacity:1];
-        [self.packedRefsCache setObject:[sha1 copy] forKey:theName];
+        [self.packedRefsCache setObject:sha1 forKey:theName];
         return YES;
     }
 
