@@ -110,7 +110,7 @@
 
 - (GITPackObject *)unpackDeltaPackedObjectAtOffset: (off_t)offset objectHeader: (GITPackFileObjectHeader *)header sha1: (GITObjectHash *)objectHash error: (NSError **)error {
     NSData *packedData = [self.data subdataWithRange:NSMakeRange(offset, GITObjectHashPackedLength)];
-    off_t baseOffset;
+    off_t baseOffset = 0;
 
     if ( header->type == GITPackFileDeltaTypeRefs ) {
         offset += GITObjectHashPackedLength;        // Annoyingly this GITObjectHash will just be packed again...
