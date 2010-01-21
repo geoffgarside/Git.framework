@@ -84,9 +84,9 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
  * \param record Record describing the string to match
  * \param bytes Pointer to the byte stream to search
  * \return string matching the \a record or nil if no match
- * \sa createStringWithObjectRecord:bytes:encoding:
+ * \sa newStringWithObjectRecord:bytes:encoding:
  */
-- (NSString *)createStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes;
+- (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes;
 
 /*!
  * Creates and returns a string matching the format defined by the \a record. 
@@ -95,8 +95,8 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
  * \param bytes Pointer to the byte stream to search
  * \param encoding NSStringEncoding to interpret the bytes with when creating the string
  * \return string matching the \a record or nil if no match
- * \sa createStringWithObjectRecord:bytes:
+ * \sa newStringWithObjectRecord:bytes:
  */
-- (NSString *)createStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes encoding: (NSStringEncoding)encoding;
+- (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes encoding: (NSStringEncoding)encoding;
 
 @end

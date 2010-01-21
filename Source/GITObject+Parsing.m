@@ -11,11 +11,11 @@
 
 @implementation GITObject (Parsing)
 
-- (NSString *)createStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes {
-    return [self createStringWithObjectRecord:record bytes:bytes encoding:NSASCIIStringEncoding];
+- (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes {
+    return [self newStringWithObjectRecord:record bytes:bytes encoding:NSASCIIStringEncoding];
 }
 
-- (NSString *)createStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes encoding: (NSStringEncoding)encoding {
+- (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes encoding: (NSStringEncoding)encoding {
     const char *start;
     NSUInteger len;
 

@@ -57,7 +57,7 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
         return nil;
 
     const char *dataBytes = [data bytes], *start = dataBytes;
-    NSString *objectString = [self createStringWithObjectRecord:objectParsingRecord bytes:&dataBytes];
+    NSString *objectString = [self newStringWithObjectRecord:objectParsingRecord bytes:&dataBytes];
     if ( !objectString ) {
         GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing object field from tag", @"GITObjectErrorParsingFailed"));
         [self release];
@@ -66,7 +66,7 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
     self.targetSha1 = [GITObjectHash objectHashWithString:objectString];
     [objectString release];
 
-    NSString *typeString = [self createStringWithObjectRecord:typeParsingRecord bytes:&dataBytes];
+    NSString *typeString = [self newStringWithObjectRecord:typeParsingRecord bytes:&dataBytes];
     if ( !typeString ) {
         GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing type field from tag", @"GITObjectErrorParsingFailed"));
         [self release];
@@ -75,7 +75,7 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
     self.targetType = [[self class] objectTypeForString:typeString];
     [typeString release];
 
-    NSString *tagString = [self createStringWithObjectRecord:tagParsingRecord bytes:&dataBytes];
+    NSString *tagString = [self newStringWithObjectRecord:tagParsingRecord bytes:&dataBytes];
     if ( !tagString ) {
         GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing tag field from tag", @"GITObjectErrorParsingFailed"));
         [self release];
@@ -137,7 +137,7 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
     parseObjectRecord(bytes, dateParsingRecord, &date, NULL);
     NSTimeInterval seconds = (NSTimeInterval)strtod(date, NULL);
 
-    NSString *tzStr = [self createStringWithObjectRecord:tzParsingRecord bytes:bytes];
+    NSString *tzStr = [self newStringWithObjectRecord:tzParsingRecord bytes:bytes];
     return [GITDateTime dateTimeWithTimestamp:seconds timeZoneOffset:tzStr];
 }
 
@@ -146,7 +146,7 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
        return;
 
    const char *dataBytes = [cachedData bytes], *start = dataBytes;
-   NSString *taggerStr     = [self createStringWithObjectRecord:taggerParsingRecord bytes:&dataBytes];
+   NSString *taggerStr     = [self newStringWithObjectRecord:taggerParsingRecord bytes:&dataBytes];
    self.tagger             = [GITActor actorWithParsedString:taggerStr];
    [taggerStr release];
    self.taggerDate         = [self parseDateTimeFromBytes:&dataBytes];

@@ -59,7 +59,7 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     NSMutableArray *theParents = [[NSMutableArray alloc] initWithCapacity:1];  //!< 1 is the most common, but we might have more
 
     // Get the tree fields
-    NSString *treeString = [self createStringWithObjectRecord:treeParsingRecord bytes:&dataBytes];
+    NSString *treeString = [self newStringWithObjectRecord:treeParsingRecord bytes:&dataBytes];
     if ( !treeString ) {
         GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing tree field from commit", @"GITObjectErrorParsingFailed"));
         [theParents release];
@@ -71,7 +71,7 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
 
     // Get the parent fields
     NSString *parentString;
-    while ( nil != (parentString = [self createStringWithObjectRecord:parentParsingRecord bytes:&dataBytes]) ) {
+    while ( nil != (parentString = [self newStringWithObjectRecord:parentParsingRecord bytes:&dataBytes]) ) {
         [theParents addObject:[GITObjectHash objectHashWithString:parentString]];
         [parentString release];
     }
@@ -176,7 +176,7 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     parseObjectRecord(bytes, dateParsingRecord, &date, NULL);
     NSTimeInterval seconds = (NSTimeInterval)strtod(date, NULL);
 
-    NSString *tzStr = [self createStringWithObjectRecord:tzParsingRecord bytes:bytes];
+    NSString *tzStr = [self newStringWithObjectRecord:tzParsingRecord bytes:bytes];
     return [GITDateTime dateTimeWithTimestamp:seconds timeZoneOffset:tzStr];
 }
 
@@ -186,12 +186,12 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
 
     const char *dataBytes = [cachedData bytes], *start = dataBytes;
 
-    NSString *authorStr     = [self createStringWithObjectRecord:authorParsingRecord bytes:&dataBytes];
+    NSString *authorStr     = [self newStringWithObjectRecord:authorParsingRecord bytes:&dataBytes];
     self.author             = [GITActor actorWithParsedString:authorStr];
     [authorStr release];
     self.authorDate         = [self parseDateTimeFromBytes:&dataBytes];
 
-    NSString *committerStr  = [self createStringWithObjectRecord:committerParsingRecord bytes:&dataBytes];
+    NSString *committerStr  = [self newStringWithObjectRecord:committerParsingRecord bytes:&dataBytes];
     self.committer          = [[GITActor alloc] initWithParsedString:committerStr];
     [committerStr release];
     self.committerDate      = [self parseDateTimeFromBytes:&dataBytes];

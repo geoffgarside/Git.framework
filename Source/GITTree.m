@@ -47,14 +47,14 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
 
     const char *start = [data bytes], *end = start + [data length];
     while ( start < end ) {
-        if ( !(modeStr = [self createStringWithObjectRecord:modeParsingRecord bytes:&start]) ) {
+        if ( !(modeStr = [self newStringWithObjectRecord:modeParsingRecord bytes:&start]) ) {
             GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing mode from tree contents", @"GITObjectErrorParsingFailed"));
             [newItems release];
             [self release];
             return nil;
         }
 
-        if ( !(nameStr = [self createStringWithObjectRecord:nameParsingRecord bytes:&start]) ) {
+        if ( !(nameStr = [self newStringWithObjectRecord:nameParsingRecord bytes:&start]) ) {
             GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing name from tree contents", @"GITObjectErrorParsingFailed"));
             [modeStr release];
             [newItems release];
@@ -62,7 +62,7 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
             return nil;
         }
 
-        if ( !(hashStr = [self createStringWithObjectRecord:hashParsingRecord bytes:&start]) ) {
+        if ( !(hashStr = [self newStringWithObjectRecord:hashParsingRecord bytes:&start]) ) {
             GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing sha1 from tree contents", @"GITObjectErrorParsingFailed"));
             [modeStr release];
             [nameStr release];
