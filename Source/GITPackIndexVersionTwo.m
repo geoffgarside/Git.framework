@@ -57,7 +57,7 @@ static const short _extOffsetSize   = 8;    //!< Bytes
     NSMutableArray *newFanoutTable = [NSMutableArray arrayWithCapacity:_fanOutCount];
     NSRange fanoutRange = [self fanoutTableRange];
 
-    last = current = 0;
+    last = 0;
     for ( i = 0; i < _fanOutCount; i++ ) {
         NSRange range = NSMakeRange(i * _fanOutSize + fanoutRange.location, _fanOutSize);
         [data getBytes:&numberOfObjects range:range];

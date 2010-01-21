@@ -54,7 +54,7 @@ typedef struct {
     NSUInteger i, last, current;
     NSMutableArray *newFanoutTable = [NSMutableArray arrayWithCapacity:_fanOutCount];
 
-    last = current = 0;
+    last = 0;
     for ( i = 0; i < _fanOutCount; i++ ) {
         [data getBytes:&numberOfObjects range:NSMakeRange(_fanOutSize * i, _fanOutSize)];
         current = CFSwapInt32BigToHost(numberOfObjects);
