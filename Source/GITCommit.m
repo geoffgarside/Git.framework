@@ -177,7 +177,10 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     NSTimeInterval seconds = (NSTimeInterval)strtod(date, NULL);
 
     NSString *tzStr = [self newStringWithObjectRecord:tzParsingRecord bytes:bytes];
-    return [GITDateTime dateTimeWithTimestamp:seconds timeZoneOffset:tzStr];
+    GITDateTime *dt = [GITDateTime dateTimeWithTimestamp:seconds timeZoneOffset:tzStr];
+
+    [tzStr release];
+    return dt;
 }
 
 - (void)parseCachedData {
