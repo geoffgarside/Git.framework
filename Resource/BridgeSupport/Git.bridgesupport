@@ -46,6 +46,14 @@
 <arg type='@'/>
 <retval type='@'/>
 </function>
+<class name='GITCommit'>
+<method selector='isInitial'>
+<retval type='B'/>
+</method>
+<method selector='isMerge'>
+<retval type='B'/>
+</method>
+</class>
 <class name='GITRef'>
 <method selector='isLink'>
 <retval type='B'/>

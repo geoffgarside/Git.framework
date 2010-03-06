@@ -170,6 +170,14 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     return message;
 }
 
+- (BOOL)isMerge {
+    return [[self parentShas] count] > 1;
+}
+
+- (BOOL)isInitial {
+    return [[self parentShas] count] == 0;
+}
+
 // Cached Data Parsing Functions
 - (GITDateTime *)parseDateTimeFromBytes: (const char **)bytes {
     const char *date;
