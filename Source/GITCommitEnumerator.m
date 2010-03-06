@@ -85,6 +85,24 @@
 #pragma mark -
 #pragma mark Breadth First Traversal Algorithm
 - (id)nextObjectInBreadthFirstTraversal {
+    GITCommit *current = nil;
+    GITObjectHash *parent = nil;
+
+    if ( [queue count] == 0 )
+        return nil;
+
+    current = [self nextCommit:[queue objectAtIndex:0]];
+
+    for ( parent in [current parentShas] ) {    //!< Grab all the parents of the current commit
+        if ( [visited containsObject:parent] )  //!< If we've already seen them then onwards!!!
+            continue;
+        [queue addObject:parent];               //!< Queue the parent so we can check it out next time
+        [visited addObject:parent];             //!< "mark" parent as visited
+    }
+
+    [queue removeObjectAtIndex:0];
+
+    return current;
 }
 
 #pragma mark Depth First Traversal Algorithm
