@@ -7,6 +7,9 @@
 //
 
 #import "GITCommitEnumerator.h"
+#import "GITObjectHash.h"
+#import "GITCommit.h"
+#import "GITRepo.h"
 
 
 @interface GITCommitEnumerator ()
