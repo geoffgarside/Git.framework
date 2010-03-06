@@ -62,6 +62,15 @@
     return self.head.repo;
 }
 
+- (GITCommit *)nextCommit: (GITObjectHash *)objectHash {
+    if ( firstPass ) {
+        firstPass = NO;
+        return self.head;
+    } else {
+        return (GITCommit *)[[self repo] objectWithSha1:objectHash error:NULL];
+    }
+}
+
 #pragma mark -
 #pragma mark NSEnumerator Methods
 - (NSArray *)allObjects {
