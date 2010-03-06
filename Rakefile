@@ -98,13 +98,24 @@ namespace :check_tabs do
 pre_commit = <<EOF
 #!/usr/bin/env ruby
 
+def matches_mime?(file)
+  @ignored_mime_types ||= `git config pre-commit.ignored.mime`.chomp.split(" ")
+
+  mime_type = `file --mime-type -b "\#{file}"`.chomp
+  @ignored_mime_types.any? {|t| mime_type =~ /^\#{t}/ }
+end
+def matches_ext?(file)
+  @ignored_extensions ||= `git config pre-commit.ignored.extensions`.chomp.split(" ")
+  @ignored_extensions.any? {|e| file =~ /\\.\#{e}$/ }
+end
+
 found = []
 `git diff --staged --name-only`.split("\\n").each do |srcfile|
   next unless File.file?(srcfile)
-  next if srcfile =~ /project\.pbxproj$/
-  next if srcfile =~ /\.dmg$/
   next if srcfile =~ /^\.git/
-  next if srcfile =~ /\.plist$/
+  next if matches_ext?(srcfile)
+  next if matches_mime?(srcfile)
+
   line_number = 0
   File.readlines(srcfile).each do |line|
     line_number += 1
