@@ -14,6 +14,14 @@ typedef enum {
     GITCommitEnumeratorDepthFirstMode,
 } GITCommitEnumeratorMode;
 
+@class GITCommit;
+
+/*!
+ * ---
+ * Modes cannot be mixed, most specifically because the queue is used
+ * in different ways between the Breadth and Depth traversal algorithms.
+ * +++
+ */
 @interface GITCommitEnumerator : NSEnumerator {
     GITCommit *head;
     GITCommitEnumeratorMode mode;
