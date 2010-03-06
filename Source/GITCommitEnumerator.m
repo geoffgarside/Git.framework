@@ -19,11 +19,11 @@
 @synthesize head, mode;
 
 + (GITCommitEnumerator *)enumeratorFromCommit: (GITCommit *)head {
-    return [self enumeratorWithCommit:head mode:GITCommitEnumeratorBreadthFirstMode];
+    return [self enumeratorFromCommit:head mode:GITCommitEnumeratorBreadthFirstMode];
 }
 
 + (GITCommitEnumerator *)enumeratorFromCommit: (GITCommit *)head mode: (GITCommitEnumeratorMode)mode {
-    return [[[self alloc] initWithCommit:head mode:mode] autorelease];
+    return [[[self alloc] initFromCommit:head mode:mode] autorelease];
 }
 
 - (id)initFromCommit: (GITCommit *)theHead mode: (GITCommitEnumeratorMode)theMode {
