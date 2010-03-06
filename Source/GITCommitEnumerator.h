@@ -17,6 +17,9 @@ typedef enum {
 @interface GITCommitEnumerator : NSEnumerator {
     GITCommit *head;
     GITCommitEnumeratorMode mode;
+    NSMutableArray *queue;
+    NSMutableSet *visited;              //!< Stores "grey" commits
+    BOOL firstPass;
 }
 
 + (GITCommitEnumerator *)enumeratorFromCommit: (GITCommit *)head;
