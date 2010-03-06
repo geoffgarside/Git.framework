@@ -142,6 +142,25 @@
 
 #pragma mark Depth First Traversal Algorithm
 - (id)nextObjectInDepthFirstTraversal {
+    GITCommit *current = nil;
+    GITObjectHash *parent = nil;
+
+    if ( [queue count] == 0 )
+        return nil;
+
+    current = [self nextCommit:[queue objectAtIndex:0]];    //!< Get the commit of the head of the queue
+
+    for ( parent in [current parentShas] ) {
+        if ( ![visited containsObject:parent] ) {           //!< We've not yet seen this commit
+            [queue insertObject:parent atIndex:0];          //!< Put our parent at the head of the queue
+            [visited addObject:parent];                     //!< Mark the parent as visited
+            return current;                                 //!< Found a parent for this commit, we're done
+        }
+    }
+
+    // If we've made it this far then we've exhausted the parents of the current commit
+    [queue removeObjectAtIndex:0];                          //!< Remove this commit from the queue
+    return [self nextObjectInDepthFirstTraversal];          //!< Rinse, repeat...
 }
 
 @end
