@@ -48,6 +48,7 @@
 }
 
 //! \name Properties
+@property (copy) NSArray *parentShas;
 @property (copy) NSArray *parents;
 @property (retain) GITTree *tree;
 @property (retain) GITActor *author;

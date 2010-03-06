@@ -26,7 +26,6 @@ static parsingRecord dateParsingRecord          = { " ", 1, 1, 10, ' ' };
 static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
 
 @interface GITCommit ()
-@property (copy) NSArray *parentShas;
 @property (retain) GITObjectHash *treeSha1;
 @property (copy) NSData *cachedData;
 
