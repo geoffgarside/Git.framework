@@ -40,7 +40,7 @@
 		F5124D5F10CC5423002B834B /* NSRangeEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D5D10CC5423002B834B /* NSRangeEnd.m */; };
 		F5124D9610CC8A2C002B834B /* GITPackObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F5124D9410CC8A2C002B834B /* GITPackObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5124D9710CC8A2C002B834B /* GITPackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D9510CC8A2C002B834B /* GITPackObject.m */; };
-		F52D57F8111DA4FC005A461E /* GITCommitEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = F52D57F6111DA4FC005A461E /* GITCommitEnumerator.h */; };
+		F52D57F8111DA4FC005A461E /* GITCommitEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = F52D57F6111DA4FC005A461E /* GITCommitEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F52D57F9111DA4FC005A461E /* GITCommitEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F52D57F7111DA4FC005A461E /* GITCommitEnumerator.m */; };
 		F553A87010FFDD80007799A9 /* GITLooseObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F553A86E10FFDD80007799A9 /* GITLooseObject.h */; };
 		F553A87110FFDD80007799A9 /* GITLooseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F553A86F10FFDD80007799A9 /* GITLooseObject.m */; };
