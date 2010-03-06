@@ -35,11 +35,18 @@
     self.head = theHead;
     self.mode = theMode;
 
+    self.queue = [[NSMutableArray alloc] initWithObjects:[theHead sha1], nil];
+    self.visited = [[NSMutableSet alloc] initWithObjects:[theHead sha1], nil];
+
+    firstPass = YES;
+
     return self;
 }
 
 - (void)dealloc {
     self.head = nil;
+    self.queue = nil;
+    self.visited = nil;
     [super dealloc];
 }
 
