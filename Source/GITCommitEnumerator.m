@@ -71,6 +71,32 @@
     }
 }
 
+- (NSArray *)allObjectsUntilCommit: (GITCommit *)commit {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+
+    id object;
+    while ( object = [self nextObject] ) {
+        [array addObject:object];
+        if ( [commit isEqualTo:object] )
+            break;
+    }
+
+    return [NSArray arrayWithArray:array];
+}
+
+- (NSArray *)allObjectsUntilObjectHash: (GITObjectHash *)hash {
+    return [self allObjectsUntilCommit:(GITCommit *)[self.head.repo objectWithSha1:hash error:NULL]];
+}
+
+- (NSArray *)allObjectsUntil: (id)obj {
+    if ( [obj isKindOfClass:[GITCommit class]] )
+        return [self allObjectsUntilCommit:obj];
+    else if ( [obj isKindOfClass:[GITObjectHash class]] )
+        return [self allObjectsUntilObjectHash:obj];
+    else
+        return nil;
+}
+
 #pragma mark -
 #pragma mark NSEnumerator Methods
 - (NSArray *)allObjects {
