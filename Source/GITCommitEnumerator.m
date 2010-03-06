@@ -53,4 +53,9 @@
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark Enumeration Helpers
+- (GITRepo *)repo {
+    return self.head.repo;
+}
 @end
