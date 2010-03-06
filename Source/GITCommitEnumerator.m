@@ -17,6 +17,9 @@
 @property (assign) GITCommitEnumeratorMode mode;
 @property (retain) NSMutableArray *queue;
 @property (retain) NSMutableSet *visited;
+
+- (id)nextObjectInBreadthFirstTraversal;
+- (id)nextObjectInDepthFirstTraversal;
 @end
 
 @implementation GITCommitEnumerator
@@ -73,6 +76,19 @@
 }
 
 - (id)nextObject {
+    if ( mode == GITCommitEnumeratorBreadthFirstMode )
+        return [self nextObjectInBreadthFirstTraversal];
+    else
+        return [self nextObjectInDepthFirstTraversal];
+}
+
+#pragma mark -
+#pragma mark Breadth First Traversal Algorithm
+- (id)nextObjectInBreadthFirstTraversal {
+}
+
+#pragma mark Depth First Traversal Algorithm
+- (id)nextObjectInDepthFirstTraversal {
 }
 
 @end
