@@ -58,4 +58,21 @@
 - (GITRepo *)repo {
     return self.head.repo;
 }
+
+#pragma mark -
+#pragma mark NSEnumerator Methods
+- (NSArray *)allObjects {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+
+    id commit;
+    while ( commit = [self nextObject] ) {
+        [array addObject:commit];
+    }
+
+    return [NSArray arrayWithArray:array];
+}
+
+- (id)nextObject {
+}
+
 @end
