@@ -42,4 +42,17 @@ describe "GITCommitEnumerator" do
       @enum.nextObject.sha1.unpackedString.should == "d88c245f270c8d1be05e7dcaefd0a52b58ca4cf3"
     end
   end
+  describe "-nextObject iteration" do
+    before do
+      @enum = GITCommitEnumerator.enumeratorFromCommit(@commit)
+      @objs = @enum.allObjects  # creates a new array by iterating -nextObject until it gets nil
+      @shas = @objs.map { |c| c.sha1.unpackedString }
+    end
+    should "return '42da854703bbcb8694d219f061609ebf286079e3' for first object" do
+      @shas[0].should == '42da854703bbcb8694d219f061609ebf286079e3'
+    end
+    should "return 'd88c245f270c8d1be05e7dcaefd0a52b58ca4cf3' for second object" do
+      @shas[1].should == 'd88c245f270c8d1be05e7dcaefd0a52b58ca4cf3'
+    end
+  end
 end
