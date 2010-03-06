@@ -90,3 +90,25 @@ describe "GITCommitEnumerator" do
     end                                                         #   "a32e235cb48e14343a803fe6c795a433938110ee",  *                  O  Graph B1 1st
   end                                                           #   "ca64739e44dafecdc6eba46ac2589305096c19d0",                     N  Graph 3rd
 end                                                             #   "fa232d1446d5045b0cad3abbc083edc3063c8a6e"]  ! missing 2860e21  J  Graph 4th
+
+# Idea on how the iteration would proceed with a depth first search
+# Iteration | -nextObject | -queue      |
+# ---------------------------------------
+# 1         | A           | A
+# 2         | B           | B,A
+# 3         | C *         | C,B,A
+# 4         | D           | D,C,B,A
+# 5         | E *         | E,D,C,B,A
+# 6         | F           | F,E,D,C,B,A
+# 7         | G           | G,F,E,D,C,B,A
+# 8         | H           | H,G,F,E,D,C,B,A
+# 9         | I           | I,H,G,F,E,D,C,B,A
+# 10        | J           | J,I,H,G,F,E,D,C,B,A
+# 11        | K           | K,E,D,C,B,A
+# 12        | L           | L,K,E,D,C,B,A
+# 13        | M *         | M,C,B,A
+# 14        | N           | N,M,C,B,A
+# 15        | O           | O,N,M,C,B,A
+# 16        | P           | P,M,C,B,A
+# 17        | Q           | Q,P,M,C,B,A
+# ---------------------------------------
