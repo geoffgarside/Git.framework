@@ -12,11 +12,13 @@
 @interface GITCommitEnumerator ()
 @property (retain) GITCommit *head;
 @property (assign) GITCommitEnumeratorMode mode;
+@property (retain) NSMutableArray *queue;
+@property (retain) NSMutableSet *visited;
 @end
 
 @implementation GITCommitEnumerator
 
-@synthesize head, mode;
+@synthesize head, mode, queue, visited;
 
 + (GITCommitEnumerator *)enumeratorFromCommit: (GITCommit *)head {
     return [self enumeratorFromCommit:head mode:GITCommitEnumeratorBreadthFirstMode];
