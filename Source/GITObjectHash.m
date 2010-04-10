@@ -119,13 +119,13 @@ static signed char from_hex[256] = {
 }
 + (uint8_t *)unpackedBytes: (uint8_t *)unpacked fromBytes: (uint8_t *)bytes length: (size_t)length {
     if ( length == GITObjectHashLength ) {
-        if ( sizeof(unpacked) != GITObjectHashLength )
-            return NULL;
+        // if ( sizeof(unpacked) != GITObjectHashLength )
+        //     return NULL;
         memcpy(unpacked, bytes, length);
         return unpacked;
     }
     
-    if ( length != GITObjectHashPackedLength || sizeof(unpacked) != GITObjectHashLength )
+    if ( length != GITObjectHashPackedLength )// || sizeof(unpacked) != GITObjectHashLength )
         return NULL;
     
     int i;
@@ -138,13 +138,13 @@ static signed char from_hex[256] = {
 }
 + (uint8_t *)packedBytes: (uint8_t *)packed fromBytes: (uint8_t *)bytes length: (size_t)length {
     if ( length == GITObjectHashPackedLength ) {
-        if ( sizeof(packed) != GITObjectHashPackedLength )
-            return NULL;
+        // if ( sizeof(packed) != GITObjectHashPackedLength )
+        //     return NULL;
         memcpy(packed, bytes, length);
         return packed;
     }
     
-    if ( length != GITObjectHashLength || sizeof(packed) != GITObjectHashPackedLength )
+    if ( length != GITObjectHashLength )//|| sizeof(packed) != GITObjectHashPackedLength )
         return NULL;
     
     int i, bits;
