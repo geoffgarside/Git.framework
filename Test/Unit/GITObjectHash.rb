@@ -6,7 +6,7 @@ describe 'GITObjectHash' do
     @sha1_data = @sha1_str.dataUsingEncoding(NSUTF8StringEncoding)
     @pack_str = [@sha1_str].pack('H*')                                  # "¾Ô\x00\x178ú\x8D­fmf\x98g¯¯\x9F,+\x8Cj"
     @pack_data = @pack_str.dataUsingEncoding(NSISOLatin1StringEncoding) # Apparently we need this encoding to work
-    @hash = GITObjectHash.objectHashWithString(@sha1_str)               # with the format created by Array#pack
+    @hash = GITObjectHash.objectHashWithString(@sha1_str)               #    with the format created by Array#pack
   end
 
   describe '+unpackedStringFromString:' do
@@ -58,7 +58,7 @@ describe 'GITObjectHash' do
       @subj.length.should == 40
     end
 
-    should 'return a string matching sha1_data' do
+    should 'return data matching sha1_data' do
       @subj.should === @sha1_data
     end
   end
@@ -76,7 +76,7 @@ describe 'GITObjectHash' do
       @subj.length.should == 20
     end
 
-    should 'return a string matching pack_data' do
+    should 'return data matching pack_data' do
       @subj.should === @pack_data
     end
   end
@@ -130,7 +130,7 @@ describe 'GITObjectHash' do
       @subj.length.should == 40
     end
 
-    should 'return a string matching sha1_data' do
+    should 'return data matching sha1_data' do
       @subj.should === @sha1_data
     end
   end
@@ -148,8 +148,20 @@ describe 'GITObjectHash' do
       @subj.length.should == 20
     end
 
-    should 'return a string matching pack_data' do
+    should 'return data matching pack_data' do
       @subj.should === @pack_data
+    end
+  end
+  describe '-hash' do
+    before do
+      @hashValue = @hash.hash
+      @nullValue = 210587549733
+    end
+    should 'be integer' do
+      @hashValue.should.be.kind_of Integer
+    end
+    should 'not be null valued' do
+      @hashValue.should.not == @nullValue
     end
   end
 end
