@@ -19,7 +19,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 40 characters long' do
-      @subj.length.should == 40
+      @subj.length.should == GITObjectHashLength
     end
 
     should 'return a string matching sha1_str' do
@@ -37,7 +37,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 20 characters long' do
-      @subj.length.should == 20
+      @subj.length.should == GITObjectHashPackedLength
     end
 
     should 'return a string matching pack_str' do
@@ -55,7 +55,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 40 bytes long' do
-      @subj.length.should == 40
+      @subj.length.should == GITObjectHashLength
     end
 
     should 'return data matching sha1_data' do
@@ -73,7 +73,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 20 bytes long' do
-      @subj.length.should == 20
+      @subj.length.should == GITObjectHashPackedLength
     end
 
     should 'return data matching pack_data' do
@@ -91,7 +91,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 40 characters long' do
-      @subj.length.should == 40
+      @subj.length.should == GITObjectHashLength
     end
 
     should 'return a string matching sha1_str' do
@@ -109,7 +109,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 20 characters long' do
-      @subj.length.should == 20
+      @subj.length.should == GITObjectHashPackedLength
     end
 
     should 'return a string matching pack_str' do
@@ -127,7 +127,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 40 bytes long' do
-      @subj.length.should == 40
+      @subj.length.should == GITObjectHashLength
     end
 
     should 'return data matching sha1_data' do
@@ -145,7 +145,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return a string 20 bytes long' do
-      @subj.length.should == 20
+      @subj.length.should == GITObjectHashPackedLength
     end
 
     should 'return data matching pack_data' do
