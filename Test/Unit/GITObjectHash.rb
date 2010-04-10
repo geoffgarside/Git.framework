@@ -152,6 +152,7 @@ describe 'GITObjectHash' do
       @subj.should === @pack_data
     end
   end
+
   describe '-hash' do
     before do
       @hashValue = @hash.hash
@@ -163,5 +164,20 @@ describe 'GITObjectHash' do
     should 'not be null valued' do
       @hashValue.should.not == @nullValue
     end
+  end
+  describe "-isEqual:" do
+    
+  end
+  describe "-isEqualTo:" do
+    
+  end
+  describe "-isEqualToData:" do
+    
+  end
+  describe "-isEqualToString:" do
+    
+  end
+  describe "-isEqualToObjectHash:" do
+    
   end
 end
