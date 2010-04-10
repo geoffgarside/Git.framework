@@ -81,13 +81,13 @@ static signed char from_hex[256] = {
 }
 + (NSData *)unpackedDataFromString: (NSString *)str {
     if ( [str length] == GITObjectHashLength )
-        return [str dataUsingEncoding:NSUTF8StringEncoding];
-    return [self unpackedDataFromData:[str dataUsingEncoding:NSASCIIStringEncoding]];
+        return [str dataUsingEncoding:NSASCIIStringEncoding];
+    return [self unpackedDataFromData:[str dataUsingEncoding:NSISOLatin1StringEncoding]];
 }
 + (NSData *)packedDataFromString: (NSString *)str {
     if ( [str length] == GITObjectHashPackedLength )
-        return [str dataUsingEncoding:NSASCIIStringEncoding];
-    return [self packedDataFromData:[str dataUsingEncoding:NSUTF8StringEncoding]];
+        return [str dataUsingEncoding:NSUTF8StringEncoding];
+    return [self packedDataFromData:[str dataUsingEncoding:NSASCIIStringEncoding]];
 }
 + (NSData *)unpackedDataFromData: (NSData *)data {
     if ( [data length] == GITObjectHashLength )
