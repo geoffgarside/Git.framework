@@ -166,18 +166,46 @@ describe 'GITObjectHash' do
     end
   end
   describe "-isEqual:" do
-    
-  end
-  describe "-isEqualTo:" do
-    
+    before do
+      @other = GITObjectHash.objectHashWithData(@pack_data)
+    end
+
+    should "be true with @hash" do
+      @other.isEqual(@hash).should.be.true
+    end
+    should "be true with @sha1_str" do
+      @hash.isEqual(@sha1_str).should.be.true
+    end
+    should "be true with @sha1_data" do
+      @hash.isEqual(@sha1_data).should.be.true
+    end
+    should "be true with @pack_str" do
+      @hash.isEqual(@pack_str).should.be.true
+    end
+    should "be true with @pack_data" do
+      @hash.isEqual(@pack_data).should.be.true
+    end
+    should "be false with 1" do
+      @hash.isEqual(1).should.be.false
+    end
+    should "be false with 'hello'" do
+      @hash.isEqual('hello').should.be.false
+    end
   end
   describe "-isEqualToData:" do
-    
+    should "be true with @pack_data" do
+      @hash.isEqualToData(@pack_data).should.be.true
+    end
+    should "be true with @sha1_data" do
+      @hash.isEqualToData(@sha1_data).should.be.true
+    end
   end
   describe "-isEqualToString:" do
-    
-  end
-  describe "-isEqualToObjectHash:" do
-    
+    should "be true with @pack_str" do
+      @hash.isEqualToString(@pack_str).should.be.true
+    end
+    should "be true with @sha1_str" do
+      @hash.isEqualToString(@sha1_str).should.be.true
+    end
   end
 end
