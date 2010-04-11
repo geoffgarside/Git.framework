@@ -144,7 +144,7 @@ extern const NSUInteger GITObjectHashPackedLength;
 /*!
  * Returns an object hash with a string containing a packed or unpacked SHA1.
  *
- * \param hashString String containing a packed or unpacked SHA1
+ * \param str String containing a packed or unpacked SHA1
  * \return object hash with the string
  * \sa initWithData:
  */
@@ -153,7 +153,7 @@ extern const NSUInteger GITObjectHashPackedLength;
 /*!
  * Returns an object hash with an NSData containing ￼a packed or unpacked SHA1.
  *
- * \param hashData NSData containing a packed or unpacked SHA1
+ * \param data NSData containing a packed or unpacked SHA1
  * \return object hash with the NSData object
  * \sa initWithString:
  */

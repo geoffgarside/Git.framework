@@ -50,7 +50,7 @@ static signed char from_hex[256] = {
 
 @implementation GITObjectHash
 
-//! \group Object Hash storage conversions
+//! \name Packing and Unpacking SHA1 Hashes
 + (NSString *)unpackedStringFromString: (NSString *)str {
     if ( [str length] == GITObjectHashLength )
         return str;
@@ -158,7 +158,7 @@ static signed char from_hex[256] = {
     return packed;
 }
 
-//! \group Creating and Initialising Object Hashes
+//! \name Creating and Initialising Object Hashes
 + (GITObjectHash *)objectHashWithData: (NSData *)hashData {
     return [[[self alloc] initWithData:hashData] autorelease];
 }
@@ -236,7 +236,7 @@ static signed char from_hex[256] = {
     return [[self class] packedDataFromBytes:(uint8_t*)raw length:GITObjectHashPackedLength];
 }
 
-//! \name Equality Methods
+//! \name Testing Equality
 - (uint32_t *)raw {
     return raw;
 }
