@@ -48,12 +48,13 @@
 <li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
 <option value="overview">Overview</option>
 <option value="tasks">Tasks</option>
-<option value="properties">Properties</option>
-<option value="hash">    hash</option>
 <option value="classMethods">Class Methods</option>
 <option value="unpackedStringFromString:">    + unpackedStringFromString:</option>
-<option value="unpackedStringFromData:">    + unpackedStringFromData:</option>
 <option value="packedStringFromString:">    + packedStringFromString:</option>
+<option value="unpackedStringFromData:">    + unpackedStringFromData:</option>
+<option value="packedStringFromData:">    + packedStringFromData:</option>
+<option value="unpackedDataFromString:">    + unpackedDataFromString:</option>
+<option value="packedDataFromString:">    + packedDataFromString:</option>
 <option value="unpackedDataFromData:">    + unpackedDataFromData:</option>
 <option value="packedDataFromData:">    + packedDataFromData:</option>
 <option value="unpackedDataFromBytes:length:">    + unpackedDataFromBytes:length:</option>
@@ -62,8 +63,12 @@
 <option value="objectHashWithString:">    + objectHashWithString:</option>
 <option value="objectHashWithObjectData:">    + objectHashWithObjectData:</option>
 <option value="instanceMethods">Instance Methods</option>
-<option value="initWithData:">    - initWithData:</option>
+<option value="isEqual:">    - isEqual:</option>
+<option value="isEqualToData:">    - isEqualToData:</option>
+<option value="isEqualToString:">    - isEqualToString:</option>
+<option value="isEqualToObjectHash:">    - isEqualToObjectHash:</option>
 <option value="initWithString:">    - initWithString:</option>
+<option value="initWithData:">    - initWithData:</option>
 <option value="initWithObjectData:">    - initWithObjectData:</option>
 <option value="unpackedString">    - unpackedString</option>
 <option value="packedString">    - packedString</option>
@@ -73,20 +78,20 @@
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
-<li><a href="#Properties">Properties</a></li>
+<li><a href="#Testing_Equality">Testing Equality</a></li>
 <li><a href="#Packing_and_Unpacking_SHA1_Hashes">Packing and Unpacking SHA1 Hashes</a></li>
 <li><a href="#Creating_and_Initialising_Object_Hashes">Creating and Initialising Object Hashes</a></li>
 <li><a href="#Getting_Packed_and_Unpacked_Forms">Getting Packed and Unpacked Forms</a></li>
 </ul>
 </li>
-<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
-<a href="#properties">Properties</a><ul style="display: none;"><li><a href="#hash">hash</a></li></ul>
-</li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
 <a href="#classMethods">Class Methods</a><ul style="display: none;">
 <li><a href="#unpackedStringFromString:">unpackedStringFromString:</a></li>
-<li><a href="#unpackedStringFromData:">unpackedStringFromData:</a></li>
 <li><a href="#packedStringFromString:">packedStringFromString:</a></li>
+<li><a href="#unpackedStringFromData:">unpackedStringFromData:</a></li>
+<li><a href="#packedStringFromData:">packedStringFromData:</a></li>
+<li><a href="#unpackedDataFromString:">unpackedDataFromString:</a></li>
+<li><a href="#packedDataFromString:">packedDataFromString:</a></li>
 <li><a href="#unpackedDataFromData:">unpackedDataFromData:</a></li>
 <li><a href="#packedDataFromData:">packedDataFromData:</a></li>
 <li><a href="#unpackedDataFromBytes:length:">unpackedDataFromBytes:length:</a></li>
@@ -98,8 +103,12 @@
 </li>
 <li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
-<li><a href="#initWithData:">initWithData:</a></li>
+<li><a href="#isEqual:">isEqual:</a></li>
+<li><a href="#isEqualToData:">isEqualToData:</a></li>
+<li><a href="#isEqualToString:">isEqualToString:</a></li>
+<li><a href="#isEqualToObjectHash:">isEqualToObjectHash:</a></li>
 <li><a href="#initWithString:">initWithString:</a></li>
+<li><a href="#initWithData:">initWithData:</a></li>
 <li><a href="#initWithObjectData:">initWithObjectData:</a></li>
 <li><a href="#unpackedString">unpackedString</a></li>
 <li><a href="#packedString">packedString</a></li>
@@ -117,18 +126,24 @@
       <p>The <code><code>GITObjectHash</code></code> class provides methods for packing and unpacking SHA1 hashes in both NSString and <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> forms. <code><code>GITObjectHash</code></code> objects provide </p>
     <h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Properties">
-<h3>Properties</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#hash">hash</a></code> <span class="specialType">property</span><span class="tooltip">
-            The hash in packed or unpacked form. 
-          </span></span></li></ul>
+    <li id="Testing_Equality">
+<h3>Testing Equality</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#isEqual:">- isEqual:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#isEqualToData:">- isEqualToData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#isEqualToString:">- isEqualToString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code><span class="tooltip"></span></span></li>
+</ul>
 </li>
     <li id="Packing_and_Unpacking_SHA1_Hashes">
 <h3>Packing and Unpacking SHA1 Hashes</h3>
 <ul class="methods">
 <li><span class="tooltipRegion"><code><a href="#unpackedStringFromString:">+ unpackedStringFromString:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#unpackedStringFromData:">+ unpackedStringFromData:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#packedStringFromString:">+ packedStringFromString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#unpackedStringFromData:">+ unpackedStringFromData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packedStringFromData:">+ packedStringFromData:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#unpackedDataFromString:">+ unpackedDataFromString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#packedDataFromString:">+ packedDataFromString:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#unpackedDataFromData:">+ unpackedDataFromData:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#packedDataFromData:">+ packedDataFromData:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#unpackedDataFromBytes:length:">+ unpackedDataFromBytes:length:</a></code><span class="tooltip"></span></span></li>
@@ -141,8 +156,8 @@
 <li><span class="tooltipRegion"><code><a href="#objectHashWithData:">+ objectHashWithData:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#objectHashWithString:">+ objectHashWithString:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#objectHashWithObjectData:">+ objectHashWithObjectData:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithData:">- initWithData:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#initWithString:">- initWithString:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithData:">- initWithData:</a></code><span class="tooltip"></span></span></li>
 <li><span class="tooltipRegion"><code><a href="#initWithObjectData:">- initWithObjectData:</a></code><span class="tooltip"></span></span></li>
 </ul>
 </li>
@@ -156,11 +171,7 @@
 </ul>
 </li>
   </ul>
-<section id="properties"><h2>Properties</h2>
-<section class="definition" id="hash"><h3>hash</h3>
-            <p>The hash in packed or unpacked form. </p>
-          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *hash</code><h5>Declared In</h5>
-<code><code>GITObjectHash</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
+<section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="unpackedStringFromString:"><h3>unpackedStringFromString:</h3>
 <code class="methodDeclaration">+ (NSString *)unpackedStringFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
@@ -172,11 +183,29 @@
 <h5>Return Value</h5>
           <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the unpacked SHA1 </p>
         <h5>Discussion</h5>
-            <p>Returns a string containing the unpacked SHA1 of the packed string￼.</p>
+            <p>Returns a string containing the unpacked SHA1 of the packed string.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#packedStringFromString:">
             + packedStringFromString:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedStringFromString:"><h3>packedStringFromString:</h3>
+<code class="methodDeclaration">+ (NSString *)packedStringFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>str</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the packed SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns a string containing the packed SHA1 of the unpacked string.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#unpackedStringFromString:">
+            + unpackedStringFromString:
           </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedStringFromData:"><h3>unpackedStringFromData:</h3>
@@ -193,24 +222,52 @@
             <p>Returns a string containing the unpacked SHA1 of the packed data.</p>
             <p></p>
           <h5>Declared In</h5>
-<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedStringFromString:"><h3>packedStringFromString:</h3>
-<code class="methodDeclaration">+ (NSString *)packedStringFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedStringFromData:"><h3>packedStringFromData:</h3>
+<code class="methodDeclaration">+ (NSString *)packedStringFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>str</dt>
+          <dt>data</dt>
 <dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the unpacked SHA1 </p>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing the unpacked SHA1 </p>
             </dd>
         </dl>
 <h5>Return Value</h5>
           <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> containing the packed SHA1 </p>
         <h5>Discussion</h5>
-            <p>Returns a string containing the packed SHA1 of the unpacked string￼.</p>
+            <p>Returns a string containing the packed SHA1 of the unpacked data.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#unpackedStringFromString:">
             + unpackedStringFromString:
           </a></code></li></ul>
 <h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedDataFromString:"><h3>unpackedDataFromString:</h3>
+<code class="methodDeclaration">+ (NSData *)unpackedDataFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>str</dt>
+<dd>
+              <p>String containing the packed SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing the unpacked SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns data containing the unpacked SHA1 of the packed string.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="packedDataFromString:"><h3>packedDataFromString:</h3>
+<code class="methodDeclaration">+ (NSData *)packedDataFromString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>str</dt>
+<dd>
+              <p>String containing the unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing the packed SHA1 </p>
+        <h5>Discussion</h5>
+            <p>Returns data containing the packed SHA1 of the unpacked string.</p>
+            <p></p>
+          <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section><section class="definition" id="unpackedDataFromData:"><h3>unpackedDataFromData:</h3>
 <code class="methodDeclaration">+ (NSData *)unpackedDataFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
@@ -222,7 +279,7 @@
 <h5>Return Value</h5>
           <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing unpacked SHA1 </p>
         <h5>Discussion</h5>
-            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the unpacked SHA1 of the packed data￼.</p>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the unpacked SHA1 of the packed data.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso">
@@ -245,7 +302,7 @@
 <h5>Return Value</h5>
           <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing packed SHA1 </p>
         <h5>Discussion</h5>
-            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the packed SHA1 of the unpacked data￼.</p>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the packed SHA1 of the unpacked data.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso">
@@ -272,7 +329,7 @@
 <h5>Return Value</h5>
           <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing unpacked SHA1 </p>
         <h5>Discussion</h5>
-            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the unpacked SHA1 of the packed bytes￼.</p>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the unpacked SHA1 of the packed bytes.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#packedDataFromBytes:length:">
@@ -294,7 +351,7 @@
 <h5>Return Value</h5>
           <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing packed SHA1 </p>
         <h5>Discussion</h5>
-            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the packed SHA1 of the unpacked bytes￼.</p>
+            <p>Returns an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object containing the packed SHA1 of the unpacked bytes.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#unpackedDataFromBytes:length:">
@@ -312,7 +369,7 @@
 <h5>Return Value</h5>
           <p>object hash with the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object </p>
         <h5>Discussion</h5>
-            <p>Creates an autoreleased object hash with an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing a packed or unpacked SHA1￼.</p>
+            <p>Creates an autoreleased object hash with an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing a packed or unpacked SHA1.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#initWithData:">
@@ -356,28 +413,114 @@
           </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
-<section class="definition" id="initWithData:"><h3>initWithData:</h3>
-<code class="methodDeclaration">- (id)initWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">hashData</span> </code><h5>Parameters</h5>
+<section class="definition" id="isEqual:"><h3>isEqual:</h3>
+<code class="methodDeclaration">- (BOOL)isEqual:(id)<span class="parameter">other</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>hashData</dt>
+          <dt>other</dt>
 <dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing a packed or unpacked SHA1 </p>
+              <p>The object to be compared to the receiver </p>
             </dd>
         </dl>
 <h5>Return Value</h5>
-          <p>object hash with the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object </p>
+          <p>YES if the receiver and other are equal, otherwise NO </p>
         <h5>Discussion</h5>
-            <p>Returns an object hash with an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing ￼a packed or unpacked SHA1.</p>
+            <p>Returns a Boolean value that indicates whether the receiver and a given object are equal.</p>
             <p></p>
           <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithString:">
-            - initWithString:
-          </a></code></li></ul>
+<ul class="seeAlso">
+<li><code><a href="#isEqualToData:">
+            - isEqualToData:
+          </a></code></li>
+<li><code><a href="#isEqualToString:">
+            - isEqualToString:
+          </a></code></li>
+<li><code><a href="#isEqualToObjectHash:">
+            - isEqualToObjectHash:
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToData:"><h3>isEqualToData:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>data</dt>
+<dd>
+              <p>The data object with which to compare the receiver </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>YES if the receiver and data are equal, otherwise NO </p>
+        <h5>Discussion</h5>
+            <p>Returns a Boolean value that indicates whether the receiver and a given data object are equal.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">
+            - isEqual:
+          </a></code></li>
+<li><code><a href="#isEqualToString:">
+            - isEqualToString:
+          </a></code></li>
+<li><code><a href="#isEqualToObjectHash:">
+            - isEqualToObjectHash:
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToString:"><h3>isEqualToString:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>str</dt>
+<dd>
+              <p>The string with which to compare the receiver </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>YES if the receiver and str are equal, otherwise NO </p>
+        <h5>Discussion</h5>
+            <p>Returns a Boolean value that indicates whether the receiver and a given string are equal.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">
+            - isEqual:
+          </a></code></li>
+<li><code><a href="#isEqualToData:">
+            - isEqualToData:
+          </a></code></li>
+<li><code><a href="#isEqualToObjectHash:">
+            - isEqualToObjectHash:
+          </a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToObjectHash:"><h3>isEqualToObjectHash:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToObjectHash:(<code>GITObjectHash</code> *)<span class="parameter">hash</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>hash</dt>
+<dd>
+              <p>The ObjectHash with which to compare the receiver </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>YES if the receiver and hash are equal, otherwise NO </p>
+        <h5>Discussion</h5>
+            <p>Returns a Boolean value that indicates whether the receiver and a given ObjectHash are equal.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">
+            - isEqual:
+          </a></code></li>
+<li><code><a href="#isEqualToData:">
+            - isEqualToData:
+          </a></code></li>
+<li><code><a href="#isEqualToString:">
+            - isEqualToString:
+          </a></code></li>
+</ul>
 <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section><section class="definition" id="initWithString:"><h3>initWithString:</h3>
-<code class="methodDeclaration">- (id)initWithString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">hashString</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithString:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>hashString</dt>
+          <dt>str</dt>
 <dd>
               <p>String containing a packed or unpacked SHA1 </p>
             </dd>
@@ -390,6 +533,24 @@
           <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#initWithData:">
             - initWithData:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="initWithData:"><h3>initWithData:</h3>
+<code class="methodDeclaration">- (id)initWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>data</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing a packed or unpacked SHA1 </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object hash with the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object </p>
+        <h5>Discussion</h5>
+            <p>Returns an object hash with an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> containing ￼a packed or unpacked SHA1.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithString:">
+            - initWithString:
           </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section><section class="definition" id="initWithObjectData:"><h3>initWithObjectData:</h3>
@@ -419,7 +580,7 @@
 <code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)unpackedString</code><h5>Return Value</h5>
           <p>unpacked string of the object hash </p>
         <h5>Discussion</h5>
-            <p>Returns the unpacked string of the object hash￼.</p>
+            <p>Returns the unpacked string of the object hash.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso">
@@ -438,7 +599,7 @@
 <code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)packedString</code><h5>Return Value</h5>
           <p>packed string of the object hash </p>
         <h5>Discussion</h5>
-            <p>Returns the packed string of the object hash￼.</p>
+            <p>Returns the packed string of the object hash.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso">
@@ -457,7 +618,7 @@
 <code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)unpackedData</code><h5>Return Value</h5>
           <p>unpacked data of the object hash </p>
         <h5>Discussion</h5>
-            <p>Returns the unpacked data of the object hash￼.</p>
+            <p>Returns the unpacked data of the object hash.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso">
@@ -476,7 +637,7 @@
 <code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)packedData</code><h5>Return Value</h5>
           <p>packed data of the object hash </p>
         <h5>Discussion</h5>
-            <p>Returns the packed data of the object hash￼.</p>
+            <p>Returns the packed data of the object hash.</p>
             <p></p>
           <h5>See Also</h5>
 <ul class="seeAlso">
@@ -492,7 +653,7 @@
 </ul>
 <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-1-21</p>
+<p id="lastUpdated">Last updated: 2010-4-11</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
