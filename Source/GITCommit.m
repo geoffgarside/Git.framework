@@ -75,13 +75,6 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
         [parentString release];
     }
 
-    if ( [theParents count] < 1 ) {
-        GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing parent field from commit", @"GITObjectErrorParsingFailed"));
-        [theParents release];
-        [self release];
-        return nil;
-    }
-
     self.parentShas = [theParents copy];
     [theParents release];
 
