@@ -237,6 +237,9 @@ static signed char from_hex[256] = {
 }
 
 //! \name Equality Methods
+- (uint32_t *)raw {
+    return raw;
+}
 - (NSUInteger)hash {
     NSUInteger hash = 5381, i = 0;
     
@@ -258,7 +261,9 @@ static signed char from_hex[256] = {
     return NO;                                          // Definitely not then
 }
 - (BOOL)isEqualToObjectHash: (GITObjectHash *)rhs {
-    if ( [self hash] == [rhs hash] )
+    if ( !rhs )         return NO;
+    if ( self == rhs )  return YES;
+    if ( memcmp(raw, [rhs raw], 5) == 0 )
         return YES;
     return NO;
 }
