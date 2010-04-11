@@ -59,6 +59,17 @@
 <arg type='B' index='0'/>
 </method>
 </class>
+<class name='GITObjectHash'>
+<method selector='isEqualToData:'>
+<retval type='B'/>
+</method>
+<method selector='isEqualToObjectHash:'>
+<retval type='B'/>
+</method>
+<method selector='isEqualToString:'>
+<retval type='B'/>
+</method>
+</class>
 <class name='GITRef'>
 <method selector='isLink'>
 <retval type='B'/>
