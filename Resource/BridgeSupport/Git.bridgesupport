@@ -9,12 +9,17 @@
 <constant name='OBErrorDomain' type='@'/>
 <constant name='OBFileNameAndNumberErrorKey' type='@'/>
 <constant name='OBUserCancelledActionErrorKey' type='@'/>
-<enum name='GITObjectErrorParsingFailed' value='16'/>
+<enum name='GITCommitEnumeratorBreadthFirstMode' value='0'/>
+<enum name='GITCommitEnumeratorDepthFirstMode' value='1'/>
+<enum name='GITLooseObjectErrorDirectoryDoesNotExist' value='17'/>
+<enum name='GITLooseObjectErrorObjectNotFound' value='18'/>
+<enum name='GITObjectErrorParsingFailed' value='19'/>
 <enum name='GITObjectTypeBlob' value='3'/>
 <enum name='GITObjectTypeCommit' value='1'/>
 <enum name='GITObjectTypeTag' value='4'/>
 <enum name='GITObjectTypeTree' value='2'/>
 <enum name='GITObjectTypeUnknown' value='0'/>
+<enum name='GITPackCollectionErrorDirectoryDoesNotExist' value='16'/>
 <enum name='GITPackErrorObjectNotFound' value='15'/>
 <enum name='GITPackFileErrorFileIsInvalid' value='6'/>
 <enum name='GITPackFileErrorIndexMissing' value='8'/>
@@ -46,11 +51,33 @@
 <arg type='@'/>
 <retval type='@'/>
 </function>
+<class name='GITBranch'>
+<method selector='isRemote'>
+<retval type='B'/>
+</method>
+<method selector='setRemote:'>
+<arg type='B' index='0'/>
+</method>
+</class>
 <class name='GITCommit'>
 <method selector='isInitial'>
 <retval type='B'/>
 </method>
 <method selector='isMerge'>
+<retval type='B'/>
+</method>
+</class>
+<class name='GITObjectHash'>
+<method selector='isEqual:'>
+<retval type='B'/>
+</method>
+<method selector='isEqualToData:'>
+<retval type='B'/>
+</method>
+<method selector='isEqualToObjectHash:'>
+<retval type='B'/>
+</method>
+<method selector='isEqualToString:'>
 <retval type='B'/>
 </method>
 </class>
@@ -79,7 +106,7 @@
 </method>
 </class>
 <informal_protocol name='NSObject'>
-<method type='@20@0:4@8@12^@16' selector='initFromData:repo:error:'/>
+<method type='@24@0:4@8@12@16^@20' selector='initFromData:sha1:repo:error:'/>
 <method type='i8@0:4' selector='type' class_method='true'/>
 <method type='@8@0:4' selector='typeName' class_method='true'/>
 </informal_protocol>

@@ -27,6 +27,12 @@ task :test do
   sh 'xcodebuild -target Tests -configuration Debug'
 end
 
+test_pattern = /^test\:(.*)$/
+rule test_pattern do |t|
+  ENV['TEST_PAT'] = t.name[test_pattern, 1]
+  Rake::Task['test'].invoke
+end
+
 desc "Generates the documentation for the framework (Requires Doxygen)"
 task :documentation => ['documentation:release']
 namespace :documentation do
