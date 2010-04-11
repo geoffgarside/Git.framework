@@ -67,7 +67,7 @@ static signed char from_hex[256] = {
     NSStringEncoding encoding = NSASCIIStringEncoding;
     if ( [data length] == GITObjectHashLength )
         encoding = NSUTF8StringEncoding;
-    
+
     return [[[NSString alloc] initWithData:[self unpackedDataFromData:data]
                                   encoding:encoding] autorelease];
 }
@@ -75,7 +75,7 @@ static signed char from_hex[256] = {
     NSStringEncoding encoding = NSUTF8StringEncoding;
     if ( [data length] == GITObjectHashPackedLength )
         encoding = NSASCIIStringEncoding;
-    
+
     return [[[NSString alloc] initWithData:[self packedDataFromData:data]
                                   encoding:encoding] autorelease];
 }
@@ -102,19 +102,19 @@ static signed char from_hex[256] = {
 + (NSData *)unpackedDataFromBytes: (uint8_t *)bytes length: (NSUInteger)length {
     if ( length == GITObjectHashLength )
         return [NSData dataWithBytes:bytes length:length];
-    
+
     NSMutableData *unpacked = [NSMutableData dataWithLength:GITObjectHashLength];
     [self unpackedBytes:[unpacked mutableBytes] fromBytes:bytes length:length];
-    
+
     return [[unpacked copy] autorelease];
 }
 + (NSData *)packedDataFromBytes: (uint8_t *)bytes length: (NSUInteger)length {
     if ( length == GITObjectHashPackedLength )
         return [NSData dataWithBytes:bytes length:length];
-    
+
     NSMutableData *packed = [NSMutableData dataWithLength:GITObjectHashPackedLength];
     [self packedBytes:[packed mutableBytes] fromBytes:bytes length:length];
-    
+
     return [[packed copy] autorelease];
 }
 + (uint8_t *)unpackedBytes: (uint8_t *)unpacked fromBytes: (uint8_t *)bytes length: (size_t)length {
@@ -124,16 +124,16 @@ static signed char from_hex[256] = {
         memcpy(unpacked, bytes, length);
         return unpacked;
     }
-    
+
     if ( length != GITObjectHashPackedLength )// || sizeof(unpacked) != GITObjectHashLength )
         return NULL;
-    
+
     int i;
     for ( i = 0; i < GITObjectHashPackedLength; i++ ) {
         *unpacked++ = hexchars[bytes[i] >> 4];
         *unpacked++ = hexchars[bytes[i] & 0xf];
     }
-    
+
     return unpacked;
 }
 + (uint8_t *)packedBytes: (uint8_t *)packed fromBytes: (uint8_t *)bytes length: (size_t)length {
@@ -143,10 +143,10 @@ static signed char from_hex[256] = {
         memcpy(packed, bytes, length);
         return packed;
     }
-    
+
     if ( length != GITObjectHashLength )//|| sizeof(packed) != GITObjectHashPackedLength )
         return NULL;
-    
+
     int i, bits;
     for ( i = 0; i < GITObjectHashPackedLength; i++, bytes += 2 ) {
         bits = (from_hex[bytes[0]] << 4) | (from_hex[bytes[1]]);
@@ -154,7 +154,7 @@ static signed char from_hex[256] = {
             return NULL;
         packed[i] = (uint8_t)bits;
     }
-    
+
     return packed;
 }
 
@@ -197,7 +197,7 @@ static signed char from_hex[256] = {
 - (id)initWithPackedBytes: (uint8_t *)bytes length: (size_t)length {
     if ( length != GITObjectHashPackedLength || ![super init] )
         return nil;
-    
+
     memset(raw, 0x0, sizeof(raw));
     if ( memcpy(raw, bytes, sizeof(raw)) < 0 )
         return nil;
@@ -206,13 +206,13 @@ static signed char from_hex[256] = {
 - (id)initWithUnpackedBytes: (uint8_t *)bytes length: (size_t)length {
     if ( length != GITObjectHashLength )
         return nil;
-    
+
     uint8_t *packed = (uint8_t *) malloc ( sizeof(uint8_t) * GITObjectHashPackedLength );
     if ( [[self class] packedBytes:packed fromBytes:bytes length:length] == NULL ) {
         free ( packed );
         return nil;
     }
-    
+
     id ret = [self initWithPackedBytes:packed length:GITObjectHashPackedLength];
     free ( packed );
     return ret;
@@ -242,7 +242,7 @@ static signed char from_hex[256] = {
 }
 - (NSUInteger)hash {
     NSUInteger hash = 5381, i = 0;
-    
+
     for ( i = 0; i < 5; i++)
         hash = ((hash << 5) + hash) + raw[i];
     return hash;
