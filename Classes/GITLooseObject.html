@@ -1,0 +1,223 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITLooseObject Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
+</head>
+<body>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITLooseObject Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="properties">Properties</option>
+<option value="type">    type</option>
+<option value="data">    data</option>
+<option value="sha1">    sha1</option>
+<option value="length">    length</option>
+<option value="classMethods">Class Methods</option>
+<option value="looseObjectWithSha1:from:error:">    + looseObjectWithSha1:from:error:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithSha1:from:error:">    - initWithSha1:from:error:</option>
+<option value="objectInRepo:error:">    - objectInRepo:error:</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Properties">Properties</a></li>
+<li><a href="#Creating_and_Initialising_Loose_Objects">Creating and Initialising Loose Objects</a></li>
+<li><a href="#Obtaining_the_contained_object">Obtaining the contained object</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
+<a href="#properties">Properties</a><ul style="display: none;">
+<li><a href="#type">type</a></li>
+<li><a href="#data">data</a></li>
+<li><a href="#sha1">sha1</a></li>
+<li><a href="#length">length</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#looseObjectWithSha1:from:error:">looseObjectWithSha1:from:error:</a></li></ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithSha1:from:error:">initWithSha1:from:error:</a></li>
+<li><a href="#objectInRepo:error:">objectInRepo:error:</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITLooseObject Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITLooseObject.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+      <p>The <code>GITLooseObject</code> class aids in the extraction of objects from loose files.</p>
+      <p>The class combines the data of the object and the indicated type for later conversion into a normal git object type such as commit, tree, blob or tag.</p>
+      <p>When loading an object from the file system you create an instance of this class directly, this is opposed to the way in which is PACK counterpart <code><a href="../Classes/GITPackObject.html">GITPackObject</a></code> is used. </p>
+    <h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+    <li id="Properties">
+<h3>Properties</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#type">type</a></code> <span class="specialType">property</span><span class="tooltip">
+            Type of the object the data represents. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#data">data</a></code> <span class="specialType">property</span><span class="tooltip">
+            Data of the object. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#sha1">sha1</a></code> <span class="specialType">property</span><span class="tooltip">
+            SHA1 hash of the object. 
+          </span></span></li>
+<li><span class="tooltipRegion"><code><a href="#length">length</a></code> <span class="specialType">property</span><span class="tooltip">
+            Size of the receivers data. 
+          </span></span></li>
+</ul>
+</li>
+    <li id="Creating_and_Initialising_Loose_Objects">
+<h3>Creating and Initialising Loose Objects</h3>
+<ul class="methods">
+<li><span class="tooltipRegion"><code><a href="#looseObjectWithSha1:from:error:">+ looseObjectWithSha1:from:error:</a></code><span class="tooltip"></span></span></li>
+<li><span class="tooltipRegion"><code><a href="#initWithSha1:from:error:">- initWithSha1:from:error:</a></code><span class="tooltip"></span></span></li>
+</ul>
+</li>
+    <li id="Obtaining_the_contained_object">
+<h3>Obtaining the contained object</h3>
+<ul class="methods"><li><span class="tooltipRegion"><code><a href="#objectInRepo:error:">- objectInRepo:error:</a></code><span class="tooltip"></span></span></li></ul>
+</li>
+  </ul>
+<section id="properties"><h2>Properties</h2>
+<section class="definition" id="type"><h3>type</h3>
+            <p>Type of the object the data represents. </p>
+          <code class="methodDeclaration">@property <code><a href="../Protocols/GITObject.html">GITObject</a></code>Type type</code><h5>Declared In</h5>
+<code><code>GITLooseObject</code>.h</code></section><section class="definition" id="data"><h3>data</h3>
+            <p>Data of the object. </p>
+          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *data</code><h5>Declared In</h5>
+<code><code>GITLooseObject</code>.h</code></section><section class="definition" id="sha1"><h3>sha1</h3>
+            <p>SHA1 hash of the object. </p>
+          <code class="methodDeclaration">@property <code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *sha1</code><h5>Declared In</h5>
+<code><code>GITLooseObject</code>.h</code></section><section class="definition" id="length"><h3>length</h3>
+            <p>Size of the receivers data. </p>
+          <code class="methodDeclaration">@property NSUInteger length</code><h5>Declared In</h5>
+<code><code>GITLooseObject</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="looseObjectWithSha1:from:error:"><h3>looseObjectWithSha1:from:error:</h3>
+<code class="methodDeclaration">+ (GITLooseObject *)looseObjectWithSha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> from:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">directory</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>objectHash</dt>
+<dd>
+              <p>Hash identifying the object to retrieve </p>
+            </dd>
+          <dt>directory</dt>
+<dd>
+              <p>Directory to locate the object within </p>
+            </dd>
+          <dt>error</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any errors which occurred </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>Loose object containing the type and data of the object or nil if not found or an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Creates and returns a loose object identified by the objectHash from the directory specified.</p>
+            <p>Loads data from the file system for the object matching the objectHash. The object prefix is extracted from the loaded data to determine the object type of the data.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithSha1:from:error:">
+            - initWithSha1:from:error:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITLooseObject</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithSha1:from:error:"><h3>initWithSha1:from:error:</h3>
+<code class="methodDeclaration">- (id)initWithSha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> from:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">directory</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>objectHash</dt>
+<dd>
+              <p>Hash identifying the object to retrieve </p>
+            </dd>
+          <dt>directory</dt>
+<dd>
+              <p>Directory to locate the object within </p>
+            </dd>
+          <dt>error</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any errors which occurred </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>Loose object containing the type and data of the object or nil if not found or an error occurred </p>
+        <h5>Discussion</h5>
+            <p>Creates and returns a loose object identified by the objectHash from the directory specified.</p>
+            <p>Loads data from the file system for the object matching the objectHash. The object prefix is extracted from the loaded data to determine the object type of the data.</p>
+            <p></p>
+          <h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#looseObjectWithSha1:from:error:">
+            + looseObjectWithSha1:from:error:
+          </a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITLooseObject</code>.h</code></section><section class="definition" id="objectInRepo:error:"><h3>objectInRepo:error:</h3>
+<code class="methodDeclaration">- (GITObject *)objectInRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+          <dt>repo</dt>
+<dd>
+              <p>Repository the object should belong to </p>
+            </dd>
+          <dt>error</dt>
+<dd>
+              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any errors which occurred </p>
+            </dd>
+        </dl>
+<h5>Return Value</h5>
+          <p>object in the repo</p>
+        <h5>Discussion</h5>
+            <p>Returns the object contained in the receiver and sets the repo of the object.</p>
+            <p></p>
+          <h5>Declared In</h5>
+<code><code>GITLooseObject</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-4-11</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITLooseObject Class Reference</a></li>
+</ul></footer>
+</body>
+</html>
