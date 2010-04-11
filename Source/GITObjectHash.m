@@ -244,6 +244,19 @@ static signed char from_hex[256] = {
         hash = ((hash << 5) + hash) + raw[i];
     return hash;
 }
+- (BOOL)isEqual:(id)other {
+    if ( !other ) return NO;                            // other is nil
+    if ( other == self ) return YES;                    // pointers match?
+
+    if ( [other isKindOfClass:[self class]] )           // Same class?
+        return [self isEqualToObjectHash:other];
+    if ( [other isKindOfClass:[NSString class]] )       // A string?
+        return [self isEqualToString:other];
+    if ( [other isKindOfClass:[NSData class]] )         // A data?
+        return [self isEqualToData:other];
+
+    return NO;                                          // Definitely not then
+}
 - (BOOL)isEqualToObjectHash: (GITObjectHash *)rhs {
     if ( [self hash] == [rhs hash] )
         return YES;
