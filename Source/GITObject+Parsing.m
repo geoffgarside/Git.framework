@@ -7,9 +7,18 @@
 //
 
 #import "GITObject+Parsing.h"
-
+#import "GITObjectHash.h"
 
 @implementation GITObject (Parsing)
+
+- (GITObjectHash *)newObjectHashWithObjectRecord: (parsingRecord)record bytes:(const char **)bytes {
+    const char *start;
+    NSUInteger len;
+    
+    if ( !parseObjectRecord(bytes, record, &start, &len) )
+        return nil;
+    return [[GITObjectHash alloc] initWithBytes:start length:len];
+}
 
 - (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes {
     return [self newStringWithObjectRecord:record bytes:bytes encoding:NSASCIIStringEncoding];
