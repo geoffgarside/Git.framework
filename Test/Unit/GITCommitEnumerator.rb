@@ -31,10 +31,10 @@ describe "GITCommitEnumerator" do
     end
   end
   describe "Breadth First Mode" do
+    before do
+      @enum = GITCommitEnumerator.enumeratorFromCommit(@commit)
+    end
     describe "-nextObject" do
-      before do
-        @enum = GITCommitEnumerator.enumeratorFromCommit(@commit)
-      end
       should "return the commit on the first pass" do
         @enum.nextObject.should == @commit
       end
@@ -45,7 +45,6 @@ describe "GITCommitEnumerator" do
     end
     describe "-nextObject iteration" do
       before do
-        @enum = GITCommitEnumerator.enumeratorFromCommit(@commit)
         @objs = @enum.allObjects  # creates a new array by iterating -nextObject until it gets nil
         @shas = @objs.map { |c| c.sha1.unpackedString }
       end
@@ -58,7 +57,6 @@ describe "GITCommitEnumerator" do
     end
     describe "-allObjects" do
       before do
-        @enum = GITCommitEnumerator.enumeratorFromCommit(@commit)
         @objects = @enum.allObjects
       end
       should "not be nil" do
