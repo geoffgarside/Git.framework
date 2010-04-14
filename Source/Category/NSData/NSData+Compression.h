@@ -28,6 +28,15 @@
  */
 - (NSData *) zlibDeflate;
 
+/*!
+ * Inflates the data into a given buffer starting at a certain offset.
+ *
+ * \param buffer A pointer to an instance of NSMutableData to popluated with the inflated data.
+ * \param offset The offset at which to start reading from [self bytes]
+ * \return The number of bytes consumed
+ */
+- (NSUInteger) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset;
+
 #pragma mark -
 #pragma mark Gzip Compression routines
 //! \name GZip Compression and Decompression

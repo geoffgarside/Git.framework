@@ -100,6 +100,50 @@
 	return [NSData dataWithData: compressed];
 }
 
+- (NSUInteger) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset {
+    int destBufferSize = [buffer length];
+    void * destBuffer = [buffer mutableBytes];
+
+    int status;
+    BOOL done = NO;
+
+    // First setup the zlib stream object
+    z_stream strm;
+    strm.zalloc = Z_NULL;
+    strm.zfree = Z_NULL;
+    strm.opaque = Z_NULL;
+    strm.next_in = (Bytef *) [self bytes] + offset;
+    strm.avail_in = [self length] - offset;
+    strm.total_out = 0;
+
+    if ( inflateInit(&strm) != Z_OK) {
+        goto finish;
+    }
+
+    while ( !done ) {
+        if (strm.total_out > destBufferSize) {
+            goto finish;
+        }
+
+        strm.next_out = destBuffer + strm.total_out;
+        strm.avail_out = destBufferSize - strm.total_out;
+
+        status = inflate(&strm, Z_NO_FLUSH);
+
+        if ( status == Z_STREAM_END) {
+            done = YES;
+        } else if ( status != Z_OK ) {
+            break;
+        }
+    }
+
+finish:
+
+    inflateEnd(&strm);
+
+    return strm.total_out;
+}
+
 #pragma mark -
 #pragma mark Gzip Compression routines
 - (NSData *) gzipInflate
