@@ -686,7 +686,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/local/bin/macruby;
-			shellScript = "require 'bacon'\nframework 'Git'\n\nBacon.extend Bacon::TestUnitOutput  # This doesn't seem to work at the moment, but its how we'd prefer it\nBacon.summary_on_exit\n\nTEST_VOLUME    = ENV['TEST_VOLUME']\nTEST_REPO      = File.join(TEST_VOLUME, 'Test')\nTEST_REPO_ROOT = File.join(TEST_REPO, '.git')\n\nrequire 'Test/TestHelper.rb'\n\npattern = ENV['TEST_PAT'].nil? ? nil : Regexp.new(\"#{ENV['TEST_PAT']}\")\nDir['Test/Unit/*.rb'].each do |testfile|\n  next if pattern && !pattern.match(testfile)\n  load testfile\nend\n";
+			shellScript = "require 'rubygems'\nrequire 'bacon'\nframework 'Git'\n\nBacon.extend Bacon::TestUnitOutput  # This doesn't seem to work at the moment, but its how we'd prefer it\nBacon.summary_on_exit\n\nTEST_VOLUME    = ENV['TEST_VOLUME']\nTEST_REPO      = File.join(TEST_VOLUME, 'Test')\nTEST_REPO_ROOT = File.join(TEST_REPO, '.git')\n\nrequire 'Test/TestHelper.rb'\n\npattern = ENV['TEST_PAT'].nil? ? nil : Regexp.new(\"#{ENV['TEST_PAT']}\")\nDir['Test/Unit/*.rb'].each do |testfile|\n  next if pattern && !pattern.match(testfile)\n  load testfile\nend\n";
 			showEnvVarsInLog = 0;
 		};
 		F5FC28E910A649D000EFB922 /* ShellScript */ = {

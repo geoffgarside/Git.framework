@@ -57,14 +57,14 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
         return nil;
 
     const char *dataBytes = [data bytes], *start = dataBytes;
-    NSString *objectString = [self newStringWithObjectRecord:objectParsingRecord bytes:&dataBytes];
-    if ( !objectString ) {
+    GITObjectHash *rawObjectHash = [self newObjectHashWithObjectRecord:objectParsingRecord bytes:&dataBytes];
+    if ( !rawObjectHash ) {
         GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing object field from tag", @"GITObjectErrorParsingFailed"));
         [self release];
         return nil;
     }
-    self.targetSha1 = [GITObjectHash objectHashWithString:objectString];
-    [objectString release];
+    self.targetSha1 = rawObjectHash;
+    [rawObjectHash release];
 
     NSString *typeString = [self newStringWithObjectRecord:typeParsingRecord bytes:&dataBytes];
     if ( !typeString ) {

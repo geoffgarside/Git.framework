@@ -41,7 +41,7 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
 
     GITObjectHash *hashVal;
     GITTreeItemMode modeVal;
-    NSString *modeStr, *nameStr, *hashStr;
+    NSString *modeStr, *nameStr;
 
     NSMutableArray *newItems = [[NSMutableArray alloc] initWithCapacity:1];
 
@@ -62,7 +62,7 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
             return nil;
         }
 
-        if ( !(hashStr = [self newStringWithObjectRecord:hashParsingRecord bytes:&start]) ) {
+        if ( !(hashVal = [self newObjectHashWithObjectRecord:hashParsingRecord bytes:&start]) ) {
             GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing sha1 from tree contents", @"GITObjectErrorParsingFailed"));
             [modeStr release];
             [nameStr release];
@@ -72,13 +72,12 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
         }
 
         modeVal = [modeStr integerValue];
-        hashVal = [GITObjectHash objectHashWithString:hashStr];
 
         [newItems addObject:[GITTreeItem itemInTree:self withMode:modeVal name:nameStr sha1:hashVal]];
 
+        [hashVal release], hashVal = nil;
         [modeStr release], modeStr = nil;
         [nameStr release], nameStr = nil;
-        [hashStr release], hashStr = nil;
     }
 
     self.items = [newItems copy];
