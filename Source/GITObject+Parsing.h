@@ -77,6 +77,27 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
  */
 @interface GITObject (Parsing)
 
+//! \name Matching Object Hashes
+/*!
+ * Creates and returns a GITObjectHash matching the specified \a record
+ *
+ * This method creates a GITObjectHash directly from the raw bytes corresponding
+ * to the git object id record. It bypasses the unnecessary step of allocating
+ * and initializing an NSString object, which is expensive when called repeatedly
+ * during high-load git object graph parsing operations. During object parsing,
+ * the expected type of the underlying data is typically known, and this method
+ * allows that information to be utilized for performance gains.
+ *
+ * Use this method to directly parse the git object id (hash) record for an
+ * object.
+ * \param record Record describing the string to match
+ * \param bytes Pointer to the byte stream to search. This byte stream should
+ *        be either an unpacked sha1 string (40 bytes) or packed SHA1 data (20 bytes)
+ * \return GITObjectHash object matching the \a record or nil if no match
+ * \sa newStringWithObjectRecord:bytes:encoding:
+ */
+- (GITObjectHash *)newObjectHashWithObjectRecord: (parsingRecord)record bytes:(const char **)bytes;
+
 //! \name Matching Strings
 /*!
  * Creates and returns a string matching the format defined by the \a record.
