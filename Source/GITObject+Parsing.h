@@ -86,10 +86,10 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
  * and initializing an NSString object, which is expensive when called repeatedly
  * during high-load git object graph parsing operations. During object parsing,
  * the expected type of the underlying data is typically known, and this method
- * allows that information to be utilized for performance gains. 
+ * allows that information to be utilized for performance gains.
  *
  * Use this method to directly parse the git object id (hash) record for an
- * object. 
+ * object.
  * \param record Record describing the string to match
  * \param bytes Pointer to the byte stream to search. This byte stream should
  *        be either an unpacked sha1 string (40 bytes) or packed SHA1 data (20 bytes)
