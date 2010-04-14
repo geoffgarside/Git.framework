@@ -16,6 +16,7 @@
 @property (retain) GITCommit *head;
 @property (assign) GITCommitEnumeratorMode mode;
 @property (retain) NSMutableArray *queue;
+@property (retain) NSMutableArray *merges;
 @property (retain) NSMutableSet *visited;
 
 - (id)nextObjectInBreadthFirstTraversal;
@@ -24,7 +25,7 @@
 
 @implementation GITCommitEnumerator
 
-@synthesize head, mode, queue, visited;
+@synthesize head, mode, queue, merges, visited;
 
 + (GITCommitEnumerator *)enumeratorFromCommit: (GITCommit *)head {
     return [self enumeratorFromCommit:head mode:GITCommitEnumeratorBreadthFirstMode];
@@ -44,6 +45,9 @@
     self.queue = [[NSMutableArray alloc] initWithObjects:[theHead sha1], nil];
     self.visited = [[NSMutableSet alloc] initWithObjects:[theHead sha1], nil];
 
+    if ( self.mode == GITCommitEnumeratorDepthFirstMode )
+        self.merges = [[NSMutableArray alloc] init];
+
     firstPass = YES;
 
     return self;
@@ -52,6 +56,7 @@
 - (void)dealloc {
     self.head = nil;
     self.queue = nil;
+    self.merges = nil;
     self.visited = nil;
     [super dealloc];
 }

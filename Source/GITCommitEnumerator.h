@@ -26,6 +26,7 @@ typedef enum {
     GITCommit *head;
     GITCommitEnumeratorMode mode;
     NSMutableArray *queue;
+    NSMutableArray *merges;
     NSMutableSet *visited;              //!< Stores "grey" commits
     BOOL firstPass;
 }
