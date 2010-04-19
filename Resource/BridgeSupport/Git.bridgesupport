@@ -59,7 +59,18 @@
 <arg type='B' index='0'/>
 </method>
 </class>
+<class name='GITCommit'>
+<method selector='isInitial'>
+<retval type='B'/>
+</method>
+<method selector='isMerge'>
+<retval type='B'/>
+</method>
+</class>
 <class name='GITObjectHash'>
+<method selector='isEqual:'>
+<retval type='B'/>
+</method>
 <method selector='isEqualToData:'>
 <retval type='B'/>
 </method>

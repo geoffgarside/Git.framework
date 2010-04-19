@@ -26,7 +26,6 @@ static parsingRecord dateParsingRecord          = { " ", 1, 1, 10, ' ' };
 static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
 
 @interface GITCommit ()
-@property (copy) NSArray *parentShas;
 @property (retain) GITObjectHash *treeSha1;
 @property (copy) NSData *cachedData;
 
@@ -74,13 +73,6 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     while ( nil != (parentHash = [self newObjectHashWithObjectRecord:parentParsingRecord bytes:&dataBytes]) ) {
         [theParents addObject:parentHash];
         [parentHash release];
-    }
-
-    if ( [theParents count] < 1 ) {
-        GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing parent field from commit", @"GITObjectErrorParsingFailed"));
-        [theParents release];
-        [self release];
-        return nil;
     }
 
     self.parentShas = [theParents copy];
@@ -168,6 +160,14 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     if ( !message )
         [self parseCachedData];
     return message;
+}
+
+- (BOOL)isMerge {
+    return [[self parentShas] count] > 1;
+}
+
+- (BOOL)isInitial {
+    return [[self parentShas] count] == 0;
 }
 
 // Cached Data Parsing Functions

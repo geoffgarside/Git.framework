@@ -279,5 +279,8 @@ static signed char from_hex[256] = {
     [rhs release];
     return result;
 }
+- (NSString *)description {
+    return [self unpackedString];
+}
 
 @end
