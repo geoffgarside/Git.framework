@@ -154,5 +154,10 @@ EOF
       end
       FileUtils.chmod(0755, hook_file)
     end
+
+    puts "Pre Commit hook successfully installed, please note configuration is via `git config`"
+    puts "the following commands are recommended to ignore files for Tab checking"
+    puts "  $ git config pre-commit.ignored.mime 'image/ application/xml application/octet-stream'"
+    puts "  $ git config pre-commit.ignored.extensions 'graffle pbxproj'"
   end
 end
