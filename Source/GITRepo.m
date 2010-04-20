@@ -11,10 +11,12 @@
 #import "GITRefResolver.h"
 #import "GITBranch.h"
 #import "GITObject.h"
+#import "GITCommit.h"
 #import "GITObjectHash.h"
 #import "GITPackObject.h"
 #import "GITLooseObject.h"
 #import "GITPackCollection.h"
+#import "GITCommitEnumerator.h"
 
 
 @interface GITRepo ()
@@ -176,6 +178,18 @@ done:
     if ( !packObject )
         return nil;
     return [packObject objectInRepo:self error:error];
+}
+
+- (GITCommit *)head {
+    return (GITCommit *)[[[self refResolver] resolveRefWithName:@"HEAD"] target];
+}
+
+- (GITCommitEnumerator *)enumerator {
+    return [GITCommitEnumerator enumeratorFromCommit:[self head]];
+}
+
+- (GITCommitEnumerator *)enumeratorWithMode: (GITCommitEnumeratorMode)mode {
+    return [GITCommitEnumerator enumeratorFromCommit:[self head] mode:mode];
 }
 
 @end

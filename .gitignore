@@ -7,3 +7,6 @@
 build/
 Documentation/
 !Documentation/doxyclean
+!Documentation/*.graffle
+!Documentation/*.png
+!Documentation/*.txt

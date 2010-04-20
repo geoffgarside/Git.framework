@@ -48,6 +48,7 @@
 }
 
 //! \name Properties
+@property (copy) NSArray *parentShas;
 @property (copy) NSArray *parents;
 @property (retain) GITTree *tree;
 @property (retain) GITActor *author;
@@ -79,5 +80,22 @@
  * \sa parentShas
  */
 - (NSString *)parentSha1;
+
+//! \name Flags
+/*!
+ * Returns YES if the receiver is a merge point, NO if it has only one parent.
+ *
+ * \return YES if the receiver is a merge point, NO if only one parent
+ * \sa parentShas
+ */
+- (BOOL)isMerge;
+
+/*!
+ * Returns YES if the receiver if the first commit, NO otherwise.
+ *
+ * \return YES if the receiver is the first commit, NO otherwise.
+ * \sa parentShas
+ */
+- (BOOL)isInitial;
 
 @end

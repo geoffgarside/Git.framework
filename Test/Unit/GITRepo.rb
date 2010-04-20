@@ -126,3 +126,25 @@ describe "GITRepo -objectWithSha1:error:" do
     @commit.sha1.unpackedString.should == @sha1.unpackedString
   end
 end
+
+describe "GITRepo Enumerators" do
+  before do
+    @repo = default_repository
+  end
+  describe "-enumerator" do
+    before do
+      @enum = @repo.enumerator
+    end
+    should "not be nil" do
+      @enum.should.not.be.nil
+    end
+  end
+  describe "-enumeratorWithMode:" do
+    before do
+      @enum = @repo.enumeratorWithMode(GITCommitEnumeratorBreadthFirstMode)
+    end
+    should "not be nil" do
+      @enum.should.not.be.nil
+    end
+  end
+end
