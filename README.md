@@ -9,6 +9,7 @@ The currently supported features of the project are
   * Reading objects, both loose and packed
   * Resolving refs from `.git/refs`
   * Reading branches, both local and remote
+  * Enumeration of commits in breadth and depth first orders
 
 Planned Features
 -----------------
@@ -28,6 +29,8 @@ Additionally features from [CocoaGit][cocoagit] which are not yet supported will
 Running the Test Suite
 -----------------------
 The test suite requires [MacRuby 0.5][macruby] and [Bacon][bacon] and can be run either through Xcode or `rake` in the Terminal. So far tests have been run using MacRuby r3090 and Bacon v0.9.
+
+Bacon can be installed either using Rubygems or alternatively with [rip][rip]
 
 Code Formatting and Style
 --------------------------
@@ -84,3 +87,4 @@ Released under the terms of the MIT licence, details of which are below
 [macruby]: http://macruby.org/
 [bacon]: http://rubyforge.org/projects/test-spec
 [doxygen]: http://www.stack.nl/~dimitri/doxygen/
+[rip]: http://hellorip.com/
