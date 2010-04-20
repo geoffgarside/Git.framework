@@ -9,13 +9,13 @@
 	
 body {
 	background-color: #fff;
-	font-family: "Lucida Grande", Helvetica, sans-serif;
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
 	font-size: 0.74em;
 }
 	
 a {
 	text-decoration: none;
-	color: #093d92;
+	color: rgb(51, 102, 204);
 }
 
 a:hover {
@@ -28,22 +28,23 @@ a:hover {
 
 #contents h1 {
 	font-size: 2.4em;
-	font-weight: bold;
+	font-weight: normal;
 	margin-bottom: 1em;
 	}	
 
 #contents h2 {
 	font-size: 2.1em;
-	font-weight: bold;
+	font-weight: normal;
 	margin-top: 2.0em;
 	margin-bottom: 0.6em;
 	padding-bottom: 0.1em;
-	border-bottom: 1px solid #919699;
+	border-bottom: 1px solid rgb(80, 136, 197);
+	color: rgb(60, 76, 108);
 	}
 	
 #contents h3 {
 	font-size: 1.5em;
-	font-weight: bold;
+	font-weight: normal;
 	margin-top: 1.0em;
 	}
 	
@@ -75,11 +76,9 @@ table#metadata {
 }
 
 table#metadata tr {
-	border: 1px solid #919699;
-}
-
-table#metadata tr.alt {
-	background-color: #f0f5f9;
+	border-color: rgb(214, 224, 229);
+	border-style: solid;
+	border-width: 1px 0;
 }
 
 table#metadata th {
@@ -122,7 +121,7 @@ table#metadata ul.inheritance li:last-of-type:after {
 }
 
 code {
-	font-family: Monaco, 'Courier New', Courier, monospace;
+	font-family: Menlo, Monaco, 'Courier New', Courier, monospace;
 	font-size: 1.1em;
 	color: #333;
 }
@@ -148,6 +147,7 @@ ul.methods li {
 
 code.methodDeclaration {
 	display: block;
+	font-size: 1.2em;
 }
 	
 code.methodDeclaration .parameter {
@@ -192,22 +192,26 @@ p#lastUpdated {
 /* --------->>>> =Tooltips <<<<---------*/
 /* -------------------------------------*/
 
-ul.methods li span.tooltipRegion span.tooltip {
+ul.methods li span.tooltipRegion + span.tooltip {
 	font-size: 1.0em;
-	display: none;
 	padding: 0.3em;
 	border: 1px solid #aaa;
 	background-color: #fdfec8;
 	color: #000;
 	text-align: left;
-	}
-	
-ul.methods li span.tooltipRegion:hover span.tooltip {
 	display: block;
 	position: absolute;
 	margin-left: 2em;
 	-webkit-box-shadow: 0 6px 20px #666;
 	box-shadow: 0 6px 20px #666;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity 0.2s linear;
+	}
+	
+ul.methods li span.tooltipRegion:hover + span.tooltip {
+	opacity: 1;
+	visibility: visible;
 	}
 	
 /* -------------------------------------*/
@@ -241,3 +245,12 @@ ul.methods li span.tooltipRegion:hover span.tooltip {
 	margin: 0 0 4px 0;
 	padding: 0;
 	}
+
+code pre {
+    color: #000;
+    line-height: 180%;
+    background-color: rgb(240, 243, 247);
+    border: 1px solid rgb(80, 136, 197);
+    border-collapse: collapse;
+    padding: 1em;
+}

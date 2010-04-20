@@ -94,171 +94,151 @@
 <td>GITDateTime.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>Git objects specify their creation and other dates along with the associated time zone.</p>
-      <p>This class tracks these pieces of information and also aids in creation of the date time objects from the UNIX timestamp and time zone offsets used in stored git objects. </p>
-    <h2 id="tasks">Tasks</h2>
+<p>Git objects specify their creation and other dates along with the associated time zone.</p>
+<p>This class tracks these pieces of information and also aids in creation of the date time objects from the UNIX timestamp and time zone offsets used in stored git objects. </p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Properties">
+<li id="Properties">
 <h3>Properties</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#date">date</a></code> <span class="specialType">property</span><span class="tooltip">
-            Date. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#timeZone">timeZone</a></code> <span class="specialType">property</span><span class="tooltip">
-            Time Zone. 
-          </span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#date">date</a></code> <span class="specialType">property</span></span><span class="tooltip">Date. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#timeZone">timeZone</a></code> <span class="specialType">property</span></span><span class="tooltip">Time Zone. </span>
+</li>
 </ul>
 </li>
-    <li id="Creating_and_Initialising_DateTimes">
+<li id="Creating_and_Initialising_DateTimes">
 <h3>Creating and Initialising DateTimes</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#dateTimeWithDate:">+ dateTimeWithDate:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#dateTimeWithDate:timeZone:">+ dateTimeWithDate:timeZone:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#dateTimeWithTimestamp:timeZoneOffset:">+ dateTimeWithTimestamp:timeZoneOffset:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithDate:">- initWithDate:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithDate:timeZone:">- initWithDate:timeZone:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithTimestamp:timeZoneOffset:">- initWithTimestamp:timeZoneOffset:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#dateTimeWithDate:">+ dateTimeWithDate:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#dateTimeWithDate:timeZone:">+ dateTimeWithDate:timeZone:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#dateTimeWithTimestamp:timeZoneOffset:">+ dateTimeWithTimestamp:timeZoneOffset:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithDate:">- initWithDate:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithDate:timeZone:">- initWithDate:timeZone:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithTimestamp:timeZoneOffset:">- initWithTimestamp:timeZoneOffset:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-  </ul>
+</ul>
 <section id="properties"><h2>Properties</h2>
 <section class="definition" id="date"><h3>date</h3>
-            <p>Date. </p>
-          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a></code> *date</code><h5>Declared In</h5>
+<p>Date. </p>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a> *date</code><h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section><section class="definition" id="timeZone"><h3>timeZone</h3>
-            <p>Time Zone. </p>
-          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSTimeZone_Class/index.html">NSTimeZone</a></code> *timeZone</code><h5>Declared In</h5>
+<p>Time Zone. </p>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSTimeZone_Class/index.html">NSTimeZone</a> *timeZone</code><h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="dateTimeWithDate:"><h3>dateTimeWithDate:</h3>
-<code class="methodDeclaration">+ (GITDateTime *)dateTimeWithDate:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a></code> *)<span class="parameter">date</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (GITDateTime *)dateTimeWithDate:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a> *)<span class="parameter">date</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>date</dt>
-<dd>
-              <p>Date object giving the date and time for the receiver </p>
-            </dd>
-        </dl>
+<dt>date</dt>
+<dd><p>Date object giving the date and time for the receiver </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>date time object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a date time object for the date in the local time zone.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithDate:">
-            - initWithDate:
-          </a></code></li></ul>
+<p>date time object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a date time object for the date in the local time zone.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithDate:">- initWithDate:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section><section class="definition" id="dateTimeWithDate:timeZone:"><h3>dateTimeWithDate:timeZone:</h3>
-<code class="methodDeclaration">+ (GITDateTime *)dateTimeWithDate:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a></code> *)<span class="parameter">date</span> timeZone:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSTimeZone_Class/index.html">NSTimeZone</a></code> *)<span class="parameter">timeZone</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (GITDateTime *)dateTimeWithDate:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a> *)<span class="parameter">date</span> timeZone:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSTimeZone_Class/index.html">NSTimeZone</a> *)<span class="parameter">timeZone</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>date</dt>
-<dd>
-              <p>Date object giving the date and time for the receiver </p>
-            </dd>
-          <dt>timeZone</dt>
-<dd>
-              <p>time zone of the date and time </p>
-            </dd>
-        </dl>
+<dt>date</dt>
+<dd><p>Date object giving the date and time for the receiver </p></dd>
+<dt>timeZone</dt>
+<dd><p>time zone of the date and time </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>date time object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a date time object for the date in the given timeZone.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithDate:timeZone:">
-            - initWithDate:timeZone:
-          </a></code></li></ul>
+<p>date time object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a date time object for the date in the given timeZone.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithDate:timeZone:">- initWithDate:timeZone:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section><section class="definition" id="dateTimeWithTimestamp:timeZoneOffset:"><h3>dateTimeWithTimestamp:timeZoneOffset:</h3>
-<code class="methodDeclaration">+ (<code>GITDateTime</code> *)dateTimeWithTimestamp:(NSTimeInterval)<span class="parameter">seconds</span> timeZoneOffset:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">offset</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (GITDateTime *)dateTimeWithTimestamp:(NSTimeInterval)<span class="parameter">seconds</span> timeZoneOffset:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">offset</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>seconds</dt>
-<dd>
-              <p>UNIX timestamp specifying the date </p>
-            </dd>
-          <dt>offset</dt>
-<dd>
-              <p>Zone offset from Greenwich in "+/-HHMM" format </p>
-            </dd>
-        </dl>
+<dt>seconds</dt>
+<dd><p>UNIX timestamp specifying the date </p></dd>
+<dt>offset</dt>
+<dd><p>Zone offset from Greenwich in "+/-HHMM" format </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>date time object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a date time object from the UNIX timestamp seconds and the string offset.</p>
-            <p>The offset is normally of the form "+0100" or "-0100", the seconds counted from the start of the UNIX Epoch which is the first of January 1970 rather than the Mac OS X Reference Date which is the first of January 2001.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithTimestamp:timeZoneOffset:">
-            - initWithTimestamp:timeZoneOffset:
-          </a></code></li></ul>
+<p>date time object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a date time object from the UNIX timestamp seconds and the string offset.</p>
+<p>The offset is normally of the form "+0100" or "-0100", the seconds counted from the start of the UNIX Epoch which is the first of January 1970 rather than the Mac OS X Reference Date which is the first of January 2001.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithTimestamp:timeZoneOffset:">- initWithTimestamp:timeZoneOffset:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="initWithDate:"><h3>initWithDate:</h3>
-<code class="methodDeclaration">- (id)initWithDate:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a></code> *)<span class="parameter">date</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithDate:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a> *)<span class="parameter">date</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>date</dt>
-<dd>
-              <p>Date object giving the date and time for the receiver </p>
-            </dd>
-        </dl>
+<dt>date</dt>
+<dd><p>Date object giving the date and time for the receiver </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>date time object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a date time object for the date in the local time zone.</p>
-            <p></p>
-          <h5>See Also</h5>
+<p>date time object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a date time object for the date in the local time zone.</p>
+<p></p>
+<h5>See Also</h5>
 <ul class="seeAlso">
-<li><code><a href="#dateTimeWithDate:">
-            + dateTimeWithDate:
-          </a></code></li>
-<li><code><a href="#initWithDate:timeZone:">
-            - initWithDate:timeZone:
-          </a></code></li>
+<li><code><a href="#dateTimeWithDate:">+ dateTimeWithDate:</a></code></li>
+<li><code><a href="#initWithDate:timeZone:">- initWithDate:timeZone:</a></code></li>
 </ul>
 <h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section><section class="definition" id="initWithDate:timeZone:"><h3>initWithDate:timeZone:</h3>
-<code class="methodDeclaration">- (id)initWithDate:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a></code> *)<span class="parameter">date</span> timeZone:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSTimeZone_Class/index.html">NSTimeZone</a></code> *)<span class="parameter">timeZone</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithDate:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSDate_Class/index.html">NSDate</a> *)<span class="parameter">date</span> timeZone:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSTimeZone_Class/index.html">NSTimeZone</a> *)<span class="parameter">timeZone</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>date</dt>
-<dd>
-              <p>Date object giving the date and time for the receiver </p>
-            </dd>
-          <dt>timeZone</dt>
-<dd>
-              <p>time zone of the date and time </p>
-            </dd>
-        </dl>
+<dt>date</dt>
+<dd><p>Date object giving the date and time for the receiver </p></dd>
+<dt>timeZone</dt>
+<dd><p>time zone of the date and time </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>date time object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a date time object for the date in the given timeZone.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>date time object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a date time object for the date in the given timeZone.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section><section class="definition" id="initWithTimestamp:timeZoneOffset:"><h3>initWithTimestamp:timeZoneOffset:</h3>
-<code class="methodDeclaration">- (id)initWithTimestamp:(NSTimeInterval)<span class="parameter">seconds</span> timeZoneOffset:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">offset</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithTimestamp:(NSTimeInterval)<span class="parameter">seconds</span> timeZoneOffset:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">offset</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>seconds</dt>
-<dd>
-              <p>UNIX timestamp specifying the date </p>
-            </dd>
-          <dt>offset</dt>
-<dd>
-              <p>Zone offset from Greenwich in "+/-HHMM" format </p>
-            </dd>
-        </dl>
+<dt>seconds</dt>
+<dd><p>UNIX timestamp specifying the date </p></dd>
+<dt>offset</dt>
+<dd><p>Zone offset from Greenwich in "+/-HHMM" format </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>date time object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a date time object from the UNIX timestamp seconds and the string offset.</p>
-            <p>The offset is normally of the form "+0100" or "-0100", the seconds counted from the start of the UNIX Epoch which is the first of January 1970 rather than the Mac OS X Reference Date which is the first of January 2001.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithDate:timeZone:">
-            - initWithDate:timeZone:
-          </a></code></li></ul>
+<p>date time object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a date time object from the UNIX timestamp seconds and the string offset.</p>
+<p>The offset is normally of the form "+0100" or "-0100", the seconds counted from the start of the UNIX Epoch which is the first of January 1970 rather than the Mac OS X Reference Date which is the first of January 2001.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithDate:timeZone:">- initWithDate:timeZone:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITDateTime</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

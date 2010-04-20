@@ -70,9 +70,9 @@
 <td>GITPackedRefsEnumerator.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>The <code><code>GITPackedRefsEnumerator</code></code> class provides enumeration of <code>packed-refs</code> contents.</p>
-      <p>This enumerator allows for iteration over the contents of <code>packed-refs</code> using either normal enumeration</p>
-      <p>
+<p>The <code><code>GITPackedRefsEnumerator</code></code> class provides enumeration of <code>packed-refs</code> contents.</p>
+<p>This enumerator allows for iteration over the contents of <code>packed-refs</code> using either normal enumeration</p>
+<p>
 id ref;
 GITRepo *repo = [GITRepo repo];
 GITPackedRefsEnumerator *e = [<code>GITPackedRefsEnumerator</code> enumeratorForRepo:repo];
@@ -81,60 +81,56 @@ while ( (object = [e nextObject]) ) {
     // do something with object...
 }
 </p>
-      <p>or using Fast Enumeration</p>
-      <p>
+<p>or using Fast Enumeration</p>
+<p>
 GITRepo *repo = [GITRepo repo];
 
 for ( id object in [<code>GITPackedRefsEnumerator</code> enumeratorForRepo:repo]) {
     // do something with object...
 }
 </p>
-    <h2 id="tasks">Tasks</h2>
-<ul id="tasksList">
-    <li id="Creating_and_Initialising_Packed_Refs_Enumerator">
+<h2 id="tasks">Tasks</h2>
+<ul id="tasksList"><li id="Creating_and_Initialising_Packed_Refs_Enumerator">
 <h3>Creating and Initialising Packed Refs Enumerator</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#enumeratorForRepo:">+ enumeratorForRepo:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithRepo:">- initWithRepo:</a></code><span class="tooltip"></span></span></li>
-</ul>
+<li>
+<span class="tooltipRegion"><code><a href="#enumeratorForRepo:">+ enumeratorForRepo:</a></code></span><span class="tooltip"></span>
 </li>
-  </ul>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithRepo:">- initWithRepo:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li></ul>
 <section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="enumeratorForRepo:"><h3>enumeratorForRepo:</h3>
-<code class="methodDeclaration">+ (GITPackedRefsEnumerator *)enumeratorForRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (GITPackedRefsEnumerator *)enumeratorForRepo:(<a href="../Classes/GITRepo.html">GITRepo</a> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>theRepo</dt>
-<dd>
-              <p>Repository to create the enumerator for </p>
-            </dd>
-        </dl>
+<dt>theRepo</dt>
+<dd><p>Repository to create the enumerator for </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>packed refs enumerator </p>
-        <h5>Discussion</h5>
-            <p>Returns a packed refs enumerator for the provided repository￼.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithRepo:">
-            - initWithRepo:
-          </a></code></li></ul>
+<p>packed refs enumerator </p>
+<h5>Discussion</h5>
+<p>Returns a packed refs enumerator for the provided repository￼.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithRepo:">- initWithRepo:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackedRefsEnumerator</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="initWithRepo:"><h3>initWithRepo:</h3>
-<code class="methodDeclaration">- (id)initWithRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithRepo:(<a href="../Classes/GITRepo.html">GITRepo</a> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>theRepo</dt>
-<dd>
-              <p>Repository to create the enumerator for </p>
-            </dd>
-        </dl>
+<dt>theRepo</dt>
+<dd><p>Repository to create the enumerator for </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>packed refs enumerator </p>
-        <h5>Discussion</h5>
-            <p>Returns a packed refs enumerator for the provided repository￼.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>packed refs enumerator </p>
+<h5>Discussion</h5>
+<p>Returns a packed refs enumerator for the provided repository￼.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITPackedRefsEnumerator</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

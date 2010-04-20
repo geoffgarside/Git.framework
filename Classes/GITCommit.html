@@ -49,6 +49,7 @@
 <option value="overview">Overview</option>
 <option value="tasks">Tasks</option>
 <option value="properties">Properties</option>
+<option value="parentShas">    parentShas</option>
 <option value="parents">    parents</option>
 <option value="tree">    tree</option>
 <option value="author">    author</option>
@@ -59,17 +60,21 @@
 <option value="classMethods">Class Methods</option>
 <option value="commitFromData:sha1:repo:error:">    + commitFromData:sha1:repo:error:</option>
 <option value="instanceMethods">Instance Methods</option>
-<option value="parentSha1">    - parentSha1</option></select></li>
+<option value="parentSha1">    - parentSha1</option>
+<option value="isMerge">    - isMerge</option>
+<option value="isInitial">    - isInitial</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
 <li><a href="#Properties">Properties</a></li>
 <li><a href="#Creating_and_Initialising_Commits">Creating and Initialising Commits</a></li>
+<li><a href="#Flags">Flags</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
 <a href="#properties">Properties</a><ul style="display: none;">
+<li><a href="#parentShas">parentShas</a></li>
 <li><a href="#parents">parents</a></li>
 <li><a href="#tree">tree</a></li>
 <li><a href="#author">author</a></li>
@@ -83,7 +88,11 @@
 <a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#commitFromData:sha1:repo:error:">commitFromData:sha1:repo:error:</a></li></ul>
 </li>
 <li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
-<a href="#instanceMethods">Instance Methods</a><ul style="display: none;"><li><a href="#parentSha1">parentSha1</a></li></ul>
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#parentSha1">parentSha1</a></li>
+<li><a href="#isMerge">isMerge</a></li>
+<li><a href="#isInitial">isInitial</a></li>
+</ul>
 </li>
 </ul></nav><div id="contents">
 <h1 id="classTitle">GITCommit Class Reference</h1>
@@ -102,107 +111,142 @@
 </tr>
 </table>
 <h2 id="overview">Overview</h2>
-      <p>This class represents Commit objects in a git repository.</p>
-      <p>Commit objects are markers of the state of a repository at a specific moment in time, they reference trees which define the file system structure of a repository at a given point.</p>
-      <p>Commit objects look like the following, the parent may be repeated. tree80655da8d80aaaf92ce5357e7828dc09adb00993parentd8fd39d0bbdd2dcf322d8b11390a4c5825b11495authorA.Developer&lt;dev@example.com&gt;444123000+0000committerA.Developer&lt;dev@example.com&gt;444123000+0000Acommitmessagemeanttodescribewhatthiscommitisallabout</p>
-    <h2 id="tasks">Tasks</h2>
+<p>This class represents Commit objects in a git repository.</p>
+<p>Commit objects are markers of the state of a repository at a specific moment in time, they reference trees which define the file system structure of a repository at a given point.</p>
+<p>Commit objects look like the following, the parent may be repeated. <code><pre> tree 80655da8d80aaaf92ce5357e7828dc09adb00993
+ parent d8fd39d0bbdd2dcf322d8b11390a4c5825b11495
+ author A. Developer &lt;dev@example.com&gt; 444123000 +0000
+ committer A. Developer &lt;dev@example.com&gt; 444123000 +0000
+ 
+ A commit message meant to describe what this commit is all about
+</pre></code></p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Properties">
+<li id="Properties">
 <h3>Properties</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#parents">parents</a></code> <span class="specialType">property</span><span class="tooltip">
-            Array of GITCommit parents. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#tree">tree</a></code> <span class="specialType">property</span><span class="tooltip">
-            The tree object the commit references. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#author">author</a></code> <span class="specialType">property</span><span class="tooltip">
-            Author of the commit. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#committer">committer</a></code> <span class="specialType">property</span><span class="tooltip">
-            Committer of the commit, different from author if the commit was created by patching. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#authorDate">authorDate</a></code> <span class="specialType">property</span><span class="tooltip">
-            Date the commit was created. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#committerDate">committerDate</a></code> <span class="specialType">property</span><span class="tooltip">
-            Date the commit was committed to the repository via patching. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#message">message</a></code> <span class="specialType">property</span><span class="tooltip">
-            Commit message. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#parentSha1">- parentSha1</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#parentShas">parentShas</a></code> <span class="specialType">property</span></span><span class="tooltip">Array of GITObjectHash objects of the parents. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#parents">parents</a></code> <span class="specialType">property</span></span><span class="tooltip">Array of GITCommit parents. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#tree">tree</a></code> <span class="specialType">property</span></span><span class="tooltip">The tree object the commit references. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#author">author</a></code> <span class="specialType">property</span></span><span class="tooltip">Author of the commit. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#committer">committer</a></code> <span class="specialType">property</span></span><span class="tooltip">Committer of the commit, different from author if the commit was created by patching. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#authorDate">authorDate</a></code> <span class="specialType">property</span></span><span class="tooltip">Date the commit was created. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#committerDate">committerDate</a></code> <span class="specialType">property</span></span><span class="tooltip">Date the commit was committed to the repository via patching. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#message">message</a></code> <span class="specialType">property</span></span><span class="tooltip">Commit message. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#parentSha1">- parentSha1</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="Creating_and_Initialising_Commits">
+<li id="Creating_and_Initialising_Commits">
 <h3>Creating and Initialising Commits</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#commitFromData:sha1:repo:error:">+ commitFromData:sha1:repo:error:</a></code><span class="tooltip"></span></span></li></ul>
+<ul class="methods"><li>
+<span class="tooltipRegion"><code><a href="#commitFromData:sha1:repo:error:">+ commitFromData:sha1:repo:error:</a></code></span><span class="tooltip"></span>
+</li></ul>
 </li>
-  </ul>
+<li id="Flags">
+<h3>Flags</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#isMerge">- isMerge</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#isInitial">- isInitial</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+</ul>
 <section id="properties"><h2>Properties</h2>
-<section class="definition" id="parents"><h3>parents</h3>
-            <p>Array of <code>GITCommit</code> parents. </p>
-          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *parents</code><h5>Declared In</h5>
+<section class="definition" id="parentShas"><h3>parentShas</h3>
+<p>Array of <code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> objects of the parents. </p>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *parentShas</code><h5>Declared In</h5>
+<code><code>GITCommit</code>.h</code></section><section class="definition" id="parents"><h3>parents</h3>
+<p>Array of <code>GITCommit</code> parents. </p>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *parents</code><h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section><section class="definition" id="tree"><h3>tree</h3>
-            <p>The tree object the commit references. </p>
-          <code class="methodDeclaration">@property <code><a href="../Classes/GITTree.html">GITTree</a></code> *tree</code><h5>Declared In</h5>
+<p>The tree object the commit references. </p>
+<code class="methodDeclaration">@property <a href="../Classes/GITTree.html">GITTree</a> *tree</code><h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section><section class="definition" id="author"><h3>author</h3>
-            <p>Author of the commit. </p>
-          <code class="methodDeclaration">@property GITActor *author</code><h5>Declared In</h5>
+<p>Author of the commit. </p>
+<code class="methodDeclaration">@property GITActor *author</code><h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section><section class="definition" id="committer"><h3>committer</h3>
-            <p>Committer of the commit, different from author if the commit was created by patching. </p>
-          <code class="methodDeclaration">@property GITActor *committer</code><h5>Declared In</h5>
+<p>Committer of the commit, different from author if the commit was created by patching. </p>
+<code class="methodDeclaration">@property GITActor *committer</code><h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section><section class="definition" id="authorDate"><h3>authorDate</h3>
-            <p>Date the commit was created. </p>
-          <code class="methodDeclaration">@property <code><a href="../Classes/GITDateTime.html">GITDateTime</a></code> *authorDate</code><h5>Declared In</h5>
+<p>Date the commit was created. </p>
+<code class="methodDeclaration">@property <a href="../Classes/GITDateTime.html">GITDateTime</a> *authorDate</code><h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section><section class="definition" id="committerDate"><h3>committerDate</h3>
-            <p>Date the commit was committed to the repository via patching. </p>
-          <code class="methodDeclaration">@property <code><a href="../Classes/GITDateTime.html">GITDateTime</a></code> *committerDate</code><h5>Declared In</h5>
+<p>Date the commit was committed to the repository via patching. </p>
+<code class="methodDeclaration">@property <a href="../Classes/GITDateTime.html">GITDateTime</a> *committerDate</code><h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section><section class="definition" id="message"><h3>message</h3>
-            <p>Commit message. </p>
-          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *message</code><h5>Declared In</h5>
+<p>Commit message. </p>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *message</code><h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="commitFromData:sha1:repo:error:"><h3>commitFromData:sha1:repo:error:</h3>
-<code class="methodDeclaration">+ (GITCommit *)commitFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (GITCommit *)commitFromData:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)<span class="parameter">data</span> sha1:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">objectHash</span> repo:(<a href="../Classes/GITRepo.html">GITRepo</a> *)<span class="parameter">repo</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>data</dt>
-<dd>
-              <p>The data describing the commit </p>
-            </dd>
-          <dt>objectHash</dt>
-<dd>
-              <p>The SHA1 hash of the receiver </p>
-            </dd>
-          <dt>repo</dt>
-<dd>
-              <p>The repository the commit is a member of </p>
-            </dd>
-          <dt>error</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p>
-            </dd>
-        </dl>
+<dt>data</dt>
+<dd><p>The data describing the commit </p></dd>
+<dt>objectHash</dt>
+<dd><p>The SHA1 hash of the receiver </p></dd>
+<dt>repo</dt>
+<dd><p>The repository the commit is a member of </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>A commit object from the data</p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a commit from the data.</p>
-            <p>The data content is parsed to extract the information about the commit such as the referenced tree, parents, author, committer, dates and the commit message.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>A commit object from the data</p>
+<h5>Discussion</h5>
+<p>Creates and returns a commit from the data.</p>
+<p>The data content is parsed to extract the information about the commit such as the referenced tree, parents, author, committer, dates and the commit message.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="parentSha1"><h3>parentSha1</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)parentSha1</code><h5>Return Value</h5>
-          <p>SHA1 of the parent commit </p>
-        <h5>Discussion</h5>
-            <p>Returns the last SHA1 in the list of parent commits.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#parentShas">
-            parentShas
-          </a></code></li></ul>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)parentSha1</code><h5>Return Value</h5>
+<p>SHA1 of the parent commit </p>
+<h5>Discussion</h5>
+<p>Returns the last SHA1 in the list of parent commits.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#parentShas">parentShas</a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITCommit</code>.h</code></section><section class="definition" id="isMerge"><h3>isMerge</h3>
+<code class="methodDeclaration">- (BOOL)isMerge</code><h5>Return Value</h5>
+<p>YES if the receiver is a merge point, NO if only one parent </p>
+<h5>Discussion</h5>
+<p>Returns YES if the receiver is a merge point, NO if it has only one parent.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#parentShas">parentShas</a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITCommit</code>.h</code></section><section class="definition" id="isInitial"><h3>isInitial</h3>
+<code class="methodDeclaration">- (BOOL)isInitial</code><h5>Return Value</h5>
+<p>YES if the receiver is the first commit, NO otherwise. </p>
+<h5>Discussion</h5>
+<p>Returns YES if the receiver if the first commit, NO otherwise.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#parentShas">parentShas</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITCommit</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

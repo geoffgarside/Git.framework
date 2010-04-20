@@ -76,71 +76,75 @@
 <td>NSData+Searching.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>This category provides ranging and splitting of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> objects. </p>
-    <h2 id="tasks">Tasks</h2>
+<p>This category provides ranging and splitting of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> objects. </p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Getting_ranges_of_NSData">
+<li id="Getting_ranges_of_NSData">
 <h3>Getting ranges of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>
 </h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#rangeFrom:toByte:">- rangeFrom:toByte:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#rangeOfNullTerminatedBytesFrom:">- rangeOfNullTerminatedBytesFrom:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#rangeFrom:toByte:">- rangeFrom:toByte:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#rangeOfNullTerminatedBytesFrom:">- rangeOfNullTerminatedBytesFrom:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="Splitting_up_NSData">
+<li id="Splitting_up_NSData">
 <h3>Splitting up <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>
 </h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#subdataFromIndex:">- subdataFromIndex:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#subdataToIndex:">- subdataToIndex:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#subdataFromIndex:">- subdataFromIndex:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#subdataToIndex:">- subdataToIndex:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-  </ul>
+</ul>
 <section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="rangeFrom:toByte:"><h3>rangeFrom:toByte:</h3>
 <code class="methodDeclaration">- (NSRange)rangeFrom:(NSInteger)<span class="parameter">start</span> toByte:(NSInteger)<span class="parameter">c</span> </code><h5>Return Value</h5>
-          <p>Range of bytes up to the first occurrence of c from start. If c can not be found then the NSRange.location will be set to NSNotFound. </p>
-        <h5>Discussion</h5>
-            <p>Returns the range of bytes up to the first occurrence of byte c from start. </p>
-          <h5>Declared In</h5>
+<p>Range of bytes up to the first occurrence of c from start. If c can not be found then the NSRange.location will be set to NSNotFound. </p>
+<h5>Discussion</h5>
+<p>Returns the range of bytes up to the first occurrence of byte c from start. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section><section class="definition" id="rangeOfNullTerminatedBytesFrom:"><h3>rangeOfNullTerminatedBytesFrom:</h3>
 <code class="methodDeclaration">- (NSRange)rangeOfNullTerminatedBytesFrom:(NSInteger)<span class="parameter">start</span> </code><h5>Return Value</h5>
-          <p>Range of bytes up to the first NULL from start. If no NULL can be found then the NSRange.location will be set to NSNotFound. </p>
-        <h5>Discussion</h5>
-            <p>Returns the range of bytes up to the first NULL byte from start. </p>
-          <h5>Declared In</h5>
+<p>Range of bytes up to the first NULL from start. If no NULL can be found then the NSRange.location will be set to NSNotFound. </p>
+<h5>Discussion</h5>
+<p>Returns the range of bytes up to the first NULL byte from start. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section><section class="definition" id="subdataFromIndex:"><h3>subdataFromIndex:</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)subdataFromIndex:(NSUInteger)<span class="parameter">index</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)subdataFromIndex:(NSUInteger)<span class="parameter">index</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>index</dt>
-<dd>
-              <p>Start of the range which defines the limits to extract. </p>
-            </dd>
-        </dl>
+<dt>index</dt>
+<dd><p>Start of the range which defines the limits to extract. </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>A data object containing a copy of the receiver's bytes that fall within the limits of index and the end of the bytes. </p>
-        <h5>Discussion</h5>
-            <p>Returns a data object containing a copy of the receiver's bytes that fall within the limits specified by a given index and the end of the bytes. </p>
-          <h5>See Also</h5>
+<p>A data object containing a copy of the receiver's bytes that fall within the limits of index and the end of the bytes. </p>
+<h5>Discussion</h5>
+<p>Returns a data object containing a copy of the receiver's bytes that fall within the limits specified by a given index and the end of the bytes. </p>
+<h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#subdataWithRange:">-subdataWithRange: </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section><section class="definition" id="subdataToIndex:"><h3>subdataToIndex:</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)subdataToIndex:(NSUInteger)<span class="parameter">index</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)subdataToIndex:(NSUInteger)<span class="parameter">index</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>index</dt>
-<dd>
-              <p>End of the range which defines the limits to extract. </p>
-            </dd>
-        </dl>
+<dt>index</dt>
+<dd><p>End of the range which defines the limits to extract. </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>A data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
-        <h5>Discussion</h5>
-            <p>Returns a data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
-          <h5>See Also</h5>
+<p>A data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
+<h5>Discussion</h5>
+<p>Returns a data object containing a copy of the receiver's bytes that fall within the first byte and index. </p>
+<h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#subdataWithRange:">-subdataWithRange: </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Searching.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

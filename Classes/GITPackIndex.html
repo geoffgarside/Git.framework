@@ -98,286 +98,254 @@
 <td>GITPackIndex.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>The <code><code>GITPackIndex</code></code> class cluster provides access to the PACK index files for looking up SHA1 object hashes when extracting GIT Objects from PACK files.</p>
-      <p>Current features of the PACK Index object include;</p>
-      <p>
-        <ul>
-          <li>
-            <p>Parsing of the Fan Out Table </p>
-          </li>
-          <li>
-            <p>Locating SHA1 entries in the Index </p>
-          </li>
-        </ul>
-      </p>
-    <h2 id="tasks">Tasks</h2>
+<p>The <code><code>GITPackIndex</code></code> class cluster provides access to the PACK index files for looking up SHA1 object hashes when extracting GIT Objects from PACK files.</p>
+<p>Current features of the PACK Index object include;</p>
+<p><ul>
+<li><p>Parsing of the Fan Out Table </p></li>
+<li><p>Locating SHA1 entries in the Index </p></li>
+</ul></p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Creating_and_Initialising_PACK_Index_Files">
+<li id="Creating_and_Initialising_PACK_Index_Files">
 <h3>Creating and Initialising PACK Index Files</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#packIndexWithPath:error:">+ packIndexWithPath:error:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithPath:error:">- initWithPath:error:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithData:error:">- initWithData:error:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#packIndexWithPath:error:">+ packIndexWithPath:error:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithPath:error:">- initWithPath:error:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithData:error:">- initWithData:error:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="Index_File_Information">
+<li id="Index_File_Information">
 <h3>Index File Information</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#version">- version</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#fanoutTable">- fanoutTable</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#fanoutTable:">- fanoutTable:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#numberOfObjects">- numberOfObjects</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#indexOfSha1:">- indexOfSha1:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#packOffsetAtIndex:">- packOffsetAtIndex:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#packOffsetForSha1:">- packOffsetForSha1:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#packOffsetForSha1:error:">- packOffsetForSha1:error:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#nextOffsetAfterOffset:">- nextOffsetAfterOffset:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#version">- version</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#fanoutTable">- fanoutTable</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#fanoutTable:">- fanoutTable:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#numberOfObjects">- numberOfObjects</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#indexOfSha1:">- indexOfSha1:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#packOffsetAtIndex:">- packOffsetAtIndex:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#packOffsetForSha1:">- packOffsetForSha1:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#packOffsetForSha1:error:">- packOffsetForSha1:error:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#nextOffsetAfterOffset:">- nextOffsetAfterOffset:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="Internal_Methods">
+<li id="Internal_Methods">
 <h3>Internal Methods</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#fanoutEntryForShasStartingWithByte:">- fanoutEntryForShasStartingWithByte:</a></code><span class="tooltip"></span></span></li></ul>
+<ul class="methods"><li>
+<span class="tooltipRegion"><code><a href="#fanoutEntryForShasStartingWithByte:">- fanoutEntryForShasStartingWithByte:</a></code></span><span class="tooltip"></span>
+</li></ul>
 </li>
-  </ul>
+</ul>
 <section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="packIndexWithPath:error:"><h3>packIndexWithPath:error:</h3>
-<code class="methodDeclaration">+ (id)packIndexWithPath:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">indexPath</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (id)packIndexWithPath:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">indexPath</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>indexPath</dt>
-<dd>
-              <p>Path to the index file </p>
-            </dd>
-          <dt>error</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p>
-            </dd>
-        </dl>
+<dt>indexPath</dt>
+<dd><p>Path to the index file </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>autoreleased index file object or nil on error </p>
-        <h5>Discussion</h5>
-            <p>Creates an autoreleased Index file object with the specified path￼.</p>
-            <p></p>
-          <h5>See Also</h5>
+<p>autoreleased index file object or nil on error </p>
+<h5>Discussion</h5>
+<p>Creates an autoreleased Index file object with the specified path￼.</p>
+<p></p>
+<h5>See Also</h5>
 <ul class="seeAlso">
-<li><code><a href="#initWithPath:error:">
-            - initWithPath:error:
-          </a></code></li>
-<li><code><a href="#initWithData:error:">
-            - initWithData:error:
-          </a></code></li>
+<li><code><a href="#initWithPath:error:">- initWithPath:error:</a></code></li>
+<li><code><a href="#initWithData:error:">- initWithData:error:</a></code></li>
 </ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="initWithPath:error:"><h3>initWithPath:error:</h3>
-<code class="methodDeclaration">- (id)initWithPath:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">indexPath</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithPath:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">indexPath</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>indexPath</dt>
-<dd>
-              <p>Path to the index file </p>
-            </dd>
-          <dt>error</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p>
-            </dd>
-        </dl>
+<dt>indexPath</dt>
+<dd><p>Path to the index file </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>index file object or nil on error </p>
-        <h5>Discussion</h5>
-            <p>Initialise the Index file with the provided path￼.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithData:error:">
-            - initWithData:error:
-          </a></code></li></ul>
+<p>index file object or nil on error </p>
+<h5>Discussion</h5>
+<p>Initialise the Index file with the provided path￼.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithData:error:">- initWithData:error:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="initWithData:error:"><h3>initWithData:error:</h3>
-<code class="methodDeclaration">- (id)initWithData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">indexData</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithData:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)<span class="parameter">indexData</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>indexData</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object of the index file data </p>
-            </dd>
-          <dt>error</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p>
-            </dd>
-        </dl>
+<dt>indexData</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> object of the index file data </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>index file object or nil on error </p>
-        <h5>Discussion</h5>
-            <p>Initialise the Index file with the provided data￼.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>index file object or nil on error </p>
+<h5>Discussion</h5>
+<p>Initialise the Index file with the provided data￼.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="version"><h3>version</h3>
 <code class="methodDeclaration">- (NSUInteger)version</code><h5>Return Value</h5>
-          <p>Integer version of the index file </p>
-        <h5>Discussion</h5>
-            <p>Returns the version of the index file￼.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>Integer version of the index file </p>
+<h5>Discussion</h5>
+<p>Returns the version of the index file￼.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="fanoutTable"><h3>fanoutTable</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a></code> *)fanoutTable</code><h5>Return Value</h5>
-          <p>contents of the receivers fanout table or nil if an error occurred </p>
-        <h5>Discussion</h5>
-            <p>Returns the contents of the receivers fanout table.</p>
-            <p></p>
-          <h5>See Also</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)fanoutTable</code><h5>Return Value</h5>
+<p>contents of the receivers fanout table or nil if an error occurred </p>
+<h5>Discussion</h5>
+<p>Returns the contents of the receivers fanout table.</p>
+<p></p>
+<h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#offsets:">offsets: </a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="fanoutTable:"><h3>fanoutTable:</h3>
-<code class="methodDeclaration">- (NSArray *)fanoutTable:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (NSArray *)fanoutTable:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>error</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error which occurred </p>
-            </dd>
-        </dl>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error which occurred </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>contents of the receivers fanout table or nil if an error occurred </p>
-        <h5>Discussion</h5>
-            <p>Returns the contents of the receivers fanout table.</p>
-            <p>The fanout table consists of one entry per byte value (0-255). The entry value indicates the number of SHA1 hashes stored in the Index file which have a first byte which is less than or equal to the entry index. The contents of the fanout table are used to determine a bounding box of index positions within the main index table in which a SHA1 index entry will exist.</p>
-            <p>If the offset fanout table is corrupted a GITPackIndexErrorCorrupt <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> will be returned through the passed error.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#fanoutTable">
-            - fanoutTable
-          </a></code></li></ul>
+<p>contents of the receivers fanout table or nil if an error occurred </p>
+<h5>Discussion</h5>
+<p>Returns the contents of the receivers fanout table.</p>
+<p>The fanout table consists of one entry per byte value (0-255). The entry value indicates the number of SHA1 hashes stored in the Index file which have a first byte which is less than or equal to the entry index. The contents of the fanout table are used to determine a bounding box of index positions within the main index table in which a SHA1 index entry will exist.</p>
+<p>If the offset fanout table is corrupted a GITPackIndexErrorCorrupt <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> will be returned through the passed error.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#fanoutTable">- fanoutTable</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="numberOfObjects"><h3>numberOfObjects</h3>
 <code class="methodDeclaration">- (NSUInteger)numberOfObjects</code><h5>Return Value</h5>
-          <p>number of objects stored in the PACK file </p>
-        <h5>Discussion</h5>
-            <p>Returns the number of objects stored in the PACK file.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#fanoutTable:">
-            - fanoutTable:
-          </a></code></li></ul>
+<p>number of objects stored in the PACK file </p>
+<h5>Discussion</h5>
+<p>Returns the number of objects stored in the PACK file.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#fanoutTable:">- fanoutTable:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="indexOfSha1:"><h3>indexOfSha1:</h3>
-<code class="methodDeclaration">- (NSUInteger)indexOfSha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (NSUInteger)indexOfSha1:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">objectHash</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>objectHash</dt>
-<dd>
-              <p>Object hash to find the index of </p>
-            </dd>
-        </dl>
+<dt>objectHash</dt>
+<dd><p>Object hash to find the index of </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>index position of the entry in the main index table </p>
-        <h5>Discussion</h5>
-            <p>Returns the index position of the entry for the object has in the main index table.</p>
-            <p>Uses a binary search of the main index table bounded by the range given by the fanout table.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>index position of the entry in the main index table </p>
+<h5>Discussion</h5>
+<p>Returns the index position of the entry for the object has in the main index table.</p>
+<p>Uses a binary search of the main index table bounded by the range given by the fanout table.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="packOffsetAtIndex:"><h3>packOffsetAtIndex:</h3>
 <code class="methodDeclaration">- (off_t)packOffsetAtIndex:(NSUInteger)<span class="parameter">idx</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>idx</dt>
-<dd>
-              <p>Index position of the offset to retrieve </p>
-            </dd>
-        </dl>
+<dt>idx</dt>
+<dd><p>Index position of the offset to retrieve </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>the offset from the entry at the specified index position </p>
-        <h5>Discussion</h5>
-            <p>Returns the offset from the entry in the index table at the specified idx.</p>
-            <p></p>
-          <h5>See Also</h5>
+<p>the offset from the entry at the specified index position </p>
+<h5>Discussion</h5>
+<p>Returns the offset from the entry in the index table at the specified idx.</p>
+<p></p>
+<h5>See Also</h5>
 <ul class="seeAlso">
-<li><code><a href="#packOffsetForSha1:error:">
-            - packOffsetForSha1:error:
-          </a></code></li>
-<li><code><a href="#packOffsetForSha1:">
-            - packOffsetForSha1:
-          </a></code></li>
+<li><code><a href="#packOffsetForSha1:error:">- packOffsetForSha1:error:</a></code></li>
+<li><code><a href="#packOffsetForSha1:">- packOffsetForSha1:</a></code></li>
 </ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="packOffsetForSha1:"><h3>packOffsetForSha1:</h3>
-<code class="methodDeclaration">- (off_t)packOffsetForSha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (off_t)packOffsetForSha1:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">objectHash</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>objectHash</dt>
-<dd>
-              <p>Object hash to find the PACK offset of </p>
-            </dd>
-        </dl>
+<dt>objectHash</dt>
+<dd><p>Object hash to find the PACK offset of </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>the PACK offset where data of the object can be retrieved or NSNotFound on error </p>
-        <h5>Discussion</h5>
-            <p>Returns the offset in the PACK file where the object data can be retrieved.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#packOffsetForSha1:error:">
-            - packOffsetForSha1:error:
-          </a></code></li></ul>
+<p>the PACK offset where data of the object can be retrieved or NSNotFound on error </p>
+<h5>Discussion</h5>
+<p>Returns the offset in the PACK file where the object data can be retrieved.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#packOffsetForSha1:error:">- packOffsetForSha1:error:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="packOffsetForSha1:error:"><h3>packOffsetForSha1:error:</h3>
-<code class="methodDeclaration">- (off_t)packOffsetForSha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (off_t)packOffsetForSha1:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">objectHash</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>objectHash</dt>
-<dd>
-              <p>Object hash to find the PACK offset of </p>
-            </dd>
-          <dt>error</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error which occurred </p>
-            </dd>
-        </dl>
+<dt>objectHash</dt>
+<dd><p>Object hash to find the PACK offset of </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error which occurred </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>the PACK offset where data of the object can be retrieved or NSNotFound on error </p>
-        <h5>Discussion</h5>
-            <p>Returns the offset in the PACK file where the object data can be retrieved.</p>
-            <p>If the object cannot be found in the Index file then a <code>GITPackErrorObjectNotFound</code> error is returned via the error argument.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#packOffsetForSha1:">
-            - packOffsetForSha1:
-          </a></code></li></ul>
+<p>the PACK offset where data of the object can be retrieved or NSNotFound on error </p>
+<h5>Discussion</h5>
+<p>Returns the offset in the PACK file where the object data can be retrieved.</p>
+<p>If the object cannot be found in the Index file then a <code>GITPackErrorObjectNotFound</code> error is returned via the error argument.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#packOffsetForSha1:">- packOffsetForSha1:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="nextOffsetAfterOffset:"><h3>nextOffsetAfterOffset:</h3>
 <code class="methodDeclaration">- (off_t)nextOffsetAfterOffset:(off_t)<span class="parameter">offset</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>offset</dt>
-<dd>
-              <p>offset of the object to get the next offset of </p>
-            </dd>
-        </dl>
+<dt>offset</dt>
+<dd><p>offset of the object to get the next offset of </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>offset of the next offset, NSNotFound if not found, -1 if last offset </p>
-        <h5>Discussion</h5>
-            <p>Returns the next offset after object at offset.</p>
-            <p>If the offset is not found then <code>NSNotFound</code> is returned, if the offset is the last offset then <code>-1</code> is returned.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#reverseIndex">
-            - reverseIndex
-          </a></code></li></ul>
+<p>offset of the next offset, NSNotFound if not found, -1 if last offset </p>
+<h5>Discussion</h5>
+<p>Returns the next offset after object at offset.</p>
+<p>If the offset is not found then <code>NSNotFound</code> is returned, if the offset is the last offset then <code>-1</code> is returned.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#reverseIndex">- reverseIndex</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="fanoutEntryForShasStartingWithByte:"><h3>fanoutEntryForShasStartingWithByte:</h3>
 <code class="methodDeclaration">- (GITFanoutEntry)fanoutEntryForShasStartingWithByte:(uint8_t)<span class="parameter">byte</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>byte</dt>
-<dd>
-              <p>The byte corresponding to the fanout entry </p>
-            </dd>
-        </dl>
+<dt>byte</dt>
+<dd><p>The byte corresponding to the fanout entry </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>A fanout entry for the SHA starting with the specified byte </p>
-        <h5>Discussion</h5>
-            <p>Returns a fanout entry for SHA starting with the specified byte.</p>
-            <p></p>
-          <h5>See Also</h5>
+<p>A fanout entry for the SHA starting with the specified byte </p>
+<h5>Discussion</h5>
+<p>Returns a fanout entry for SHA starting with the specified byte.</p>
+<p></p>
+<h5>See Also</h5>
 <ul class="seeAlso">
-<li><code><a href="#fanoutTable:">
-            - fanoutTable:
-          </a></code></li>
-<li><code><a href="#fanoutTable">
-            - fanoutTable
-          </a></code></li>
+<li><code><a href="#fanoutTable:">- fanoutTable:</a></code></li>
+<li><code><a href="#fanoutTable">- fanoutTable</a></code></li>
 </ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

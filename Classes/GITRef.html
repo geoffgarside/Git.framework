@@ -91,118 +91,116 @@
 <td>GITRef.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p><code>GITRef</code> objects provide access to git references. </p>
-    <h2 id="tasks">Tasks</h2>
+<p><code>GITRef</code> objects provide access to git references. </p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Properties">
+<li id="Properties">
 <h3>Properties</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#name">name</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#link">link</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#targetName">targetName</a></code> <span class="specialType">property</span><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#name">name</a></code> <span class="specialType">property</span></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#link">link</a></code> <span class="specialType">property</span></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#targetName">targetName</a></code> <span class="specialType">property</span></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="Creating_and_Initialising_References">
+<li id="Creating_and_Initialising_References">
 <h3>Creating and Initialising References</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#refWithName:andTarget:inRepo:">+ refWithName:andTarget:inRepo:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initWithName:andTarget:inRepo:">- initWithName:andTarget:inRepo:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#refWithName:andTarget:inRepo:">+ refWithName:andTarget:inRepo:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithName:andTarget:inRepo:">- initWithName:andTarget:inRepo:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="Resolving_Links">
+<li id="Resolving_Links">
 <h3>Resolving Links</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#resolve">- resolve</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#target">- target</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#resolve">- resolve</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#target">- target</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-  </ul>
+</ul>
 <section id="properties"><h2>Properties</h2>
 <section class="definition" id="name"><h3>name</h3>
-<code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *name</code><h5>Discussion</h5>
-            <p>Name of the reference. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *name</code><h5>Discussion</h5>
+<p>Name of the reference. </p>
+<h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section><section class="definition" id="link"><h3>link</h3>
 <code class="methodDeclaration">@property BOOL link</code><h5>Discussion</h5>
-            <p>Flag indicating if the reference is a link to another reference or not.</p>
-            <p>The accessor for this property is <code>isLink</code></p>
-          <h5>Declared In</h5>
+<p>Flag indicating if the reference is a link to another reference or not.</p>
+<p>The accessor for this property is <code>isLink</code></p>
+<h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section><section class="definition" id="targetName"><h3>targetName</h3>
-<code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *targetName</code><h5>Discussion</h5>
-            <p>Value of the reference.</p>
-            <p>If the receiver is a link then <code>targetName</code> contains the name of the reference it points to. If the receiver is not a link then <code>targetName</code> contains the SHA1 hash of the <code><a href="../Protocols/GITObject.html">GITObject</a></code> the reference points to. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *targetName</code><h5>Discussion</h5>
+<p>Value of the reference.</p>
+<p>If the receiver is a link then <code>targetName</code> contains the name of the reference it points to. If the receiver is not a link then <code>targetName</code> contains the SHA1 hash of the <code><a href="../Protocols/GITObject.html">GITObject</a></code> the reference points to. </p>
+<h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="refWithName:andTarget:inRepo:"><h3>refWithName:andTarget:inRepo:</h3>
-<code class="methodDeclaration">+ (id)refWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> andTarget:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theTarget</span> inRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (id)refWithName:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">theName</span> andTarget:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">theTarget</span> inRepo:(<a href="../Classes/GITRepo.html">GITRepo</a> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>theName</dt>
-<dd>
-              <p>Name of the reference </p>
-            </dd>
-          <dt>theTarget</dt>
-<dd>
-              <p>Link target or SHA1 hash of object </p>
-            </dd>
-          <dt>theRepo</dt>
-<dd>
-              <p>Repository the reference exists in </p>
-            </dd>
-        </dl>
+<dt>theName</dt>
+<dd><p>Name of the reference </p></dd>
+<dt>theTarget</dt>
+<dd><p>Link target or SHA1 hash of object </p></dd>
+<dt>theRepo</dt>
+<dd><p>Repository the reference exists in </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>reference with the specified name, target and repository￼ </p>
-        <h5>Discussion</h5>
-            <p>Creates an autoreleased reference with the specified name, target and repository￼.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initWithName:andTarget:inRepo:">
-            - initWithName:andTarget:inRepo:
-          </a></code></li></ul>
+<p>reference with the specified name, target and repository￼ </p>
+<h5>Discussion</h5>
+<p>Creates an autoreleased reference with the specified name, target and repository￼.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initWithName:andTarget:inRepo:">- initWithName:andTarget:inRepo:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="initWithName:andTarget:inRepo:"><h3>initWithName:andTarget:inRepo:</h3>
-<code class="methodDeclaration">- (id)initWithName:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theName</span> andTarget:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">theTarget</span> inRepo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initWithName:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">theName</span> andTarget:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">theTarget</span> inRepo:(<a href="../Classes/GITRepo.html">GITRepo</a> *)<span class="parameter">theRepo</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>theName</dt>
-<dd>
-              <p>Name of the reference </p>
-            </dd>
-          <dt>theTarget</dt>
-<dd>
-              <p>Link target or SHA1 hash of object </p>
-            </dd>
-          <dt>theRepo</dt>
-<dd>
-              <p>Repository the reference exists in </p>
-            </dd>
-        </dl>
+<dt>theName</dt>
+<dd><p>Name of the reference </p></dd>
+<dt>theTarget</dt>
+<dd><p>Link target or SHA1 hash of object </p></dd>
+<dt>theRepo</dt>
+<dd><p>Repository the reference exists in </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>reference with the specified name, target and repository￼ </p>
-        <h5>Discussion</h5>
-            <p>Initialises a reference with the specified name, target and repository￼</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>reference with the specified name, target and repository￼ </p>
+<h5>Discussion</h5>
+<p>Initialises a reference with the specified name, target and repository￼</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section><section class="definition" id="resolve"><h3>resolve</h3>
-<code class="methodDeclaration">- (<code>GITRef</code> *)resolve</code><h5>Return Value</h5>
-          <p>reference linked to by the receiver, returns the receiver if not a link </p>
-        <h5>Discussion</h5>
-            <p>Returns the reference linked to by the receiver, returns the receiver if not a link.</p>
-            <p>The links will be resolved until the first non-link ref is found.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">- (GITRef *)resolve</code><h5>Return Value</h5>
+<p>reference linked to by the receiver, returns the receiver if not a link </p>
+<h5>Discussion</h5>
+<p>Returns the reference linked to by the receiver, returns the receiver if not a link.</p>
+<p>The links will be resolved until the first non-link ref is found.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section><section class="definition" id="target"><h3>target</h3>
-<code class="methodDeclaration">- (<code><a href="../Protocols/GITObject.html">GITObject</a></code> *)target</code><h5>Return Value</h5>
-          <p>Object the resolved receiver references </p>
-        <h5>Discussion</h5>
-            <p>Returns the object referenced by resolving the receiver.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#resolve">
-            - resolve
-          </a></code></li></ul>
+<code class="methodDeclaration">- (<a href="../Protocols/GITObject.html">GITObject</a> *)target</code><h5>Return Value</h5>
+<p>Object the resolved receiver references </p>
+<h5>Discussion</h5>
+<p>Returns the object referenced by resolving the receiver.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#resolve">- resolve</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITRef</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

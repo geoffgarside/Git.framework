@@ -49,15 +49,20 @@
 <option value="overview">Overview</option>
 <option value="tasks">Tasks</option>
 <option value="instanceMethods">Instance Methods</option>
+<option value="newObjectHashWithObjectRecord:bytes:">    - newObjectHashWithObjectRecord:bytes:</option>
 <option value="newStringWithObjectRecord:bytes:">    - newStringWithObjectRecord:bytes:</option>
 <option value="newStringWithObjectRecord:bytes:encoding:">    - newStringWithObjectRecord:bytes:encoding:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
-<a href="#tasks">Tasks</a><ul style="display: none;"><li><a href="#Matching_Strings">Matching Strings</a></li></ul>
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Matching_Object_Hashes">Matching Object Hashes</a></li>
+<li><a href="#Matching_Strings">Matching Strings</a></li>
+</ul>
 </li>
 <li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#newObjectHashWithObjectRecord:bytes:">newObjectHashWithObjectRecord:bytes:</a></li>
 <li><a href="#newStringWithObjectRecord:bytes:">newStringWithObjectRecord:bytes:</a></li>
 <li><a href="#newStringWithObjectRecord:bytes:encoding:">newStringWithObjectRecord:bytes:encoding:</a></li>
 </ul>
@@ -69,77 +74,90 @@
 <td>GITObject+Parsing.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>This category provides parsing abilities to the GITObject class. These are intended to be used by the <code><a href="../Protocols/GITObject.html">GITObject</a></code> descendent classes to parse their contents.</p>
-      <p>Parsing Known Length String</p>
-      <p>In some cases you will know prior to parsing the length of the string you need to find. For example we have a buffer <code>"foo bar\n"</code>, in this case we want the <code>"bar"</code> string. But we don't know its <code>"bar"</code>, but we do know that it is three characters long, is prefixed with <code>"foo "</code> and ends with <code>"\n"</code>. To detect the starting point of <code>"bar"</code> and how long it is we need to use a <code>parsingRecord</code> structure <code>{ "foo ", 4, 4, 3, '\n' }</code>. So we have the starting pattern <code>"foo "</code> and the length of that pattern which is 4. The third field indicates that matching needs to start from the 4th character in the buffer. The fourth field indicates how long the match will be and the last field is the terminating character, in this case a new line. Given the match length is known an error will be returned if the ending character does not match the character <code>matchLen</code> characters from the start position.</p>
-      <p>Parsing Unknown Length Strings</p>
-      <p>When the length of the target string is not known the use is similar to the known length parsing with the exception that the <code>.startLen</code> field of the <code>parsingRecord</code> will be set to zero to allow for automatic determination of the end of the match based on the <code>.endChar</code> field. Taking the known length example but the length of <code>"bar"</code> is unknown but the ending character is known. In this case the <code>parsingRecord</code> structure would need to be initialised to the following <code>{ "foo ", 4, 4, 0, '\n' }</code> to permit the detection of the ending character to terminate the match.</p>
-      <p>Parsing Ends of Strings</p>
-      <p>Parsing the ends of strings has one primary limitation at this time, the length of the suffix must be known. This is due to the way in which the <code>.startLen</code> field of the <code>parsingRecord</code> structure is used, this limitation may be removed if there is a great need for it. The parsing of string suffixes uses a negative value <code>.startLen</code> field and the ending character to find the end and thereby the start of the match. The <code>.matchLen</code> field may be specified to enable matching only a specific set of the characters from the determined match start. As an example we have a string <code>"foo bar 1262562908 +0000\n"</code> and the desired match is <code>1262562908</code>. Additionally we only know the prefix of the string is <code>"foo "</code> and the <code>"bar"</code> section can be of any length. In this case we have to make a match on the end of the string. To obtain this match a <code>parsingRecord</code> structure of <code>{ "foo ", 4, -17, 10, '\n' }</code> would be specified. The <code>.startLen</code> causes the determined starting point to fall on the <code>1</code> of <code>1262562908</code> and the <code>.matchLen</code> limits the match end to the <code>'</code> ' character after the <code>8</code> in <code>1262562908</code>. If the <code>"+0000"</code> was later wanted a similar <code>parsingRecord</code> structure of <code>{ "foo ", 4, -7, 5, '\n' }</code> would be specified, though the <code>.matchLen</code> could also be set to 0 in this case.</p>
-      <p>Parsing Strings without a Known End Character</p>
-      <p>There are also cases where the length of the match is known but there is no end terminating character, an example of this is `tree` objects in git repositories. These consist of a number of entries all butted up together with a known length string as the last part of the entry. In this case the <code>.endChar</code> can be set to <code>-1</code>. This prevents the <code>endChar</code> from being matched and also prevents the provided buffers position from being moved past the end of the matched string. To match a string like this a <code>parsingRecord</code> structure such as <code>{ "foo ", 4, 4, 20, -1 }</code> to match the the last twenty characters of the string starting with <code>"foo "</code>.</p>
-      <p></p>
-    <h2 id="tasks">Tasks</h2>
+<p>This category provides parsing abilities to the GITObject class. These are intended to be used by the <code><a href="../Protocols/GITObject.html">GITObject</a></code> descendent classes to parse their contents.</p>
+<p>Parsing Known Length String</p>
+<p>In some cases you will know prior to parsing the length of the string you need to find. For example we have a buffer <code>"foo bar\n"</code>, in this case we want the <code>"bar"</code> string. But we don't know its <code>"bar"</code>, but we do know that it is three characters long, is prefixed with <code>"foo "</code> and ends with <code>"\n"</code>. To detect the starting point of <code>"bar"</code> and how long it is we need to use a <code>parsingRecord</code> structure <code>{ "foo ", 4, 4, 3, '\n' }</code>. So we have the starting pattern <code>"foo "</code> and the length of that pattern which is 4. The third field indicates that matching needs to start from the 4th character in the buffer. The fourth field indicates how long the match will be and the last field is the terminating character, in this case a new line. Given the match length is known an error will be returned if the ending character does not match the character <code>matchLen</code> characters from the start position.</p>
+<p>Parsing Unknown Length Strings</p>
+<p>When the length of the target string is not known the use is similar to the known length parsing with the exception that the <code>.startLen</code> field of the <code>parsingRecord</code> will be set to zero to allow for automatic determination of the end of the match based on the <code>.endChar</code> field. Taking the known length example but the length of <code>"bar"</code> is unknown but the ending character is known. In this case the <code>parsingRecord</code> structure would need to be initialised to the following <code>{ "foo ", 4, 4, 0, '\n' }</code> to permit the detection of the ending character to terminate the match.</p>
+<p>Parsing Ends of Strings</p>
+<p>Parsing the ends of strings has one primary limitation at this time, the length of the suffix must be known. This is due to the way in which the <code>.startLen</code> field of the <code>parsingRecord</code> structure is used, this limitation may be removed if there is a great need for it. The parsing of string suffixes uses a negative value <code>.startLen</code> field and the ending character to find the end and thereby the start of the match. The <code>.matchLen</code> field may be specified to enable matching only a specific set of the characters from the determined match start. As an example we have a string <code>"foo bar 1262562908 +0000\n"</code> and the desired match is <code>1262562908</code>. Additionally we only know the prefix of the string is <code>"foo "</code> and the <code>"bar"</code> section can be of any length. In this case we have to make a match on the end of the string. To obtain this match a <code>parsingRecord</code> structure of <code>{ "foo ", 4, -17, 10, '\n' }</code> would be specified. The <code>.startLen</code> causes the determined starting point to fall on the <code>1</code> of <code>1262562908</code> and the <code>.matchLen</code> limits the match end to the <code>'</code> ' character after the <code>8</code> in <code>1262562908</code>. If the <code>"+0000"</code> was later wanted a similar <code>parsingRecord</code> structure of <code>{ "foo ", 4, -7, 5, '\n' }</code> would be specified, though the <code>.matchLen</code> could also be set to 0 in this case.</p>
+<p>Parsing Strings without a Known End Character</p>
+<p>There are also cases where the length of the match is known but there is no end terminating character, an example of this is `tree` objects in git repositories. These consist of a number of entries all butted up together with a known length string as the last part of the entry. In this case the <code>.endChar</code> can be set to <code>-1</code>. This prevents the <code>endChar</code> from being matched and also prevents the provided buffers position from being moved past the end of the matched string. To match a string like this a <code>parsingRecord</code> structure such as <code>{ "foo ", 4, 4, 20, -1 }</code> to match the the last twenty characters of the string starting with <code>"foo "</code>.</p>
+<p></p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Matching_Strings">
+<li id="Matching_Object_Hashes">
+<h3>Matching Object Hashes</h3>
+<ul class="methods"><li>
+<span class="tooltipRegion"><code><a href="#newObjectHashWithObjectRecord:bytes:">- newObjectHashWithObjectRecord:bytes:</a></code></span><span class="tooltip"></span>
+</li></ul>
+</li>
+<li id="Matching_Strings">
 <h3>Matching Strings</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#newStringWithObjectRecord:bytes:">- newStringWithObjectRecord:bytes:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#newStringWithObjectRecord:bytes:encoding:">- newStringWithObjectRecord:bytes:encoding:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#newStringWithObjectRecord:bytes:">- newStringWithObjectRecord:bytes:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#newStringWithObjectRecord:bytes:encoding:">- newStringWithObjectRecord:bytes:encoding:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-  </ul>
+</ul>
 <section id="instanceMethods"><h2>Instance Methods</h2>
-<section class="definition" id="newStringWithObjectRecord:bytes:"><h3>newStringWithObjectRecord:bytes:</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)newStringWithObjectRecord:(parsingRecord)<span class="parameter">record</span> bytes:(const char **)<span class="parameter">bytes</span> </code><h5>Parameters</h5>
+<section class="definition" id="newObjectHashWithObjectRecord:bytes:"><h3>newObjectHashWithObjectRecord:bytes:</h3>
+<code class="methodDeclaration">- (<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)newObjectHashWithObjectRecord:(parsingRecord)<span class="parameter">record</span> bytes:(const char **)<span class="parameter">bytes</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>record</dt>
-<dd>
-              <p>Record describing the string to match </p>
-            </dd>
-          <dt>bytes</dt>
-<dd>
-              <p>Pointer to the byte stream to search </p>
-            </dd>
-        </dl>
+<dt>record</dt>
+<dd><p>Record describing the string to match </p></dd>
+<dt>bytes</dt>
+<dd><p>Pointer to the byte stream to search. This byte stream should be either an unpacked sha1 string (40 bytes) or packed SHA1 data (20 bytes) </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>string matching the record or nil if no match </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a string matching the format defined by the record.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#newStringWithObjectRecord:bytes:encoding:">
-            - newStringWithObjectRecord:bytes:encoding:
-          </a></code></li></ul>
+<p><code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> object matching the record or nil if no match </p>
+<h5>Discussion</h5>
+<p>Creates and returns a <code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> matching the specified record</p>
+<p>This method creates a GITObjectHash directly from the raw bytes corresponding to the git object id record. It bypasses the unnecessary step of allocating and initializing an <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> object, which is expensive when called repeatedly during high-load git object graph parsing operations. During object parsing, the expected type of the underlying data is typically known, and this method allows that information to be utilized for performance gains.</p>
+<p>Use this method to directly parse the git object id (hash) record for an object. </p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#newStringWithObjectRecord:bytes:encoding:">- newStringWithObjectRecord:bytes:encoding:</a></code></li></ul>
+<h5>Declared In</h5>
+<code><code><a href="../Protocols/GITObject.html">GITObject</a></code>+Parsing.h</code></section><section class="definition" id="newStringWithObjectRecord:bytes:"><h3>newStringWithObjectRecord:bytes:</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)newStringWithObjectRecord:(parsingRecord)<span class="parameter">record</span> bytes:(const char **)<span class="parameter">bytes</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>record</dt>
+<dd><p>Record describing the string to match </p></dd>
+<dt>bytes</dt>
+<dd><p>Pointer to the byte stream to search </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>string matching the record or nil if no match </p>
+<h5>Discussion</h5>
+<p>Creates and returns a string matching the format defined by the record.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#newStringWithObjectRecord:bytes:encoding:">- newStringWithObjectRecord:bytes:encoding:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code><a href="../Protocols/GITObject.html">GITObject</a></code>+Parsing.h</code></section><section class="definition" id="newStringWithObjectRecord:bytes:encoding:"><h3>newStringWithObjectRecord:bytes:encoding:</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)newStringWithObjectRecord:(parsingRecord)<span class="parameter">record</span> bytes:(const char **)<span class="parameter">bytes</span> encoding:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code>Encoding)<span class="parameter">encoding</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)newStringWithObjectRecord:(parsingRecord)<span class="parameter">record</span> bytes:(const char **)<span class="parameter">bytes</span> encoding:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a>Encoding)<span class="parameter">encoding</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>record</dt>
-<dd>
-              <p>Record describing the string to match </p>
-            </dd>
-          <dt>bytes</dt>
-<dd>
-              <p>Pointer to the byte stream to search </p>
-            </dd>
-          <dt>encoding</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code>Encoding to interpret the bytes with when creating the string </p>
-            </dd>
-        </dl>
+<dt>record</dt>
+<dd><p>Record describing the string to match </p></dd>
+<dt>bytes</dt>
+<dd><p>Pointer to the byte stream to search </p></dd>
+<dt>encoding</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code>Encoding to interpret the bytes with when creating the string </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>string matching the record or nil if no match </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a string matching the format defined by the record.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#newStringWithObjectRecord:bytes:">
-            - newStringWithObjectRecord:bytes:
-          </a></code></li></ul>
+<p>string matching the record or nil if no match </p>
+<h5>Discussion</h5>
+<p>Creates and returns a string matching the format defined by the record.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#newStringWithObjectRecord:bytes:">- newStringWithObjectRecord:bytes:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code><a href="../Protocols/GITObject.html">GITObject</a></code>+Parsing.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

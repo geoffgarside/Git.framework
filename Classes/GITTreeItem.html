@@ -88,118 +88,102 @@
 <td>GITTreeItem.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>The <code>GITTreeItem</code> class represents the information stored in a GITree object.</p>
-      <p>GITTrees are made up of items specifying the mode, name and SHA1 reference of objects which are part of that tree. The GITTree parses the items of its object data and creates and array of <code>GITTreeItem</code> objects. The Tree Item is then capable of lazily loading the target objects of the reference. </p>
-    <h2 id="tasks">Tasks</h2>
+<p>The <code>GITTreeItem</code> class represents the information stored in a GITree object.</p>
+<p>GITTrees are made up of items specifying the mode, name and SHA1 reference of objects which are part of that tree. The GITTree parses the items of its object data and creates and array of <code>GITTreeItem</code> objects. The Tree Item is then capable of lazily loading the target objects of the reference. </p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Properties">
+<li id="Properties">
 <h3>Properties</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#parent">parent</a></code> <span class="specialType">property</span><span class="tooltip">
-            Tree the item belongs to. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#mode">mode</a></code> <span class="specialType">property</span><span class="tooltip">
-            File/directory mode of the item. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#name">name</a></code> <span class="specialType">property</span><span class="tooltip">
-            Name of the file or directory. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#item">item</a></code> <span class="specialType">property</span><span class="tooltip">
-            Item being pointed to. 
-          </span></span></li>
-<li><span class="tooltipRegion"><code><a href="#sha1">sha1</a></code> <span class="specialType">property</span><span class="tooltip">
-            Hash of the item (tree/blob) referred to. 
-          </span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#parent">parent</a></code> <span class="specialType">property</span></span><span class="tooltip">Tree the item belongs to. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#mode">mode</a></code> <span class="specialType">property</span></span><span class="tooltip">File/directory mode of the item. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#name">name</a></code> <span class="specialType">property</span></span><span class="tooltip">Name of the file or directory. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#item">item</a></code> <span class="specialType">property</span></span><span class="tooltip">Item being pointed to. </span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#sha1">sha1</a></code> <span class="specialType">property</span></span><span class="tooltip">Hash of the item (tree/blob) referred to. </span>
+</li>
 </ul>
 </li>
-    <li id="Creating_and_Initialising_Tree_Items">
+<li id="Creating_and_Initialising_Tree_Items">
 <h3>Creating and Initialising Tree Items</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#itemInTree:withMode:name:sha1:">+ itemInTree:withMode:name:sha1:</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#initInTree:withMode:name:sha1:">- initInTree:withMode:name:sha1:</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#itemInTree:withMode:name:sha1:">+ itemInTree:withMode:name:sha1:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initInTree:withMode:name:sha1:">- initInTree:withMode:name:sha1:</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-  </ul>
+</ul>
 <section id="properties"><h2>Properties</h2>
 <section class="definition" id="parent"><h3>parent</h3>
-            <p>Tree the item belongs to. </p>
-          <code class="methodDeclaration">@property <code><a href="../Classes/GITTree.html">GITTree</a></code> *parent</code><h5>Declared In</h5>
+<p>Tree the item belongs to. </p>
+<code class="methodDeclaration">@property <a href="../Classes/GITTree.html">GITTree</a> *parent</code><h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section><section class="definition" id="mode"><h3>mode</h3>
-            <p>File/directory mode of the item. </p>
-          <code class="methodDeclaration">@property <code>GITTreeItem</code>Mode mode</code><h5>Declared In</h5>
+<p>File/directory mode of the item. </p>
+<code class="methodDeclaration">@property GITTreeItemMode mode</code><h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section><section class="definition" id="name"><h3>name</h3>
-            <p>Name of the file or directory. </p>
-          <code class="methodDeclaration">@property <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *name</code><h5>Declared In</h5>
+<p>Name of the file or directory. </p>
+<code class="methodDeclaration">@property <a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *name</code><h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section><section class="definition" id="item"><h3>item</h3>
-            <p>Item being pointed to. </p>
-          <code class="methodDeclaration">@property <code><a href="../Protocols/GITObject.html">GITObject</a></code> *item</code><h5>Declared In</h5>
+<p>Item being pointed to. </p>
+<code class="methodDeclaration">@property <a href="../Protocols/GITObject.html">GITObject</a> *item</code><h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section><section class="definition" id="sha1"><h3>sha1</h3>
-            <p>Hash of the item (tree/blob) referred to. </p>
-          <code class="methodDeclaration">@property <code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *sha1</code><h5>Declared In</h5>
+<p>Hash of the item (tree/blob) referred to. </p>
+<code class="methodDeclaration">@property <a href="../Classes/GITObjectHash.html">GITObjectHash</a> *sha1</code><h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section></section><section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="itemInTree:withMode:name:sha1:"><h3>itemInTree:withMode:name:sha1:</h3>
-<code class="methodDeclaration">+ (GITTreeItem *)itemInTree:(<code><a href="../Classes/GITTree.html">GITTree</a></code> *)<span class="parameter">tree</span> withMode:(<code>GITTreeItem</code>Mode)<span class="parameter">mode</span> name:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">name</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">sha1</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">+ (GITTreeItem *)itemInTree:(<a href="../Classes/GITTree.html">GITTree</a> *)<span class="parameter">tree</span> withMode:(GITTreeItemMode)<span class="parameter">mode</span> name:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">name</span> sha1:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">sha1</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>tree</dt>
-<dd>
-              <p>The tree the item is a part of </p>
-            </dd>
-          <dt>mode</dt>
-<dd>
-              <p>The file mode of the object referenced </p>
-            </dd>
-          <dt>name</dt>
-<dd>
-              <p>The name of the object referenced </p>
-            </dd>
-          <dt>sha1</dt>
-<dd>
-              <p>The sha1 of the object referenced </p>
-            </dd>
-        </dl>
+<dt>tree</dt>
+<dd><p>The tree the item is a part of </p></dd>
+<dt>mode</dt>
+<dd><p>The file mode of the object referenced </p></dd>
+<dt>name</dt>
+<dd><p>The name of the object referenced </p></dd>
+<dt>sha1</dt>
+<dd><p>The sha1 of the object referenced </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>a tree item object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a tree content item with the mode, name and sha1.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#initInTree:withMode:name:sha1:">
-            - initInTree:withMode:name:sha1:
-          </a></code></li></ul>
+<p>a tree item object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a tree content item with the mode, name and sha1.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#initInTree:withMode:name:sha1:">- initInTree:withMode:name:sha1:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="initInTree:withMode:name:sha1:"><h3>initInTree:withMode:name:sha1:</h3>
-<code class="methodDeclaration">- (id)initInTree:(<code><a href="../Classes/GITTree.html">GITTree</a></code> *)<span class="parameter">tree</span> withMode:(<code>GITTreeItem</code>Mode)<span class="parameter">mode</span> name:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)<span class="parameter">name</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">sha1</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initInTree:(<a href="../Classes/GITTree.html">GITTree</a> *)<span class="parameter">tree</span> withMode:(GITTreeItemMode)<span class="parameter">mode</span> name:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">name</span> sha1:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">sha1</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>tree</dt>
-<dd>
-              <p>The tree the item is a part of </p>
-            </dd>
-          <dt>mode</dt>
-<dd>
-              <p>The file mode of the object referenced </p>
-            </dd>
-          <dt>name</dt>
-<dd>
-              <p>The name of the object referenced </p>
-            </dd>
-          <dt>sha1</dt>
-<dd>
-              <p>The sha1 of the object referenced </p>
-            </dd>
-        </dl>
+<dt>tree</dt>
+<dd><p>The tree the item is a part of </p></dd>
+<dt>mode</dt>
+<dd><p>The file mode of the object referenced </p></dd>
+<dt>name</dt>
+<dd><p>The name of the object referenced </p></dd>
+<dt>sha1</dt>
+<dd><p>The sha1 of the object referenced </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>a tree item object </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns a tree content item with the mode, name and sha1.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#itemInTree:withMode:name:sha1:">
-            + itemInTree:withMode:name:sha1:
-          </a></code></li></ul>
+<p>a tree item object </p>
+<h5>Discussion</h5>
+<p>Creates and returns a tree content item with the mode, name and sha1.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#itemInTree:withMode:name:sha1:">+ itemInTree:withMode:name:sha1:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

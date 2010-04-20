@@ -69,33 +69,35 @@
 <td>NSData+SHA1.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>The category provides SHA1 hashing of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> objects.</p>
-      <p>The hashing is implemented using the CommonCrypto API which is available on both the Mac OS and iPhone OS platforms. It is very similar to the OpenSSL implementation, the only real difference being that the CommonCrypto macros are prefixed with <code>CC_</code>. </p>
-    <h2 id="tasks">Tasks</h2>
-<ul id="tasksList">
-    <li id="Hashing">
+<p>The category provides SHA1 hashing of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> objects.</p>
+<p>The hashing is implemented using the CommonCrypto API which is available on both the Mac OS and iPhone OS platforms. It is very similar to the OpenSSL implementation, the only real difference being that the CommonCrypto macros are prefixed with <code>CC_</code>. </p>
+<h2 id="tasks">Tasks</h2>
+<ul id="tasksList"><li id="Hashing">
 <h3>Hashing</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#sha1Digest">- sha1Digest</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#sha1DigestString">- sha1DigestString</a></code><span class="tooltip"></span></span></li>
-</ul>
+<li>
+<span class="tooltipRegion"><code><a href="#sha1Digest">- sha1Digest</a></code></span><span class="tooltip"></span>
 </li>
-  </ul>
+<li>
+<span class="tooltipRegion"><code><a href="#sha1DigestString">- sha1DigestString</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li></ul>
 <section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="sha1Digest"><h3>sha1Digest</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)sha1Digest</code><h5>Return Value</h5>
-          <p>SHA1 digest of the receivers contents. </p>
-        <h5>Discussion</h5>
-            <p>Returns the SHA1 digest of the receivers contents. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)sha1Digest</code><h5>Return Value</h5>
+<p>SHA1 digest of the receivers contents. </p>
+<h5>Discussion</h5>
+<p>Returns the SHA1 digest of the receivers contents. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+SHA1.h</code></section><section class="definition" id="sha1DigestString"><h3>sha1DigestString</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)sha1DigestString</code><h5>Return Value</h5>
-          <p>String with the SHA1 digest of the receivers contents. </p>
-        <h5>Discussion</h5>
-            <p>Returns a string with the SHA1 digest of the receivers contents. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)sha1DigestString</code><h5>Return Value</h5>
+<p>String with the SHA1 digest of the receivers contents. </p>
+<h5>Discussion</h5>
+<p>Returns a string with the SHA1 digest of the receivers contents. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+SHA1.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

@@ -77,75 +77,69 @@
 <td>GITObject.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>Protocol for children of the <code>GITObject</code> class to implement.</p>
-      <p>The protocol defines the methods which a GITObject child should implement but which are not really appropriate to be defined within the <code>GITObject</code> class itself. </p>
-    <h2 id="tasks">Tasks</h2>
+<p>Protocol for children of the <code>GITObject</code> class to implement.</p>
+<p>The protocol defines the methods which a GITObject child should implement but which are not really appropriate to be defined within the <code>GITObject</code> class itself. </p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Type_translations">
+<li id="Type_translations">
 <h3>Type translations</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#typeName">+ typeName</a></code> <span class="specialType">required</span><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#type">+ type</a></code> <span class="specialType">required</span><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#typeName">+ typeName</a></code> <span class="specialType">required</span></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#type">+ type</a></code> <span class="specialType">required</span></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="Initialisers">
+<li id="Initialisers">
 <h3>Initialisers</h3>
-<ul class="methods"><li><span class="tooltipRegion"><code><a href="#initFromData:sha1:repo:error:">- initFromData:sha1:repo:error:</a></code> <span class="specialType">required</span><span class="tooltip"></span></span></li></ul>
+<ul class="methods"><li>
+<span class="tooltipRegion"><code><a href="#initFromData:sha1:repo:error:">- initFromData:sha1:repo:error:</a></code> <span class="specialType">required</span></span><span class="tooltip"></span>
+</li></ul>
 </li>
-  </ul>
+</ul>
 <section id="classMethods"><h2>Class Methods</h2>
 <section class="definition" id="typeName"><h3>typeName</h3>
-<code class="methodDeclaration">+ (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a></code> *)typeName</code><h5>Return Value</h5>
-          <p>string type of the receiver </p>
-        <h5>Discussion</h5>
-            <p>Returns the string type of the receiving <code>GITObject</code> child class.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#type">
-            + type
-          </a></code></li></ul>
+<code class="methodDeclaration">+ (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)typeName</code><h5>Return Value</h5>
+<p>string type of the receiver </p>
+<h5>Discussion</h5>
+<p>Returns the string type of the receiving <code>GITObject</code> child class.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#type">+ type</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITObject</code>.h</code></section><section class="definition" id="type"><h3>type</h3>
-<code class="methodDeclaration">+ (<code>GITObject</code>Type)type</code><h5>Return Value</h5>
-          <p><code>GITObject</code>Type of the receiver </p>
-        <h5>Discussion</h5>
-            <p>Returns the GITObjectType of the receiving <code>GITObject</code> child class.</p>
-            <p></p>
-          <h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#typeName">
-            + typeName
-          </a></code></li></ul>
+<code class="methodDeclaration">+ (GITObjectType)type</code><h5>Return Value</h5>
+<p><code>GITObject</code>Type of the receiver </p>
+<h5>Discussion</h5>
+<p>Returns the GITObjectType of the receiving <code>GITObject</code> child class.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#typeName">+ typeName</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITObject</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="initFromData:sha1:repo:error:"><h3>initFromData:sha1:repo:error:</h3>
-<code class="methodDeclaration">- (id)initFromData:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)<span class="parameter">data</span> sha1:(<code><a href="../Classes/GITObjectHash.html">GITObjectHash</a></code> *)<span class="parameter">objectHash</span> repo:(<code><a href="../Classes/GITRepo.html">GITRepo</a></code> *)<span class="parameter">repo</span> error:(<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<code class="methodDeclaration">- (id)initFromData:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)<span class="parameter">data</span> sha1:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">objectHash</span> repo:(<a href="../Classes/GITRepo.html">GITRepo</a> *)<span class="parameter">repo</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
-          <dt>data</dt>
-<dd>
-              <p>Data containing the representation of the object to create </p>
-            </dd>
-          <dt>objectHash</dt>
-<dd>
-              <p>The SHA1 hash of the receiver </p>
-            </dd>
-          <dt>repo</dt>
-<dd>
-              <p>Repository parent of the object </p>
-            </dd>
-          <dt>error</dt>
-<dd>
-              <p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any errors which occurred </p>
-            </dd>
-        </dl>
+<dt>data</dt>
+<dd><p>Data containing the representation of the object to create </p></dd>
+<dt>objectHash</dt>
+<dd><p>The SHA1 hash of the receiver </p></dd>
+<dt>repo</dt>
+<dd><p>Repository parent of the object </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any errors which occurred </p></dd>
+</dl>
 <h5>Return Value</h5>
-          <p>Instance of the receiving class </p>
-        <h5>Discussion</h5>
-            <p>Creates and returns an instance of the receiving class.</p>
-            <p>The data contains the representation of the object to create, the repo specifies the parent repository and where any additional objects associated with the object may be loaded from.</p>
-            <p></p>
-          <h5>Declared In</h5>
+<p>Instance of the receiving class </p>
+<h5>Discussion</h5>
+<p>Creates and returns an instance of the receiving class.</p>
+<p>The data contains the representation of the object to create, the repo specifies the parent repository and where any additional objects associated with the object may be loaded from.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITObject</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

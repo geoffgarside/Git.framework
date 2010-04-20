@@ -76,51 +76,59 @@
 <td>NSData+Compression.h</td>
 </tr></table>
 <h2 id="overview">Overview</h2>
-      <p>Adds compression and decompression messages to NSData. Methods extracted from source given at http://www.cocoadev.com/index.pl?<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>Category</p>
-    <h2 id="tasks">Tasks</h2>
+<p>Adds compression and decompression messages to NSData. Methods extracted from source given at http://www.cocoadev.com/index.pl?<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>Category</p>
+<h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-    <li id="Zlib_Compression_and_Decompression">
+<li id="Zlib_Compression_and_Decompression">
 <h3>Zlib Compression and Decompression</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#zlibInflate">- zlibInflate</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#zlibDeflate">- zlibDeflate</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#zlibInflate">- zlibInflate</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#zlibDeflate">- zlibDeflate</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-    <li id="GZip_Compression_and_Decompression">
+<li id="GZip_Compression_and_Decompression">
 <h3>GZip Compression and Decompression</h3>
 <ul class="methods">
-<li><span class="tooltipRegion"><code><a href="#gzipInflate">- gzipInflate</a></code><span class="tooltip"></span></span></li>
-<li><span class="tooltipRegion"><code><a href="#gzipDeflate">- gzipDeflate</a></code><span class="tooltip"></span></span></li>
+<li>
+<span class="tooltipRegion"><code><a href="#gzipInflate">- gzipInflate</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#gzipDeflate">- gzipDeflate</a></code></span><span class="tooltip"></span>
+</li>
 </ul>
 </li>
-  </ul>
+</ul>
 <section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="zlibInflate"><h3>zlibInflate</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)zlibInflate</code><h5>Return Value</h5>
-          <p>A data object containing a Zlib decompressed copy of the receivers contents. </p>
-        <h5>Discussion</h5>
-            <p>Returns a data object containing a Zlib decompressed copy of the receivers contents. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)zlibInflate</code><h5>Return Value</h5>
+<p>A data object containing a Zlib decompressed copy of the receivers contents. </p>
+<h5>Discussion</h5>
+<p>Returns a data object containing a Zlib decompressed copy of the receivers contents. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Compression.h</code></section><section class="definition" id="zlibDeflate"><h3>zlibDeflate</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)zlibDeflate</code><h5>Return Value</h5>
-          <p>A data object containing a Zlib compressed copy of the receivers contents. </p>
-        <h5>Discussion</h5>
-            <p>Returns a data object containing a Zlib compressed copy of the receivers contents. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)zlibDeflate</code><h5>Return Value</h5>
+<p>A data object containing a Zlib compressed copy of the receivers contents. </p>
+<h5>Discussion</h5>
+<p>Returns a data object containing a Zlib compressed copy of the receivers contents. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Compression.h</code></section><section class="definition" id="gzipInflate"><h3>gzipInflate</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)gzipInflate</code><h5>Return Value</h5>
-          <p>A data object containing a Gzip decompressed copy of the receivers contents. </p>
-        <h5>Discussion</h5>
-            <p>Returns a data object containing a Gzip decompressed copy of the receivers contents. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)gzipInflate</code><h5>Return Value</h5>
+<p>A data object containing a Gzip decompressed copy of the receivers contents. </p>
+<h5>Discussion</h5>
+<p>Returns a data object containing a Gzip decompressed copy of the receivers contents. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Compression.h</code></section><section class="definition" id="gzipDeflate"><h3>gzipDeflate</h3>
-<code class="methodDeclaration">- (<code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> *)gzipDeflate</code><h5>Return Value</h5>
-          <p>A data object containing a Gzip compressed copy of the receivers contents. </p>
-        <h5>Discussion</h5>
-            <p>Returns a data object containing a Gzip compressed copy of the receivers contents. </p>
-          <h5>Declared In</h5>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)gzipDeflate</code><h5>Return Value</h5>
+<p>A data object containing a Gzip compressed copy of the receivers contents. </p>
+<h5>Discussion</h5>
+<p>Returns a data object containing a Gzip compressed copy of the receivers contents. </p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Compression.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-11</p>
+<p id="lastUpdated">Last updated: 2010-4-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
