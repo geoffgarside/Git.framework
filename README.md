@@ -42,6 +42,11 @@ if you don't have a pre-commit hook already then this one will be installed, if 
 
 and any offending lines will be printed.
 
+The hook can be configured to ignore specific file MIME types and extensions, this is done as follows
+
+    $ git config pre-commit.ignored.mime 'image/ application/xml application/octet-stream'
+    $ git config pre-commit.ignored.extensions 'graffle pbxproj'
+
 BridgeSupport
 --------------
 The addition of any C level constants which need to be exposed to a bridged language such as [MacRuby][macruby] or PyObjC will require the regeneration of the BridgeSupport files. The headers containing the constants or functions to be exposed will need to be marked as public in the `Git` target and then the `bridgesupport:generate` rake task will need to be run.
