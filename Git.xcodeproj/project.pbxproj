@@ -68,6 +68,7 @@
 		F57EAA6710CDF45300EE2103 /* NSData+DeltaPatching.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EAA6510CDF45300EE2103 /* NSData+DeltaPatching.h */; };
 		F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */; };
 		F57EAB8F10D0082600EE2103 /* BridgeSupport in Resources */ = {isa = PBXBuildFile; fileRef = F57EAB8C10D0082600EE2103 /* BridgeSupport */; };
+		F593ABEC117EE28600B9DEB0 /* Git.h in Headers */ = {isa = PBXBuildFile; fileRef = F593ABD0117EDEF400B9DEB0 /* Git.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F599A8D1105EFCE8003CD1C0 /* GITRepo.h in Headers */ = {isa = PBXBuildFile; fileRef = F599A8CF105EFCE8003CD1C0 /* GITRepo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F599A8D2105EFCE8003CD1C0 /* GITRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = F599A8D0105EFCE8003CD1C0 /* GITRepo.m */; };
 		F599A9FB10601ECA003CD1C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F599A9FA10601ECA003CD1C0 /* Foundation.framework */; };
@@ -175,6 +176,7 @@
 		F57EAA6510CDF45300EE2103 /* NSData+DeltaPatching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+DeltaPatching.h"; path = "Source/Category/NSData/NSData+DeltaPatching.h"; sourceTree = "<group>"; };
 		F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+DeltaPatching.m"; path = "Source/Category/NSData/NSData+DeltaPatching.m"; sourceTree = "<group>"; };
 		F57EAB8C10D0082600EE2103 /* BridgeSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BridgeSupport; path = Resource/BridgeSupport; sourceTree = "<group>"; };
+		F593ABD0117EDEF400B9DEB0 /* Git.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Git.h; path = Source/Git.h; sourceTree = "<group>"; };
 		F599A8CF105EFCE8003CD1C0 /* GITRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRepo.h; path = Source/GITRepo.h; sourceTree = "<group>"; };
 		F599A8D0105EFCE8003CD1C0 /* GITRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRepo.m; path = Source/GITRepo.m; sourceTree = "<group>"; };
 		F599A9FA10601ECA003CD1C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -366,6 +368,7 @@
 				32DBCF5E0370ADEE00C91783 /* Git_Prefix.pch */,
 				F599AAA4106026ED003CD1C0 /* GITError.h */,
 				F599AAA5106026ED003CD1C0 /* GITError.m */,
+				F593ABD0117EDEF400B9DEB0 /* Git.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				F553A87010FFDD80007799A9 /* GITLooseObject.h in Headers */,
 				F553A8781101FACC007799A9 /* GITPackCollection.h in Headers */,
 				F52D57F8111DA4FC005A461E /* GITCommitEnumerator.h in Headers */,
+				F593ABEC117EE28600B9DEB0 /* Git.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

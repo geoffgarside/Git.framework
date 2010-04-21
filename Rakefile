@@ -22,6 +22,28 @@ namespace :bridgesupport do
   end
 end
 
+namespace :check do
+  task :framework_header => ['build:release'] do
+    imports = Dir['build/Release/Git.framework/Headers/*.h'].map do |f|
+      '#import "%s"' % File.basename(f)
+    end
+
+    imports.delete('#import "Git.h"')
+    File.open('Source/Git.h', 'r') do |f|
+      f.each_line do |l|
+        imports.delete(l.chomp)
+      end
+    end
+
+    unless imports.empty?
+      puts "Missing Git.h imports:"
+      puts imports.map { |l| "    #{l}" }.join("\n")
+    else
+      puts "Git.h is complete"
+    end
+  end
+end
+
 desc "Runs the test suite for the framework (Requires MacRuby)"
 task :test do
   sh 'xcodebuild -target Tests -configuration Debug'
