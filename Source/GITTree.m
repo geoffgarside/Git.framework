@@ -75,9 +75,9 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
 
         [newItems addObject:[GITTreeItem itemInTree:self withMode:modeVal name:nameStr sha1:hashVal]];
 
-        [hashVal release], hashVal = nil;
-        [modeStr release], modeStr = nil;
-        [nameStr release], nameStr = nil;
+        [hashVal release];
+        [modeStr release];
+        [nameStr release];
     }
 
     self.items = [newItems copy];
