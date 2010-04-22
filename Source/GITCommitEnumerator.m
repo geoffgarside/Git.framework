@@ -76,21 +76,21 @@
     }
 }
 
-- (NSArray *)allObjectsUntilCommit: (GITCommit *)commit {
+- (NSArray *)allObjectsUntilObjectHash: (GITObjectHash *)hash {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
 
     id object;
     while ( object = [self nextObject] ) {
         [array addObject:object];
-        if ( [commit isEqualTo:object] )
+        if ( [hash isEqualToObjectHash:[object sha1]] )
             break;
     }
 
     return [NSArray arrayWithArray:array];
 }
 
-- (NSArray *)allObjectsUntilObjectHash: (GITObjectHash *)hash {
-    return [self allObjectsUntilCommit:(GITCommit *)[self.head.repo objectWithSha1:hash error:NULL]];
+- (NSArray *)allObjectsUntilCommit: (GITCommit *)commit {
+    return [self allObjectsUntilObjectHash:[commit sha1]];
 }
 
 - (NSArray *)allObjectsUntil: (id)obj {
