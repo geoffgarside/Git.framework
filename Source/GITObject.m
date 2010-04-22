@@ -83,7 +83,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ <%@>", [self className], [self.sha1 unpackedString]];
+    return [NSString stringWithFormat:@"%s <%@>", object_getClassName(self), [self.sha1 unpackedString]];
 }
 
 @end
