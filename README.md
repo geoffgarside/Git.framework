@@ -26,6 +26,27 @@ Additionally features from [CocoaGit][cocoagit] which are not yet supported will
 
 \*maybe, as and when things are thought of, suggested, or otherwise materialize, terms and conditions may apply, see binary for details
 
+Adding the Framework to your Mac OS X Application
+--------------------------------------------------
+The first step to this is compiling a *Release* build of Git.framework, this can either be done in Xcode or via `rake` on the command line as
+
+    $ rake build:release
+
+the built product will be in the `builds/Release/` directory.
+
+### Installing in your project
+  * In the Finder, copy `Git.framework` to your project directory (eg MyProject/Frameworks)
+  * Add the `Frameworks/Git.framework` to your *Linked Frameworks* group in Xcode
+  * Open *Get Info* on your Application Target, select the *Build* tab
+  * Change the *Configuration* to `All Configurations`
+  * Enter `Runpath Search Paths` into the *Filter* field
+  * Add `@executable_path/../Frameworks` to the *Runpath Search Paths*
+  * Add a `New Copy Files Build Phase` to your Application Target
+  * Select `Frameworks` from the *Destination* dropdown
+  * Drag `Git.framework` from *Linked Frameworks* to your new *Copy Files* build phase
+
+You might want to rename the *Copy Files* build phase to *Copy Frameworks*
+
 Running the Test Suite
 -----------------------
 The test suite requires [MacRuby 0.5][macruby] and [Bacon][bacon] and can be run either through Xcode or `rake` in the Terminal. So far tests have been run using MacRuby r3090 and Bacon v0.9.
