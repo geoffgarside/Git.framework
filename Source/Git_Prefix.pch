@@ -5,8 +5,7 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
 
-    #if TARGET_OS_IPHONE
-        #warning Future versions of iPhone OS may add NSDataReadingMapped
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED < 40000
         #define NSDataReadingMapped NSMappedRead
     #endif
 #endif
