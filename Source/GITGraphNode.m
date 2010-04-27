@@ -10,6 +10,11 @@
 
 
 @implementation GITGraphNode
+@synthesize key, object;
+
++ (GITGraphNode *)nodeWithObject: (id)object key: (id)key {
+    return [[[self alloc] initWithObject:object key:key] autorelease];
+}
 
 - (id)initWithObject: (id)obj key: (id)k {
     if ( ![super init] )

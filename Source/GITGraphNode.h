@@ -14,6 +14,11 @@
     id object;
 }
 
+@property (readonly,copy) id key;
+@property (readonly,assign) id object;
+
++ (GITGraphNode *)nodeWithObject: (id)object key: (id)key;
+
 - (id)initWithObject: (id)object key: (id)key;
 
 - (BOOL)isEqual: (id)other;
