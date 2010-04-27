@@ -82,11 +82,22 @@
 - (void)buildWithStartingCommit: (GITCommit *)start {
     // do stuff to build graph
     GITCommitEnumerator *enumerator = [[GITCommitEnumerator alloc] initWithCommit:start mode:GITCommitEnumeratorDepthFirstMode];
+    GITGraphNode *node = nil, *last = nil, *parent = nil;
     GITCommit *commit = nil;
 
     while ( commit = [enumerator nextObject] ) {
         // do something
+        node = [GITGraphNode nodeWithObject:commit key:[commit sha1]];
+        [self addNode:node];
+
+        for ( GITObjectHash *sha1 in [commit parentShas] ) {
+            parent = [self nodeWithKey:sha1];
+        }
+
+        last = node;
     }
+
+    [enumerator release];
 }
 
 - (NSArray *)arrayOfNodesSortedByDate {
