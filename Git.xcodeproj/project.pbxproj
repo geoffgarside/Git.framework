@@ -69,6 +69,10 @@
 		F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */; };
 		F57EAB8F10D0082600EE2103 /* BridgeSupport in Resources */ = {isa = PBXBuildFile; fileRef = F57EAB8C10D0082600EE2103 /* BridgeSupport */; };
 		F593ABEC117EE28600B9DEB0 /* Git.h in Headers */ = {isa = PBXBuildFile; fileRef = F593ABD0117EDEF400B9DEB0 /* Git.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F594CB2711864CE500E82F38 /* GITGraph.h in Sources */ = {isa = PBXBuildFile; fileRef = F594CB2511864CE500E82F38 /* GITGraph.h */; };
+		F594CB2811864CE500E82F38 /* GITGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = F594CB2611864CE500E82F38 /* GITGraph.m */; };
+		F594CB2B118777C800E82F38 /* GITGraphNode.h in Sources */ = {isa = PBXBuildFile; fileRef = F594CB29118777C800E82F38 /* GITGraphNode.h */; };
+		F594CB2C118777C800E82F38 /* GITGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F594CB2A118777C800E82F38 /* GITGraphNode.m */; };
 		F599A8D1105EFCE8003CD1C0 /* GITRepo.h in Headers */ = {isa = PBXBuildFile; fileRef = F599A8CF105EFCE8003CD1C0 /* GITRepo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F599A8D2105EFCE8003CD1C0 /* GITRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = F599A8D0105EFCE8003CD1C0 /* GITRepo.m */; };
 		F599A9FB10601ECA003CD1C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F599A9FA10601ECA003CD1C0 /* Foundation.framework */; };
@@ -177,6 +181,10 @@
 		F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+DeltaPatching.m"; path = "Source/Category/NSData/NSData+DeltaPatching.m"; sourceTree = "<group>"; };
 		F57EAB8C10D0082600EE2103 /* BridgeSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BridgeSupport; path = Resource/BridgeSupport; sourceTree = "<group>"; };
 		F593ABD0117EDEF400B9DEB0 /* Git.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Git.h; path = Source/Git.h; sourceTree = "<group>"; };
+		F594CB2511864CE500E82F38 /* GITGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; name = GITGraph.h; path = Source/GITGraph.h; sourceTree = "<group>"; };
+		F594CB2611864CE500E82F38 /* GITGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITGraph.m; path = Source/GITGraph.m; sourceTree = "<group>"; };
+		F594CB29118777C800E82F38 /* GITGraphNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; name = GITGraphNode.h; path = Source/GITGraphNode.h; sourceTree = "<group>"; };
+		F594CB2A118777C800E82F38 /* GITGraphNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITGraphNode.m; path = Source/GITGraphNode.m; sourceTree = "<group>"; };
 		F599A8CF105EFCE8003CD1C0 /* GITRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRepo.h; path = Source/GITRepo.h; sourceTree = "<group>"; };
 		F599A8D0105EFCE8003CD1C0 /* GITRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRepo.m; path = Source/GITRepo.m; sourceTree = "<group>"; };
 		F599A9FA10601ECA003CD1C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -341,6 +349,10 @@
 				F553A86F10FFDD80007799A9 /* GITLooseObject.m */,
 				F52D57F6111DA4FC005A461E /* GITCommitEnumerator.h */,
 				F52D57F7111DA4FC005A461E /* GITCommitEnumerator.m */,
+				F594CB2511864CE500E82F38 /* GITGraph.h */,
+				F594CB2611864CE500E82F38 /* GITGraph.m */,
+				F594CB29118777C800E82F38 /* GITGraphNode.h */,
+				F594CB2A118777C800E82F38 /* GITGraphNode.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -753,6 +765,10 @@
 				F553A87110FFDD80007799A9 /* GITLooseObject.m in Sources */,
 				F553A8791101FACC007799A9 /* GITPackCollection.m in Sources */,
 				F52D57F9111DA4FC005A461E /* GITCommitEnumerator.m in Sources */,
+				F594CB2711864CE500E82F38 /* GITGraph.h in Sources */,
+				F594CB2811864CE500E82F38 /* GITGraph.m in Sources */,
+				F594CB2B118777C800E82F38 /* GITGraphNode.h in Sources */,
+				F594CB2C118777C800E82F38 /* GITGraphNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
