@@ -222,6 +222,11 @@ static signed char from_hex[256] = {
     return [self initWithData:[objectData sha1Digest]];
 }
 
+//! \name Copying
+- (id)copyWithZone:(NSZone*)zone {
+    return [[[self class] allocWithZone:zone] initWithPackedBytes:(uint8_t *)raw length:GITObjectHashPackedLength];
+}
+
 //! \name Getting Packed and Unpacked Forms
 - (NSString *)unpackedString {
     return [[self class] unpackedStringFromData:[self unpackedData]];
