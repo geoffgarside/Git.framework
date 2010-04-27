@@ -7,6 +7,10 @@
 //
 
 #import "GITGraph.h"
+#import "GITGraphNode.h"
+#import "GITCommit.h"
+#import "GITObjectHash.h"
+#import "GITCommitEnumerator.h"
 
 
 @implementation GITGraph
@@ -64,7 +68,7 @@
     edgeCounter--;
 }
 
-- (GITGraphNode *)nodeWithKey: (NSString *)key {
+- (GITGraphNode *)nodeWithKey: (id)key {
     return [nodes objectForKey:key];
 }
 
@@ -86,10 +90,10 @@
 }
 
 - (NSArray *)arrayOfNodesSortedByDate {
-    
+    return nil;
 }
 - (NSArray *)arrayOfNodesSortedByTopology {
-    
+    return nil;
 }
 
 @end

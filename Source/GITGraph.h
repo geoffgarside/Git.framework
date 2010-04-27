@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@class GITGraphNode;
+@class GITGraphNode, GITCommit;
 @interface GITGraph : NSObject {
     NSMutableDictionary *nodes;
     NSUInteger edgeCounter;
@@ -27,7 +27,7 @@
 - (void)addEdgeFromNode: (GITGraphNode *)fromNode to: (GITGraphNode *)toNode;
 - (void)removeEdgeFromNode: (GITGraphNode *)fromNode to: (GITGraphNode *)toNode;
 
-- (GITGraphNode *)nodeWithKey: (NSString *)key;
+- (GITGraphNode *)nodeWithKey: (id)key;
 
 - (NSUInteger)nodeCount;
 - (NSUInteger)edgeCount;
