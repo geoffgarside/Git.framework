@@ -86,4 +86,23 @@
     return [NSString stringWithFormat:@"%s <%@>", object_getClassName(self), [self.sha1 unpackedString]];
 }
 
+- (NSUInteger)hash {
+    return [sha1 hash];
+}
+- (BOOL)isEqual: (id)other {
+    if ( !other ) return NO;                            // other is nil
+    if ( other == self ) return YES;                    // pointers match?
+
+    if ( [other isKindOfClass:[self class]] )           // Same class?
+        return [self isEqualToObject:other];
+    return NO;                                          // Definitely not then
+}
+- (BOOL)isEqualToObject: (GITObject *)object {
+    if ( !rhs )         return NO;
+    if ( self == rhs )  return YES;
+    if ( type == object.type && [sha1 isEqualToObjectHash:[other sha1]] )
+        return YES;
+    return NO;
+}
+
 @end
