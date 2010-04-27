@@ -97,10 +97,10 @@
         return [self isEqualToObject:other];
     return NO;                                          // Definitely not then
 }
-- (BOOL)isEqualToObject: (GITObject *)object {
+- (BOOL)isEqualToObject: (GITObject *)rhs {
     if ( !rhs )         return NO;
     if ( self == rhs )  return YES;
-    if ( type == object.type && [sha1 isEqualToObjectHash:[other sha1]] )
+    if ( type == rhs.type && [sha1 isEqualToObjectHash:[rhs sha1]] )
         return YES;
     return NO;
 }
