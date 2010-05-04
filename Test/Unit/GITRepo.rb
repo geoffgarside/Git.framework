@@ -5,7 +5,7 @@ describe "GITRepo +repo" do
     end
   end
 
-  should 'open the repo in the current directory' do
+  should "open the repo in the current directory" do
     @repo.root.should.equal TEST_REPO_ROOT
   end
 end
@@ -116,13 +116,13 @@ describe "GITRepo -objectWithSha1:error:" do
     @commit = @repo.objectWithSha1(@sha1, error:@err)
   end
 
-  should 'not be nil' do
+  should "not be nil" do
     @commit.should.not.be.nil
   end
-  should 'not have an error' do
+  should "not have an error" do
     @err[0].should.be.nil
   end
-  should 'have sha1' do
+  should "have sha1" do
     @commit.sha1.unpackedString.should == @sha1.unpackedString
   end
 end
@@ -146,5 +146,14 @@ describe "GITRepo Enumerators" do
     should "not be nil" do
       @enum.should.not.be.nil
     end
+  end
+end
+
+describe "GITRepo -head" do
+  before do
+    @repo = default_repository
+  end
+  should "not be nil" do
+    @repo.head.should.not.be.nil
   end
 end

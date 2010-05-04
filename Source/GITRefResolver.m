@@ -64,6 +64,8 @@
                                                            encoding:NSUTF8StringEncoding error:theError];
             if ( !contents )
                 return nil;
+            if ( [contents hasSuffix:@"\n"] )
+                contents = [contents substringToIndex:[contents length] - 1];
             return [GITRef refWithName:refName andTarget:contents inRepo:self.repo];
         }
     } else {
