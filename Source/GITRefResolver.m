@@ -64,7 +64,9 @@
                                                            encoding:NSUTF8StringEncoding error:theError];
             if ( !contents )
                 return nil;
-            return [GITRef refWithName:refName andTarget:contents inRepo:self.repo];
+
+            NSString *trimmed  = [contents stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            return [GITRef refWithName:refName andTarget:trimmed inRepo:self.repo];
         }
     } else {
         NSString *errorDesc = [NSString stringWithFormat:NSLocalizedString(@"Could not resolve ref @%", @"GITRefResolverErrorRefNotFound"), theName];
