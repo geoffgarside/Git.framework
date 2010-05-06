@@ -34,6 +34,8 @@
  * \param buffer A pointer to an instance of NSMutableData to popluated with the inflated data.
  * \param offset The offset at which to start reading from [self bytes]
  * \return The number of bytes consumed
+ * \internal
+ * This method is not part of the original cocoadev.com source
  */
 - (NSUInteger) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset;
 
