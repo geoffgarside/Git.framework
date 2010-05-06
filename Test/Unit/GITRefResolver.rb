@@ -24,6 +24,9 @@ describe "GITRefResolver -resolveRefWithName:" do
     should "have name 'HEAD'" do
       @ref.name.should == 'HEAD'
     end
+    should "have targetName 'ref: refs/heads/master'" do
+      @ref.targetName.should == 'ref: refs/heads/master'
+    end
   end
 
   describe "refs/heads/master" do
