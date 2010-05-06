@@ -51,6 +51,7 @@
 <option value="instanceMethods">Instance Methods</option>
 <option value="zlibInflate">    - zlibInflate</option>
 <option value="zlibDeflate">    - zlibDeflate</option>
+<option value="zlibInflateInto:offset:">    - zlibInflateInto:offset:</option>
 <option value="gzipInflate">    - gzipInflate</option>
 <option value="gzipDeflate">    - gzipDeflate</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
@@ -65,6 +66,7 @@
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
 <li><a href="#zlibInflate">zlibInflate</a></li>
 <li><a href="#zlibDeflate">zlibDeflate</a></li>
+<li><a href="#zlibInflateInto:offset:">zlibInflateInto:offset:</a></li>
 <li><a href="#gzipInflate">gzipInflate</a></li>
 <li><a href="#gzipDeflate">gzipDeflate</a></li>
 </ul>
@@ -87,6 +89,9 @@
 </li>
 <li>
 <span class="tooltipRegion"><code><a href="#zlibDeflate">- zlibDeflate</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#zlibInflateInto:offset:">- zlibInflateInto:offset:</a></code></span><span class="tooltip"></span>
 </li>
 </ul>
 </li>
@@ -115,6 +120,20 @@
 <h5>Discussion</h5>
 <p>Returns a data object containing a Zlib compressed copy of the receivers contents. </p>
 <h5>Declared In</h5>
+<code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Compression.h</code></section><section class="definition" id="zlibInflateInto:offset:"><h3>zlibInflateInto:offset:</h3>
+<code class="methodDeclaration">- (NSUInteger)zlibInflateInto:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSMutableData_Class/index.html">NSMutableData</a> *)<span class="parameter">buffer</span> offset:(NSUInteger)<span class="parameter">offset</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>buffer</dt>
+<dd><p>A pointer to an instance of <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSMutableData_Class/index.html">NSMutableData</a></code> to popluated with the inflated data. </p></dd>
+<dt>offset</dt>
+<dd><p>The offset at which to start reading from [self bytes] </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>The number of bytes consumed </p>
+<h5>Discussion</h5>
+<p>Inflates the data into a given buffer starting at a certain offset.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Compression.h</code></section><section class="definition" id="gzipInflate"><h3>gzipInflate</h3>
 <code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)gzipInflate</code><h5>Return Value</h5>
 <p>A data object containing a Gzip decompressed copy of the receivers contents. </p>
@@ -128,7 +147,7 @@
 <p>Returns a data object containing a Gzip compressed copy of the receivers contents. </p>
 <h5>Declared In</h5>
 <code><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code>+Compression.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-4-20</p>
+<p id="lastUpdated">Last updated: 2010-5-6</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
