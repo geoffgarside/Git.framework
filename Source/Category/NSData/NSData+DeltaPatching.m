@@ -16,13 +16,13 @@
     const uint8_t *bytes = *bytes_p;
     size_t size = 0;
     int shift = 0;
-    
+
     do {
         size |= ((*bytes & 0x7f) << shift);
         *bytes_p += 1;
         shift += 7;
     } while ( (*bytes++ & 0x80) != 0 );
-    
+
     return size;
 }
 
@@ -33,9 +33,9 @@
     size_t sourceSize = [self patchDeltaHeaderSize:&deltaBytes];   //!< Get source size
     if ( sourceSize != [self length] )
         [NSException raise:@"NSDataDeltaPatchingException" format:@"Delta Patch data is invalid"];
-    
+
     size_t targetSize = [self patchDeltaHeaderSize:&deltaBytes];   //!< Get target size
-    
+
     NSMutableData *target = [NSMutableData dataWithCapacity:targetSize];
 
     uint8_t c;
