@@ -12,7 +12,7 @@
 
 @implementation NSData (DeltaPatching)
 
-- (size_t)patchDeltaHeaderSize: (const uint8_t **)bytes_p {
+- (size_t)deltaPatchingPatchHeaderSize: (const uint8_t **)bytes_p {
     const uint8_t *bytes = *bytes_p;
     size_t size = 0;
     int shift = 0;
@@ -30,12 +30,11 @@
     const uint8_t *deltaBytes   = [delta bytes];
     const uint8_t *endOfDelta   = deltaBytes + [delta length];
 
-    size_t sourceSize = [self patchDeltaHeaderSize:&deltaBytes];   //!< Get source size
+    size_t sourceSize = [self deltaPatchingPatchHeaderSize:&deltaBytes];   //!< Get source size
     if ( sourceSize != [self length] )
         [NSException raise:@"NSDataDeltaPatchingException" format:@"Delta Patch data is invalid"];
 
-    size_t targetSize = [self patchDeltaHeaderSize:&deltaBytes];   //!< Get target size
-
+    size_t targetSize = [self deltaPatchingPatchHeaderSize:&deltaBytes];   //!< Get target size
     NSMutableData *target = [NSMutableData dataWithCapacity:targetSize];
 
     uint8_t c;
