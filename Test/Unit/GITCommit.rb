@@ -58,7 +58,7 @@ describe 'GITCommit' do
       @commit.committerDate.timeZone.should === @date.timeZone
     end
     should 'have message' do
-      @commit.message.should == "Update testfile.txt"
+      @commit.message.should == "Update testfile.txt\n"
     end
   end
   describe "initial commit" do
