@@ -125,7 +125,7 @@
             baseOffset++;
             c = bytes[used++];
             baseOffset <<= 7;
-            baseOffset += c & 0x7f;
+            baseOffset |= c & 0x7f;
         }
 
         baseOffset = header->offset - baseOffset;
