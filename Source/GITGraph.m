@@ -131,6 +131,15 @@ const NSUInteger kMaxSwimmersInPool = 1000;     //!< \see buildWithStartingNode:
     return [self buildWithStartingNode:node];
 }
 
+static CFComparisonResult compareAscending(const void *a, const void *b, void *ctx) {
+    GITGraphNode *x = a, *y = b;
+    return (CFComparisonResult)[x compare:y];
+}
+static CFComparisonResult compareDescending(const void *a, const void *b, void *ctx) {
+    GITGraphNode *x = a, *y = b;
+    return (CFComparisonResult)[y compare:x];
+}
+
 - (NSArray *)arrayOfNodesSortedByDate {
     return nil;
 }
