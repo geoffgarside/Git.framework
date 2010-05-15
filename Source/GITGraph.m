@@ -178,7 +178,36 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
     return (NSArray *)[sorted autorelease];
 }
 - (NSArray *)arrayOfNodesSortedByTopology {
-    return nil;
+    NSMutableArray *roots = [[NSMutableArray alloc] init];
+    NSMutableArray *sorted = [[NSMutableArray alloc] initWithCapacity:[self nodeCount]];
+
+    GITGraphNode *node;
+    for ( node in nodes ) {
+        if ( [node inboundEdgeCount] == 0 ) {
+            [roots addObject:node];
+        }
+    }
+
+    CFArraySortValues((CFMutableArrayRef)roots,
+        CFRangeMake(0, [roots count]), compareAscending, NULL);
+
+    while ( [roots count] > 0 ) {
+        node = [roots lastObject];
+        [sorted addObject:node];
+        [roots removeLastObject];
+
+        for ( GITGraphNode *n in [node outboundNodes] ) {
+            // we need to be able to decrement the inboundEdgeCount :(
+            if ( [n inboundEdgeCount] == 0 ) {
+                NSUInteger i = CFArrayBSearchValues((CFMutableArrayRef)roots,
+                    CFRangeMake(0, [roots count]), n, compareAscending, NULL);
+                [roots insertObject:n atIndex:i];
+            }
+        }
+    }
+
+    [roots release];
+    return (NSArray *)[sorted autorelease];
 }
 
 @end
