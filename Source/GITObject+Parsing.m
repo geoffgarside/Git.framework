@@ -22,16 +22,22 @@
 }
 
 - (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes {
-    return [self newStringWithObjectRecord:record bytes:bytes encoding:NSASCIIStringEncoding];
+    return [self newStringWithObjectRecord:record bytes:bytes encoding:NSUTF8StringEncoding];
 }
 
 - (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes encoding: (NSStringEncoding)encoding {
     const char *start;
+    NSString *string;
     NSUInteger len;
 
     if ( !parseObjectRecord(bytes, record, &start, &len) )
         return nil;
-    return [[NSString alloc] initWithBytes:start length:len encoding:encoding];
+    
+    string = [[NSString alloc] initWithBytes:start length:len encoding:encoding];
+    if ( string == nil )
+        string = [[NSString alloc] initWithBytes:start length:len encoding:NSASCIIStringEncoding];
+
+    return string;
 }
 
 @end
