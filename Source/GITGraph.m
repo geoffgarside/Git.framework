@@ -141,7 +141,41 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
 }
 
 - (NSArray *)arrayOfNodesSortedByDate {
-    return nil;
+    NSMutableArray *roots = [[NSMutableArray alloc] init];
+    NSMutableArray *sorted = [[NSMutableArray alloc] initWithCapacity:[self nodeCount]];
+
+    GITGraphNode *node;
+    for ( node in nodes ) {
+        [node resetFlags];
+        if ( [node inboundEdgeCount] == 0 ) {
+            [roots addObject:node];
+        }
+    }
+
+    while ( [roots count] > 0 ) {
+        node = [[roots lastObject] retain];
+        if ( ![node hasBeenProcessed] ) {
+            [sorted addObject:node];
+            [node markProcessed];
+        }
+        [roots removeLastObject];
+
+        for ( GITGraphNode *child in [node inboundNodes] ) {
+            if ( ![child hasBeenVisited] ) {
+                [child markVisited];
+
+                NSUInteger i = CFArrayBSearchValues((CFMutableArrayRef)roots,
+                    CFRangeMake(0, [roots count]), child, compareAscending, NULL);
+
+                [roots insertObject:child atIndex:i];
+            }
+        }
+
+        [node release];
+    }
+
+    [roots release];
+    return (NSArray *)[sorted autorelease];
 }
 - (NSArray *)arrayOfNodesSortedByTopology {
     return nil;
