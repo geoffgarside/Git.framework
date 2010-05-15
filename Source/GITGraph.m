@@ -8,10 +8,13 @@
 
 #import "GITGraph.h"
 #import "GITGraphNode.h"
+#import "GITRepo.h"
 #import "GITCommit.h"
 #import "GITObjectHash.h"
 #import "GITCommitEnumerator.h"
 
+
+const NSUInteger kMaxSwimmersInPool = 1000;     //!< \see buildWithStartingNode:
 
 @implementation GITGraph
 
@@ -81,25 +84,51 @@
     return edgeCounter;
 }
 
-- (void)buildWithStartingCommit: (GITCommit *)start {
-    // do stuff to build graph
-    GITCommitEnumerator *enumerator = [[GITCommitEnumerator alloc] initWithCommit:start mode:GITCommitEnumeratorDepthFirstMode];
-    GITGraphNode *node = nil, *last = nil, *parent = nil;
-    GITCommit *commit = nil;
+- (void)buildWithStartingNode: (GITGraphNode *)start {
+    GITRepo *repo = [[start object] repo];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSUInteger swimmersInPool = 0;
 
-    while ( commit = [enumerator nextObject] ) {
-        // do something
-        node = [GITGraphNode nodeWithObject:commit key:[commit sha1]];
-        [self addNode:node];
+    [self addNode:start];
 
-        for ( GITObjectHash *sha1 in [commit parentShas] ) {
-            parent = [self nodeWithKey:sha1];
+    NSMutableArray *q = [[NSMutableArray alloc] initWithObjects:start, nil];
+    while ( [q count] > 0 ) {
+        if ( swimmersInPool++ > kMaxSwimmersInPool ) {          //!< Drain the pool
+            [pool drain];
+            pool = [[NSAutoreleasePool alloc] init];
+            swimmersInPool = 0;
         }
 
-        last = node;
+        GITGraphNode *node = [[q lastObject] retain];
+        [q removeLastObject];
+        [node markVisited];
+
+        NSArray *parents = [[node object] parentShas];
+        for ( GITObjectHash *sha in parents ) {
+            GITGraphNode *parent = [self nodeWithKey:sha];
+            if ( !parent ) {
+                id obj = [repo objectWithSha1:sha error:NULL];
+                parent = [GITGraphNode nodeWithObject:obj key:sha];
+                [self addNode:parent];
+            }
+
+            [self addEdgeFromNode:node to:parent];
+            if ( ![parent visited] ) {
+                [parent markVisited];
+                [q addObject:parent];
+            }
+        }
+
+        [node release];
     }
 
-    [enumerator release];
+    [q release];
+    [pool drain];
+}
+
+- (void)buildWithStartingCommit: (GITCommit *)start {
+    GITGraphNode *node = [GITGraphNode nodeWithObject:start key:[start sha1]];
+    return [self buildWithStartingNode:node];
 }
 
 - (NSArray *)arrayOfNodesSortedByDate {
