@@ -60,11 +60,13 @@
     [nodes removeObjectForKey:[node key]];
 }
 - (void)addEdgeFromNode: (GITGraphNode *)fromNode to: (GITGraphNode *)toNode {
-    // Add node
+    [fromNode addOutboundEdgeToNode:toNode];
+    [toNode addInboundEdgeToNode:fromNode];
     edgeCounter++;
 }
 - (void)removeEdgeFromNode: (GITGraphNode *)fromNode to: (GITGraphNode *)toNode {
-    // Remove node
+    [fromNode removeOutboundEdgeToNode:toNode];
+    [toNode removeInboundEdgeToNode:fromNode];
     edgeCounter--;
 }
 
