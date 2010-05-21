@@ -15,9 +15,9 @@
 @interface GITCommitEnumerator ()
 @property (retain) GITCommit *head;
 @property (assign) GITCommitEnumeratorMode mode;
-@property (retain) NSMutableArray *queue;
-@property (retain) NSMutableArray *merges;
-@property (retain) NSMutableSet *visited;
+@property (assign) NSMutableArray *queue;
+@property (assign) NSMutableArray *merges;
+@property (assign) NSMutableSet *visited;
 
 - (id)nextObjectInBreadthFirstTraversal;
 - (id)nextObjectInDepthFirstTraversal;
@@ -55,8 +55,11 @@
 
 - (void)dealloc {
     self.head = nil;
+    [queue release];
     self.queue = nil;
+    [merges release];
     self.merges = nil;
+    [visited release];
     self.visited = nil;
     [super dealloc];
 }
