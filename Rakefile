@@ -24,7 +24,8 @@ end
 
 desc "Runs the test suite for the framework (Requires MacRuby)"
 task :test do
-  sh 'xcodebuild -target Tests -configuration Debug'
+  # Need to use system instead of sh to avoid a segv on macruby 0.6
+  system 'xcodebuild -target Tests -configuration Debug'
 end
 
 test_pattern = /^test\:(.*)$/
