@@ -25,6 +25,12 @@ class String
   end
 end
 
+class Time
+  def to_git
+    GITDateTime.dateTimeWithTimestamp(to_i, timeZoneOffset:rfc2822.split(" ").last)
+  end
+end
+
 class NSData
   def ===(rhs)
     raise ArgumentError, "Must be kind of NSData" unless rhs.kind_of?(NSData)

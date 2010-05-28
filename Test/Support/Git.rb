@@ -1,14 +1,16 @@
 require 'fileutils'
+require 'time'
 
 module Git
   module Helpers
     def simple_repository
       @simple_repository ||= repository "Simple" do
         commit "Initial commit" do
-          write "testfile.txt", "Git Rocks"
+          write ".gitignore",   ".fseventsd/\n"
+          write "testfile.txt", "Git Rocks\n"
         end
         commit "Update testfile.txt" do
-          write "testfile.txt", "Git Rocks, and rolls!!!"
+          write "testfile.txt", "Git Rocks, and rolls!!!\n"
         end
       end
     end
@@ -38,12 +40,16 @@ module Git
       repo
     end
 
+    attr_reader :commits
+
     def initialize(root)
       if File.exist?(root) && !File.directory?(root)
         raise "`#{root}` must be a directory"
       end
 
-      @root = root
+      @root    = root
+      @commits = []
+
       if File.exist?(root)
         FileUtils.rm_rf(root)
       end
@@ -59,6 +65,7 @@ module Git
     def commit(msg, &blk)
       c = Commit.build(self, &blk)
       c.commit!(msg)
+      @commits << c
     end
 
     def repack
@@ -87,6 +94,9 @@ module Git
   end
 
   class Commit
+    attr_reader :sha, :author_name, :author_email, :author_date, :committer_name,
+                :committer_email, :committer_date
+
     def self.build(repo, &blk)
       c = new(repo)
       c.instance_eval(&blk)
@@ -103,7 +113,25 @@ module Git
     end
 
     def commit!(msg)
-      @repo.git "commit -qm '#{msg}'"
+      git "commit -qm '#{msg}'"
+
+      # sha (%H)   author_name (%an)   author_email    timestamp
+      format = %w(%H %an %ae %aD %cn %ce %cD).join("%n")
+      i = git("log -1 --pretty='format:#{format}'").strip.split("\n")
+      @sha             = i[0]
+      @author_name     = i[1]
+      @author_email    = i[2]
+      @author_date     = Time.rfc2822(i[3])
+      @committer_name  = i[4]
+      @committer_email = i[5]
+      @committer_date  = i[6]
     end
+
+  private
+
+    def git(*args)
+      @repo.git(*args)
+    end
+
   end
 end
