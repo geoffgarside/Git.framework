@@ -2,16 +2,19 @@
 
 describe 'GITObjectHash' do
   before do
-    @sha1_str = 'bed4001738fa8dad666d669867afaf9f2c2b8c6a'
+    @sha1_str  = 'bed4001738fa8dad666d669867afaf9f2c2b8c6a'
     @sha1_data = @sha1_str.dataUsingEncoding(NSUTF8StringEncoding)
-    @pack_str = [@sha1_str].pack('H*')                                  # "¾Ô\x00\x178ú\x8D­fmf\x98g¯¯\x9F,+\x8Cj"
-    @pack_data = @pack_str.dataUsingEncoding(NSISOLatin1StringEncoding) # Apparently we need this encoding to work
-    @hash = GITObjectHash.objectHashWithString(@sha1_str)               #    with the format created by Array#pack
+    @sha2_str  = '8c61f6675e9eb20c63cd6757008f4b8a812ecc1a'
+    @sha2_data = @sha2_str.dataUsingEncoding(NSUTF8StringEncoding)
+
+    @pack1_data = [@sha1_str].pack('H*').to_data
+    @pack2_data = [@sha2_str].pack('H*').to_data
+    @hash       = GITObjectHash.objectHashWithString(@sha1_str)
   end
 
   describe '+unpackedDataFromData:' do
     before do
-      @subj = GITObjectHash.unpackedDataFromData(@pack_data)
+      @subj = GITObjectHash.unpackedDataFromData(@pack1_data)
     end
 
     should 'return NSData' do
@@ -41,7 +44,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return data matching pack_data' do
-      @subj.should === @pack_data
+      @subj.should === @pack1_data
     end
   end
 
@@ -60,24 +63,6 @@ describe 'GITObjectHash' do
 
     should 'return a string matching sha1_str' do
       @subj.should === @sha1_str
-    end
-  end
-
-  describe '-packedString' do
-    before do
-      @subj = @hash.packedString
-    end
-
-    should 'return a NSString' do
-      @subj.should.be.kind_of NSString
-    end
-
-    should 'return a string 20 characters long' do
-      @subj.length.should == GITObjectHashPackedLength
-    end
-
-    should 'return a string matching pack_str' do
-      @subj.should === @pack_str
     end
   end
 
@@ -113,7 +98,7 @@ describe 'GITObjectHash' do
     end
 
     should 'return data matching pack_data' do
-      @subj.should === @pack_data
+      @subj.should === @pack1_data
     end
   end
 
@@ -122,52 +107,69 @@ describe 'GITObjectHash' do
       @hashValue = @hash.hash
       @nullValue = 210587549733
     end
+
     should 'be integer' do
       @hashValue.should.be.kind_of Integer
     end
+
     should 'not be null valued' do
       @hashValue.should.not == @nullValue
     end
   end
+
   describe "-isEqual:" do
     before do
-      @other = GITObjectHash.objectHashWithData(@pack_data)
+      @other = GITObjectHash.objectHashWithData(@pack1_data)
     end
 
     should "be true with @hash" do
       @other.isEqual(@hash).should.be.true
     end
+
     should "be true with @sha1_str" do
       @hash.isEqual(@sha1_str).should.be.true
     end
+
     should "be true with @sha1_data" do
       @hash.isEqual(@sha1_data).should.be.true
     end
-    should "be true with @pack_str" do
-      @hash.isEqual(@pack_str).should.be.true
+
+    should "be true with @pack1_data" do
+      @hash.isEqual(@pack1_data).should.be.true
     end
-    should "be true with @pack_data" do
-      @hash.isEqual(@pack_data).should.be.true
-    end
+
     should "be false with 1" do
       @hash.isEqual(1).should.be.false
     end
+
     should "be false with 'hello'" do
       @hash.isEqual('hello').should.be.false
     end
-  end
-  describe "-isEqualToData:" do
-    should "be true with @pack_data" do
-      @hash.isEqualToData(@pack_data).should.be.true
+
+    should "be false with an incorrect sha1 string" do
+      @hash.isEqual(@sha2_str).should.be.false
     end
+
+    should "be false with incorrect sha1 data" do
+      @hash.isEqual(@sha2_data).should.be.false
+    end
+
+    should "be false with incorrect pack data" do
+      @hash.isEqual(@pack2_data).should.be.false
+    end
+  end
+
+  describe "-isEqualToData:" do
+    should "be true with @pack1_data" do
+      @hash.isEqualToData(@pack1_data).should.be.true
+    end
+
     should "be true with @sha1_data" do
       @hash.isEqualToData(@sha1_data).should.be.true
     end
   end
+
   describe "-isEqualToString:" do
-    should "be true with @pack_str" do
-      @hash.isEqualToString(@pack_str).should.be.true
-    end
     should "be true with @sha1_str" do
       @hash.isEqualToString(@sha1_str).should.be.true
     end
