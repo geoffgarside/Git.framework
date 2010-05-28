@@ -37,7 +37,6 @@ static signed char from_hex[256] = {
 + (uint8_t *)unpackedBytes: (uint8_t *)unpacked fromBytes: (uint8_t *)bytes length: (size_t)length;
 + (uint8_t *)packedBytes: (uint8_t *)packed fromBytes: (uint8_t *)bytes length: (size_t)length;
 
-- (id)initWithPackedString: (NSString *)str;
 - (id)initWithUnpackedString: (NSString *)str;
 
 - (id)initWithPackedData: (NSData *)data;
@@ -157,9 +156,6 @@ static signed char from_hex[256] = {
 }
 
 - (id)initWithString: (NSString *)str {
-    return [self initWithPackedData:[[self class] packedDataFromString:str]];
-}
-- (id)initWithPackedString: (NSString *)str {
     return [self initWithPackedData:[[self class] packedDataFromString:str]];
 }
 - (id)initWithUnpackedString: (NSString *)str {
