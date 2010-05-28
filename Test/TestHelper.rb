@@ -1,3 +1,11 @@
+Dir[File.expand_path("../Support/*.rb", __FILE__)].each do |support_file|
+  require support_file
+end
+
+class Bacon::Context
+  include Git::Helpers
+end
+
 def default_repository
   GITRepo.repoWithRoot(TEST_REPO)
 end
