@@ -2,6 +2,21 @@ def default_repository
   GITRepo.repoWithRoot(TEST_REPO)
 end
 
+class String
+  def to_data
+    return NSData.data unless length > 0
+
+    bytes = self.bytes.to_a
+    p = Pointer.new_with_type("char *", bytes.length)
+
+    bytes.each_with_index do |char, i|
+      p[i] = char
+    end
+
+    NSData.dataWithBytes(p, length:bytes.length)
+  end
+end
+
 class NSData
   def ===(rhs)
     raise ArgumentError, "Must be kind of NSData" unless rhs.kind_of?(NSData)
