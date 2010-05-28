@@ -213,9 +213,6 @@ static signed char from_hex[256] = {
 - (NSString *)unpackedString {
     return [[self class] unpackedStringFromData:[self unpackedData]];
 }
-- (NSString *)packedString {
-    return [[self class] packedStringFromData:[self packedData]];
-}
 - (NSData *)unpackedData {
     return [[self class] unpackedDataFromBytes:(uint8_t*)raw length:GITObjectHashPackedLength];
 }

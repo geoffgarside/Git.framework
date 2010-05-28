@@ -162,16 +162,6 @@ extern const NSUInteger GITObjectHashPackedLength;
 - (NSString *)unpackedString;
 
 /*!
- * Returns the packed string of the object hash.
- *
- * \return packed string of the object hash
- * \sa unpackedString
- * \sa unpackedData
- * \sa packedData
- */
-- (NSString *)packedString;
-
-/*!
  * Returns the unpacked data of the object hash.
  *
  * \return unpacked data of the object hash
