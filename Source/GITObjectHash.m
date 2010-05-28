@@ -50,19 +50,6 @@ static signed char from_hex[256] = {
 
 @implementation GITObjectHash
 
-//! \name Packing and Unpacking SHA1 Hashes
-+ (NSString *)unpackedStringFromString: (NSString *)str {
-    if ( [str length] == GITObjectHashLength )
-        return str;
-    return [[[NSString alloc] initWithData:[self unpackedDataFromString:str]
-                                  encoding:NSUTF8StringEncoding] autorelease];
-}
-+ (NSString *)packedStringFromString: (NSString *)str {
-    if ( [str length] == GITObjectHashPackedLength )
-        return str;
-    return [[[NSString alloc] initWithData:[self packedDataFromString:str]
-                                  encoding:NSASCIIStringEncoding] autorelease];
-}
 + (NSString *)unpackedStringFromData: (NSData *)data {
     NSStringEncoding encoding = NSASCIIStringEncoding;
     if ( [data length] == GITObjectHashLength )

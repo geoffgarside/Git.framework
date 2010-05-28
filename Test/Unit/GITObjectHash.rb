@@ -9,42 +9,6 @@ describe 'GITObjectHash' do
     @hash = GITObjectHash.objectHashWithString(@sha1_str)               #    with the format created by Array#pack
   end
 
-  describe '+unpackedStringFromString:' do
-    before do
-      @subj = GITObjectHash.unpackedStringFromString(@pack_str)
-    end
-
-    should 'return a NSString' do
-      @subj.should.be.kind_of NSString
-    end
-
-    should 'return a string 40 characters long' do
-      @subj.length.should == GITObjectHashLength
-    end
-
-    should 'return a string matching sha1_str' do
-      @subj.should === @sha1_str
-    end
-  end
-
-  describe '+packedStringFromString:' do
-    before do
-      @subj = GITObjectHash.packedStringFromString(@sha1_str)
-    end
-
-    should 'return a NSString' do
-      @subj.should.be.kind_of NSString
-    end
-
-    should 'return a string 20 characters long' do
-      @subj.length.should == GITObjectHashPackedLength
-    end
-
-    should 'return a string matching pack_str' do
-      @subj.should === @pack_str
-    end
-  end
-
   describe '+unpackedDataFromData:' do
     before do
       @subj = GITObjectHash.unpackedDataFromData(@pack_data)

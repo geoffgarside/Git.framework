@@ -21,25 +21,6 @@ extern const NSUInteger GITObjectHashPackedLength;
     uint32_t raw[5];
 }
 
-//! \name Packing and Unpacking SHA1 Hashes
-/*!
- * Returns a string containing the unpacked SHA1 of the packed string.
- *
- * \param str NSString containing the packed SHA1
- * \return NSString containing the unpacked SHA1
- * \sa packedStringFromString:
- */
-+ (NSString *)unpackedStringFromString: (NSString *)str;
-
-/*!
- * Returns a string containing the packed SHA1 of the unpacked string.
- *
- * \param str NSString containing the unpacked SHA1
- * \return NSString containing the packed SHA1
- * \sa unpackedStringFromString:
- */
-+ (NSString *)packedStringFromString: (NSString *)str;
-
 /*!
  * Returns a string containing the unpacked SHA1 of the packed data.
  *
