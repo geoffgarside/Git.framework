@@ -48,6 +48,8 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
     return self;
 }
 - (void)dealloc {
+    CFRelease(inbound);
+    CFRelease(outbound);
     [key release];
     [super dealloc];
 }
