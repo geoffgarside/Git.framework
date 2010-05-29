@@ -132,4 +132,23 @@ typedef enum {
  */
 - (id)initWithType: (GITObjectType)type sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo;
 
+//! \name Object Comparison
+/*!
+* Returns a Boolean value that indicates whether the receiver and a given object are equal.
+*
+* \param other The object to be compared to the receiver
+* \return YES if the receiver and other are equal, otherwise NO
+* \sa isEqualToObject:
+ */
+- (BOOL)isEqual: (id)other;
+
+/*!
+* Returns a Boolean value that indicates whether the receiver and a given Object are equal.
+*
+* \param hash The Object with which to compare the receiver
+* \return YES if the receiver and hash are equal, otherwise NO
+* \sa isEqual:
+ */
+- (BOOL)isEqualToObject: (GITObject *)object;
+
 @end

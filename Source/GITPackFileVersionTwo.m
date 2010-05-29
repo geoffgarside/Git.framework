@@ -82,14 +82,15 @@
     GITPackFileObjectHeader header;
     [self unpackEntryHeaderAtOffset:&offset intoHeader:&header];
 
-    NSData *packData;
+    NSMutableData *packData;
     switch ( header.type ) {
         case GITObjectTypeCommit:
         case GITObjectTypeTree:
         case GITObjectTypeBlob:
         case GITObjectTypeTag:
-            packData = [[self.data subdataWithRange:NSMakeRange(offset, header.dataSize)] zlibInflate];
-            if ( [packData length] != header.size ) {
+            packData = [NSMutableData dataWithLength:header.size];
+
+            if ( [self.data zlibInflateInto:packData offset:offset] != header.size ) {
                 GITError(error, GITPackFileErrorObjectSizeMismatch, NSLocalizedString(@"Object size mismatch", @"GITPackFileErrorObjectSizeMismatch"));
                 return nil;
             }
@@ -124,7 +125,7 @@
             baseOffset++;
             c = bytes[used++];
             baseOffset <<= 7;
-            baseOffset += c & 0x7f;
+            baseOffset |= c & 0x7f;
         }
 
         baseOffset = header->offset - baseOffset;
