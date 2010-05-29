@@ -105,7 +105,7 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
 }
 
 - (NSUInteger)hash {
-    return [object hash];
+    return [key hash];
 }
 - (BOOL)isEqual: (id)other {
     return [object isEqual:other];
