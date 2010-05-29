@@ -12,15 +12,17 @@
 
 @implementation NSData (DeltaPatching)
 
-- (size_t)deltaPatchingPatchHeader: (const uint8_t **)bytes_p length: (size_t)length {
+- (size_t)deltaPatchingPatchHeaderSize: (const uint8_t **)bytes_p {
     const uint8_t *bytes = *bytes_p;
     size_t size = 0;
     int shift = 0;
 
     do {
-        size |= ((*bytes++ & 0x7f) << shift);
+        size |= ((*bytes & 0x7f) << shift);
+        *bytes_p += 1;
         shift += 7;
-    } while ( (*bytes & 0x80) != 0 );
+    } while ( (*bytes++ & 0x80) != 0 );
+
     return size;
 }
 
@@ -28,14 +30,15 @@
     const uint8_t *deltaBytes   = [delta bytes];
     const uint8_t *endOfDelta   = deltaBytes + [delta length];
 
-    size_t sourceSize     = [self deltaPatchingPatchHeader:&deltaBytes length:[delta length]];   //!< Get source size
-    size_t targetSize     = [self deltaPatchingPatchHeader:&deltaBytes length:[delta length]];   //!< Get target size
+    size_t sourceSize = [self deltaPatchingPatchHeaderSize:&deltaBytes];   //!< Get source size
+    if ( sourceSize != [self length] )
+        [NSException raise:@"NSDataDeltaPatchingException" format:@"Delta Patch data is invalid"];
+
+    size_t targetSize = [self deltaPatchingPatchHeaderSize:&deltaBytes];   //!< Get target size
     NSMutableData *target = [NSMutableData dataWithCapacity:targetSize];
 
     uint8_t c;
     size_t cp_off, cp_size;
-
-    (void)sourceSize;   //!< Should probably check the source size really...
 
     while ( deltaBytes < endOfDelta ) {
         c = *(deltaBytes++);

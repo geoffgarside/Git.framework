@@ -56,7 +56,9 @@
         [array addObject:packFile];
     }
 
-    return [self initWithPackFiles:array];
+    id object = [self initWithPackFiles:array];
+    [array release];
+    return object;
 }
 
 - (id)initWithPackFiles: (NSArray *)files {
