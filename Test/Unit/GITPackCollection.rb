@@ -1,7 +1,8 @@
 describe 'GITPackCollection' do
   before do
+    simple_repository.repack
     @err = Pointer.new(:object)
-    @collection = GITPackCollection.collectionWithContentsOfDirectory("#{TEST_REPO}/.git/objects/pack", error:@err)
+    @collection = GITPackCollection.collectionWithContentsOfDirectory(simple_repository.pack_path, error:@err)
   end
   should 'not be nil' do
     @collection.should.not.be.nil
@@ -12,7 +13,7 @@ describe 'GITPackCollection' do
 
   describe '-unpackObjectWithSha1:error:' do
     before do
-      @sha = GITObjectHash.objectHashWithString("6c20014aaa67fc2ac4958f899b6d5494cb30331f")
+      @sha = GITObjectHash.objectHashWithString(simple_repository.commit("Initial commit").sha)
       @obj = @collection.unpackObjectWithSha1(@sha, error:@err)
     end
     should 'not be nil' do

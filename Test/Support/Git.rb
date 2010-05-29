@@ -152,19 +152,27 @@ module Git
     end
 
     def branch?(name)
-      File.exist?("#{@root}/.git/refs/heads/#{name}")
+      File.exist?("#{heads_path}/#{name}")
     end
 
     def branch_sha(name)
-      branch?(name) && File.read("#{@root}/.git/refs/heads/#{name}").strip
+      branch?(name) && File.read("#{heads_path}/#{name}").strip
     end
 
     def git_repo
       GITRepo.repoWithRoot(@root)
     end
 
+    def commit(subject)
+      commits.find { |c| c.subject == subject }
+    end
+
     def repack
       git "repack -q"
+    end
+
+    def pack_refs
+      git "pack-refs --all"
     end
 
     def git(cmd)
@@ -190,6 +198,18 @@ module Git
     def add_commit(c)
       @commits << c
       @shas[c.sha] = c
+    end
+
+    def heads_path
+      "#{@root}/.git/refs/heads"
+    end
+
+    def pack_path
+      "#{objects_path}/pack"
+    end
+
+    def objects_path
+      "#{@root}/.git/objects"
     end
   end
 

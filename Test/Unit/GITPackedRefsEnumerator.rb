@@ -1,6 +1,7 @@
 describe "GITPackedRefsEnumerator" do
   before do
-    @enumerator = GITPackedRefsEnumerator.enumeratorForRepo(default_repository)
+    simple_repository.pack_refs
+    @enumerator = GITPackedRefsEnumerator.enumeratorForRepo(simple_repository.git_repo)
   end
 
   should "not be nil" do
@@ -10,7 +11,7 @@ describe "GITPackedRefsEnumerator" do
     @enumerator.packedRefsPath.should.not.be.nil
   end
   should "set packedRefsPath to repo-root/packed-refs" do
-    @enumerator.packedRefsPath.should == TEST_REPO_ROOT + '/packed-refs'
+    @enumerator.packedRefsPath.should == "#{simple_repository.root}/.git/packed-refs"
   end
 
   describe "-nextObject" do

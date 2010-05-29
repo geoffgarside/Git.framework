@@ -1,8 +1,8 @@
 describe 'GITLooseObject' do
   before do
     @err = Pointer.new(:object)
-    @sha = GITObjectHash.objectHashWithString("fb473b1d24812eb1b212d444b7be8e651c6077ca")
-    @loose = GITLooseObject.looseObjectWithSha1(@sha, from:"#{TEST_REPO}/.git/objects", error:@err)
+    @sha = GITObjectHash.objectHashWithString(simple_repository.head.sha)
+    @loose = GITLooseObject.looseObjectWithSha1(@sha, from:simple_repository.objects_path, error:@err)
   end
   should 'not be nil' do
     @loose.should.not.be.nil
@@ -22,7 +22,7 @@ describe 'GITLooseObject' do
 
   describe '-objectInRepo:error:' do
     before do
-      @repo = default_repository
+      @repo = simple_repository.git_repo
       @commit = @loose.objectInRepo(@repo, error:@err)
     end
     should 'not be nil' do
