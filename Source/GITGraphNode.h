@@ -20,6 +20,9 @@
     CFMutableArrayRef inbound;
     CFMutableArrayRef outbound;
 
+    NSUInteger inboundEdgeCount;
+    NSUInteger outboundEdgeCount;
+
     NSTimeInterval time;
 }
 
@@ -43,8 +46,13 @@
 - (void)removeInboundEdgeToNode: (GITGraphNode *)node;
 - (void)removeOutboundEdgeToNode: (GITGraphNode *)node;
 
+- (void)resetInboundEdgeCount;
+- (void)resetOutboundEdgeCount;
 - (NSUInteger)inboundEdgeCount;
 - (NSUInteger)outboundEdgeCount;
+- (NSUInteger)decrementedInboundEdgeCount;
+- (NSUInteger)decrementedOutboundEdgeCount;
+
 - (NSArray *)inboundNodes;
 - (NSArray *)outboundNodes;
 

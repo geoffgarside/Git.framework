@@ -44,6 +44,7 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
 
     inbound = CFArrayCreateMutable(NULL, 0, &kGITGraphNodeArrayCallbacks);
     outbound = CFArrayCreateMutable(NULL, 0, &kGITGraphNodeArrayCallbacks);
+    inboundEdgeCount = outboundEdgeCount = 0;
 
     return self;
 }
@@ -57,6 +58,8 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
 - (void)resetFlags {
     visited = NO;
     processed = NO;
+    [self resetInboundEdgeCount];
+    [self resetOutboundEdgeCount];
 }
 
 - (BOOL)hasBeenVisited {
@@ -74,27 +77,43 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
 
 - (void)addInboundEdgeToNode: (GITGraphNode *)node {
     CFArrayAppendValue(inbound, node);
+    [self resetInboundEdgeCount];
 }
 - (void)addOutboundEdgeToNode: (GITGraphNode *)node {
     CFArrayAppendValue(outbound, node);
+    [self resetOutboundEdgeCount];
 }
 
 - (void)removeInboundEdgeToNode: (GITGraphNode *)node {
     NSUInteger i = CFArrayGetFirstIndexOfValue(inbound,
         CFRangeMake(0, CFArrayGetCount(inbound)), node);
     CFArrayRemoveValueAtIndex(inbound, i);
+    [self resetInboundEdgeCount];
 }
 - (void)removeOutboundEdgeToNode: (GITGraphNode *)node {
     NSUInteger i = CFArrayGetFirstIndexOfValue(outbound,
         CFRangeMake(0, CFArrayGetCount(outbound)), node);
     CFArrayRemoveValueAtIndex(outbound, i);
+    [self resetOutboundEdgeCount];
 }
 
+- (void)resetInboundEdgeCount {
+    inboundEdgeCount = CFArrayGetCount(inbound);
+}
+- (void)resetOutboundEdgeCount {
+    outboundEdgeCount = CFArrayGetCount(outbound);
+}
 - (NSUInteger)inboundEdgeCount {
-    return CFArrayGetCount(inbound);
+    return inboundEdgeCount;
 }
 - (NSUInteger)outboundEdgeCount {
-    return CFArrayGetCount(outbound);
+    return outboundEdgeCount;
+}
+- (NSUInteger)decrementedInboundEdgeCount {
+    return --inboundEdgeCount;
+}
+- (NSUInteger)decrementedOutboundEdgeCount {
+    return --outboundEdgeCount;
 }
 
 - (NSArray *)inboundNodes {
