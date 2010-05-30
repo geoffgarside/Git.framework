@@ -169,6 +169,10 @@ module Git
 
     def repack
       git "repack -q"
+      pack_files.each do |file|
+        out = file.sub(/\.pack$/, '-v1.idx')
+        git "index-pack --index-version=1 -o #{out} #{file}"
+      end
     end
 
     def pack_refs
@@ -179,19 +183,36 @@ module Git
       Dir.chdir(@root) { %x'git #{cmd}' }
     end
 
-    def pack_files_with_index
+    def pack_files_with_indexes
       Dir["#{@root}/.git/objects/pack/pack-*.pack"].map do |pack|
-        [ pack, pack.sub(/pack$/, 'idx') ]
+        [ pack, pack.sub(/\.pack$/, '-v1.idx'), pack.sub(/pack$/, 'idx') ]
       end
     end
 
+    def v1_indexes
+      v1_index_files.map { |f| Index.new(f, git("show-index < #{f}")) }
+    end
+
+    def indexes
+      index_files.map { |f| Index.new(f, git("show-index < #{f}")) }
+    end
+
+    def v1_index_files
+      pack_files_with_indexes.map { |pack, indexv1, indexv2| indexv1 }
+    end
+
+    def index_files
+      pack_files_with_indexes.map { |pack, indexv1, indexv2| indexv2 }
+    end
+
     def pack_files
-      pack_files_with_index.map { |pack, index| pack }
+      pack_files_with_indexes.map { |pack, indexv1, indexv2| pack }
     end
 
     def delete_pack_index_files!
-      pack_files_with_index.each do |pack, idx|
-        FileUtils.rm_rf(idx)
+      pack_files_with_indexes.each do |pack, idxv1, idxv2|
+        FileUtils.rm_rf(idxv1)
+        FileUtils.rm_rf(idxv2)
       end
     end
 
@@ -210,6 +231,23 @@ module Git
 
     def objects_path
       "#{@root}/.git/objects"
+    end
+  end
+
+  class Index
+    attr_reader :file
+
+    def initialize(file, output)
+      @file = file
+      @shas = {}
+      output.strip.split("\n").each do |line|
+        offset, sha = line.split(" ")
+        @shas[sha] = offset.to_i
+      end
+    end
+
+    def [](sha)
+      @shas[sha]
     end
   end
 
