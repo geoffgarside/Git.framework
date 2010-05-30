@@ -145,7 +145,7 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
     NSMutableArray *sorted = [[NSMutableArray alloc] initWithCapacity:[self nodeCount]];
 
     GITGraphNode *node;
-    for ( node in nodes ) {
+    for ( node in [nodes objectEnumerator] ) {
         [node resetFlags];
         if ( [node inboundEdgeCount] == 0 ) {
             [roots addObject:node];
@@ -182,7 +182,7 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
     NSMutableArray *sorted = [[NSMutableArray alloc] initWithCapacity:[self nodeCount]];
 
     GITGraphNode *node;
-    for ( node in nodes ) {
+    for ( node in [nodes objectEnumerator] ) {
         if ( [node inboundEdgeCount] == 0 ) {
             [roots addObject:node];
         }
