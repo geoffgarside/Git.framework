@@ -1,3 +1,5 @@
+require 'time'
+
 def default_repository
   GITRepo.repoWithRoot(TEST_REPO)
 end
@@ -42,5 +44,11 @@ class NSTimeZone
   def ===(rhs)
     raise ArgumentError, "Must be kind of NSTimeZone" unless rhs.kind_of?(NSTimeZone)
     self.isEqualToTimeZone(rhs) ? true : false
+  end
+end
+
+class GITDateTime
+  def to_time
+    Time.parse(stringWithFormat("yyyy-MM-dd HH:mm:ss ZZZ"))
   end
 end
