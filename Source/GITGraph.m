@@ -160,7 +160,7 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
         }
         [roots removeLastObject];
 
-        for ( GITGraphNode *child in [node inboundNodes] ) {
+        for ( GITGraphNode *child in [node outboundNodes] ) {
             if ( ![child hasBeenVisited] ) {
                 [child markVisited];
 
