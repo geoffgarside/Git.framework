@@ -34,7 +34,7 @@ describe 'GITPackReverseIndex' do
     should 'not be nil' do
       @off.should.not.be.nil
     end
-    should 'equal 138' do
+    should 'equal next offset' do
       @off.should == @idx_info[2][:offset]
     end
   end

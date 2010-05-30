@@ -1,7 +1,7 @@
 describe 'GITTree' do
   before do
     @err = Pointer.new(:object)
-    @repo = default_repository
+    @repo = simple_repository.git_repo
     @treeData = NSData.dataWithContentsOfFile("#{TEST_REPO}/.git/objects/22/7c6c88ba35e67a1341a068c07d1c1639d6582e").zlibInflate
     @data = @treeData.subdataWithRange(NSMakeRange(8, 78))  # This is specific to this object
     @tree = GITTree.treeFromData(@data, sha1:GITObjectHash.objectHashWithString("227c6c88ba35e67a1341a068c07d1c1639d6582e"), repo:@repo, error:@err)

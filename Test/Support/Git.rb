@@ -9,6 +9,8 @@ module Git
           write ".gitignore",   ".fseventsd/\n"
           write "testfile.txt", "Git Rocks\n"
         end
+        branch "another"
+        tag "v0.0.0", :msg => "v0.0.0"
         commit "Update testfile.txt" do
           write "testfile.txt", "Git Rocks, and rolls!!!\n"
         end
@@ -167,6 +169,16 @@ module Git
       commits.find { |c| c.subject == subject }
     end
 
+    def tags
+      @tags ||= begin
+        tags = {}
+        git("tag").strip.split("\n").each do |name|
+          tags[name] = Tag.new(self, name)
+        end
+        tags
+      end
+    end
+
     def repack
       git "repack -q"
       pack_files.each do |file|
@@ -232,6 +244,10 @@ module Git
     def objects_path
       "#{@root}/.git/objects"
     end
+
+    def tags_path
+      "#{@root}/.git/refs/tags"
+    end
   end
 
   class Index
@@ -259,7 +275,7 @@ module Git
     end
 
     def to_a
-      @indexes.map { |sha| { :sha => sha, :offset => @shas[sha] } }
+      @indexes.map { |sha| { :sha => sha, :offset => @shas[sha] } }.sort_by { |i| i[:offset] }
     end
   end
 
@@ -285,6 +301,14 @@ module Git
       c = Commit.build(@repo, &blk)
       c.commit!(msg)
       c
+    end
+
+    def tag(name, options = {})
+      if msg = options[:msg]
+        git "tag -a #{name} -m #{msg}"
+      else
+        git "tag #{name}"
+      end
     end
 
     def branch(*args, &blk)
@@ -381,5 +405,33 @@ module Git
 
       populate_attributes
     end
+  end
+
+  class Tag
+    attr_reader :name, :sha, :ref, :tagger_name, :tagger_email, :date
+
+    def initialize(repo, name)
+      @repo, @name = repo, name
+
+      data = git "show #{name}"
+      @sha = git("rev-parse #{name}").strip
+
+      if data =~ /\Acommit/
+        @ref = @sha
+      else
+        name_email = /Tagger:\s*(.*)\s+<(.*?)>$/
+        @tagger_name  = data[name_email, 1]
+        @tagger_email = data[name_email, 2]
+        @date = Time.parse(data[/Date:\s*(.*)$/, 1])
+        @ref = data[/commit ([0-9a-f]{40})$/, 1]
+      end
+    end
+
+  private
+
+    def git(*args)
+      @repo.git(*args)
+    end
+
   end
 end
