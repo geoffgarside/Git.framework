@@ -36,5 +36,6 @@
 
 - (NSArray *)arrayOfNodesSortedByDate;
 - (NSArray *)arrayOfNodesSortedByTopology;
+- (NSArray *)arrayOfNodesSortedByTopologyAndDate;
 
 @end

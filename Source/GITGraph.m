@@ -177,7 +177,7 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
     [roots release];
     return (NSArray *)[sorted autorelease];
 }
-- (NSArray *)arrayOfNodesSortedByTopology {
+- (NSArray *)arrayOfNodesSortedByTopology: (BOOL)orderByDate {
     NSMutableArray *roots = [[NSMutableArray alloc] init];
     NSMutableArray *sorted = [[NSMutableArray alloc] initWithCapacity:[self nodeCount]];
 
@@ -188,8 +188,9 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
         }
     }
 
-    CFArraySortValues((CFMutableArrayRef)roots,
-        CFRangeMake(0, [roots count]), compareAscending, NULL);
+    if ( orderByDate )
+        CFArraySortValues((CFMutableArrayRef)roots,
+            CFRangeMake(0, [roots count]), compareAscending, NULL);
 
     while ( [roots count] > 0 ) {
         node = [roots lastObject];
@@ -197,17 +198,28 @@ static CFComparisonResult compareDescending(const void *a, const void *b, void *
         [roots removeLastObject];
 
         for ( GITGraphNode *n in [node outboundNodes] ) {
-            // we need to be able to decrement the inboundEdgeCount :(
-            if ( [n inboundEdgeCount] == 0 ) {
-                NSUInteger i = CFArrayBSearchValues((CFMutableArrayRef)roots,
-                    CFRangeMake(0, [roots count]), n, compareAscending, NULL);
-                [roots insertObject:n atIndex:i];
+            if ( [n decrementedInboundEdgeCount] == 0 ) {
+                if ( orderByDate ) {
+                    NSUInteger i = CFArrayBSearchValues((CFMutableArrayRef)roots,
+                        CFRangeMake(0, [roots count]), n, compareAscending, NULL);
+                    [roots insertObject:n atIndex:i];
+                } else {
+                    [roots addObject:n];
+                }
             }
         }
     }
 
     [roots release];
     return (NSArray *)[sorted autorelease];
+}
+
+- (NSArray *)arrayOfNodesSortedByTopology {
+    return [self arrayOfNodesSortedByTopology:NO];
+}
+
+- (NSArray *)arrayOfNodesSortedByTopologyAndDate {
+    return [self arrayOfNodesSortedByTopology:YES];
 }
 
 @end
