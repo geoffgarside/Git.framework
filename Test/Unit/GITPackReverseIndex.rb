@@ -1,9 +1,12 @@
 describe 'GITPackReverseIndex' do
   before do
-    @pth = TEST_REPO + '/.git/objects/pack/pack-c06ba93614b53c588dd60781e163889bc7400d42-v2.idx'
+    simple_repository.repack
+    @idx_info = simple_repository.indexes.first
+    @pth = @idx_info.file
     @err = Pointer.new(:object)
     @idx = GITPackIndex.packIndexWithPath(@pth, error:@err)
     @rev = @idx.reverseIndex
+    @idx_info = @idx_info.to_a
   end
 
   should 'not be nil' do
@@ -13,7 +16,7 @@ describe 'GITPackReverseIndex' do
   describe '-indexWithOffset:' do
     # This is brittle and subject to the PACK index file
     before do
-      @off = @rev.indexWithOffset(12)
+      @off = @rev.indexWithOffset(@idx_info[1][:offset])
     end
     
     should 'not be nil' do
@@ -26,24 +29,24 @@ describe 'GITPackReverseIndex' do
   describe '-nextOffsetAfterOffset:' do
     # This is brittle and subject to the PACK index file
     before do
-      @off = @rev.nextOffsetAfterOffset(12)
+      @off = @rev.nextOffsetAfterOffset(@idx_info[1][:offset])
     end
     should 'not be nil' do
       @off.should.not.be.nil
     end
     should 'equal 138' do
-      @off.should == 138
+      @off.should == @idx_info[2][:offset]
     end
   end
   describe '-baseOffsetWithOffset:' do
     before do
-      @off = @rev.baseOffsetWithOffset(14)
+      @off = @rev.baseOffsetWithOffset(@idx_info[1][:offset] + 1)
     end
     should 'not be nil' do
       @off.should.not.be.nil
     end
     should 'equal 12' do
-      @off.should == 12
+      @off.should == @idx_info[1][:offset]
     end
   end
 end

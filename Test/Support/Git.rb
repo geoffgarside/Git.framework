@@ -240,14 +240,26 @@ module Git
     def initialize(file, output)
       @file = file
       @shas = {}
+      @indexes = []
       output.strip.split("\n").each do |line|
         offset, sha = line.split(" ")
         @shas[sha] = offset.to_i
+        @indexes << sha
       end
     end
 
     def [](sha)
       @shas[sha]
+    end
+
+    # Only needed for ReverseIndex which probably
+    # won't stay around too much longer.
+    def index(sha)
+      @indexes.index(sha)
+    end
+
+    def to_a
+      @indexes.map { |sha| { :sha => sha, :offset => @shas[sha] } }
     end
   end
 
