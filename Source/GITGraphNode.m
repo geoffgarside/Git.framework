@@ -141,6 +141,10 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
     return NSOrderedSame;
 }
 
+- (NSString *)description {
+    return [key description];
+}
+
 @end
 
 static Boolean GITGraphNodeAreEqual(const void *a, const void *b) {
