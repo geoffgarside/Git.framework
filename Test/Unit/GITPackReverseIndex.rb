@@ -14,7 +14,6 @@ describe 'GITPackReverseIndex' do
   end
 
   describe '-indexWithOffset:' do
-    # This is brittle and subject to the PACK index file
     before do
       @off = @rev.indexWithOffset(@idx_info[1][:offset])
     end
@@ -22,12 +21,11 @@ describe 'GITPackReverseIndex' do
     should 'not be nil' do
       @off.should.not.be.nil
     end
-    should 'equal 1' do
-      @off.should == 1
+    should 'equate to the pack offset 12 in the pack index' do
+      @idx.packOffsetAtIndex(@off).should == @idx_info[1][:offset]
     end
   end
   describe '-nextOffsetAfterOffset:' do
-    # This is brittle and subject to the PACK index file
     before do
       @off = @rev.nextOffsetAfterOffset(@idx_info[1][:offset])
     end
@@ -45,7 +43,7 @@ describe 'GITPackReverseIndex' do
     should 'not be nil' do
       @off.should.not.be.nil
     end
-    should 'equal 12' do
+    should 'equal the offset of the start of the object data' do
       @off.should == @idx_info[1][:offset]
     end
   end
