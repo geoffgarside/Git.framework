@@ -1,7 +1,8 @@
 describe 'GITPackObject' do
   before do
-    @sha = GITObjectHash.objectHashWithString('6c20014aaa67fc2ac4958f899b6d5494cb30331f')
-    @pth = TEST_REPO + "/.git/objects/pack/pack-c06ba93614b53c588dd60781e163889bc7400d42.pack"
+    simple_repository.repack
+    @sha = GITObjectHash.objectHashWithString(simple_repository.commit('Initial commit').sha)
+    @pth = simple_repository.pack_files.first
     @err = Pointer.new(:object)
     @pack = GITPackFile.packWithPath(@pth, error:@err)
   end

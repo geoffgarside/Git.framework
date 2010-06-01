@@ -1,11 +1,20 @@
+require 'zlib'
+
+class Bacon::Context
+  def tagForSha(sha)
+    file = "#{simple_repository.root}/.git/objects/%s/%s" % [sha[0,2], sha[2..-1]]
+    meta, data = Zlib::Inflate.inflate(File.read(file)).split("\x00")
+    GITTag.tagFromData(data.to_data, sha1:GITObjectHash.objectHashWithString("sha"), repo:@repo, error:@err)
+  end
+end
+
 describe 'GITTag' do
   before do
-    @err = Pointer.new(:object)
-    @repo = default_repository
-    @tagData = NSData.dataWithContentsOfFile("#{TEST_REPO}/.git/objects/e5/0d1a7b4659ad79d146cb75177ba65b045381dd").zlibInflate
-    @data = @tagData.subdataWithRange(NSMakeRange(8, 144))    # This is specific to this object
-    @tag = GITTag.tagFromData(@data, sha1:GITObjectHash.objectHashWithString("e50d1a7b4659ad79d146cb75177ba65b045381dd"), repo:@repo, error:@err)
-    @date = GITDateTime.dateTimeWithTimestamp(1254663297, timeZoneOffset:"+0100")
+    @err  = Pointer.new(:object)
+    @repo = simple_repository.git_repo
+    @info = simple_repository.tags['v0.0.0']
+    @tag  = tagForSha(@info.sha)
+    @date = @info.date.to_git
   end
   should 'not be nil' do
     @tag.should.not.be.nil
@@ -16,8 +25,8 @@ describe 'GITTag' do
   should 'belong to repo' do
     @tag.repo.should == @repo
   end
-  should 'reference object "6c20014aaa67fc2ac4958f899b6d5494cb30331f"' do
-    @tag.targetSha1.unpackedString.should == "6c20014aaa67fc2ac4958f899b6d5494cb30331f"
+  should 'reference object' do
+    @tag.targetSha1.unpackedString.should == @info.ref
   end
   should 'have name v0.0.0' do
     @tag.name.should == 'v0.0.0'
@@ -26,10 +35,10 @@ describe 'GITTag' do
     @tag.cachedData.should.not.be.nil
   end
   should 'have tagger "Geoff Garside"' do
-    @tag.tagger.name.should == "Geoff Garside"
+    @tag.tagger.name.should == @info.tagger_name
   end
   should 'have tagger email "geoff@geoffgarside.co.uk"' do
-    @tag.tagger.email.should == 'geoff@geoffgarside.co.uk'
+    @tag.tagger.email.should == @info.tagger_email
   end
   should 'have author date' do
     @tag.taggerDate.date.should === @date.date
