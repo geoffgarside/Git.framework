@@ -42,6 +42,7 @@ enum {
     GITPackFileErrorIndexMissing,
     GITPackFileErrorObjectTypeUnknown,
     GITPackFileErrorObjectSizeMismatch,
+    GITPackFileErrorInflationFailed,
 
 #pragma mark GITPackIndex Errors
     GITPackIndexErrorPathNotFound,

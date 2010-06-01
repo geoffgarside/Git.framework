@@ -100,7 +100,7 @@
 	return [NSData dataWithData: compressed];
 }
 
-- (NSUInteger) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset {
+- (int) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset {
     int destBufferSize = [buffer length];
     void * destBuffer = [buffer mutableBytes];
 
@@ -130,7 +130,7 @@
 
         status = inflate(&strm, Z_NO_FLUSH);
 
-        if ( status == Z_STREAM_END) {
+        if ( status == Z_STREAM_END ) {
             done = YES;
         } else if ( status != Z_OK ) {
             break;
@@ -141,7 +141,7 @@ finish:
 
     inflateEnd(&strm);
 
-    return strm.total_out;
+    return done ? strm.total_out : -1;
 }
 
 #pragma mark -

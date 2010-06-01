@@ -33,11 +33,12 @@
  *
  * \param buffer A pointer to an instance of NSMutableData to popluated with the inflated data.
  * \param offset The offset at which to start reading from [self bytes]
+ * \param error NSError describing the error which occurred
  * \return The number of bytes consumed
  * \internal
  * This method is not part of the original cocoadev.com source
  */
-- (NSUInteger) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset;
+- (int) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset;
 
 #pragma mark -
 #pragma mark Gzip Compression routines
