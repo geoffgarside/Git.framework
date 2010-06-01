@@ -24,7 +24,7 @@ typedef struct {
  */
 GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
 
-@class GITObjectHash, GITPackReverseIndex;
+@class GITObjectHash;
 
 /*!
  * The \c GITPackIndex class cluster provides access to the PACK index
@@ -179,18 +179,6 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  */
 - (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error;
 
-/*!
- * Returns the next offset after object at \a offset.
- *
- * If the \a offset is not found then \c NSNotFound is returned, if the \a offset
- * is the last offset then \c -1 is returned.
- *
- * \param offset offset of the object to get the next offset of
- * \return offset of the next offset, NSNotFound if not found, -1 if last offset
- * \sa reverseIndex
- */
-- (off_t)nextOffsetAfterOffset: (off_t)offset;
-
 //! \name Internal Methods
 /*!
  * Returns a fanout entry for SHA starting with the specified byte.
@@ -201,7 +189,5 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries);
  * \sa fanoutTable
  */
 - (GITFanoutEntry)fanoutEntryForShasStartingWithByte: (uint8_t)byte;
-
-- (GITPackReverseIndex *)reverseIndex;
 
 @end

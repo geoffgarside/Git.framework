@@ -9,7 +9,6 @@
 #import "GITPackIndex.h"
 #import "GITObjectHash.h"
 #import "GITPackIndexPlaceholder.h"
-#import "GITPackReverseIndex.h"
 
 
 GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
@@ -94,15 +93,6 @@ GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
 - (off_t)packOffsetForSha1: (GITObjectHash *)objectHash error: (NSError **)error {
     [self doesNotRecognizeSelector: _cmd];
     return 0;
-}
-
-- (off_t)nextOffsetAfterOffset: (off_t)offset {
-    return [[self reverseIndex] nextOffsetAfterOffset:offset];
-}
-
-- (GITPackReverseIndex *)reverseIndex {
-    [self doesNotRecognizeSelector: _cmd];
-    return nil;
 }
 
 @end

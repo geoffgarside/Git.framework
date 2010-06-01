@@ -56,8 +56,6 @@
 		F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = F575BBFA10C12799000458EB /* NSData+SHA1.m */; };
 		F575BC5310C13214000458EB /* GITPackFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136410A5C415003EFA8F /* GITPackFile.m */; };
 		F575BC5410C13215000458EB /* GITPackFile.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D0136310A5C415003EFA8F /* GITPackFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F57EA9E810CDB4CC00EE2103 /* GITPackReverseIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EA9E610CDB4CC00EE2103 /* GITPackReverseIndex.h */; };
-		F57EA9E910CDB4CC00EE2103 /* GITPackReverseIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EA9E710CDB4CC00EE2103 /* GITPackReverseIndex.m */; };
 		F57EAA2210CDDB2500EE2103 /* GITObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EAA2010CDDB2500EE2103 /* GITObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F57EAA2310CDDB2500EE2103 /* GITObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EAA2110CDDB2500EE2103 /* GITObject.m */; };
 		F57EAA3D10CDDFAA00EE2103 /* NSData+Compression.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */; };
@@ -164,8 +162,6 @@
 		F575BBFA10C12799000458EB /* NSData+SHA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SHA1.m"; path = "Source/Category/NSData/NSData+SHA1.m"; sourceTree = "<group>"; };
 		F575BC6610C136E9000458EB /* GITObjectHash.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITObjectHash.rb; sourceTree = "<group>"; };
 		F575BCFD10C1B0ED000458EB /* DocSet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "DocSet-Info.plist"; path = "Resource/DocSet-Info.plist"; sourceTree = "<group>"; };
-		F57EA9E610CDB4CC00EE2103 /* GITPackReverseIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackReverseIndex.h; path = Source/GITPackReverseIndex.h; sourceTree = "<group>"; };
-		F57EA9E710CDB4CC00EE2103 /* GITPackReverseIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackReverseIndex.m; path = Source/GITPackReverseIndex.m; sourceTree = "<group>"; };
 		F57EAA2010CDDB2500EE2103 /* GITObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITObject.h; path = Source/GITObject.h; sourceTree = "<group>"; };
 		F57EAA2110CDDB2500EE2103 /* GITObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITObject.m; path = Source/GITObject.m; sourceTree = "<group>"; };
 		F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Compression.h"; path = "Source/Category/NSData/NSData+Compression.h"; sourceTree = "<group>"; };
@@ -515,8 +511,6 @@
 				F5FC28CA10A6393100EFB922 /* GITPackIndexVersionOne.m */,
 				F5FC28D010A63ACD00EFB922 /* GITPackIndexVersionTwo.h */,
 				F5FC28D110A63ACD00EFB922 /* GITPackIndexVersionTwo.m */,
-				F57EA9E610CDB4CC00EE2103 /* GITPackReverseIndex.h */,
-				F57EA9E710CDB4CC00EE2103 /* GITPackReverseIndex.m */,
 			);
 			name = GITPackIndex;
 			sourceTree = "<group>";
@@ -552,7 +546,6 @@
 				F575BC5410C13215000458EB /* GITPackFile.h in Headers */,
 				F5124D5E10CC5423002B834B /* NSRangeEnd.h in Headers */,
 				F5124D9610CC8A2C002B834B /* GITPackObject.h in Headers */,
-				F57EA9E810CDB4CC00EE2103 /* GITPackReverseIndex.h in Headers */,
 				F57EAA2210CDDB2500EE2103 /* GITObject.h in Headers */,
 				F57EAA3D10CDDFAA00EE2103 /* NSData+Compression.h in Headers */,
 				F57EAA6710CDF45300EE2103 /* NSData+DeltaPatching.h in Headers */,
@@ -704,7 +697,6 @@
 				F575BC5310C13214000458EB /* GITPackFile.m in Sources */,
 				F5124D5F10CC5423002B834B /* NSRangeEnd.m in Sources */,
 				F5124D9710CC8A2C002B834B /* GITPackObject.m in Sources */,
-				F57EA9E910CDB4CC00EE2103 /* GITPackReverseIndex.m in Sources */,
 				F57EAA2310CDDB2500EE2103 /* GITObject.m in Sources */,
 				F57EAA3E10CDDFAA00EE2103 /* NSData+Compression.m in Sources */,
 				F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */,
