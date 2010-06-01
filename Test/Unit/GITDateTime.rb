@@ -60,4 +60,15 @@ describe 'GITDateTime' do
       @dateTime.description.should == "444123000 +0000"
     end
   end
+  describe "-stringWithFormat:" do
+    before do
+      @date = NSDate.dateWithTimeIntervalSince1970(444123000)
+      @zone = NSTimeZone.timeZoneWithAbbreviation("GMT")
+      @dateTime = GITDateTime.dateTimeWithDate(@date, timeZone:@zone)
+      @string = @dateTime.stringWithFormat("E MMM dd, yyyy 'at' HH:mm:ss ZZZ")
+    end
+    should "format the date and timezone" do
+      @string.should == "Sat Jan 28, 1984 at 07:30:00 +0000"
+    end
+  end
 end

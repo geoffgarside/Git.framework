@@ -56,16 +56,20 @@
 
 //! \name Finding Indexes for Offsets
 /*!
- * Returns the index of the \a offset in the PACK Index Main Table.
+ * Returns the index into the PACK Indexes Main Index Table where the \a offset can be found.
+ *
+ * The Main Index Table of a PackIndex file differs between versions one and two but both
+ * contain rows specifying the position into the related PACK file at which the data for a
+ * given object can be read.
  *
  * \param offset offset to find the index of
- * \return index in the PACK Index of the \a offset
+ * \return row number in the PACK Index Table of the \a offset
  */
 - (NSUInteger)indexWithOffset: (off_t)offset;
 
 //! \name Determining related offsets for offsets
 /*!
- * Returns the next offset after object at \a offset.
+ * Returns the offset in the PACK file of the object sorted immediately after the object stored at \a offset.
  *
  * If the \a offset is not found then \c NSNotFound is returned, if the \a offset
  * is the last offset then \c -1 is returned.
@@ -76,7 +80,9 @@
 - (off_t)nextOffsetAfterOffset: (off_t)offset;
 
 /*!
- * Returns the offset marking the start of the range describing the object which contains \a offset.
+ * Returns the offset in the PACK file which is the start of the object data spanning \a offset.
+ *
+ * Essentially the method "rounds down" the \a offset to the nearest start of object data.
  *
  * Returns the offset of the last object if the \a offset is greater than the offset
  * of the last object and the offset of the first offset if the \a offset is less than

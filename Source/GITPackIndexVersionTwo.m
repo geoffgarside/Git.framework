@@ -19,7 +19,6 @@ static const short _fanOutStart     = 8;    //!< Bytes
 static const short _fanOutSize      = 4;    //!< Bytes
 static const short _fanOutCount     = 256;  //!< Number of entries
 static const short _fanOutEnd       = 1032; //!< Start + (Size * Count)
-static const short _fanOutEntrySize = 24;   //!< Bytes
 
 static const short _crcSize         = 4;    //!< Bytes
 static const short _offsetSize      = 4;    //!< Bytes
