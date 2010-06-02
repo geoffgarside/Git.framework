@@ -19,78 +19,79 @@ module Git
 
     def graph_repository
       @graph_repository ||= repository "Graph" do
-        commit "Graph First Commit" do
+        time = Time.now - 86400
+        commit "Graph First Commit", time do
           write "file.txt", ""
         end
-        commit "Graph Second Commit" do
+        commit "Graph Second Commit", time += 60 do
           write "file.txt", "a\n"
         end
 
         branch "graph-branch1"
 
-        commit "Graph Third Commit" do
+        commit "Graph Third Commit", time += 60 do
           write "file.txt", "aa\n"
         end
-        commit "Graph Fourth Commit" do
+        commit "Graph Fourth Commit", time += 60 do
           write "file.txt", "aaa\n"
         end
 
         branch "graph-branch2"
 
         branch "graph-branch1" do
-          commit "Graph Branch 1 First Commit" do
+          commit "Graph Branch 1 First Commit", time += 60 do
             write "file.txt", "a\nb1\n"
           end
-          commit "Graph Branch 1 Second Commit" do
+          commit "Graph Branch 1 Second Commit", time += 60 do
             write "file.txt", "a\nbb\n"
           end
-          commit "Graph Branch 1 Third Commit" do
+          commit "Graph Branch 1 Third Commit", time += 60 do
             write "file.txt", "a\nbbb\n"
           end
         end
 
-        merge "graph-branch1" do
+        merge "graph-branch1", time += 60 do
           write "file.txt", "aaa\nbbb\n"
         end
 
-        commit "Graph Sixth Commit" do
+        commit "Graph Sixth Commit", time += 60 do
           write "file.txt", "aaaa\nbbb\n"
         end
 
         branch "graph-branch2" do
-          commit "Graph Branch 2 First Commit" do
+          commit "Graph Branch 2 First Commit", time += 60 do
             write "file.txt", "aaa\nc\n"
           end
 
           branch "graph-branch3"
 
-          commit "Graph Branch 2 Second Commit" do
+          commit "Graph Branch 2 Second Commit", time += 60 do
             write "file.txt", "aaa\ncc\n"
           end
 
           branch "graph-branch3" do
-            commit "Graph Branch 3 First Commit" do
+            commit "Graph Branch 3 First Commit", time += 60 do
               write "file.txt", "aaa\nc\nd\n"
             end
-            commit "Graph Branch 3 Second Commit" do
+            commit "Graph Branch 3 Second Commit", time += 60 do
               write "file.txt", "aaa\nc\ndd\n"
             end
           end
 
-          merge "graph-branch3" do
+          merge "graph-branch3", time += 60 do
             write "file.txt", "aaa\ncc\ndd\n"
           end
         end
 
-        merge "graph-branch2" do
+        merge "graph-branch2", time += 60 do
           write "file.txt", "aaaa\nbbb\ncc\ndd\n"
         end
 
-        commit "Graph Eighth Commit" do
+        commit "Graph Eighth Commit", time += 60 do
           write "file.txt", "aaaaa\nbbb\ncc\ndd\n"
         end
 
-        commit "Graph Nineth Commit" do
+        commit "Graph Nineth Commit", time += 60 do
           write "file.txt", "aaaaaa\nbbb\ncc\ndd\n"
         end
 
@@ -297,9 +298,9 @@ module Git
       git "checkout -q #{name}"
     end
 
-    def commit(msg, &blk)
+    def commit(msg, date = nil, &blk)
       c = Commit.build(@repo, &blk)
-      c.commit!(msg)
+      c.commit!(msg, date)
       c
     end
 
@@ -316,9 +317,9 @@ module Git
       git "checkout -q #{name}"
     end
 
-    def merge(name, msg = nil, &blk)
+    def merge(name, date = nil, msg = nil, &blk)
       m = Merge.build(@repo, name, &blk)
-      m.commit!(msg)
+      m.commit!(msg, date)
       m
     end
 
@@ -349,8 +350,16 @@ module Git
       @repo.git "add #{file}"
     end
 
-    def commit!(msg)
+    def commit!(msg, date = nil)
+      unless date.nil?                  # Set the author and committer date
+        ENV['GIT_AUTHOR_DATE'] = ENV['GIT_COMMITTER_DATE'] = date.strftime("%s %z")
+      end
+
       git "commit -qm '#{msg}'"
+
+      ENV.delete('GIT_AUTHOR_DATE')     # Cleanup the date env variables
+      ENV.delete('GIT_COMMITTER_DATE')
+
       populate_attributes
     end
 
@@ -394,7 +403,11 @@ module Git
       git "merge --no-commit #{with}"
     end
 
-    def commit!(msg)
+    def commit!(msg, date = nil)
+      unless date.nil?                  # Set the author and committer date
+        ENV['GIT_AUTHOR_DATE'] = ENV['GIT_COMMITTER_DATE'] = date.strftime("%s %z")
+      end
+
       if msg
         git "commit -qm '#{msg}'"
       else
@@ -402,6 +415,9 @@ module Git
       end
 
       raise "Failed the merge" unless $?.to_i == 0
+
+      ENV.delete('GIT_AUTHOR_DATE')     # Cleanup the date env variables
+      ENV.delete('GIT_COMMITTER_DATE')
 
       populate_attributes
     end
