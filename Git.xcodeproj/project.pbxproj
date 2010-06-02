@@ -87,8 +87,6 @@
 		F540228B1180DC450039933F /* GITPackIndexVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FC28D110A63ACD00EFB922 /* GITPackIndexVersionTwo.m */; };
 		F540228C1180DC450039933F /* GITPackObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F5124D9410CC8A2C002B834B /* GITPackObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F540228D1180DC460039933F /* GITPackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D9510CC8A2C002B834B /* GITPackObject.m */; };
-		F540228E1180DC470039933F /* GITPackReverseIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EA9E610CDB4CC00EE2103 /* GITPackReverseIndex.h */; };
-		F540228F1180DC470039933F /* GITPackReverseIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EA9E710CDB4CC00EE2103 /* GITPackReverseIndex.m */; };
 		F54022901180DC490039933F /* GITRef.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1DC10659C3100EF21A8 /* GITRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F54022911180DC4A0039933F /* GITRef.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BBC1DD10659C3100EF21A8 /* GITRef.m */; };
 		F54022921180DC4B0039933F /* GITRefResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1A41063753400EF21A8 /* GITRefResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -699,7 +697,6 @@
 				F54022881180DC410039933F /* GITPackIndexVersionOne.h in Headers */,
 				F540228A1180DC430039933F /* GITPackIndexVersionTwo.h in Headers */,
 				F540228C1180DC450039933F /* GITPackObject.h in Headers */,
-				F540228E1180DC470039933F /* GITPackReverseIndex.h in Headers */,
 				F54022901180DC490039933F /* GITRef.h in Headers */,
 				F54022921180DC4B0039933F /* GITRefResolver.h in Headers */,
 				F54022941180DC4C0039933F /* GITRepo.h in Headers */,
@@ -917,7 +914,6 @@
 				F54022891180DC430039933F /* GITPackIndexVersionOne.m in Sources */,
 				F540228B1180DC450039933F /* GITPackIndexVersionTwo.m in Sources */,
 				F540228D1180DC460039933F /* GITPackObject.m in Sources */,
-				F540228F1180DC470039933F /* GITPackReverseIndex.m in Sources */,
 				F54022911180DC4A0039933F /* GITRef.m in Sources */,
 				F54022931180DC4B0039933F /* GITRefResolver.m in Sources */,
 				F54022951180DC4D0039933F /* GITRepo.m in Sources */,
