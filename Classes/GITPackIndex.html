@@ -61,7 +61,6 @@
 <option value="packOffsetAtIndex:">    - packOffsetAtIndex:</option>
 <option value="packOffsetForSha1:">    - packOffsetForSha1:</option>
 <option value="packOffsetForSha1:error:">    - packOffsetForSha1:error:</option>
-<option value="nextOffsetAfterOffset:">    - nextOffsetAfterOffset:</option>
 <option value="fanoutEntryForShasStartingWithByte:">    - fanoutEntryForShasStartingWithByte:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
@@ -87,7 +86,6 @@
 <li><a href="#packOffsetAtIndex:">packOffsetAtIndex:</a></li>
 <li><a href="#packOffsetForSha1:">packOffsetForSha1:</a></li>
 <li><a href="#packOffsetForSha1:error:">packOffsetForSha1:error:</a></li>
-<li><a href="#nextOffsetAfterOffset:">nextOffsetAfterOffset:</a></li>
 <li><a href="#fanoutEntryForShasStartingWithByte:">fanoutEntryForShasStartingWithByte:</a></li>
 </ul>
 </li>
@@ -146,9 +144,6 @@
 </li>
 <li>
 <span class="tooltipRegion"><code><a href="#packOffsetForSha1:error:">- packOffsetForSha1:error:</a></code></span><span class="tooltip"></span>
-</li>
-<li>
-<span class="tooltipRegion"><code><a href="#nextOffsetAfterOffset:">- nextOffsetAfterOffset:</a></code></span><span class="tooltip"></span>
 </li>
 </ul>
 </li>
@@ -312,21 +307,6 @@
 <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#packOffsetForSha1:">- packOffsetForSha1:</a></code></li></ul>
 <h5>Declared In</h5>
-<code><code>GITPackIndex</code>.h</code></section><section class="definition" id="nextOffsetAfterOffset:"><h3>nextOffsetAfterOffset:</h3>
-<code class="methodDeclaration">- (off_t)nextOffsetAfterOffset:(off_t)<span class="parameter">offset</span> </code><h5>Parameters</h5>
-<dl class="parameterList">
-<dt>offset</dt>
-<dd><p>offset of the object to get the next offset of </p></dd>
-</dl>
-<h5>Return Value</h5>
-<p>offset of the next offset, NSNotFound if not found, -1 if last offset </p>
-<h5>Discussion</h5>
-<p>Returns the next offset after object at offset.</p>
-<p>If the offset is not found then <code>NSNotFound</code> is returned, if the offset is the last offset then <code>-1</code> is returned.</p>
-<p></p>
-<h5>See Also</h5>
-<ul class="seeAlso"><li><code><a href="#reverseIndex">- reverseIndex</a></code></li></ul>
-<h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section><section class="definition" id="fanoutEntryForShasStartingWithByte:"><h3>fanoutEntryForShasStartingWithByte:</h3>
 <code class="methodDeclaration">- (GITFanoutEntry)fanoutEntryForShasStartingWithByte:(uint8_t)<span class="parameter">byte</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
@@ -345,7 +325,7 @@
 </ul>
 <h5>Declared In</h5>
 <code><code>GITPackIndex</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-5-6</p>
+<p id="lastUpdated">Last updated: 2010-6-2</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
