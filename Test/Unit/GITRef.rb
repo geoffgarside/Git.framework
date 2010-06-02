@@ -4,7 +4,7 @@
 describe "GITRef +refWithName:andTarget:inRepo:" do
   describe "ref HEAD" do
     before do
-      @ref = GITRef.refWithName("HEAD", andTarget:"ref: refs/heads/master", inRepo:default_repository)
+      @ref = GITRef.refWithName("HEAD", andTarget:"ref: refs/heads/master", inRepo:simple_repository.git_repo)
     end
 
     should "not be nil" do
@@ -22,7 +22,7 @@ describe "GITRef +refWithName:andTarget:inRepo:" do
   end
   describe "ref refs/heads/master" do
     before do
-      @ref = GITRef.refWithName("refs/heads/master", andTarget:"6c20014aaa67fc2ac4958f899b6d5494cb30331f", inRepo:default_repository)
+      @ref = GITRef.refWithName("refs/heads/master", andTarget:simple_repository.commit('Initial commit').sha, inRepo:simple_repository.git_repo)
     end
 
     should "not be nil" do
@@ -34,8 +34,8 @@ describe "GITRef +refWithName:andTarget:inRepo:" do
     should "have name 'refs/heads/master'" do
       @ref.name.should == 'refs/heads/master'
     end
-    should "target '6c20014aaa67fc2ac4958f899b6d5494cb30331f'" do
-      @ref.targetName.should == '6c20014aaa67fc2ac4958f899b6d5494cb30331f'
+    should "target sha" do
+      @ref.targetName.should == simple_repository.commit('Initial commit').sha
     end
   end
 end
@@ -43,7 +43,7 @@ end
 describe "GITRef -resolve" do
   describe "with link ref" do
     before do
-      @ref = GITRef.refWithName("HEAD", andTarget:"ref: refs/heads/master", inRepo:default_repository)
+      @ref = GITRef.refWithName("HEAD", andTarget:"ref: refs/heads/master", inRepo:simple_repository.git_repo)
       @res = @ref.resolve
     end
 
@@ -59,7 +59,7 @@ describe "GITRef -resolve" do
   end
   describe "with fixed ref" do
     before do
-      @ref = GITRef.refWithName("refs/heads/master", andTarget:"6c20014aaa67fc2ac4958f899b6d5494cb30331f", inRepo:default_repository)
+      @ref = GITRef.refWithName("refs/heads/master", andTarget:simple_repository.commit('Initial commit').sha, inRepo:simple_repository.git_repo)
       @res = @ref.resolve
     end
 

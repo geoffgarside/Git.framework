@@ -11,9 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = F5BBC1811062EF5E00EF21A8 /* Build configuration list for PBXAggregateTarget "Tests" */;
 			buildPhases = (
-				F5A8DD8110800A580022EDA0 /* Attach DMG */,
 				F5BBC17A1062EF1000EF21A8 /* Run MacRuby */,
-				F5A8DD9210800D590022EDA0 /* Detach DMG */,
 			);
 			dependencies = (
 				F5BBC17F1062EF2800EF21A8 /* PBXTargetDependency */,
@@ -142,8 +140,6 @@
 		F575BBFC10C12799000458EB /* NSData+SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = F575BBFA10C12799000458EB /* NSData+SHA1.m */; };
 		F575BC5310C13214000458EB /* GITPackFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136410A5C415003EFA8F /* GITPackFile.m */; };
 		F575BC5410C13215000458EB /* GITPackFile.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D0136310A5C415003EFA8F /* GITPackFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F57EA9E810CDB4CC00EE2103 /* GITPackReverseIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EA9E610CDB4CC00EE2103 /* GITPackReverseIndex.h */; };
-		F57EA9E910CDB4CC00EE2103 /* GITPackReverseIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EA9E710CDB4CC00EE2103 /* GITPackReverseIndex.m */; };
 		F57EAA2210CDDB2500EE2103 /* GITObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EAA2010CDDB2500EE2103 /* GITObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F57EAA2310CDDB2500EE2103 /* GITObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EAA2110CDDB2500EE2103 /* GITObject.m */; };
 		F57EAA3D10CDDFAA00EE2103 /* NSData+Compression.h in Headers */ = {isa = PBXBuildFile; fileRef = F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */; };
@@ -153,6 +149,8 @@
 		F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */ = {isa = PBXBuildFile; fileRef = F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */; };
 		F57EAB8F10D0082600EE2103 /* BridgeSupport in Resources */ = {isa = PBXBuildFile; fileRef = F57EAB8C10D0082600EE2103 /* BridgeSupport */; };
 		F593ABEC117EE28600B9DEB0 /* Git.h in Headers */ = {isa = PBXBuildFile; fileRef = F593ABD0117EDEF400B9DEB0 /* Git.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F594CB2811864CE500E82F38 /* GITGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = F594CB2611864CE500E82F38 /* GITGraph.m */; };
+		F594CB2C118777C800E82F38 /* GITGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F594CB2A118777C800E82F38 /* GITGraphNode.m */; };
 		F599A8D1105EFCE8003CD1C0 /* GITRepo.h in Headers */ = {isa = PBXBuildFile; fileRef = F599A8CF105EFCE8003CD1C0 /* GITRepo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F599A8D2105EFCE8003CD1C0 /* GITRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = F599A8D0105EFCE8003CD1C0 /* GITRepo.m */; };
 		F599A9FB10601ECA003CD1C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F599A9FA10601ECA003CD1C0 /* Foundation.framework */; };
@@ -251,8 +249,6 @@
 		F575BBFA10C12799000458EB /* NSData+SHA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SHA1.m"; path = "Source/Category/NSData/NSData+SHA1.m"; sourceTree = "<group>"; };
 		F575BC6610C136E9000458EB /* GITObjectHash.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITObjectHash.rb; sourceTree = "<group>"; };
 		F575BCFD10C1B0ED000458EB /* DocSet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "DocSet-Info.plist"; path = "Resource/DocSet-Info.plist"; sourceTree = "<group>"; };
-		F57EA9E610CDB4CC00EE2103 /* GITPackReverseIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackReverseIndex.h; path = Source/GITPackReverseIndex.h; sourceTree = "<group>"; };
-		F57EA9E710CDB4CC00EE2103 /* GITPackReverseIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackReverseIndex.m; path = Source/GITPackReverseIndex.m; sourceTree = "<group>"; };
 		F57EAA2010CDDB2500EE2103 /* GITObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITObject.h; path = Source/GITObject.h; sourceTree = "<group>"; };
 		F57EAA2110CDDB2500EE2103 /* GITObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITObject.m; path = Source/GITObject.m; sourceTree = "<group>"; };
 		F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Compression.h"; path = "Source/Category/NSData/NSData+Compression.h"; sourceTree = "<group>"; };
@@ -262,6 +258,10 @@
 		F57EAA6610CDF45300EE2103 /* NSData+DeltaPatching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+DeltaPatching.m"; path = "Source/Category/NSData/NSData+DeltaPatching.m"; sourceTree = "<group>"; };
 		F57EAB8C10D0082600EE2103 /* BridgeSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BridgeSupport; path = Resource/BridgeSupport; sourceTree = "<group>"; };
 		F593ABD0117EDEF400B9DEB0 /* Git.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Git.h; path = Source/Git.h; sourceTree = "<group>"; };
+		F594CB2511864CE500E82F38 /* GITGraph.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = GITGraph.h; path = Source/GITGraph.h; sourceTree = "<group>"; };
+		F594CB2611864CE500E82F38 /* GITGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITGraph.m; path = Source/GITGraph.m; sourceTree = "<group>"; };
+		F594CB29118777C800E82F38 /* GITGraphNode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = GITGraphNode.h; path = Source/GITGraphNode.h; sourceTree = "<group>"; };
+		F594CB2A118777C800E82F38 /* GITGraphNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITGraphNode.m; path = Source/GITGraphNode.m; sourceTree = "<group>"; };
 		F599A8CF105EFCE8003CD1C0 /* GITRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRepo.h; path = Source/GITRepo.h; sourceTree = "<group>"; };
 		F599A8D0105EFCE8003CD1C0 /* GITRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRepo.m; path = Source/GITRepo.m; sourceTree = "<group>"; };
 		F599A9FA10601ECA003CD1C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -436,6 +436,10 @@
 				F553A86F10FFDD80007799A9 /* GITLooseObject.m */,
 				F52D57F6111DA4FC005A461E /* GITCommitEnumerator.h */,
 				F52D57F7111DA4FC005A461E /* GITCommitEnumerator.m */,
+				F594CB2511864CE500E82F38 /* GITGraph.h */,
+				F594CB2611864CE500E82F38 /* GITGraph.m */,
+				F594CB29118777C800E82F38 /* GITGraphNode.h */,
+				F594CB2A118777C800E82F38 /* GITGraphNode.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -612,8 +616,6 @@
 				F5FC28CA10A6393100EFB922 /* GITPackIndexVersionOne.m */,
 				F5FC28D010A63ACD00EFB922 /* GITPackIndexVersionTwo.h */,
 				F5FC28D110A63ACD00EFB922 /* GITPackIndexVersionTwo.m */,
-				F57EA9E610CDB4CC00EE2103 /* GITPackReverseIndex.h */,
-				F57EA9E710CDB4CC00EE2103 /* GITPackReverseIndex.m */,
 			);
 			name = GITPackIndex;
 			sourceTree = "<group>";
@@ -649,7 +651,6 @@
 				F575BC5410C13215000458EB /* GITPackFile.h in Headers */,
 				F5124D5E10CC5423002B834B /* NSRangeEnd.h in Headers */,
 				F5124D9610CC8A2C002B834B /* GITPackObject.h in Headers */,
-				F57EA9E810CDB4CC00EE2103 /* GITPackReverseIndex.h in Headers */,
 				F57EAA2210CDDB2500EE2103 /* GITObject.h in Headers */,
 				F57EAA3D10CDDFAA00EE2103 /* NSData+Compression.h in Headers */,
 				F57EAA6710CDF45300EE2103 /* NSData+DeltaPatching.h in Headers */,
@@ -810,36 +811,6 @@
 			shellPath = "/usr/bin/env ruby";
 			shellScript = "# Xcode auto-versioning script for git by Andre Arko\n#   This script will set your CFBundleVersion number to the name of the most recent\n#   git tag, and include the current commit's distance from that tag and sha1 hash\n#\n# With tag \"v1.0\", and two commits since then, the build will be:\n#   v1.0 (b2 h12345)\n#\n# Create new tags with \"git tag <version> -m <message>\"\n#\n# based on the ruby script by Abizern which was\n# based on the git script by Marcus S. Zarra and Matt Long which was\n# based on the Subversion script by Axel Andersson\n\n# Uncomment to only run when doing a Release build\n# if ENV[\"BUILD_STYLE\"] != \"Release\"\n#   puts \"Not a Release build.\"\n#   exit\n# end\n\ngitnum = `/usr/bin/env git describe --long`.chomp.split(\"-\")\nversion = gitnum[0] + \" (b#{gitnum[1]} #{gitnum[2]})\"\n\ninfo_file = File.join(ENV['BUILT_PRODUCTS_DIR'], ENV['INFOPLIST_PATH'])\ninfo = File.open(info_file, \"r\").read\n\nversion_re = /([\\t ]+<key>CFBundleVersion<\\/key>\\n[\\t ]+<string>).*?(<\\/string>)/\ninfo =~ version_re\nbundle_version_string = $1 + version + $2\n\ninfo.gsub!(version_re, bundle_version_string)\nFile.open(info_file, \"w\") { |file| file.write(info) }\nputs \"Set version string to '#{version}'\"\n";
 		};
-		F5A8DD8110800A580022EDA0 /* Attach DMG */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Attach DMG";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Attach the Test DMG\necho Attaching DMG file $SRCROOT/Test/Resource/repos.dmg to $TEST_VOLUME\nhdiutil attach -mountpoint \"$TEST_VOLUME\" $SRCROOT/Test/Resource/repos.dmg";
-			showEnvVarsInLog = 0;
-		};
-		F5A8DD9210800D590022EDA0 /* Detach DMG */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Detach DMG";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Detach Test DMG\nhdiutil detach \"$TEST_VOLUME\"";
-			showEnvVarsInLog = 0;
-		};
 		F5BBC17A1062EF1000EF21A8 /* Run MacRuby */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -852,7 +823,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/local/bin/macruby;
-			shellScript = "require 'rubygems'\nrequire 'bacon'\nframework 'Git'\n\nBacon.extend Bacon::TestUnitOutput  # This doesn't seem to work at the moment, but its how we'd prefer it\nBacon.summary_on_exit\n\nTEST_VOLUME    = ENV['TEST_VOLUME']\nTEST_REPO      = File.join(TEST_VOLUME, 'Test')\nTEST_REPO_ROOT = File.join(TEST_REPO, '.git')\n\nrequire 'Test/TestHelper.rb'\n\npattern = ENV['TEST_PAT'].nil? ? nil : Regexp.new(\"#{ENV['TEST_PAT']}\")\nDir['Test/Unit/*.rb'].each do |testfile|\n  next if pattern && !pattern.match(testfile)\n  load testfile\nend\n";
+			shellScript = "require 'rubygems'\nrequire 'bacon'\nframework 'Git'\n\nBacon.extend Bacon::TestUnitOutput  # This doesn't seem to work at the moment, but its how we'd prefer it\nBacon.summary_on_exit\n\nrequire 'Test/TestHelper.rb'\n\npattern = ENV['TEST_PAT'].nil? ? nil : Regexp.new(\"#{ENV['TEST_PAT']}\")\nDir['Test/Unit/*.rb'].each do |testfile|\n  next if pattern && !pattern.match(testfile)\n  load testfile\nend\n";
 			showEnvVarsInLog = 0;
 		};
 		F5FC28E910A649D000EFB922 /* ShellScript */ = {
@@ -898,7 +869,6 @@
 				F575BC5310C13214000458EB /* GITPackFile.m in Sources */,
 				F5124D5F10CC5423002B834B /* NSRangeEnd.m in Sources */,
 				F5124D9710CC8A2C002B834B /* GITPackObject.m in Sources */,
-				F57EA9E910CDB4CC00EE2103 /* GITPackReverseIndex.m in Sources */,
 				F57EAA2310CDDB2500EE2103 /* GITObject.m in Sources */,
 				F57EAA3E10CDDFAA00EE2103 /* NSData+Compression.m in Sources */,
 				F57EAA6810CDF45300EE2103 /* NSData+DeltaPatching.m in Sources */,
@@ -915,6 +885,8 @@
 				F553A87110FFDD80007799A9 /* GITLooseObject.m in Sources */,
 				F553A8791101FACC007799A9 /* GITPackCollection.m in Sources */,
 				F52D57F9111DA4FC005A461E /* GITCommitEnumerator.m in Sources */,
+				F594CB2811864CE500E82F38 /* GITGraph.m in Sources */,
+				F594CB2C118777C800E82F38 /* GITGraphNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

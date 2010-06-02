@@ -1,6 +1,8 @@
 describe "GITPackIndexVersionOne" do
   before do
-    @pth = TEST_REPO + '/.git/objects/pack/pack-c06ba93614b53c588dd60781e163889bc7400d42-v1.idx'
+    simple_repository.repack
+    @idx_info = simple_repository.v1_indexes.first
+    @pth = @idx_info.file
     @err = Pointer.new(:object)
     @idx = GITPackIndex.packIndexWithPath(@pth, error:@err)
   end
@@ -23,19 +25,18 @@ describe "GITPackIndexVersionOne" do
     index = @idx.indexOfSha1(hash)
     index.should.not == NSNotFound
   end
-  should "find a pack offset value of 374 for bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea" do
+  should "find a pack offset value for bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea" do
     hash = GITObjectHash.objectHashWithString("bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea")
     offset = @idx.packOffsetForSha1(hash)
-    offset.should == 374
-  end
-  should 'have a reverse index' do
-    @idx.reverseIndex.should.not.be.nil
+    offset.should == @idx_info["bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea"]
   end
 end
 
 describe "GITPackIndexVersionTwo" do
   before do
-    @pth = TEST_REPO + '/.git/objects/pack/pack-c06ba93614b53c588dd60781e163889bc7400d42-v2.idx'
+    simple_repository.repack
+    @idx_info = simple_repository.indexes.first
+    @pth = simple_repository.index_files.first
     @err = Pointer.new(:object)
     @idx = GITPackIndex.packIndexWithPath(@pth, error:@err)
   end
@@ -58,12 +59,9 @@ describe "GITPackIndexVersionTwo" do
     index = @idx.indexOfSha1(hash)
     index.should.not == NSNotFound
   end
-  should "find a pack offset value of 374 for bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea" do
+  should "find a pack offset value for bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea" do
     hash = GITObjectHash.objectHashWithString("bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea")
     offset = @idx.packOffsetForSha1(hash)
-    offset.should == 374
-  end
-  should 'have a reverse index' do
-    @idx.reverseIndex.should.not.be.nil
+    offset.should == @idx_info['bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea']
   end
 end

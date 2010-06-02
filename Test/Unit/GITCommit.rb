@@ -12,12 +12,12 @@ end
 describe 'GITCommit' do
   before do
     @err = Pointer.new(:object)
-    @repo = default_repository
+    @repo = simple_repository.git_repo
   end
   describe "Non-initial commit" do
     before do
-      @commit = commitForSha("fb473b1d24812eb1b212d444b7be8e651c6077ca")
-      @date = GITDateTime.dateTimeWithTimestamp(1263165097, timeZoneOffset:"+0000")
+      @commit = commitForSha(simple_repository.commits[1].sha)
+      @date   = simple_repository.commits[1].author_date.to_git
     end
     should 'not be nil' do
       @commit.should.not.be.nil
@@ -31,27 +31,27 @@ describe 'GITCommit' do
     should 'reference tree "adc4ee11245f2132df7eaf46851b3dd43870d954"' do
       @commit.treeSha1.unpackedString.should == "adc4ee11245f2132df7eaf46851b3dd43870d954"
     end
-    should 'reference parent "6c20014aaa67fc2ac4958f899b6d5494cb30331f"' do
-      @commit.parentSha1.unpackedString.should == "6c20014aaa67fc2ac4958f899b6d5494cb30331f"
+    should 'reference parent commit' do
+      @commit.parentSha1.unpackedString.should == simple_repository.commits[0].sha
     end
     should 'have cachedData' do
       @commit.cachedData.should.not.be.nil
     end
-    should 'have author "Geoff Garside"' do
-      @commit.author.name.should == "Geoff Garside"
+    should 'have author name' do
+      @commit.author.name.should == simple_repository.commits[1].author_name
     end
-    should 'have author email "geoff@geoffgarside.co.uk"' do
-      @commit.author.email.should == 'geoff@geoffgarside.co.uk'
+    should 'have author email' do
+      @commit.author.email.should == simple_repository.commits[1].author_email
     end
     should 'have author date' do
       @commit.authorDate.date.should === @date.date
       @commit.authorDate.timeZone.should === @date.timeZone
     end
-    should 'have committer "Geoff Garside"' do
-      @commit.committer.name.should == "Geoff Garside"
+    should 'have committer name' do
+      @commit.committer.name.should == simple_repository.commits[1].committer_name
     end
-    should 'have committer email "geoff@geoffgarside.co.uk"' do
-      @commit.committer.email.should == 'geoff@geoffgarside.co.uk'
+    should 'have committer email' do
+      @commit.committer.email.should == simple_repository.commits[1].committer_email
     end
     should 'have committer date ' do
       @commit.committerDate.date.should === @date.date
@@ -63,7 +63,7 @@ describe 'GITCommit' do
   end
   describe "initial commit" do
     before do
-      @commit = commitForSha('2860e21f898bbe889dffdc88b5f795ed1f39ffc3')
+      @commit = commitForSha(simple_repository.commits[0].sha)
     end
     should 'not be nil' do
       @commit.should.not.be.nil

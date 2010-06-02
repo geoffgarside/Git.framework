@@ -70,11 +70,6 @@
         shift += 7;
     }
 
-    off_t nextOffset = [self.index nextOffsetAfterOffset:*offset];
-    if ( nextOffset == -1 )
-        nextOffset = [self checksumRange].location;
-    header->dataSize = nextOffset - *offset;
-
     return header;
 }
 
@@ -138,7 +133,11 @@
         return nil;
     }
 
-    NSData *deltaData = [[self.data subdataWithRange:NSMakeRange(offset, header->dataSize)] zlibInflate];
+    NSMutableData *deltaData = [NSMutableData dataWithLength:header->size];
+    if ( [self.data zlibInflateInto:deltaData offset:offset] < 0 ) {
+        GITError(error, GITPackFileErrorInflationFailed, NSLocalizedString(@"Inflation of packed object failed", @"GITPackFileErrorInflationFailed"));
+        return nil;
+    }
     return [packObject packObjectByDeltaPatchingWithData:deltaData];
 }
 

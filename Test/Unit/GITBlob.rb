@@ -8,7 +8,7 @@ describe 'GITBlob' do
   before do
     @sha = Digest::SHA1.hexdigest(BLOB_CONTENTS)
     @err = Pointer.new(:object)
-    @repo = default_repository
+    @repo = simple_repository.git_repo
     @data = BLOB_CONTENTS.dataUsingEncoding(NSUTF8StringEncoding)
     @blob = GITBlob.blobFromData(@data, sha1:GITObjectHash.objectHashWithString(@sha), repo:@repo, error:@err)
   end

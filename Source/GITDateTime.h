@@ -93,4 +93,14 @@
  */
 - (id)initWithTimestamp: (NSTimeInterval)seconds timeZoneOffset: (NSString *)offset;
 
+/*!
+ * Returns a string representation of the receiver with the given format.
+ *
+ * \param format The date format for the receiver. See Data Formatting Programming Guide for Cocoa for a
+ *               list of the conversion specifiers permitted in date format strings.
+ * \return string representation of the receiver
+ * \sa http://devworld.apple.com/mac/library/documentation/Cocoa/Conceptual/DataFormatting/DataFormatting.html
+ */
+- (NSString *)stringWithFormat: (NSString *)format;
+
 @end

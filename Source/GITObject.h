@@ -145,7 +145,7 @@ typedef enum {
 /*!
 * Returns a Boolean value that indicates whether the receiver and a given Object are equal.
 *
-* \param hash The Object with which to compare the receiver
+* \param object The Object with which to compare the receiver
 * \return YES if the receiver and hash are equal, otherwise NO
 * \sa isEqual:
  */
