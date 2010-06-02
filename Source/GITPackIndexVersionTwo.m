@@ -7,7 +7,6 @@
 //
 
 #import "GITPackIndexVersionTwo.h"
-#import "GITPackReverseIndex.h"
 #import "GITObjectHash.h"
 #import "GITError.h"
 #import "NSRangeEnd.h"
@@ -26,7 +25,7 @@ static const short _extOffsetSize   = 8;    //!< Bytes
 
 @implementation GITPackIndexVersionTwo
 
-@synthesize data, fanoutTable, reverseIndex;
+@synthesize data, fanoutTable;
 
 - (NSUInteger)version {
     return 2;
@@ -37,7 +36,6 @@ static const short _extOffsetSize   = 8;    //!< Bytes
         return nil;
 
     self.data = indexData;
-    self.reverseIndex = [GITPackReverseIndex reverseIndexWithPackIndex:self];
 
     return self;
 }
@@ -45,7 +43,6 @@ static const short _extOffsetSize   = 8;    //!< Bytes
 - (void)dealloc {
     self.data = nil;
     self.fanoutTable = nil;
-    self.reverseIndex = nil;
     
     [super dealloc];
 }

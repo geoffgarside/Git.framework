@@ -9,16 +9,13 @@
 #import "GITPackIndex.h"
 
 
-@class GITPackReverseIndex;
 @interface GITPackIndexVersionTwo : GITPackIndex {
     NSData *data;
     NSArray *fanoutTable;
-    GITPackReverseIndex *reverseIndex;
 }
 
 @property (copy) NSData *data;
 @property (copy) NSArray *fanoutTable;
-@property (retain) GITPackReverseIndex *reverseIndex;
 
 /*!
  * Returns the index of the SHA1 contained in \a packedSha.
