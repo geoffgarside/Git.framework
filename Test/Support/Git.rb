@@ -297,9 +297,9 @@ module Git
       git "checkout -q #{name}"
     end
 
-    def commit(msg, &blk)
+    def commit(msg, date = nil, &blk)
       c = Commit.build(@repo, &blk)
-      c.commit!(msg)
+      c.commit!(msg, date)
       c
     end
 
@@ -316,9 +316,9 @@ module Git
       git "checkout -q #{name}"
     end
 
-    def merge(name, msg = nil, &blk)
+    def merge(name, date = nil, msg = nil, &blk)
       m = Merge.build(@repo, name, &blk)
-      m.commit!(msg)
+      m.commit!(msg, date)
       m
     end
 
@@ -349,8 +349,16 @@ module Git
       @repo.git "add #{file}"
     end
 
-    def commit!(msg)
+    def commit!(msg, date = nil)
+      unless date.nil?                  # Set the author and committer date
+        ENV['GIT_AUTHOR_DATE'] = ENV['GIT_COMMITTER_DATE'] = date.strftime("%s %z")
+      end
+
       git "commit -qm '#{msg}'"
+
+      ENV.delete('GIT_AUTHOR_DATE')     # Cleanup the date env variables
+      ENV.delete('GIT_COMMITTER_DATE')
+
       populate_attributes
     end
 
@@ -394,7 +402,11 @@ module Git
       git "merge --no-commit #{with}"
     end
 
-    def commit!(msg)
+    def commit!(msg, date = nil)
+      unless date.nil?                  # Set the author and committer date
+        ENV['GIT_AUTHOR_DATE'] = ENV['GIT_COMMITTER_DATE'] = date.strftime("%s %z")
+      end
+
       if msg
         git "commit -qm '#{msg}'"
       else
@@ -402,6 +414,9 @@ module Git
       end
 
       raise "Failed the merge" unless $?.to_i == 0
+
+      ENV.delete('GIT_AUTHOR_DATE')     # Cleanup the date env variables
+      ENV.delete('GIT_COMMITTER_DATE')
 
       populate_attributes
     end
