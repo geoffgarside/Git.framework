@@ -10,12 +10,12 @@ The currently supported features of the project are
   * Resolving refs from `.git/refs`
   * Reading branches, both local and remote
   * Enumeration of commits in breadth and depth first orders
+  * Rev-list Support to a certain degree, full compatibility with `git rev-list` is not yet available
 
 Planned Features
 -----------------
 Features which will be implemented at some point (in no particular order)
 
-  * Rev-list Support\*\*
   * Pulling changes from a remote repository via either ssh:// or git://
   * Pushing changes to a remote repository via ssh://
   * Mutable objects to enable writing new objects to the repository
@@ -25,8 +25,6 @@ Features which will be implemented at some point (in no particular order)
 Additionally features from [CocoaGit][cocoagit] which are not yet supported will be evaluated and migrated into this project.
 
 \*maybe, as and when things are thought of, suggested, or otherwise materialize, terms and conditions may apply, see binary for details
-
-\*\* Currently supported through `GITGraph` but not yet plumbed into `GITRepo` in anyway
 
 Adding the Framework to your Mac OS X Application
 --------------------------------------------------
