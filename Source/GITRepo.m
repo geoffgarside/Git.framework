@@ -17,6 +17,8 @@
 #import "GITLooseObject.h"
 #import "GITPackCollection.h"
 #import "GITCommitEnumerator.h"
+#import "GITGraph.h"
+#import "GITGraphNode.h"
 
 
 @interface GITRepo ()
@@ -190,6 +192,40 @@ done:
 
 - (GITCommitEnumerator *)enumeratorWithMode: (GITCommitEnumeratorMode)mode {
     return [GITCommitEnumerator enumeratorFromCommit:[self head] mode:mode];
+}
+
+- (NSArray *)revListSortedByDate {
+    GITGraph *graph = [[GITGraph alloc] initWithStartingCommit:[self head]];
+    NSArray *nodes = [graph arrayOfNodesSortedByDate];
+    NSMutableArray *list = [NSMutableArray arrayWithCapacity:[nodes count]];
+
+    for ( GITGraphNode *n in nodes )
+        [list addObject:[n object]];
+
+    [graph release];
+    return [[list copy] autorelease];
+}
+- (NSArray *)revListSortedByTopology {
+    GITGraph *graph = [[GITGraph alloc] initWithStartingCommit:[self head]];
+    NSArray *nodes = [graph arrayOfNodesSortedByTopology];
+    NSMutableArray *list = [NSMutableArray arrayWithCapacity:[nodes count]];
+
+    for ( GITGraphNode *n in nodes )
+        [list addObject:[n object]];
+
+    [graph release];
+    return [[list copy] autorelease];
+}
+- (NSArray *)revListSortedByTopologyAndDate {
+    GITGraph *graph = [[GITGraph alloc] initWithStartingCommit:[self head]];
+    NSArray *nodes = [graph arrayOfNodesSortedByTopologyAndDate];
+    NSMutableArray *list = [NSMutableArray arrayWithCapacity:[nodes count]];
+
+    for ( GITGraphNode *n in nodes )
+        [list addObject:[n object]];
+
+    [graph release];
+    return [[list copy] autorelease];
 }
 
 @end

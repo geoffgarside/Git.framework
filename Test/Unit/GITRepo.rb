@@ -164,3 +164,36 @@ describe "GITRepo -head" do
     @repo.head.should.not.be.nil
   end
 end
+
+describe "GITRepo Rev-List Methods" do
+  before do
+    @repo = graph_repository.git_repo
+  end
+  describe "-revListSortedByDate" do
+    before do
+      @list = @repo.revListSortedByDate
+      @expected = graph_repository.git("rev-list master").split("\n").map { |l| l.strip }
+    end
+    should "return expected ordering of commits" do
+      @list.map { |c| c.sha1.unpackedString }.should == @expected
+    end
+  end
+  describe "-revListSortedByTopology" do
+    before do
+      @list = @repo.revListSortedByTopology
+      @expected = graph_repository.git("rev-list --topo-order master").split("\n").map { |l| l.strip }
+    end
+    should "return expected ordering of commits" do
+      @list.map { |c| c.sha1.unpackedString }.should == @expected
+    end
+  end
+  describe "-revListSortedByTopologyAndDate" do
+    before do
+      @list = @repo.revListSortedByTopologyAndDate
+      @expected = graph_repository.git("rev-list --date-order master").split("\n").map { |l| l.strip }
+    end
+    should "return expected ordering of commits" do
+      @list.map { |c| c.sha1.unpackedString }.should == @expected
+    end
+  end
+end
