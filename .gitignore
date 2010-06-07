@@ -5,6 +5,7 @@
 *.xcodeproj/*.tm_build_errors
 *.TM_Completions.txt.gz
 build/
+Test/Tmp
 Documentation/
 !Documentation/doxyclean
 !Documentation/*.graffle

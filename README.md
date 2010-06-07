@@ -10,12 +10,12 @@ The currently supported features of the project are
   * Resolving refs from `.git/refs`
   * Reading branches, both local and remote
   * Enumeration of commits in breadth and depth first orders
+  * Rev-list Support to a certain degree, full compatibility with `git rev-list` is not yet available
 
 Planned Features
 -----------------
 Features which will be implemented at some point (in no particular order)
 
-  * Rev-list Support
   * Pulling changes from a remote repository via either ssh:// or git://
   * Pushing changes to a remote repository via ssh://
   * Mutable objects to enable writing new objects to the repository

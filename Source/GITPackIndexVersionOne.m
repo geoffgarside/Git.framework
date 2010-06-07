@@ -7,7 +7,6 @@
 //
 
 #import "GITPackIndexVersionOne.h"
-#import "GITPackReverseIndex.h"
 #import "GITObjectHash.h"
 #import "GITError.h"
 
@@ -15,7 +14,7 @@
 static const short _fanOutSize      = 4;    //!< Bytes
 static const short _fanOutCount     = 256;  //!< Number of entries
 static const short _fanOutEnd       = 1024; //!< Size * Count
-static const short _fanOutEntrySize = 24;   //!< Bytes
+static const short _indexEntrySize  = 24;   //!< Bytes
 static const short _offsetSize      = 4;    //!< Bytes
 
 typedef struct {
@@ -25,7 +24,7 @@ typedef struct {
 
 @implementation GITPackIndexVersionOne
 
-@synthesize data, fanoutTable, reverseIndex;
+@synthesize data, fanoutTable;
 
 - (NSUInteger)version {
     return 1;
@@ -36,7 +35,6 @@ typedef struct {
         return nil;
     
     self.data = indexData;
-    self.reverseIndex = [GITPackReverseIndex reverseIndexWithPackIndex:self];
     
     return self;
 }
@@ -44,7 +42,6 @@ typedef struct {
 - (void)dealloc {
     self.data = nil;
     self.fanoutTable = nil;
-    self.reverseIndex = nil;
 
     [super dealloc];
 }
@@ -103,7 +100,7 @@ typedef struct {
 
         do {
             NSUInteger mid = (lo + hi) >> 1;    // divide by 2 ;)
-            NSUInteger pos = (mid * _fanOutEntrySize) + loc + _offsetSize;
+            NSUInteger pos = (mid * _indexEntrySize) + loc + _offsetSize;
             int cmp = memcmp(packedShaBytes, indexDataBytes + pos, GITObjectHashPackedLength);
             if ( cmp < 0 )          { hi = mid; }
             else if ( cmp == 0 )    { return mid; }
@@ -116,14 +113,14 @@ typedef struct {
 
 - (GITPackIndexEntry *)extractIndexEntryAtIndex: (NSUInteger)idx into: (GITPackIndexEntry *)entry {
     NSRange index  = [self indexTableRange];
-    NSUInteger pos = idx * _fanOutEntrySize;
+    NSUInteger pos = idx * _indexEntrySize;
 
     if ( pos >= index.length ) {
         [NSException raise:NSRangeException format:@"PACK Index Entry %u (offset:%lu) out of bounds (%@)",
              idx, pos, NSStringFromRange(index)];
     }
 
-    [self.data getBytes:entry range:NSMakeRange(index.location + pos, _fanOutEntrySize)];
+    [self.data getBytes:entry range:NSMakeRange(index.location + pos, _indexEntrySize)];
     return entry;
 }
 

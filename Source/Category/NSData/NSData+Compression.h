@@ -37,7 +37,7 @@
  * \internal
  * This method is not part of the original cocoadev.com source
  */
-- (NSUInteger) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset;
+- (int) zlibInflateInto: (NSMutableData *)buffer offset:(NSUInteger) offset;
 
 #pragma mark -
 #pragma mark Gzip Compression routines

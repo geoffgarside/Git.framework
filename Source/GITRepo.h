@@ -161,4 +161,31 @@
  */
 - (GITCommitEnumerator *)enumeratorWithMode: (GITCommitEnumeratorMode)mode;
 
+/*!
+ * Returns an array of commit objects sorted by their commit date.
+ *
+ * The result of this method is equivalent to <tt>git rev-list HEAD</tt>.
+ *
+ * \return array of commits sorted by date
+ */
+- (NSArray *)revListSortedByDate;
+
+/*!
+ * Returns an array of commit objects sorted by topology.
+ *
+ * The result of this method is equivalent to <tt>git rev-list --topo-order HEAD</tt>.
+ *
+ * \return array of commits sorted by topology
+ */
+- (NSArray *)revListSortedByTopology;
+
+/*!
+ * Returns an array of commit objects sorted by topology and commit date.
+ *
+ * The result of this method is equivalent to <tt>git rev-list --date-order HEAD</tt>.
+ *
+ * \return array of commits sorted by topology and date
+ */
+- (NSArray *)revListSortedByTopologyAndDate;
+
 @end

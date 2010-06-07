@@ -18,7 +18,6 @@ typedef struct {
     int type;
     off_t offset;
     size_t size;
-    size_t dataSize;
 } GITPackFileObjectHeader;
 
 @class GITPackIndex;
