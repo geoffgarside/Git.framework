@@ -75,25 +75,36 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
     processed = YES;
 }
 
+- (NSUInteger)indexOfInboundNode: (GITGraphNode *)node {
+    return CFArrayGetFirstIndexOfValue(inbound,
+        CFRangeMake(0, CFArrayGetCount(inbound)), node);
+}
+- (NSUInteger)indexOfOutboundNode: (GITGraphNode *)node {
+    return CFArrayGetFirstIndexOfValue(outbound,
+        CFRangeMake(0, CFArrayGetCount(outbound)), node);
+}
+
 - (void)addInboundEdgeToNode: (GITGraphNode *)node {
+    if ( inboundEdgeCount > 0 && [self indexOfInboundNode:node] != -1 )
+        return;
+
     CFArrayAppendValue(inbound, node);
     [self resetInboundEdgeCount];
 }
 - (void)addOutboundEdgeToNode: (GITGraphNode *)node {
+    if ( outboundEdgeCount > 0 && [self indexOfOutboundNode:node] != -1 )
+        return;
+
     CFArrayAppendValue(outbound, node);
     [self resetOutboundEdgeCount];
 }
 
 - (void)removeInboundEdgeToNode: (GITGraphNode *)node {
-    NSUInteger i = CFArrayGetFirstIndexOfValue(inbound,
-        CFRangeMake(0, CFArrayGetCount(inbound)), node);
-    CFArrayRemoveValueAtIndex(inbound, i);
+    CFArrayRemoveValueAtIndex(inbound, [self indexOfInboundNode:node]);
     [self resetInboundEdgeCount];
 }
 - (void)removeOutboundEdgeToNode: (GITGraphNode *)node {
-    NSUInteger i = CFArrayGetFirstIndexOfValue(outbound,
-        CFRangeMake(0, CFArrayGetCount(outbound)), node);
-    CFArrayRemoveValueAtIndex(outbound, i);
+    CFArrayRemoveValueAtIndex(outbound, [self indexOfOutboundNode:node]);
     [self resetOutboundEdgeCount];
 }
 
