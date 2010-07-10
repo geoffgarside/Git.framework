@@ -132,11 +132,11 @@ const NSUInteger kMaxSwimmersInPool = 1000;     //!< \see buildWithStartingNode:
 }
 
 static CFComparisonResult compareAscending(const void *a, const void *b, void *ctx) {
-    GITGraphNode *x = a, *y = b;
+    GITGraphNode *x = (void*)a, *y = (void*)b;
     return (CFComparisonResult)[x compare:y];
 }
 static CFComparisonResult compareDescending(const void *a, const void *b, void *ctx) {
-    GITGraphNode *x = a, *y = b;
+    GITGraphNode *x = (void*)a, *y = (void*)b;
     return (CFComparisonResult)[y compare:x];
 }
 
