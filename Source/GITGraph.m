@@ -131,6 +131,21 @@ const NSUInteger kMaxSwimmersInPool = 1000;     //!< \see buildWithStartingNode:
     return [self buildWithStartingNode:node];
 }
 
+- (void)subtractDescendentNodesFromNode: (GITGraphNode *)start {
+    for ( GITGraphNode *node in [start inboundNodes] )      //!< sever inbound edges
+        [self removeEdgeFromNode:node to:start];
+
+    for ( GITGraphNode *node in [start outboundNodes] )     //!< descend through the outbound edges
+        [self subtractDescendentNodesFromNode:node];
+
+    [self removeNode:start];                                //!< remove the node from the graph
+}
+
+- (void)subtractDescendentNodesFromCommit: (GITCommit *)start {
+    GITGraphNode *node = [self nodeWithKey:[start sha1]];
+    if ( node ) return [self subtractDescendentNodesFromNode:node];
+}
+
 static CFComparisonResult compareAscending(const void *a, const void *b, void *ctx) {
     GITGraphNode *x = a, *y = b;
     return (CFComparisonResult)[x compare:y];

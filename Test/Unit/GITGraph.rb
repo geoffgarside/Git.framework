@@ -90,4 +90,30 @@ describe "GITGraph" do
       @objects.map { |node| node.key.unpackedString }.should == @expected
     end
   end
+  describe "-subtractDescendentNodesFromCommit:" do
+    before do
+      @graph = GITGraph.graphWithStartingCommit(@commit)
+      @all_objs = @graph.arrayOfNodesSortedByDate
+  
+      @rm_sha_str = graph_repository.commit("Graph Fourth Commit").sha
+      @rm_sha1 = GITObjectHash.objectHashWithString(@rm_sha_str)
+      @rm_commit = @repo.objectWithSha1(@rm_sha1, error:@err)
+      @graph.subtractDescendentNodesFromCommit(@rm_commit)
+  
+      @objects = @graph.arrayOfNodesSortedByDate
+      @expected = graph_repository.git("rev-list master ^#{@rm_sha_str}").split("\n").map { |l| l.strip }
+    end
+    should "not be empty" do
+      @objects.should.not.be.empty
+    end
+    should "have less objects" do
+      @all_objs.count.should > @objects.count
+    end
+    should "not include the removed commit" do
+      @objects.map { |c| c.key.unpackedString }.should.not.include(@rm_sha_str)
+    end
+    should "return same list of objects as revlist with ^negation" do
+      @objects.map { |node| node.key.unpackedString }.should == @expected
+    end
+  end
 end

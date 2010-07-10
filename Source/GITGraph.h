@@ -131,9 +131,16 @@
 /*!
  * Populates the receiver with nodes from the history of the given \a commit
  *
- * \return commit Commit object to populate the receiver from
+ * \param commit Commit object to populate the receiver from
  */
 - (void)buildWithStartingCommit: (GITCommit *)commit;
+
+/*!
+ * Removes nodes from the receiver which are in the history of the given \a commit
+ *
+ * \param commit Commit object HEAD to remove from the receiver
+ */
+- (void)subtractDescendentNodesFromCommit: (GITCommit *)commit;
 
 //! \name Sorting Nodes of a Graph
 /*!
