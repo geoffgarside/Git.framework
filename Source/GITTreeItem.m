@@ -38,4 +38,14 @@
     return item;
 }
 
+- (void)dealloc {
+    self.parent = nil;
+    self.name   = nil;
+    self.sha1   = nil;
+    if ( item )
+        self.item = nil;
+
+    [super dealloc];
+}
+
 @end
