@@ -10,11 +10,11 @@
 
 
 typedef enum {
-    GITTreeItemModeType = 00170000,
-    GITTreeItemModeLink =  0120000,
-    GITTreeItemModeFile =  0100000,
-    GITTreeItemModeDir  =  0040000,
-    GITTreeItemModeMod  =  0160000,
+    GITTreeItemModeType = 0x00170000,
+    GITTreeItemModeLink =  0x0120000,
+    GITTreeItemModeFile =  0x0100000,
+    GITTreeItemModeDir  =  0x0040000,
+    GITTreeItemModeMod  =  0x0160000,
 } GITTreeItemMode;
 
 @class GITTree, GITObjectHash, GITObject;
