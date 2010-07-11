@@ -48,4 +48,20 @@
     [super dealloc];
 }
 
+- (BOOL)isLink {
+    return (mode & GITTreeItemModeLink) == GITTreeItemModeLink;
+}
+
+- (BOOL)isFile {
+    return (mode & GITTreeItemModeFile) == GITTreeItemModeFile;
+}
+
+- (BOOL)isDirectory {
+    return (mode & GITTreeItemModeDir) == GITTreeItemModeDir;
+}
+
+- (BOOL)isModule {
+    return (mode & GITTreeItemModeMod) == GITTreeItemModeMod;
+}
+
 @end

@@ -67,4 +67,33 @@ typedef enum {
  */
 - (id)initInTree: (GITTree *)tree withMode: (NSUInteger)mode name: (NSString *)name sha1: (GITObjectHash *)sha1;
 
+//! \name Item Mode Tests
+/*!
+ * Indicates if the receiver represents a link.
+ *
+ * \return YES if the receiver represents a link, NO if not
+ */
+- (BOOL)isLink;
+
+/*!
+ * Indicates if the receiver represents a file (blob).
+ *
+ * \return YES if the receiver represents a file, NO if not
+ */
+- (BOOL)isFile;
+
+/*!
+ * Indicates if the receiver represents a directory (tree).
+ *
+ * \return YES if the receiver represents a directory, NO if not
+ */
+- (BOOL)isDirectory;
+
+/*!
+ * Indicates if the receiver represents a submodule.
+ *
+ * \return YES if the receiver represents a submodule, NO if not
+ */
+- (BOOL)isModule;
+
 @end
