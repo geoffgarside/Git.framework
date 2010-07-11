@@ -29,7 +29,7 @@ typedef enum {
  */
 @interface GITTreeItem : NSObject {
     GITTree *parent;        //!< Tree the item belongs to
-    GITTreeItemMode mode;   //!< File/directory mode of the item
+    NSUInteger mode;        //!< File/directory mode of the item
     NSString  *name;        //!< Name of the file or directory
     GITObject *item;        //!< Item being pointed to
     GITObjectHash *sha1;    //!< Hash of the item (tree/blob) referred to
@@ -37,7 +37,7 @@ typedef enum {
 
 //! \name Properties
 @property (retain) GITTree *parent;
-@property (assign) GITTreeItemMode mode;
+@property (assign) NSUInteger mode;
 @property (copy) NSString *name;
 @property (retain) GITObject *item;
 @property (retain) GITObjectHash *sha1;
@@ -53,7 +53,7 @@ typedef enum {
  * \return a tree item object
  * \sa initInTree:withMode:name:sha1:
  */
-+ (GITTreeItem *)itemInTree: (GITTree *)tree withMode: (GITTreeItemMode)mode name: (NSString *)name sha1: (GITObjectHash *)sha1;
++ (GITTreeItem *)itemInTree: (GITTree *)tree withMode: (NSUInteger)mode name: (NSString *)name sha1: (GITObjectHash *)sha1;
 
 /*!
 * Creates and returns a tree content item with the \a mode, \a name and \a sha1.
@@ -65,6 +65,6 @@ typedef enum {
 * \return a tree item object
 * \sa itemInTree:withMode:name:sha1:
  */
-- (id)initInTree: (GITTree *)tree withMode: (GITTreeItemMode)mode name: (NSString *)name sha1: (GITObjectHash *)sha1;
+- (id)initInTree: (GITTree *)tree withMode: (NSUInteger)mode name: (NSString *)name sha1: (GITObjectHash *)sha1;
 
 @end

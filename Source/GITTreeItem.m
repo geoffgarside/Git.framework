@@ -16,11 +16,11 @@
 
 @synthesize parent, mode, name, item, sha1;
 
-+ (GITTreeItem *)itemInTree: (GITTree *)tree withMode: (GITTreeItemMode)mode name: (NSString *)name sha1: (GITObjectHash *)sha1 {
++ (GITTreeItem *)itemInTree: (GITTree *)tree withMode: (NSUInteger)mode name: (NSString *)name sha1: (GITObjectHash *)sha1 {
     return [[[self alloc] initInTree:tree withMode:mode name:name sha1:sha1] autorelease];
 }
 
-- (id)initInTree: (GITTree *)tree withMode: (GITTreeItemMode)theMode name: (NSString *)theName sha1: (GITObjectHash *)theSha1 {
+- (id)initInTree: (GITTree *)tree withMode: (NSUInteger)theMode name: (NSString *)theName sha1: (GITObjectHash *)theSha1 {
     if ( ![super init] )
         return nil;
 
