@@ -34,7 +34,7 @@ describe 'GITTree' do
       @item.parent.should == @tree
     end
     should 'have mode' do
-      @item.mode.should == 100644
+      @item.mode.should == 0x100644
     end
     should 'have name' do
       @item.name.should == '.gitignore'
@@ -55,7 +55,7 @@ describe 'GITTree' do
       @item.parent.should == @tree
     end
     should 'have mode' do
-      @item.mode.should == 100644
+      @item.mode.should == 0x100644
     end
     should 'have name' do
       @item.name.should == 'testfile.txt'

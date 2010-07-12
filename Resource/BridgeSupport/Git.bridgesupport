@@ -11,36 +11,37 @@
 <constant name='OBUserCancelledActionErrorKey' type='@'/>
 <enum name='GITCommitEnumeratorBreadthFirstMode' value='0'/>
 <enum name='GITCommitEnumeratorDepthFirstMode' value='1'/>
-<enum name='GITLooseObjectErrorDirectoryDoesNotExist' value='17'/>
-<enum name='GITLooseObjectErrorObjectNotFound' value='18'/>
-<enum name='GITObjectErrorParsingFailed' value='19'/>
+<enum name='GITLooseObjectErrorDirectoryDoesNotExist' value='18'/>
+<enum name='GITLooseObjectErrorObjectNotFound' value='19'/>
+<enum name='GITObjectErrorParsingFailed' value='20'/>
 <enum name='GITObjectTypeBlob' value='3'/>
 <enum name='GITObjectTypeCommit' value='1'/>
 <enum name='GITObjectTypeTag' value='4'/>
 <enum name='GITObjectTypeTree' value='2'/>
 <enum name='GITObjectTypeUnknown' value='0'/>
-<enum name='GITPackCollectionErrorDirectoryDoesNotExist' value='16'/>
-<enum name='GITPackErrorObjectNotFound' value='15'/>
+<enum name='GITPackCollectionErrorDirectoryDoesNotExist' value='17'/>
+<enum name='GITPackErrorObjectNotFound' value='16'/>
 <enum name='GITPackFileErrorFileIsInvalid' value='6'/>
 <enum name='GITPackFileErrorIndexMissing' value='8'/>
+<enum name='GITPackFileErrorInflationFailed' value='11'/>
 <enum name='GITPackFileErrorObjectSizeMismatch' value='10'/>
 <enum name='GITPackFileErrorObjectTypeUnknown' value='9'/>
 <enum name='GITPackFileErrorPathIsDirectory' value='5'/>
 <enum name='GITPackFileErrorPathNotFound' value='4'/>
 <enum name='GITPackFileErrorVersionUnsupported' value='7'/>
-<enum name='GITPackIndexErrorCorrupt' value='14'/>
-<enum name='GITPackIndexErrorPathIsDirectory' value='12'/>
-<enum name='GITPackIndexErrorPathNotFound' value='11'/>
-<enum name='GITPackIndexErrorVersionUnsupported' value='13'/>
+<enum name='GITPackIndexErrorCorrupt' value='15'/>
+<enum name='GITPackIndexErrorPathIsDirectory' value='13'/>
+<enum name='GITPackIndexErrorPathNotFound' value='12'/>
+<enum name='GITPackIndexErrorVersionUnsupported' value='14'/>
 <enum name='GITRefResolverErrorRefNotFound' value='3'/>
 <enum name='GITRepoErrorRootDoesNotExist' value='0'/>
 <enum name='GITRepoErrorRootInsane' value='2'/>
 <enum name='GITRepoErrorRootNotAccessible' value='1'/>
-<enum name='GITTreeItemModeDir' value='16384'/>
-<enum name='GITTreeItemModeFile' value='32768'/>
-<enum name='GITTreeItemModeLink' value='40960'/>
-<enum name='GITTreeItemModeMod' value='57344'/>
-<enum name='GITTreeItemModeType' value='61440'/>
+<enum name='GITTreeItemModeDir' value='262144'/>
+<enum name='GITTreeItemModeFile' value='1048576'/>
+<enum name='GITTreeItemModeLink' value='1179648'/>
+<enum name='GITTreeItemModeMod' value='1441792'/>
+<enum name='GITTreeItemModeType' value='1507328'/>
 <enum name='OBErrorChained' value='1'/>
 <function name='GITMakeFanoutEntry'>
 <arg type64='Q' type='I'/>
@@ -64,6 +65,14 @@
 <retval type='B'/>
 </method>
 <method selector='isMerge'>
+<retval type='B'/>
+</method>
+</class>
+<class name='GITObject'>
+<method selector='isEqual:'>
+<retval type='B'/>
+</method>
+<method selector='isEqualToObject:'>
 <retval type='B'/>
 </method>
 </class>
@@ -95,6 +104,20 @@
 </method>
 <method selector='setBare:'>
 <arg type='B' index='0'/>
+</method>
+</class>
+<class name='GITTreeItem'>
+<method selector='isDirectory'>
+<retval type='B'/>
+</method>
+<method selector='isFile'>
+<retval type='B'/>
+</method>
+<method selector='isLink'>
+<retval type='B'/>
+</method>
+<method selector='isModule'>
+<retval type='B'/>
 </method>
 </class>
 <class name='NSError'>

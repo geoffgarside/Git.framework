@@ -16,11 +16,11 @@
 
 @synthesize parent, mode, name, item, sha1;
 
-+ (GITTreeItem *)itemInTree: (GITTree *)tree withMode: (GITTreeItemMode)mode name: (NSString *)name sha1: (GITObjectHash *)sha1 {
++ (GITTreeItem *)itemInTree: (GITTree *)tree withMode: (NSUInteger)mode name: (NSString *)name sha1: (GITObjectHash *)sha1 {
     return [[[self alloc] initInTree:tree withMode:mode name:name sha1:sha1] autorelease];
 }
 
-- (id)initInTree: (GITTree *)tree withMode: (GITTreeItemMode)theMode name: (NSString *)theName sha1: (GITObjectHash *)theSha1 {
+- (id)initInTree: (GITTree *)tree withMode: (NSUInteger)theMode name: (NSString *)theName sha1: (GITObjectHash *)theSha1 {
     if ( ![super init] )
         return nil;
 
@@ -36,6 +36,32 @@
     if ( !item )
         self.item = [self.parent.repo objectWithSha1:self.sha1 error:NULL];
     return item;
+}
+
+- (void)dealloc {
+    self.parent = nil;
+    self.name   = nil;
+    self.sha1   = nil;
+    if ( item )
+        self.item = nil;
+
+    [super dealloc];
+}
+
+- (BOOL)isLink {
+    return (mode & GITTreeItemModeLink) == GITTreeItemModeLink;
+}
+
+- (BOOL)isFile {
+    return (mode & GITTreeItemModeFile) == GITTreeItemModeFile;
+}
+
+- (BOOL)isDirectory {
+    return (mode & GITTreeItemModeDir) == GITTreeItemModeDir;
+}
+
+- (BOOL)isModule {
+    return (mode & GITTreeItemModeMod) == GITTreeItemModeMod;
 }
 
 @end
