@@ -7,8 +7,6 @@
 //
 
 #import "GITGraphNode.h"
-#import "GITDateTime.h"
-#import "GITCommit.h"
 
 
 static Boolean GITGraphNodeAreEqual(const void *a, const void *b);
@@ -37,9 +35,8 @@ static CFArrayCallBacks kGITGraphNodeArrayCallbacks = {
     processed = NO;
     time = 0;
 
-    if ( [object respondsToSelector:@selector(committerDate)] ) {
-        GITDateTime *dateTime = [object committerDate];
-        time = [[dateTime date] timeIntervalSinceReferenceDate];
+    if ( [object respondsToSelector:@selector(nodeSortTimeInterval)] ) {
+        time = [(NSNumber*)[object performSelector:@selector(nodeSortTimeInterval)] doubleValue];
     }
 
     inbound = CFArrayCreateMutable(NULL, 0, &kGITGraphNodeArrayCallbacks);
