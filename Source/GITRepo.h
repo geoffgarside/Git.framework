@@ -188,7 +188,7 @@
  * \sa revList
  * \sa GITRevList::arrayOfCommitsSortedByDate
  */
-- (NSArray *)revListSortedByDate;
+- (NSArray *)revListSortedByDate __attribute__ ((deprecated));
 
 /*!
  * Returns an array of commit objects sorted by topology.
@@ -200,7 +200,7 @@
  * \sa revList
  * \sa GITRevList::arrayOfCommitsSortedByTopology
  */
-- (NSArray *)revListSortedByTopology;
+- (NSArray *)revListSortedByTopology __attribute__ ((deprecated));
 
 /*!
  * Returns an array of commit objects sorted by topology and commit date.
@@ -212,6 +212,6 @@
  * \sa revList
  * \sa GITRevList::arrayOfCommitsSortedByTopologyAndDate
  */
-- (NSArray *)revListSortedByTopologyAndDate;
+- (NSArray *)revListSortedByTopologyAndDate __attribute__ ((deprecated));
 
 @end
