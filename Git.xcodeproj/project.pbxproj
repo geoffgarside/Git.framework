@@ -38,6 +38,8 @@
 		F5124D5F10CC5423002B834B /* NSRangeEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D5D10CC5423002B834B /* NSRangeEnd.m */; };
 		F5124D9610CC8A2C002B834B /* GITPackObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F5124D9410CC8A2C002B834B /* GITPackObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5124D9710CC8A2C002B834B /* GITPackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F5124D9510CC8A2C002B834B /* GITPackObject.m */; };
+		F518F03C11EA47F000538BE8 /* GITRevList.h in Headers */ = {isa = PBXBuildFile; fileRef = F518F03A11EA47F000538BE8 /* GITRevList.h */; };
+		F518F03D11EA47F000538BE8 /* GITRevList.m in Sources */ = {isa = PBXBuildFile; fileRef = F518F03B11EA47F000538BE8 /* GITRevList.m */; };
 		F52D57F8111DA4FC005A461E /* GITCommitEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = F52D57F6111DA4FC005A461E /* GITCommitEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F52D57F9111DA4FC005A461E /* GITCommitEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F52D57F7111DA4FC005A461E /* GITCommitEnumerator.m */; };
 		F553A87010FFDD80007799A9 /* GITLooseObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F553A86E10FFDD80007799A9 /* GITLooseObject.h */; };
@@ -143,6 +145,8 @@
 		F5124D5D10CC5423002B834B /* NSRangeEnd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSRangeEnd.m; path = Source/Category/NSRange/NSRangeEnd.m; sourceTree = "<group>"; };
 		F5124D9410CC8A2C002B834B /* GITPackObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackObject.h; path = Source/GITPackObject.h; sourceTree = "<group>"; };
 		F5124D9510CC8A2C002B834B /* GITPackObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackObject.m; path = Source/GITPackObject.m; sourceTree = "<group>"; };
+		F518F03A11EA47F000538BE8 /* GITRevList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRevList.h; path = Source/GITRevList.h; sourceTree = "<group>"; };
+		F518F03B11EA47F000538BE8 /* GITRevList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITRevList.m; path = Source/GITRevList.m; sourceTree = "<group>"; };
 		F52D57F6111DA4FC005A461E /* GITCommitEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITCommitEnumerator.h; path = Source/GITCommitEnumerator.h; sourceTree = "<group>"; };
 		F52D57F7111DA4FC005A461E /* GITCommitEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITCommitEnumerator.m; path = Source/GITCommitEnumerator.m; sourceTree = "<group>"; };
 		F553A86E10FFDD80007799A9 /* GITLooseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITLooseObject.h; path = Source/GITLooseObject.h; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 				F594CB2611864CE500E82F38 /* GITGraph.m */,
 				F594CB29118777C800E82F38 /* GITGraphNode.h */,
 				F594CB2A118777C800E82F38 /* GITGraphNode.m */,
+				F518F03A11EA47F000538BE8 /* GITRevList.h */,
+				F518F03B11EA47F000538BE8 /* GITRevList.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 				F553A8781101FACC007799A9 /* GITPackCollection.h in Headers */,
 				F52D57F8111DA4FC005A461E /* GITCommitEnumerator.h in Headers */,
 				F593ABEC117EE28600B9DEB0 /* Git.h in Headers */,
+				F518F03C11EA47F000538BE8 /* GITRevList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,6 +736,7 @@
 				F52D57F9111DA4FC005A461E /* GITCommitEnumerator.m in Sources */,
 				F594CB2811864CE500E82F38 /* GITGraph.m in Sources */,
 				F594CB2C118777C800E82F38 /* GITGraphNode.m in Sources */,
+				F518F03D11EA47F000538BE8 /* GITRevList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
