@@ -11,6 +11,7 @@
 
 
 @class GITRefResolver, GITPackCollection, GITObject, GITObjectHash, GITCommit;
+@class GITRevList;
 
 /*!
  * The GITRepo class declares the programmatic interface to the repository.
@@ -162,30 +163,55 @@
 - (GITCommitEnumerator *)enumeratorWithMode: (GITCommitEnumeratorMode)mode;
 
 /*!
+ * Returns a RevList object based on the HEAD of the receiver.
+ *
+ * \return RevList object based on the HEAD of the receiver.
+ * \sa revListFromCommit:
+ */
+- (GITRevList *)revList;
+
+/*!
+ * Returns a RevList object based on the given \a head.
+ *
+ * \return RevList object based on the given \a head.
+ * \sa revList
+ */
+- (GITRevList *)revListFromCommit: (GITCommit *)head;
+
+/*!
  * Returns an array of commit objects sorted by their commit date.
  *
  * The result of this method is equivalent to <tt>git rev-list HEAD</tt>.
  *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByDate] instead
  * \return array of commits sorted by date
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByDate
  */
-- (NSArray *)revListSortedByDate;
+- (NSArray *)revListSortedByDate __attribute__ ((deprecated));
 
 /*!
  * Returns an array of commit objects sorted by topology.
  *
  * The result of this method is equivalent to <tt>git rev-list --topo-order HEAD</tt>.
  *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByTopology] instead
  * \return array of commits sorted by topology
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByTopology
  */
-- (NSArray *)revListSortedByTopology;
+- (NSArray *)revListSortedByTopology __attribute__ ((deprecated));
 
 /*!
  * Returns an array of commit objects sorted by topology and commit date.
  *
  * The result of this method is equivalent to <tt>git rev-list --date-order HEAD</tt>.
  *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByTopologyAndDate] instead
  * \return array of commits sorted by topology and date
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByTopologyAndDate
  */
-- (NSArray *)revListSortedByTopologyAndDate;
+- (NSArray *)revListSortedByTopologyAndDate __attribute__ ((deprecated));
 
 @end

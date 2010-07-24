@@ -165,6 +165,32 @@ describe "GITRepo -head" do
   end
 end
 
+describe "GITRepo -revList" do
+  before do
+    @repo = graph_repository.git_repo
+    @revList = @repo.revList
+  end
+  should "not be nil" do
+    @revList.should.not.be.nil
+  end
+  should "be a GITRevList object" do
+    @revList.should.be.kind_of GITRevList
+  end
+end
+
+describe "GITRepo -revListFromCommit:" do
+  before do
+    @repo = graph_repository.git_repo
+    @revList = @repo.revListFromCommit(@repo.head)
+  end
+  should "not be nil" do
+    @revList.should.not.be.nil
+  end
+  should "be a GITRevList object" do
+    @revList.should.be.kind_of GITRevList
+  end
+end
+
 describe "GITRepo Rev-List Methods" do
   before do
     @repo = graph_repository.git_repo

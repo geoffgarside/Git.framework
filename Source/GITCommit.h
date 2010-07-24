@@ -45,6 +45,8 @@
     NSString *message;          //!< Commit message
 
     NSData *cachedData;         //!< Copy of the data of the object, used for lazy object loading
+
+    NSTimeInterval nodeSortTimeInterval;
 }
 
 //! \name Properties
@@ -97,5 +99,7 @@
  * \sa parentShas
  */
 - (BOOL)isInitial;
+
+- (NSNumber *)nodeSortTimeInterval;
 
 @end

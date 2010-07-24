@@ -25,6 +25,10 @@ static parsingRecord committerParsingRecord     = { "committer ", 10, 10, 0, '>'
 static parsingRecord dateParsingRecord          = { " ", 1, 1, 10, ' ' };
 static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
 
+// For parsing out the committer time in the initializer
+static parsingRecord skipAuthorParsingRecord    = { "author ", 7, 7, 0, '\n' };
+static parsingRecord rawDateParsingRecord       = { "committer ", 10, -17, 10, '\n' };
+
 @interface GITCommit ()
 @property (retain) GITObjectHash *treeSha1;
 @property (copy) NSData *cachedData;
@@ -84,7 +88,21 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     self.cachedData = cached;
     [cached release];
 
+    // Get the committer date information now, to help the GITGraph out
+    const char *rawCommitterDate;
+    parseObjectRecord(&dataBytes, skipAuthorParsingRecord, NULL, NULL);
+    if ( !parseObjectRecord(&dataBytes, rawDateParsingRecord, &rawCommitterDate, NULL) ) {
+        GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing committer date from commit", @"GITObjectErrorParsingFailed"));
+        [self release];
+        return nil;
+    }
+    nodeSortTimeInterval = (NSTimeInterval)strtod(rawCommitterDate, NULL);
+
     return self;
+}
+
+- (NSNumber *)nodeSortTimeInterval {
+    return [NSNumber numberWithDouble:nodeSortTimeInterval];
 }
 
 - (void)dealloc {
