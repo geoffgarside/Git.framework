@@ -203,37 +203,13 @@ done:
 }
 
 - (NSArray *)revListSortedByDate {
-    GITGraph *graph = [[GITGraph alloc] initWithStartingCommit:[self head]];
-    NSArray *nodes = [graph arrayOfNodesSortedByDate];
-    NSMutableArray *list = [NSMutableArray arrayWithCapacity:[nodes count]];
-
-    for ( GITGraphNode *n in nodes )
-        [list addObject:[n object]];
-
-    [graph release];
-    return [[list copy] autorelease];
+    return [[self revList] arrayOfCommitsSortedByDate];
 }
 - (NSArray *)revListSortedByTopology {
-    GITGraph *graph = [[GITGraph alloc] initWithStartingCommit:[self head]];
-    NSArray *nodes = [graph arrayOfNodesSortedByTopology];
-    NSMutableArray *list = [NSMutableArray arrayWithCapacity:[nodes count]];
-
-    for ( GITGraphNode *n in nodes )
-        [list addObject:[n object]];
-
-    [graph release];
-    return [[list copy] autorelease];
+    return [[self revList] arrayOfCommitsSortedByTopology];
 }
 - (NSArray *)revListSortedByTopologyAndDate {
-    GITGraph *graph = [[GITGraph alloc] initWithStartingCommit:[self head]];
-    NSArray *nodes = [graph arrayOfNodesSortedByTopologyAndDate];
-    NSMutableArray *list = [NSMutableArray arrayWithCapacity:[nodes count]];
-
-    for ( GITGraphNode *n in nodes )
-        [list addObject:[n object]];
-
-    [graph release];
-    return [[list copy] autorelease];
+    return [[self revList] arrayOfCommitsSortedByTopologyAndDate];
 }
 
 @end
