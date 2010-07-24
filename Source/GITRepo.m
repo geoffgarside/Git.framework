@@ -19,6 +19,7 @@
 #import "GITCommitEnumerator.h"
 #import "GITGraph.h"
 #import "GITGraphNode.h"
+#import "GITRevList.h"
 
 
 @interface GITRepo ()
@@ -192,6 +193,13 @@ done:
 
 - (GITCommitEnumerator *)enumeratorWithMode: (GITCommitEnumeratorMode)mode {
     return [GITCommitEnumerator enumeratorFromCommit:[self head] mode:mode];
+}
+
+- (GITRevList *)revList {
+    return [self revListFromCommit:[self head]];
+}
+- (GITRevList *)revListFromCommit: (GITCommit *)head {
+    return [GITRevList revListWithCommit:head];
 }
 
 - (NSArray *)revListSortedByDate {

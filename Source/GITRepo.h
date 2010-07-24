@@ -11,6 +11,7 @@
 
 
 @class GITRefResolver, GITPackCollection, GITObject, GITObjectHash, GITCommit;
+@class GITRevList;
 
 /*!
  * The GITRepo class declares the programmatic interface to the repository.
@@ -160,6 +161,22 @@
  * \sa enumerator
  */
 - (GITCommitEnumerator *)enumeratorWithMode: (GITCommitEnumeratorMode)mode;
+
+/*!
+ * Returns a RevList object based on the HEAD of the receiver.
+ *
+ * \return RevList object based on the HEAD of the receiver.
+ * \sa revListFromCommit:
+ */
+- (GITRevList *)revList;
+
+/*!
+ * Returns a RevList object based on the given \a head.
+ *
+ * \return RevList object based on the given \a head.
+ * \sa revList
+ */
+- (GITRevList *)revListFromCommit: (GITCommit *)head;
 
 /*!
  * Returns an array of commit objects sorted by their commit date.
