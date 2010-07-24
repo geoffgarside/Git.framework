@@ -29,9 +29,9 @@
             return [GITBlob class];
         case GITObjectTypeTag:
             return [GITTag class];
+        default:
+            return nil;
     }
-
-    return nil;
 }
 
 + (NSString *)stringForObjectType: (GITObjectType)type {
