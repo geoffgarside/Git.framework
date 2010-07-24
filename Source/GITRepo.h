@@ -183,7 +183,10 @@
  *
  * The result of this method is equivalent to <tt>git rev-list HEAD</tt>.
  *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByDate] instead
  * \return array of commits sorted by date
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByDate
  */
 - (NSArray *)revListSortedByDate;
 
@@ -192,7 +195,10 @@
  *
  * The result of this method is equivalent to <tt>git rev-list --topo-order HEAD</tt>.
  *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByTopology] instead
  * \return array of commits sorted by topology
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByTopology
  */
 - (NSArray *)revListSortedByTopology;
 
@@ -201,7 +207,10 @@
  *
  * The result of this method is equivalent to <tt>git rev-list --date-order HEAD</tt>.
  *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByTopologyAndDate] instead
  * \return array of commits sorted by topology and date
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByTopologyAndDate
  */
 - (NSArray *)revListSortedByTopologyAndDate;
 
