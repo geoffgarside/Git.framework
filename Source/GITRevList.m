@@ -10,6 +10,8 @@
 #import "GITCommit.h"
 #import "GITGraph.h"
 #import "GITGraphNode.h"
+#import "GITTree.h"
+#import "GITTreeItem.h"
 
 
 @implementation GITRevList
@@ -62,6 +64,29 @@
         [list addObject:[n object]];
 
     return [[list copy] autorelease];
+}
+- (void)addContentsOfTree: (GITTree *)tree intoArray:(NSMutableArray *)objects {
+    NSArray *items = [tree items];
+    [objects addObject:tree];
+
+    for ( GITTreeItem *treeItem in items ) {
+        [objects addObject:[treeItem item]];
+        if ( [treeItem isDirectory] && ![treeItem isModule] ) {
+            [self addContentsOfTree:(GITTree *)[treeItem item] intoArray:objects];
+        }
+    }
+}
+- (NSArray *)arrayOfReachableObjects {
+    NSArray *commits = [self arrayOfCommitsSortedByDate];
+    NSMutableArray *objects = [[NSMutableArray alloc] initWithCapacity:[commits count]]; // we should have at least as many trees
+
+    for ( GITCommit *commit in commits ) {
+        [self addContentsOfTree:[commit tree] intoArray:objects];
+    }
+
+    NSArray *array = [commits arrayByAddingObjectsFromArray:objects];
+    [objects release];
+    return array;
 }
 
 @end
