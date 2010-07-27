@@ -73,4 +73,14 @@
  */
 - (NSArray *)arrayOfCommitsSortedByTopologyAndDate;
 
+/*!
+ * Returns an array of the objects which are reachable from the head of the receiver.
+ *
+ * This is primarily used when collecting the list of objects to include in a PACK file
+ * prior to generation.
+ *
+ * \return Array of objects reachable from the head of the receiver.
+ */
+- (NSArray *)arrayOfReachableObjects;
+
 @end
