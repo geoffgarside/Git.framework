@@ -47,6 +47,22 @@ the built product will be in the `builds/Release/` directory.
 
 You might want to rename the *Copy Files* build phase to *Copy Frameworks*
 
+Building in Xcode and Info.plist Versioning
+--------------------------------------------
+Some issues have been reported when building the framework in Xcode and the Info.plist Version script failing to find `git`. The source of this issue stems from how Xcode is started. If Xcode is started from a Terminal session via `open Git.xcodeproj` or similar then Xcode will inherit the `PATH` of the Terminal session. In the majority of cases this is results in no issues.
+
+When Xcode is started from Finder then it inherits the `PATH` from the environment, which unfortunately is not the same as the `PATH` used by shells in Terminal. To change the environment `PATH` requires creating or modifying `~/.MacOSX/environment.plist` with the Property List Editor and adding/editing the `PATH` key in the plist.
+
+As an example my `~/.MacOSX/environment.plist` looks like this when passed to `cat`
+
+    {
+      PATH = "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/geoffgarside/bin";
+    }
+
+After creating or modifying this file you will unfortunately have to login/logout for it to be picked up.
+
+Thanks to Brian Chapados who did the detective work on finding this information out.
+
 Running the Test Suite
 -----------------------
 The test suite requires [MacRuby 0.5][macruby] and [Bacon][bacon] and can be run either through Xcode or `rake` in the Terminal. So far tests have been run using MacRuby r3090 and Bacon v0.9.
