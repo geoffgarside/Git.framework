@@ -72,10 +72,10 @@ describe "GITRevList" do
         @revList.subtractDescendentsFromCommit(@tail)
 
         @list = @revList.arrayOfReachableObjects
-        @expected = graph_repository.git("rev-list --objects master ^#{sha_str}").split("\n").map { |l| l.strip.split(" ")[0] }
+        @expected = graph_repository.git("rev-list --objects master ^#{sha_str}").split("\n").map { |l| l.strip }
       end
       should "return expected list of objects" do
-        @list.map { |o| o.sha1.unpackedString }.should == @expected
+        @list.map { |o| "#{o.sha1.unpackedString}#{o.respond_to?(:name) ? " #{o.name}" : ""}" }.should == @expected
       end
     end
   end

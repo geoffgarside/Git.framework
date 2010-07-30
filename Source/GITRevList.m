@@ -70,7 +70,7 @@
     [objects addObject:tree];
 
     for ( GITTreeItem *treeItem in items ) {
-        [objects addObject:[treeItem item]];
+        [objects addObject:treeItem];
         if ( [treeItem isDirectory] && ![treeItem isModule] ) {
             [self addContentsOfTree:(GITTree *)[treeItem item] intoArray:objects];
         }
