@@ -79,7 +79,7 @@ static parsingRecord rawDateParsingRecord       = { "committer ", 10, -17, 10, '
         [parentHash release];
     }
 
-    self.parentShas = [theParents copy];
+    self.parentShas = [[theParents copy] autorelease];
     [theParents release];
 
     // We need to store the rest of the data in cachedRawData;
