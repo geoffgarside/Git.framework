@@ -38,7 +38,7 @@ typedef enum {
 //! \name Properties
 @property (retain) GITTree *parent;
 @property (assign) NSUInteger mode;
-@property (copy) NSString *name;
+@property (copy)   NSString *name;
 @property (retain) GITObject *item;
 @property (retain) GITObjectHash *sha1;
 
