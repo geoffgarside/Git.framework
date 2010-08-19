@@ -53,8 +53,13 @@
     return nil;
 }
 
+- (NSUInteger)_numberOfObjects {
+    return 0;
+}
+
 - (NSUInteger)numberOfObjects {
-    return [[self index] numberOfObjects];
+    GITPackIndex *idx = [self index];
+    return (idx ? [idx numberOfObjects] : [self _numberOfObjects]);
 }
 
 - (GITPackObject *)unpackObjectWithSha1: (GITObjectHash *)objectHash error: (NSError **)error {

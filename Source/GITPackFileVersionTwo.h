@@ -24,6 +24,7 @@ typedef struct {
 @interface GITPackFileVersionTwo : GITPackFile {
     NSData *data;
     GITPackIndex *index;
+    NSUInteger numberOfObjects;
 }
 
 @property (copy) NSData *data;

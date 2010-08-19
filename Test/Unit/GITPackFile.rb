@@ -42,6 +42,22 @@ describe "GITPackFileVersionTwo" do
       @obj.should.be.kind_of GITPackObject
     end
   end
+
+  describe '-numberOfObjects' do
+    describe 'with GITPackIndex' do
+      should 'equal that of the GITPackIndex' do
+        @pack.numberOfObjects.should == @pack.index.numberOfObjects
+      end
+    end
+    describe 'without GITPackIndex' do
+      before do
+        @pack.index = nil
+      end
+      should 'equal that of _numberOfObjects' do
+        @pack.numberOfObjects.should == @pack._numberOfObjects
+      end
+    end
+  end
 end
 
 describe "GITPackFileVersionTwo with delta base offsets" do

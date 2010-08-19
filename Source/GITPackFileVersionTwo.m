@@ -15,6 +15,8 @@
 #import "NSData+Compression.h"
 
 
+static const NSRange GITPackFileVersionTwoNumberOfObjectsRange = { 8, 4 };
+
 @implementation GITPackFileVersionTwo
 
 @synthesize data, index;
@@ -38,6 +40,15 @@
     self.index = nil;
 
     [super dealloc];
+}
+
+- (NSUInteger)_numberOfObjects {
+    if ( !numberOfObjects ) {
+        uint32_t value;
+        [self.data getBytes:&value range:GITPackFileVersionTwoNumberOfObjectsRange];
+        numberOfObjects = CFSwapInt32BigToHost(value);
+    }
+    return numberOfObjects;
 }
 
 - (GITPackObject *)unpackObjectWithSha1: (GITObjectHash *)objectHash error: (NSError **)error {
