@@ -10,6 +10,8 @@
 #import "GITPackFileWriterPlaceholder.h"
 
 
+static const NSUInteger GITPackFileWriterDefaultVersion = 2;
+
 @implementation GITPackFileWriter
 
 + (id)alloc {
@@ -29,7 +31,7 @@
 }
 
 + (id)packFileWriter {
-    return [self packFileWriterWithVersion:2];
+    return [self packFileWriterWithVersion:GITPackFileWriterDefaultVersion];
 }
 
 + (id)packFileWriterWithVersion: (NSUInteger)version error: (NSError **)error {
