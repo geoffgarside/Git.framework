@@ -1,0 +1,31 @@
+//
+//  GITPackFileWriter.m
+//  Git.framework
+//
+//  Created by Geoff Garside on 31/07/2010.
+//  Copyright 2010 Geoff Garside. All rights reserved.
+//
+
+#import "GITPackFileWriter.h"
+#import "GITPackFileWriterPlaceholder.h"
+
+
+@implementation GITPackFileWriter
+
++ (id)alloc {
+    if ([self isEqual:[GITPackFileWriter class]])
+        return [GITPackFileWriterPlaceholder alloc];
+    else return [super alloc];
+}
+
++ (id)allocWithZone: (NSZone *)zone {
+    if ([self isEqual:[GITPackFileWriter class]])
+        return [GITPackFileWriterPlaceholder allocWithZone:zone];
+    else return [super allocWithZone:zone];
+}
+
+- (id)copyWithZone: (NSZone *)zone {
+    return self;
+}
+
+@end

@@ -113,6 +113,12 @@
 		F5D0136A10A5C836003EFA8F /* GITPackFilePlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136810A5C836003EFA8F /* GITPackFilePlaceholder.m */; };
 		F5D0137110A5DA9B003EFA8F /* GITPackFileVersionTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D0136F10A5DA9B003EFA8F /* GITPackFileVersionTwo.h */; };
 		F5D0137210A5DA9B003EFA8F /* GITPackFileVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */; };
+		F5E534ED1204148E00A5FE5D /* GITPackFileWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F5E534EB1204148E00A5FE5D /* GITPackFileWriter.h */; };
+		F5E534EE1204148E00A5FE5D /* GITPackFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E534EC1204148E00A5FE5D /* GITPackFileWriter.m */; };
+		F5E534F11204222700A5FE5D /* GITPackFileWriterPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F5E534EF1204222700A5FE5D /* GITPackFileWriterPlaceholder.h */; };
+		F5E534F21204222700A5FE5D /* GITPackFileWriterPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E534F01204222700A5FE5D /* GITPackFileWriterPlaceholder.m */; };
+		F5E534F51204223700A5FE5D /* GITPackFileWriterVersionTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = F5E534F31204223700A5FE5D /* GITPackFileWriterVersionTwo.h */; };
+		F5E534F61204223700A5FE5D /* GITPackFileWriterVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E534F41204223700A5FE5D /* GITPackFileWriterVersionTwo.m */; };
 		F5FC28C310A6301D00EFB922 /* GITPackIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = F5FC28C110A6301D00EFB922 /* GITPackIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5FC28C410A6301D00EFB922 /* GITPackIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FC28C210A6301D00EFB922 /* GITPackIndex.m */; };
 		F5FC28C710A630A900EFB922 /* GITPackIndexPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F5FC28C510A630A900EFB922 /* GITPackIndexPlaceholder.h */; };
@@ -235,6 +241,12 @@
 		F5D0136810A5C836003EFA8F /* GITPackFilePlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFilePlaceholder.m; path = Source/GITPackFilePlaceholder.m; sourceTree = "<group>"; };
 		F5D0136F10A5DA9B003EFA8F /* GITPackFileVersionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileVersionTwo.h; path = Source/GITPackFileVersionTwo.h; sourceTree = "<group>"; };
 		F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileVersionTwo.m; path = Source/GITPackFileVersionTwo.m; sourceTree = "<group>"; };
+		F5E534EB1204148E00A5FE5D /* GITPackFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileWriter.h; path = Source/GITPackFileWriter.h; sourceTree = "<group>"; };
+		F5E534EC1204148E00A5FE5D /* GITPackFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriter.m; path = Source/GITPackFileWriter.m; sourceTree = "<group>"; };
+		F5E534EF1204222700A5FE5D /* GITPackFileWriterPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileWriterPlaceholder.h; path = Source/GITPackFileWriterPlaceholder.h; sourceTree = "<group>"; };
+		F5E534F01204222700A5FE5D /* GITPackFileWriterPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriterPlaceholder.m; path = Source/GITPackFileWriterPlaceholder.m; sourceTree = "<group>"; };
+		F5E534F31204223700A5FE5D /* GITPackFileWriterVersionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileWriterVersionTwo.h; path = Source/GITPackFileWriterVersionTwo.h; sourceTree = "<group>"; };
+		F5E534F41204223700A5FE5D /* GITPackFileWriterVersionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriterVersionTwo.m; path = Source/GITPackFileWriterVersionTwo.m; sourceTree = "<group>"; };
 		F5F2327311FAFE140004547F /* GITCommitEnumerator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITCommitEnumerator.rb; sourceTree = "<group>"; };
 		F5F2327411FAFE140004547F /* GITGraph.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITGraph.rb; sourceTree = "<group>"; };
 		F5F2327511FAFE140004547F /* GITLooseObject.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITLooseObject.rb; sourceTree = "<group>"; };
@@ -528,6 +540,12 @@
 				F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */,
 				F553A8761101FACC007799A9 /* GITPackCollection.h */,
 				F553A8771101FACC007799A9 /* GITPackCollection.m */,
+				F5E534EB1204148E00A5FE5D /* GITPackFileWriter.h */,
+				F5E534EC1204148E00A5FE5D /* GITPackFileWriter.m */,
+				F5E534EF1204222700A5FE5D /* GITPackFileWriterPlaceholder.h */,
+				F5E534F01204222700A5FE5D /* GITPackFileWriterPlaceholder.m */,
+				F5E534F31204223700A5FE5D /* GITPackFileWriterVersionTwo.h */,
+				F5E534F41204223700A5FE5D /* GITPackFileWriterVersionTwo.m */,
 			);
 			name = GITPackFile;
 			sourceTree = "<group>";
@@ -598,6 +616,9 @@
 				F52D57F8111DA4FC005A461E /* GITCommitEnumerator.h in Headers */,
 				F593ABEC117EE28600B9DEB0 /* Git.h in Headers */,
 				F518F03C11EA47F000538BE8 /* GITRevList.h in Headers */,
+				F5E534ED1204148E00A5FE5D /* GITPackFileWriter.h in Headers */,
+				F5E534F11204222700A5FE5D /* GITPackFileWriterPlaceholder.h in Headers */,
+				F5E534F51204223700A5FE5D /* GITPackFileWriterVersionTwo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,6 +776,9 @@
 				F594CB2811864CE500E82F38 /* GITGraph.m in Sources */,
 				F594CB2C118777C800E82F38 /* GITGraphNode.m in Sources */,
 				F518F03D11EA47F000538BE8 /* GITRevList.m in Sources */,
+				F5E534EE1204148E00A5FE5D /* GITPackFileWriter.m in Sources */,
+				F5E534F21204222700A5FE5D /* GITPackFileWriterPlaceholder.m in Sources */,
+				F5E534F61204223700A5FE5D /* GITPackFileWriterVersionTwo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
