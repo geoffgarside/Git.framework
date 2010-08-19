@@ -31,7 +31,7 @@ static const NSUInteger GITPackFileWriterDefaultVersion = 2;
 }
 
 + (id)packFileWriter {
-    return [self packFileWriterWithVersion:GITPackFileWriterDefaultVersion];
+    return [self packFileWriterWithVersion:GITPackFileWriterDefaultVersion error:NULL];
 }
 
 + (id)packFileWriterWithVersion: (NSUInteger)version error: (NSError **)error {
