@@ -8,6 +8,7 @@
 
 #import "GITPackFileWriterPlaceholder.h"
 #import "GITPackFileWriterVersionTwo.h"
+#import "GITError.h"
 
 
 @implementation GITPackFileWriterPlaceholder
