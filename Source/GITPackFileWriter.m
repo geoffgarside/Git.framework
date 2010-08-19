@@ -28,4 +28,22 @@
     return self;
 }
 
++ (id)packFileWriter {
+    return [self packFileWriterWithVersion:2];
+}
+
++ (id)packFileWriterWithVersion: (NSUInteger)version error: (NSError **)error {
+    return [[[[self  class] alloc] initWithVersion:version error:error] autorelease];
+}
+
+- (id)initWithVersion: (NSUInteger)version error: (NSError **)error {
+    [self doesNotRecognizeSelector: _cmd];
+    [self release];
+    return nil;
+}
+
+- (NSUInteger)version {
+    return 0;
+}
+
 @end

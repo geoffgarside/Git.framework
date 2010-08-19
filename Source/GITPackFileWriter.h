@@ -13,4 +13,11 @@
 
 }
 
+//! \name Creating and Initializing PACK Writers
++ (id)packFileWriter;
++ (id)packFileWriterWithVersion: (NSUInteger)version error: (NSError **)error;
+- (id)initWithVersion: (NSUInteger)version error: (NSError **)error;
+
+- (NSUInteger)version;
+
 @end
