@@ -11,4 +11,19 @@
 
 @implementation GITPackFileWriterVersionTwo
 
+- (NSUInteger)version {
+    return 2;
+}
+
+- (id)initWithVersion: (NSUInteger)version error: (NSError **)error {
+    if ( ![super init] )
+        return nil;
+
+    return self;
+}
+
+- (void)dealloc {
+    [super dealloc];
+}
+
 @end
