@@ -70,7 +70,8 @@ static signed char from_hex[256] = {
         return [str dataUsingEncoding:NSASCIIStringEncoding];
     return [self unpackedDataFromData:[str dataUsingEncoding:NSISOLatin1StringEncoding]];
 }
-+ (NSData *)packedDataFromString: (NSString *)str {
++ (NSData *)packedDataFromString: (NSString *)sha {
+    NSString *str = [sha stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     if ( [str length] == GITObjectHashPackedLength )
         return [str dataUsingEncoding:NSISOLatin1StringEncoding];
     return [self packedDataFromData:[str dataUsingEncoding:NSASCIIStringEncoding]];
