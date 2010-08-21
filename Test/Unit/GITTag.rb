@@ -1,10 +1,13 @@
 require 'zlib'
 
 class Bacon::Context
-  def tagForSha(sha)
+  def tagDataForSha(sha)
     file = "#{simple_repository.root}/.git/objects/%s/%s" % [sha[0,2], sha[2..-1]]
-    meta, data = Zlib::Inflate.inflate(File.read(file)).split("\x00")
-    GITTag.tagFromData(data.to_data, sha1:GITObjectHash.objectHashWithString("sha"), repo:@repo, error:@err)
+    Zlib::Inflate.inflate(File.read(file)).split("\x00", 2)[1].to_data
+  end
+  def tagForSha(sha)
+    d = tagDataForSha(sha)
+    GITTag.tagFromData(d, sha1:GITObjectHash.objectHashWithString(sha), repo:@repo, error:@err)
   end
 end
 
