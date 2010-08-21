@@ -61,6 +61,14 @@ typedef enum {
  */
 - (id)initFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
+//! \name RAW formatters
+/*!
+ * Returns the content of the receiver as required for writing to the filesystem or PACK file.
+ *
+ * \return NSData of the formatted object body
+ */
+- (NSData *)rawContent;
+
 @end
 
 /*!
