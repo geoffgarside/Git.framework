@@ -62,6 +62,14 @@ describe 'GITCommit' do
     should 'have message' do
       @commit.message.should == "Update testfile.txt\n"
     end
+    describe '-rawContent' do
+      before do
+        @data = commitDataForSha(@commit.sha1.unpackedString)
+      end
+      should 'return formatted commit' do
+        @commit.rawContent.should === @data
+      end
+    end
   end
   describe "initial commit" do
     before do
