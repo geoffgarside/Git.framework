@@ -156,7 +156,9 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
 
    dataBytes++;            //!< Skip over the \n between the header data and the message body
    NSUInteger messageLen   = [cachedData length] - (dataBytes - start) - 1;
-   NSString *messageString = [[NSString alloc] initWithBytes:dataBytes length:messageLen encoding:NSASCIIStringEncoding];
+   NSString *messageString = [[NSString alloc] initWithBytes:dataBytes length:messageLen encoding:NSUTF8StringEncoding];
+   if ( messageString == nil )
+       messageString       = [[NSString alloc] initWithBytes:dataBytes length:messageLen encoding:NSASCIIStringEncoding];
 
    self.message            = messageString;
 
