@@ -1,10 +1,21 @@
+require 'zlib'
+
+class Bacon::Context
+  def treeDataForSha(sha)
+    file = "#{simple_repository.root}/.git/objects/%s/%s" % [sha[0,2], sha[2..-1]]
+    Zlib::Inflate.inflate(File.read(file)).split("\x00", 2)[1].to_data
+  end
+  def treeForSha(sha)
+    d = treeDataForSha(sha)
+    GITTree.treeFromData(d, sha1:GITObjectHash.objectHashWithString(sha), repo:@repo, error:@err)
+  end
+end
+
 describe 'GITTree' do
   before do
     @err = Pointer.new(:object)
     @repo = simple_repository.git_repo
-    @treeData = NSData.dataWithContentsOfFile("#{simple_repository.objects_path}/22/7c6c88ba35e67a1341a068c07d1c1639d6582e").zlibInflate
-    @data = @treeData.subdataWithRange(NSMakeRange(8, 78))  # This is specific to this object
-    @tree = GITTree.treeFromData(@data, sha1:GITObjectHash.objectHashWithString("227c6c88ba35e67a1341a068c07d1c1639d6582e"), repo:@repo, error:@err)
+    @tree = treeForSha('227c6c88ba35e67a1341a068c07d1c1639d6582e')
   end
 
   should 'not be nil' do
