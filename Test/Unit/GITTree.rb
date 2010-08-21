@@ -75,4 +75,13 @@ describe 'GITTree' do
       @item.sha1.unpackedString.should == 'bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea'
     end
   end
+
+  describe '-rawContent' do
+    before do
+      @data = treeDataForSha(@tree.sha1.unpackedString)
+    end
+    should 'return data in the correct format' do
+      @tree.rawContent.should === @data
+    end
+  end
 end

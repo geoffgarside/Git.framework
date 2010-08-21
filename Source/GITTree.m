@@ -104,4 +104,37 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
     [super dealloc];
 }
 
+- (NSData *)rawContentFromTreeItem: (GITTreeItem *)item {
+    NSString *modeAndName = [NSString stringWithFormat:@"%06x %@", item.mode, item.name];
+
+    size_t dataSize = 0;
+    dataSize += [modeAndName length];
+    dataSize += 1;                                          // NULL byte separator
+    dataSize += GITObjectHashPackedLength;
+
+    NSMutableData *rawContent = [[NSMutableData alloc] initWithCapacity:dataSize];
+
+    [rawContent appendData:[modeAndName dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendBytes:"\0" length:1];                 // Append a NULL byte
+    [rawContent appendData:[item.sha1 packedData]];
+
+    NSData *data = [[rawContent copy] autorelease];
+    [rawContent release];
+    return data;
+}
+
+- (NSData *)rawContent {
+    NSMutableData *rawContent = [[NSMutableData alloc] init];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+    for ( GITTreeItem *item in self.items )
+        [rawContent appendData:[self rawContentFromTreeItem:item]];
+
+    [pool drain];
+
+    NSData *data = [[rawContent copy] autorelease];
+    [rawContent release];
+    return data;
+}
+
 @end
