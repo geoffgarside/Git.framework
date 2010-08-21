@@ -42,4 +42,8 @@
     [super dealloc];
 }
 
+- (NSData *)rawContent {
+    return self.content;
+}
+
 @end

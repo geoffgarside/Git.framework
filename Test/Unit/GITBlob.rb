@@ -24,4 +24,9 @@ describe 'GITBlob' do
   should 'hash the data' do
     @blob.sha1.unpackedString.should == @sha
   end
+  describe '-rawContent' do
+    should 'return NSData of the contents' do
+      @blob.rawContent.should == @data
+    end
+  end
 end
