@@ -229,4 +229,38 @@ static parsingRecord rawDateParsingRecord       = { "committer ", 10, -17, 10, '
     self.cachedData = nil;
 }
 
+- (NSData *)rawContent {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];             // Setup a pool for convenience
+
+    // Precompose our author and committer lines for data size calculations
+    NSString *authorLine = [NSString stringWithFormat:@"author %@ %@\n", self.author, self.authorDate];
+    NSString *committerLine = [NSString stringWithFormat:@"committer %@ %@\n", self.committer, self.committerDate];
+
+    // Calculate the size of the data required
+    size_t dataSize = 0;
+    dataSize += 5 + GITObjectHashLength + 1;                                // tree SHA1\n
+    dataSize += (7 + GITObjectHashLength + 1) * [self.parentShas count];    // parent SHA-1\n
+    dataSize += [authorLine length] + [committerLine length];               // author and parent lines
+    dataSize += 1;                                                          // line skip between header and message
+    dataSize += [self.message length];                                      // length of the message
+
+    // Create our data buffer, non-autoreleased so it doesn't swim in the pool.
+    NSMutableData *rawContent = [[NSMutableData alloc] initWithCapacity:dataSize];
+    [rawContent appendData:[[NSString stringWithFormat:@"tree %@\n", self.treeSha1] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    for ( GITObjectHash *sha in self.parentShas )                           // write parents
+        [rawContent appendData:[[NSString stringWithFormat:@"parent %@\n", sha] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [rawContent appendData:[authorLine dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[committerLine dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[self.message dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [pool drain];                                                           // Drain the pool of objects
+
+    NSData *data = [[rawContent copy] autorelease];                         // Create immutable copy
+    [rawContent release];                                                   // Bai bai mutable :'(
+    return data;
+}
+
 @end
