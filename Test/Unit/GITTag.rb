@@ -50,4 +50,12 @@ describe 'GITTag' do
   should 'have message' do
     @tag.message.should == "v0.0.0"
   end
+  describe '-rawContent' do
+    before do
+      @data = tagDataForSha(@tag.sha1.unpackedString)
+    end
+    should 'return formatted tag data' do
+      @tag.rawContent.should === @data
+    end
+  end
 end

@@ -166,4 +166,36 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
    self.cachedData = nil;
 }
 
+- (NSData *)rawContent {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];             // Setup a pool for convenience
+
+    NSString *typeName = [GITObject stringForObjectType:self.targetType];
+    NSString *taggerLine = [NSString stringWithFormat:@"tagger %@ %@\n", self.tagger, self.taggerDate];
+
+    size_t dataSize = 0;
+    dataSize += 7 + GITObjectHashLength + 1;                                // object SHA-1\n
+    dataSize += 5 + [typeName length] + 1;                                  // type %@\n
+    dataSize += 4 + [self.name length] + 1;                                 // tag %@\n
+    dataSize += [taggerLine length];                                        // tagger %@ %@\n
+    dataSize += 1;                                                          // \n
+    dataSize += [self.message length];                                      // %@
+
+    // Create our data buffer, non-autoreleased so it doesn't swim in the pool.
+    NSMutableData *rawContent = [[NSMutableData alloc] initWithCapacity:dataSize];
+
+    [rawContent appendData:[[NSString stringWithFormat:@"object %@\n", self.targetSha1] dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[[NSString stringWithFormat:@"type %@\n", typeName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[[NSString stringWithFormat:@"tag %@\n", self.name] dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[taggerLine dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[self.message dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]]; // required it seems
+
+    [pool drain];                                                           // Drain the pool of objects
+
+    NSData *data = [[rawContent copy] autorelease];                         // Create immutable copy
+    [rawContent release];                                                   // Bai bai mutable :'(
+    return data;
+}
+
 @end
