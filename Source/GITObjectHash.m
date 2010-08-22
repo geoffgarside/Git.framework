@@ -269,4 +269,13 @@ static signed char from_hex[256] = {
     return [self unpackedString];
 }
 
+- (NSComparisonResult)compare: (GITObjectHash *)other {
+    int result;
+
+    result = memcmp(raw, [other raw], 5);
+    if ( result == 0 ) return NSOrderedSame;
+    if ( result < 0 ) return NSOrderedAscending;
+    return NSOrderedDescending;
+}
+
 @end
