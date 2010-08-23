@@ -20,6 +20,7 @@
 #import "GITGraph.h"
 #import "GITGraphNode.h"
 #import "GITRevList.h"
+#import "GITRef.h"
 
 
 @interface GITRepo ()
@@ -189,7 +190,13 @@ done:
 }
 
 - (NSArray *)tags {
-    return [[self refResolver] tagRefs];
+    NSArray *tagRefs = [[self refResolver] tagRefs];
+    NSMutableArray *tags = [NSMutableArray arrayWithCapacity:[tagRefs count]];
+
+    for ( GITRef *ref in tagRefs )
+        [tags addObject:[ref target]];
+
+    return [[tags copy] autorelease];
 }
 
 - (GITObject *)objectWithSha1: (GITObjectHash *)objectHash error: (NSError **)error {
