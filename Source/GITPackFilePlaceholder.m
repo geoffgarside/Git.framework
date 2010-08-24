@@ -11,7 +11,6 @@
 #import "GITError.h"
 
 
-static const char const GITPackFileSignature[] = { 'P', 'A', 'C', 'K' };
 static const uint8_t const GITPackFileVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 };
 
 @implementation GITPackFilePlaceholder
