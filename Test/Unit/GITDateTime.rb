@@ -71,4 +71,26 @@ describe 'GITDateTime' do
       @string.should == "Sat Jan 28, 1984 at 07:30:00 +0000"
     end
   end
+  describe "-compare:" do
+    before do
+      @date1 = NSDate.dateWithTimeIntervalSince1970(444123000)
+      @date2 = NSDate.dateWithTimeIntervalSince1970(444126600)  # @date1 + 3600 seconds
+      @zone1 = NSTimeZone.timeZoneWithAbbreviation("EST")
+      @zone2 = NSTimeZone.timeZoneWithAbbreviation("CST")
+
+      @dateTime = GITDateTime.dateTimeWithDate(@date1, timeZone:@zone1)
+    end
+    should 'be the same with date and zone shifted by one hour' do
+      dt = GITDateTime.dateTimeWithDate(@date2, timeZone:@zone2)
+      @dateTime.compare(dt).should == NSOrderedSame
+    end
+    should 'be ascending with date shifted by one hour' do
+      dt = GITDateTime.dateTimeWithDate(@date2, timeZone:@zone1)
+      @dateTime.compare(dt).should == NSOrderedAscending
+    end
+    should 'be descending with zone shifted back one hour' do
+      dt = GITDateTime.dateTimeWithDate(@date1, timeZone:@zone2)
+      @dateTime.compare(dt).should == NSOrderedDescending
+    end
+  end
 end

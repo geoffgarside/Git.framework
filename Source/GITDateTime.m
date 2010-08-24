@@ -67,4 +67,16 @@
             [self.date timeIntervalSince1970], [self.timeZone offsetString]];
 }
 
+- (NSComparisonResult)compare: (GITDateTime *)rhs {
+    if ( [self.timeZone isEqualToTimeZone:rhs.timeZone] )
+        return [self.date compare:rhs.date];
+
+    // simple stuff out of the way, now if the time
+    // zones aren't equal we need to make them so.
+    NSTimeInterval secondsDifference = [self.timeZone secondsFromGMTForDate:self.date]
+        - [rhs.timeZone secondsFromGMTForDate:rhs.date];
+    NSDate *compareDate = [self.date dateByAddingTimeInterval:secondsDifference];
+    return [compareDate compare:rhs.date];
+}
+
 @end
