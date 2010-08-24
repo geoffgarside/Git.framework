@@ -71,3 +71,15 @@ describe "GITRef -resolve" do
     end
   end
 end
+
+describe 'GITRef -target' do
+  describe 'tag ref' do
+    before do
+      @ref = GITRef.refWithName("v0.0.0", andTarget:simple_repository.tags['v0.0.0'].sha, inRepo:simple_repository.git_repo)
+      @tgt = @ref.target
+    end
+    should 'not be nil' do
+      @tgt.should.not.be.nil
+    end
+  end
+end
