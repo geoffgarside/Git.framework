@@ -11,8 +11,6 @@
 #import "GITError.h"
 
 
-static const uint8_t const GITPackFileVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 };
-
 @implementation GITPackFilePlaceholder
 
 - (id)initWithPath: (NSString *)packPath error: (NSError **)error {
@@ -56,7 +54,7 @@ static const uint8_t const GITPackFileVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 }
     [packData getBytes:n range:NSMakeRange(4, 4)];
     
     // Initialise version specific class
-    if ( memcmp(n, GITPackFileVersionTwoBytes, 4) == 0 ) { // Version 2 PACK file
+    if ( memcmp(n, GITPackFileVersionTwoVersionBytes, 4) == 0 ) { // Version 2 PACK file
         return [[GITPackFileVersionTwo allocWithZone:z] initWithData:packData indexPath:indexPath error:error];
     }
     

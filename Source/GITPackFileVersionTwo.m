@@ -15,6 +15,7 @@
 #import "NSData+Compression.h"
 
 
+const uint8_t const GITPackFileVersionTwoVersionBytes[] = { 0x0, 0x0, 0x0, 0x2 };
 static const NSRange GITPackFileVersionTwoNumberOfObjectsRange = { 8, 4 };
 
 @implementation GITPackFileVersionTwo

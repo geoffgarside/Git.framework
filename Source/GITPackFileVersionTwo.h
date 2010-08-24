@@ -20,6 +20,8 @@ typedef struct {
     size_t size;
 } GITPackFileObjectHeader;
 
+extern const uint8_t const GITPackFileVersionTwoVersionBytes[];
+
 @class GITPackIndex;
 @interface GITPackFileVersionTwo : GITPackFile {
     NSData *data;
