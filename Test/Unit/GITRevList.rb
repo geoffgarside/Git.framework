@@ -78,5 +78,14 @@ describe "GITRevList" do
         @list.map { |o| "#{o.sha1.unpackedString}#{o.respond_to?(:name) ? " #{o.name}" : ""}" }.should == @expected
       end
     end
+    describe "with tags" do
+      before do
+        @list = @revList.arrayOfReachableObjectsAndTags(@repo.tags)
+        @expected = graph_repository.git("rev-list --objects --tags master").split("\n").map { |l| l.strip.split(" ")[0] }
+      end
+      should "return expected list of objects" do
+        @list.map { |o| o.sha1.unpackedString }.should == @expected
+      end
+    end
   end
 end
