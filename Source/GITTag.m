@@ -198,4 +198,12 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
     return data;
 }
 
+- (BOOL)refersToObjectHash: (GITObjectHash *)objectHash {
+    return [self.targetSha1 isEqualToObjectHash:objectHash];
+}
+
+- (BOOL)refersToObject: (GITObject *)object {
+    return [self refersToObjectHash:[object sha1]];
+}
+
 @end
