@@ -54,6 +54,8 @@ module Git
           write "file.txt", "aaa\nbbb\n"
         end
 
+        tag "v0.0.1", :msg => "merged branch1"
+
         commit "Graph Sixth Commit", time += 60 do
           write "file.txt", "aaaa\nbbb\n"
         end
@@ -86,6 +88,8 @@ module Git
         merge "graph-branch2", time += 60 do
           write "file.txt", "aaaa\nbbb\ncc\ndd\n"
         end
+
+        tag "v0.0.2", :msg => "merged branch2"
 
         commit "Graph Eighth Commit", time += 60 do
           write "file.txt", "aaaaa\nbbb\ncc\ndd\n"
@@ -306,7 +310,7 @@ module Git
 
     def tag(name, options = {})
       if msg = options[:msg]
-        git "tag -a #{name} -m #{msg}"
+        git "tag -a #{name} -m #{msg.inspect}"
       else
         git "tag #{name}"
       end
