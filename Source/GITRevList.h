@@ -83,4 +83,13 @@
  */
 - (NSArray *)arrayOfReachableObjects;
 
+/*!
+ * Returns an array of the objects and tags which are reachable from the head of the receiver.
+ *
+ * \param tags Array of tags to be considered for inclusion in the resulting array. This should
+ * be an inclusive list of all tags which might be reachable from the head of the receiver.
+ * \return Array of objects and tags reachable from the head of the receiver.
+ */
+- (NSArray *)arrayOfReachableObjectsAndTags: (NSArray *)tags;
+
 @end

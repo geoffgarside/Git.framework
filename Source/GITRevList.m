@@ -12,7 +12,10 @@
 #import "GITGraphNode.h"
 #import "GITTree.h"
 #import "GITTreeItem.h"
+#import "GITTag.h"
 
+
+static NSComparisonResult tagObjectsCompatator(id x, id y, void *ignored);
 
 @implementation GITRevList
 
@@ -76,17 +79,45 @@
         }
     }
 }
-- (NSArray *)arrayOfReachableObjects {
+- (NSArray *)arrayOfReachableObjectsAndTags: (NSArray *)tags {
     NSArray *commits = [self arrayOfCommitsSortedByDate];
     NSMutableArray *objects = [[NSMutableArray alloc] initWithCapacity:[commits count]]; // we should have at least as many trees
 
+    NSMutableArray *reachableTags = nil;
+    if ( tags )
+        reachableTags = [[NSMutableArray alloc] initWithCapacity:[tags count]];
+
     for ( GITCommit *commit in commits ) {
+        if ( tags ) {
+            for ( GITTag *tag in tags ) {
+                if ( [tag refersToObject:commit] )
+                    [reachableTags addObject:tag];
+            }
+        }
+
         [self addContentsOfTree:[commit tree] intoArray:objects];
+    }
+
+    if ( tags ) {
+        [reachableTags sortUsingFunction:&tagObjectsCompatator context:NULL];
+        [reachableTags addObjectsFromArray:objects];
+        [objects release];
+        objects = reachableTags;
     }
 
     NSArray *array = [commits arrayByAddingObjectsFromArray:objects];
     [objects release];
     return array;
 }
+- (NSArray *)arrayOfReachableObjects {
+    return [self arrayOfReachableObjectsAndTags:nil];
+}
 
 @end
+
+static NSComparisonResult
+tagObjectsCompatator(id x, id y, void *ignored) {
+    (void)ignored;
+    GITTag *a = (GITTag *)x, *b = (GITTag *)y;
+    return [[a name] compare:[b name]];
+}
