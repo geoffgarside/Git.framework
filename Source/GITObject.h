@@ -142,20 +142,20 @@ typedef enum {
 
 //! \name Object Comparison
 /*!
-* Returns a Boolean value that indicates whether the receiver and a given object are equal.
-*
-* \param other The object to be compared to the receiver
-* \return YES if the receiver and other are equal, otherwise NO
-* \sa isEqualToObject:
+ * Returns a Boolean value that indicates whether the receiver and a given object are equal.
+ *
+ * \param other The object to be compared to the receiver
+ * \return YES if the receiver and other are equal, otherwise NO
+ * \sa isEqualToObject:
  */
 - (BOOL)isEqual: (id)other;
 
 /*!
-* Returns a Boolean value that indicates whether the receiver and a given Object are equal.
-*
-* \param object The Object with which to compare the receiver
-* \return YES if the receiver and hash are equal, otherwise NO
-* \sa isEqual:
+ * Returns a Boolean value that indicates whether the receiver and a given Object are equal.
+ *
+ * \param object The Object with which to compare the receiver
+ * \return YES if the receiver and hash are equal, otherwise NO
+ * \sa isEqual:
  */
 - (BOOL)isEqualToObject: (GITObject *)object;
 

@@ -89,6 +89,7 @@
 - (NSUInteger)hash {
     return [sha1 hash];
 }
+
 - (BOOL)isEqual: (id)other {
     if ( !other ) return NO;                            // other is nil
     if ( other == self ) return YES;                    // pointers match?
@@ -97,6 +98,7 @@
         return [self isEqualToObject:other];
     return NO;                                          // Definitely not then
 }
+
 - (BOOL)isEqualToObject: (GITObject *)rhs {
     if ( !rhs )         return NO;
     if ( self == rhs )  return YES;
