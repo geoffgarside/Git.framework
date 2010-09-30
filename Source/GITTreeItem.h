@@ -96,4 +96,35 @@ typedef enum {
  */
 - (BOOL)isModule;
 
+//! \name Testing Equality
+/*!
+ * Returns a Boolean value that indicates whether the receiver and a given object are equal.
+ *
+ * \param other The object to be compared to the receiver
+ * \return YES if the receiver and other are equal, otherwise NO
+ * \sa isEqualToTreeItem:
+ * \sa isEqualToObject:
+ */
+- (BOOL)isEqual: (id)other;
+
+/*!
+ * Returns a Boolean value that indicates whether the receiver and a given Tree Item are equal.
+ *
+ * \param hash The Tree Item with which to compare the receiver
+ * \return YES if the receiver and hash are equal, otherwise NO
+ * \sa isEqual:
+ * \sa isEqualToObject:
+ */
+- (BOOL)isEqualToTreeItem: (GITTreeItem *)rhs;
+
+/*!
+ * Returns a Boolean value that indicates whether the receiver and a given GITObject are equal.
+ *
+ * \param hash The GITObject with which to compare the receiver
+ * \return YES if the receiver and hash are equal, otherwise NO
+ * \sa isEqual:
+ * \sa isEqualToTreeItem:
+ */
+- (BOOL)isEqualToObject: (GITObject *)rhs;
+
 @end

@@ -68,4 +68,35 @@
     return [NSString stringWithFormat:@"<GITTreeItem: %p sha1=%@, mode=%06x, name=%@>", self, self.sha1, self.mode, self.name];
 }
 
+- (NSUInteger)hash {
+    return [self.sha1 hash];
+}
+
+- (BOOL)isEqual: (id)other {
+    if ( !other ) return NO;                            // other is nil
+    if ( other == self ) return YES;                    // pointers match?
+
+    if ( [other isKindOfClass:[self class]] )           // Same class?
+        return [self isEqualToTreeItem:other];
+    if ( [other isKindOfClass:[GITObject class]] )      // A git object?
+        return [self isEqualToObject:other];
+
+    return NO;                                          // Definitely not then
+}
+
+- (BOOL)isEqualToTreeItem: (GITTreeItem *)rhs {
+    if ( !rhs )         return NO;
+    if ( self == rhs )  return YES;
+    if ( [self.sha1 isEqualToObjectHash:[rhs sha1]] )
+        return YES;
+    return NO;
+}
+
+- (BOOL)isEqualToObject: (GITObject *)rhs {
+    if ( !rhs ) return NO;
+    if ( [self.sha1 isEqualToObjectHash:[rhs sha1]] )
+        return YES;
+    return NO;
+}
+
 @end
