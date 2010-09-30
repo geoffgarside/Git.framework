@@ -73,6 +73,9 @@ static NSComparisonResult tagObjectsCompatator(id x, id y, void *ignored);
     [objects addObject:tree];
 
     for ( GITTreeItem *treeItem in items ) {
+        if ( [objects containsObject:treeItem] )
+            continue;
+
         [objects addObject:treeItem];
         if ( [treeItem isDirectory] && ![treeItem isModule] ) {
             [self addContentsOfTree:(GITTree *)[treeItem item] intoArray:objects];

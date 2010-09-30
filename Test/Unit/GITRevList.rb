@@ -61,6 +61,10 @@ describe "GITRevList" do
       @list = @revList.arrayOfReachableObjects
       @expected = graph_repository.git("rev-list --objects master").split("\n").map { |l| l.strip.split(" ")[0] }
     end
+    should 'not include any duplicates' do
+      shas = @list.map { |o| o.sha1.unpackedString }
+      shas.should == shas.uniq
+    end
     should "return expected list of objects" do
       @list.map { |o| o.sha1.unpackedString }.should == @expected
     end
