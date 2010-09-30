@@ -64,4 +64,8 @@
     return (mode & GITTreeItemModeMod) == GITTreeItemModeMod;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<GITTreeItem: %p sha1=%@, mode=%06x, name=%@>", self, self.sha1, self.mode, self.name];
+}
+
 @end
