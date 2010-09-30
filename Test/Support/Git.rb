@@ -21,6 +21,7 @@ module Git
       @graph_repository ||= repository "Graph" do
         time = Time.now - 86400
         commit "Graph First Commit", time do
+          write ".gitignore",   ".fseventsd/\n"
           write "file.txt", ""
         end
         commit "Graph Second Commit", time += 60 do
