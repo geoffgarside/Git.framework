@@ -15,7 +15,7 @@
 #import "GITTag.h"
 
 
-static NSComparisonResult tagObjectsCompatator(id x, id y, void *ignored);
+static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
 
 @implementation GITRevList
 
@@ -102,7 +102,7 @@ static NSComparisonResult tagObjectsCompatator(id x, id y, void *ignored);
     }
 
     if ( tags ) {
-        [reachableTags sortUsingFunction:&tagObjectsCompatator context:NULL];
+        [reachableTags sortUsingFunction:&tagObjectsComparator context:NULL];
         [reachableTags addObjectsFromArray:objects];
         [objects release];
         objects = reachableTags;
@@ -119,7 +119,7 @@ static NSComparisonResult tagObjectsCompatator(id x, id y, void *ignored);
 @end
 
 static NSComparisonResult
-tagObjectsCompatator(id x, id y, void *ignored) {
+tagObjectsComparator(id x, id y, void *ignored) {
     (void)ignored;
     GITTag *a = (GITTag *)x, *b = (GITTag *)y;
     return [[a name] compare:[b name]];
