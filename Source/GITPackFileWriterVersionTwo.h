@@ -9,8 +9,10 @@
 #import "GITPackFileWriter.h"
 
 
-@interface GITPackFileWriterVersionTwo : GITPackFileWriter {
-
+@interface GITPackFileWriterVersionTwo : GITPackFileWriter <NSStreamDelegate> {
+    NSArray *objects;
 }
+
+@property (retain) NSArray *objects;
 
 @end

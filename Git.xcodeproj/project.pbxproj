@@ -247,6 +247,7 @@
 		F5E534F01204222700A5FE5D /* GITPackFileWriterPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriterPlaceholder.m; path = Source/GITPackFileWriterPlaceholder.m; sourceTree = "<group>"; };
 		F5E534F31204223700A5FE5D /* GITPackFileWriterVersionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileWriterVersionTwo.h; path = Source/GITPackFileWriterVersionTwo.h; sourceTree = "<group>"; };
 		F5E534F41204223700A5FE5D /* GITPackFileWriterVersionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriterVersionTwo.m; path = Source/GITPackFileWriterVersionTwo.m; sourceTree = "<group>"; };
+		F5EF4788122AB668006758FC /* GITPackFileWriter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITPackFileWriter.rb; sourceTree = "<group>"; };
 		F5F2327311FAFE140004547F /* GITCommitEnumerator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITCommitEnumerator.rb; sourceTree = "<group>"; };
 		F5F2327411FAFE140004547F /* GITGraph.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITGraph.rb; sourceTree = "<group>"; };
 		F5F2327511FAFE140004547F /* GITLooseObject.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITLooseObject.rb; sourceTree = "<group>"; };
@@ -495,6 +496,7 @@
 		F5BBC1941062F02500EF21A8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				F5EF4788122AB668006758FC /* GITPackFileWriter.rb */,
 				F5F2327311FAFE140004547F /* GITCommitEnumerator.rb */,
 				F5F2327411FAFE140004547F /* GITGraph.rb */,
 				F5F2327511FAFE140004547F /* GITLooseObject.rb */,
