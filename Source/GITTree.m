@@ -141,4 +141,8 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
     return data;
 }
 
+- (BOOL)containsObject: (id)obj {
+    return [items containsObject:obj];
+}
+
 @end
