@@ -108,4 +108,8 @@ static parsingRecord hashParsingRecord = { "", 0, 0, 20, -1 };
     return [NSString stringWithFormat:@"<GITTree: %p sha1=%@, items.count=%d>", self, self.sha1, [self.items count]];
 }
 
+- (BOOL)containsObject: (id)obj {
+    return [items containsObject:obj];
+}
+
 @end
