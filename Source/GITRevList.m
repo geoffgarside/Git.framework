@@ -74,6 +74,13 @@ static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
 
     return [[list copy] autorelease];
 }
+- (BOOL)shouldExcludeTreeItem: (GITTreeItem *)treeItem {
+    for ( GITTree *t in excluded ) {
+        if ( [t containsObject:treeItem] )
+            return YES;
+    }
+    return NO;
+}
 - (void)addContentsOfTree: (GITTree *)tree intoArray:(NSMutableArray *)objects {
     if ( excluded && [excluded containsObject:tree] )
         return;     // The tree is excluded, so everything known to it is too
@@ -84,6 +91,9 @@ static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
     for ( GITTreeItem *treeItem in items ) {
         if ( [objects containsObject:treeItem] )
             continue;
+
+        if ( [self shouldExcludeTreeItem:treeItem] )
+            continue;   // The tree item is known to the excluded tree
 
         [objects addObject:treeItem];
         if ( [treeItem isDirectory] && ![treeItem isModule] ) {
