@@ -20,6 +20,7 @@
  */
 @interface GITRevList : NSObject {
     GITGraph *graph;
+    NSMutableArray *excluded;
 }
 
 //! \name Creating and Initialising Rev-Lists

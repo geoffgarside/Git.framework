@@ -33,12 +33,18 @@ static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
 }
 
 - (void)dealloc {
+    if ( excluded )
+        [excluded release];
+
     [graph release];
     [super dealloc];
 }
 
 - (void)subtractDescendentsFromCommit: (GITCommit *)tail {
     [graph subtractDescendentNodesFromCommit:tail];
+
+    if ( !excluded ) excluded = [[NSMutableArray alloc] initWithCapacity:1];
+    [excluded addObject:[tail tree]];
 }
 
 - (NSArray *)arrayOfCommitsSortedByDate {
