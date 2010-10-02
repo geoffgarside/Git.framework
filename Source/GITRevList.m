@@ -75,6 +75,9 @@ static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
     return [[list copy] autorelease];
 }
 - (void)addContentsOfTree: (GITTree *)tree intoArray:(NSMutableArray *)objects {
+    if ( excluded && [excluded containsObject:tree] )
+        return;     // The tree is excluded, so everything known to it is too
+
     NSArray *items = [tree items];
     [objects addObject:tree];
 
