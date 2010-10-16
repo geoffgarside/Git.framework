@@ -30,6 +30,13 @@
 - (BOOL)rootIsAccessible;
 - (BOOL)rootDoesLookSane;
 
+- (NSData *)dataForHeadFile;
+- (NSData *)dataForConfigFile;
+- (NSData *)dataForDescriptionFile;
+- (NSData *)dataForInfoExcludeFile;
+- (NSArray *)arrayOfSkeletonDirectories;
+- (BOOL)createDirectorySkeletonAtPath: (NSString *)theRoot error: (NSError **)theError;
+
 @end
 
 @implementation GITRepo
@@ -48,6 +55,21 @@
 }
 + (GITRepo *)repoWithRoot: (NSString *)theRoot error: (NSError **)theError {
     return [[[GITRepo alloc] initWithRoot: theRoot error: theError] autorelease];
+}
++ (GITRepo *)createRepoAtPath: (NSString *)path {
+    return [[[GITRepo alloc] initAtPath: path error: NULL] autorelease];
+}
++ (GITRepo *)createRepoAtPath: (NSString *)path error: (NSError **)theError {
+    return [[[GITRepo alloc] initAtPath: path error: theError] autorelease];
+}
+
+- (id)initAtPath: (NSString *)path {
+    return [self initAtPath: path error: NULL];
+}
+- (id)initAtPath: (NSString *)path error: (NSError **)theError {
+    if ( ![self createDirectorySkeletonAtPath:path error:theError] )
+        return nil;
+    return [self initWithRoot:path error:theError];
 }
 
 - (id)initWithRoot: (NSString *)theRoot {
@@ -210,6 +232,83 @@ done:
 }
 - (NSArray *)revListSortedByTopologyAndDate {
     return [[self revList] arrayOfCommitsSortedByTopologyAndDate];
+}
+
+#pragma mark Creating Skeleton
+- (NSData *)dataForHeadFile {
+    return [[NSString stringWithString:@"ref: refs/heads/master\n"] dataUsingEncoding:NSASCIIStringEncoding];
+}
+- (NSData *)dataForConfigFile {
+    NSString *str = [NSString stringWithString:@"[core]\n  repositoryformatversion = 0\n  filemode = true\n  bare = false\n  logallrefupdates = true\n  ignorecase = true\n"];
+    return [str dataUsingEncoding:NSASCIIStringEncoding];
+}
+- (NSData *)dataForDescriptionFile {
+    return [[NSString stringWithString:@"Unnamed repository; edit this file 'description' to name the repository.\n"] dataUsingEncoding:NSASCIIStringEncoding];
+}
+- (NSData *)dataForInfoExcludeFile {
+    NSString *str = [NSString stringWithString:@"# git ls-files --others --exclude-from=.git/info/exclude\n# Lines that start with '#' are comments.\n# For a project mostly in C, the following would be a good set of\n# exclude patterns (uncomment them if you want to use them):\n# *.[oa]\n# *~\n"];
+    return [str dataUsingEncoding:NSASCIIStringEncoding];
+
+}
+- (NSArray *)arrayOfSkeletonDirectories {
+    return [NSArray arrayWithObjects:@"branches", @"hooks", @"info", @"objects/info", @"objects/pack", @"refs/heads", @"refs/tags", nil];
+}
+- (BOOL)createDirectorySkeletonAtPath: (NSString *)path error: (NSError **)theError {
+    NSFileManager *fm = [[NSFileManager alloc] init];
+
+    NSString *gitRoot;
+    if ( [path hasSuffix:@".git"] ) {
+        gitRoot = [path copy];
+    } else {
+        gitRoot = [path stringByAppendingPathComponent:@".git"];
+    }
+
+    if ( [fm fileExistsAtPath:gitRoot] ) {
+        GITError(theError, GITRepoErrorSkeletonExists, NSLocalizedString(@"Directory for skeleton exists", @"GITRepoErrorSkeletonExists"));
+        return NO;
+    }
+
+    NSError *directoryError;
+    for ( NSString *dir in [self arrayOfSkeletonDirectories] ) {
+        if ( ![fm createDirectoryAtPath:[gitRoot stringByAppendingPathComponent:dir]
+                withIntermediateDirectories:YES attributes:nil error:&directoryError] ) {
+            GITErrorWithInfo(theError, GITRepoErrorSkeletonCreationFailed, NSUnderlyingErrorKey, directoryError,
+                             NSLocalizedDescriptionKey, NSLocalizedString(@"Failed to create skeleton directory", @"GITRepoErrorCreationFailed directory"), nil);
+            goto cleanup;
+        }
+    }
+
+    if ( ![fm createFileAtPath:[gitRoot stringByAppendingPathComponent:@"HEAD"]
+                      contents:[self dataForHeadFile] attributes:nil] ) {
+        GITError(theError, GITRepoErrorSkeletonCreationFailed, NSLocalizedString(@"Failed to create HEAD file", @"GITRepoErrorCreationFailed HEAD file"));
+        goto cleanup;
+    }
+
+    if ( ![fm createFileAtPath:[gitRoot stringByAppendingPathComponent:@"config"]
+                      contents:[self dataForConfigFile] attributes:nil] ) {
+        GITError(theError, GITRepoErrorSkeletonCreationFailed, NSLocalizedString(@"Failed to create config file", @"GITRepoErrorCreationFailed config file"));
+        goto cleanup;
+    }
+
+    if ( ![fm createFileAtPath:[gitRoot stringByAppendingPathComponent:@"description"]
+                      contents:[self dataForDescriptionFile] attributes:nil] ) {
+        GITError(theError, GITRepoErrorSkeletonCreationFailed, NSLocalizedString(@"Failed to create description file", @"GITRepoErrorCreationFailed description file"));
+        goto cleanup;
+    }
+
+    if ( ![fm createFileAtPath:[gitRoot stringByAppendingPathComponent:@"info/exclude"]
+                      contents:[self dataForInfoExcludeFile] attributes:nil] ) {
+        GITError(theError, GITRepoErrorSkeletonCreationFailed, NSLocalizedString(@"Failed to create info/exclude file", @"GITRepoErrorCreationFailed info/exclude file"));
+        goto cleanup;
+    }
+
+    [fm release];
+    return YES;
+
+cleanup:
+    [fm removeItemAtPath:gitRoot error:NULL];
+    [fm release];
+    return NO;
 }
 
 @end

@@ -223,3 +223,32 @@ describe "GITRepo Rev-List Methods" do
     end
   end
 end
+
+describe "GITRepo +createRepoAtPath:error:" do
+  before do
+    @err  = Pointer.new(:object)
+    @path = File.expand_path("Created", tmp_dir)
+    @root = File.expand_path(".git", @path)
+    @repo = GITRepo.createRepoAtPath(@path, error:@err)
+  end
+  after do
+    FileUtils.rm_r(@path)
+  end
+  should "not raise an error" do
+    unless @err[0].nil?
+      puts @err[0].localizedDescription
+    end
+    @err[0].should.be.nil
+  end
+  should "not return nil" do
+    @repo.should.not.be.nil
+  end
+  should "create .git directory" do
+    File.exists?(@root).should.be.true
+  end
+  should "create skeleton directories and files" do
+    %w(branches config description HEAD hooks info info/exclude objects objects/info objects/pack refs refs/heads refs/tags).each do |f|
+      File.exists?(File.join(@root, f)).should.be.true
+    end
+  end
+end

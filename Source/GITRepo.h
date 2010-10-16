@@ -89,6 +89,41 @@
  */
 - (id)initWithRoot: (NSString *)theRoot error: (NSError **)theError;
 
+//! \name Creating New Repositories
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \return repository created at the \a path
+ */
++ (GITRepo *)createRepoAtPath: (NSString *)path;
+
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \param[out] error NSError describing the error which occurred during creation or initialisation.
+ * \return repository created at the \a path
+ */
++ (GITRepo *)createRepoAtPath: (NSString *)path error: (NSError **)error;
+
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \return repository created at the \a path
+ */
+- (id)initAtPath: (NSString *)path;
+
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \param[out] error NSError describing the error which occurred during creation or initialisation.
+ * \return repository created at the \a path
+ */
+- (id)initAtPath: (NSString *)path error: (NSError **)error;
+
 //! \name Instance Methods
 /*!
  * Returns an array containing branches from the receiver.
