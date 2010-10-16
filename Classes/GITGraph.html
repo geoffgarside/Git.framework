@@ -63,6 +63,7 @@
 <option value="nodeCount">    - nodeCount</option>
 <option value="edgeCount">    - edgeCount</option>
 <option value="buildWithStartingCommit:">    - buildWithStartingCommit:</option>
+<option value="subtractDescendentNodesFromCommit:">    - subtractDescendentNodesFromCommit:</option>
 <option value="arrayOfNodesSortedByDate">    - arrayOfNodesSortedByDate</option>
 <option value="arrayOfNodesSortedByTopology">    - arrayOfNodesSortedByTopology</option>
 <option value="arrayOfNodesSortedByTopologyAndDate">    - arrayOfNodesSortedByTopologyAndDate</option></select></li>
@@ -98,6 +99,7 @@
 <li><a href="#nodeCount">nodeCount</a></li>
 <li><a href="#edgeCount">edgeCount</a></li>
 <li><a href="#buildWithStartingCommit:">buildWithStartingCommit:</a></li>
+<li><a href="#subtractDescendentNodesFromCommit:">subtractDescendentNodesFromCommit:</a></li>
 <li><a href="#arrayOfNodesSortedByDate">arrayOfNodesSortedByDate</a></li>
 <li><a href="#arrayOfNodesSortedByTopology">arrayOfNodesSortedByTopology</a></li>
 <li><a href="#arrayOfNodesSortedByTopologyAndDate">arrayOfNodesSortedByTopologyAndDate</a></li>
@@ -173,9 +175,14 @@
 </li>
 <li id="Populating_the_Graph">
 <h3>Populating the Graph</h3>
-<ul class="methods"><li>
+<ul class="methods">
+<li>
 <span class="tooltipRegion"><code><a href="#buildWithStartingCommit:">- buildWithStartingCommit:</a></code></span><span class="tooltip"></span>
-</li></ul>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#subtractDescendentNodesFromCommit:">- subtractDescendentNodesFromCommit:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
 </li>
 <li id="Sorting_Nodes_of_a_Graph">
 <h3>Sorting Nodes of a Graph</h3>
@@ -326,10 +333,23 @@
 <p></p>
 <h5>Declared In</h5>
 <code><code>GITGraph</code>.h</code></section><section class="definition" id="buildWithStartingCommit:"><h3>buildWithStartingCommit:</h3>
-<code class="methodDeclaration">- (void)buildWithStartingCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">commit</span> </code><h5>Return Value</h5>
-<p>commit Commit object to populate the receiver from </p>
+<code class="methodDeclaration">- (void)buildWithStartingCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">commit</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>commit</dt>
+<dd><p>Commit object to populate the receiver from </p></dd>
+</dl>
 <h5>Discussion</h5>
 <p>Populates the receiver with nodes from the history of the given commit</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITGraph</code>.h</code></section><section class="definition" id="subtractDescendentNodesFromCommit:"><h3>subtractDescendentNodesFromCommit:</h3>
+<code class="methodDeclaration">- (void)subtractDescendentNodesFromCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">commit</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>commit</dt>
+<dd><p>Commit object HEAD to remove from the receiver </p></dd>
+</dl>
+<h5>Discussion</h5>
+<p>Removes nodes from the receiver which are in the history of the given commit</p>
 <p></p>
 <h5>Declared In</h5>
 <code><code>GITGraph</code>.h</code></section><section class="definition" id="arrayOfNodesSortedByDate"><h3>arrayOfNodesSortedByDate</h3>
@@ -354,7 +374,7 @@
 <p></p>
 <h5>Declared In</h5>
 <code><code>GITGraph</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-6-2</p>
+<p id="lastUpdated">Last updated: 2010-10-16</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

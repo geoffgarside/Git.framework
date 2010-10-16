@@ -56,22 +56,32 @@
 <option value="repo">    + repo</option>
 <option value="repoWithRoot:">    + repoWithRoot:</option>
 <option value="repoWithRoot:error:">    + repoWithRoot:error:</option>
+<option value="createRepoAtPath:">    + createRepoAtPath:</option>
+<option value="createRepoAtPath:error:">    + createRepoAtPath:error:</option>
 <option value="instanceMethods">Instance Methods</option>
 <option value="initWithRoot:">    - initWithRoot:</option>
 <option value="initWithRoot:error:">    - initWithRoot:error:</option>
+<option value="initAtPath:">    - initAtPath:</option>
+<option value="initAtPath:error:">    - initAtPath:error:</option>
 <option value="branches">    - branches</option>
 <option value="remoteBranches">    - remoteBranches</option>
 <option value="tags">    - tags</option>
 <option value="objectWithSha1:error:">    - objectWithSha1:error:</option>
 <option value="head">    - head</option>
 <option value="enumerator">    - enumerator</option>
-<option value="enumeratorWithMode:">    - enumeratorWithMode:</option></select></li>
+<option value="enumeratorWithMode:">    - enumeratorWithMode:</option>
+<option value="revList">    - revList</option>
+<option value="revListFromCommit:">    - revListFromCommit:</option>
+<option value="__attribute__">    - __attribute__</option>
+<option value="__attribute__">    - __attribute__</option>
+<option value="__attribute__">    - __attribute__</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
 <li><a href="#Properties">Properties</a></li>
 <li><a href="#Creating_and_Initialising_Repositories">Creating and Initialising Repositories</a></li>
+<li><a href="#Creating_New_Repositories">Creating New Repositories</a></li>
 <li><a href="#Instance_Methods">Instance Methods</a></li>
 <li><a href="#Retrieving_Objects">Retrieving Objects</a></li>
 <li><a href="#Retrieving_Specific_commit_points">Retrieving Specific commit points</a></li>
@@ -90,12 +100,16 @@
 <li><a href="#repo">repo</a></li>
 <li><a href="#repoWithRoot:">repoWithRoot:</a></li>
 <li><a href="#repoWithRoot:error:">repoWithRoot:error:</a></li>
+<li><a href="#createRepoAtPath:">createRepoAtPath:</a></li>
+<li><a href="#createRepoAtPath:error:">createRepoAtPath:error:</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
 <li><a href="#initWithRoot:">initWithRoot:</a></li>
 <li><a href="#initWithRoot:error:">initWithRoot:error:</a></li>
+<li><a href="#initAtPath:">initAtPath:</a></li>
+<li><a href="#initAtPath:error:">initAtPath:error:</a></li>
 <li><a href="#branches">branches</a></li>
 <li><a href="#remoteBranches">remoteBranches</a></li>
 <li><a href="#tags">tags</a></li>
@@ -103,6 +117,11 @@
 <li><a href="#head">head</a></li>
 <li><a href="#enumerator">enumerator</a></li>
 <li><a href="#enumeratorWithMode:">enumeratorWithMode:</a></li>
+<li><a href="#revList">revList</a></li>
+<li><a href="#revListFromCommit:">revListFromCommit:</a></li>
+<li><a href="#__attribute__">__attribute__</a></li>
+<li><a href="#__attribute__">__attribute__</a></li>
+<li><a href="#__attribute__">__attribute__</a></li>
 </ul>
 </li>
 </ul></nav><div id="contents">
@@ -149,6 +168,23 @@
 </li>
 </ul>
 </li>
+<li id="Creating_New_Repositories">
+<h3>Creating New Repositories</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#createRepoAtPath:">+ createRepoAtPath:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#createRepoAtPath:error:">+ createRepoAtPath:error:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initAtPath:">- initAtPath:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initAtPath:error:">- initAtPath:error:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
 <li id="Instance_Methods">
 <h3>Instance Methods</h3>
 <ul class="methods">
@@ -183,6 +219,21 @@
 </li>
 <li>
 <span class="tooltipRegion"><code><a href="#enumeratorWithMode:">- enumeratorWithMode:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#revList">- revList</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#revListFromCommit:">- revListFromCommit:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#__attribute__">- __attribute__</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#__attribute__">- __attribute__</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#__attribute__">- __attribute__</a></code></span><span class="tooltip"></span>
 </li>
 </ul>
 </li>
@@ -237,6 +288,32 @@
 <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#initWithRoot:error:">- initWithRoot:error:</a></code></li></ul>
 <h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="createRepoAtPath:"><h3>createRepoAtPath:</h3>
+<code class="methodDeclaration">+ (GITRepo *)createRepoAtPath:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">path</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>path</dt>
+<dd><p>Path at which to create the repository. A bare repository is created if path ends in <code>.git</code>. </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>repository created at the path</p>
+<h5>Discussion</h5>
+<p>Creates a repository at the specified path.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="createRepoAtPath:error:"><h3>createRepoAtPath:error:</h3>
+<code class="methodDeclaration">+ (GITRepo *)createRepoAtPath:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">path</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>path</dt>
+<dd><p>Path at which to create the repository. A bare repository is created if path ends in <code>.git</code>. </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error which occurred during creation or initialisation. </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>repository created at the path</p>
+<h5>Discussion</h5>
+<p>Creates a repository at the specified path.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITRepo</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
 <section class="definition" id="initWithRoot:"><h3>initWithRoot:</h3>
 <code class="methodDeclaration">- (id)initWithRoot:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">theRoot</span> </code><h5>Parameters</h5>
@@ -271,6 +348,32 @@
 <li><p>the path looks like a git directory, ie has a certain structure and files</p></li>
 </ul>
 provided the path specified passes these tests then the repository object is returned. If any fail then nil is returned and the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> is filled with details.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="initAtPath:"><h3>initAtPath:</h3>
+<code class="methodDeclaration">- (id)initAtPath:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">path</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>path</dt>
+<dd><p>Path at which to create the repository. A bare repository is created if path ends in <code>.git</code>. </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>repository created at the path</p>
+<h5>Discussion</h5>
+<p>Creates a repository at the specified path.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="initAtPath:error:"><h3>initAtPath:error:</h3>
+<code class="methodDeclaration">- (id)initAtPath:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">path</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>path</dt>
+<dd><p>Path at which to create the repository. A bare repository is created if path ends in <code>.git</code>. </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error which occurred during creation or initialisation. </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>repository created at the path</p>
+<h5>Discussion</h5>
+<p>Creates a repository at the specified path.</p>
 <p></p>
 <h5>Declared In</h5>
 <code><code>GITRepo</code>.h</code></section><section class="definition" id="branches"><h3>branches</h3>
@@ -348,8 +451,71 @@ provided the path specified passes these tests then the repository object is ret
 <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#enumerator">- enumerator</a></code></li></ul>
 <h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="revList"><h3>revList</h3>
+<code class="methodDeclaration">- (<a href="../Classes/GITRevList.html">GITRevList</a> *)revList</code><h5>Return Value</h5>
+<p>RevList object based on the HEAD of the receiver. </p>
+<h5>Discussion</h5>
+<p>Returns a RevList object based on the HEAD of the receiver.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#revListFromCommit:">- revListFromCommit:</a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="revListFromCommit:"><h3>revListFromCommit:</h3>
+<code class="methodDeclaration">- (GITRevList *)revListFromCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">head</span> </code><h5>Return Value</h5>
+<p>RevList object based on the given head. </p>
+<h5>Discussion</h5>
+<p>Returns a RevList object based on the given head.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#revList">- revList</a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="__attribute__"><h3>__attribute__</h3>
+<code class="methodDeclaration">- ((deprecated)__attribute__</code><h5>Return Value</h5>
+<p>array of commits sorted by date </p>
+<h5>Discussion</h5>
+<p>Returns an array of commit objects sorted by their commit date.</p>
+<p>The result of this method is equivalent to <code>git rev-list HEAD</code>.</p>
+<p></p>
+<h5>Bug</h5>
+<p>Use [[repo revList] arrayOfCommitsSortedByDate] instead </p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#revList">- revList</a></code></li>
+<li><code><a href="#arrayOfCommitsSortedByDate%20(GITRevList)">- arrayOfCommitsSortedByDate (<code><a href="../Classes/GITRevList.html">GITRevList</a></code>)</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="__attribute__"><h3>__attribute__</h3>
+<code class="methodDeclaration">- ((deprecated)__attribute__</code><h5>Return Value</h5>
+<p>array of commits sorted by topology </p>
+<h5>Discussion</h5>
+<p>Returns an array of commit objects sorted by topology.</p>
+<p>The result of this method is equivalent to <code>git rev-list --topo-order HEAD</code>.</p>
+<p></p>
+<h5>Bug</h5>
+<p>Use [[repo revList] arrayOfCommitsSortedByTopology] instead </p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#revList">- revList</a></code></li>
+<li><code><a href="#arrayOfCommitsSortedByTopology%20(GITRevList)">- arrayOfCommitsSortedByTopology (<code><a href="../Classes/GITRevList.html">GITRevList</a></code>)</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="__attribute__"><h3>__attribute__</h3>
+<code class="methodDeclaration">- ((deprecated)__attribute__</code><h5>Return Value</h5>
+<p>array of commits sorted by topology and date </p>
+<h5>Discussion</h5>
+<p>Returns an array of commit objects sorted by topology and commit date.</p>
+<p>The result of this method is equivalent to <code>git rev-list --date-order HEAD</code>.</p>
+<p></p>
+<h5>Bug</h5>
+<p>Use [[repo revList] arrayOfCommitsSortedByTopologyAndDate] instead </p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#revList">- revList</a></code></li>
+<li><code><a href="#arrayOfCommitsSortedByTopologyAndDate%20(GITRevList)">- arrayOfCommitsSortedByTopologyAndDate (<code><a href="../Classes/GITRevList.html">GITRevList</a></code>)</a></code></li>
+</ul>
+<h5>Declared In</h5>
 <code><code>GITRepo</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-6-2</p>
+<p id="lastUpdated">Last updated: 2010-10-16</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
