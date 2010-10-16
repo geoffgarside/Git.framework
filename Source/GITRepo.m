@@ -145,8 +145,7 @@
             goto done;
     }
 
-    NSArray *dirChecks  = [NSArray arrayWithObjects: @"refs", @"objects", nil];
-    for ( NSString *pathComponent in dirChecks ) {
+    for ( NSString *pathComponent in [self arrayOfSkeletonDirectories] ) {
         isDirectory = NO;
         path = [self.root stringByAppendingPathComponent: pathComponent];
         if ( ![fm fileExistsAtPath: path isDirectory:&isDirectory] || !isDirectory )
