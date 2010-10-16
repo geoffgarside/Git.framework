@@ -30,6 +30,8 @@ enum {
     GITRepoErrorRootDoesNotExist,
     GITRepoErrorRootNotAccessible,
     GITRepoErrorRootInsane,
+    GITRepoErrorSkeletonExists,
+    GITRepoErrorSkeletonCreationFailed,
 
 #pragma mark GITRefResolver Errors
     GITRefResolverErrorRefNotFound,

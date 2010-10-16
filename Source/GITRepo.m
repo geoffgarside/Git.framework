@@ -137,7 +137,7 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-    NSArray *fileChecks = [NSArray arrayWithObjects: @"HEAD", @"config", @"index", nil];
+    NSArray *fileChecks = [NSArray arrayWithObjects: @"HEAD", @"config", nil];
     for ( NSString *pathComponent in fileChecks ) {
         isDirectory = NO;
         path = [self.root stringByAppendingPathComponent: pathComponent];
