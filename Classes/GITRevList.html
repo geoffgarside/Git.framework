@@ -1,0 +1,185 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITRevList Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
+</head>
+<body>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITRevList Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="classMethods">Class Methods</option>
+<option value="revListWithCommit:">    + revListWithCommit:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithCommit:">    - initWithCommit:</option>
+<option value="subtractDescendentsFromCommit:">    - subtractDescendentsFromCommit:</option>
+<option value="arrayOfCommitsSortedByDate">    - arrayOfCommitsSortedByDate</option>
+<option value="arrayOfCommitsSortedByTopology">    - arrayOfCommitsSortedByTopology</option>
+<option value="arrayOfCommitsSortedByTopologyAndDate">    - arrayOfCommitsSortedByTopologyAndDate</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Creating_and_Initialising_Rev-Lists">Creating and Initialising Rev-Lists</a></li>
+<li><a href="#Modifying_Rev-Lists">Modifying Rev-Lists</a></li>
+<li><a href="#Sorted_Lists_from_Rev-Lists">Sorted Lists from Rev-Lists</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#revListWithCommit:">revListWithCommit:</a></li></ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithCommit:">initWithCommit:</a></li>
+<li><a href="#subtractDescendentsFromCommit:">subtractDescendentsFromCommit:</a></li>
+<li><a href="#arrayOfCommitsSortedByDate">arrayOfCommitsSortedByDate</a></li>
+<li><a href="#arrayOfCommitsSortedByTopology">arrayOfCommitsSortedByTopology</a></li>
+<li><a href="#arrayOfCommitsSortedByTopologyAndDate">arrayOfCommitsSortedByTopologyAndDate</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITRevList Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITRevList.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+<p>The <code>GITRevList</code> class lists commit objects in reverse chronological order. A subset of the commit history can be excluded or negated from the list by calling -subtractDescendentsFromCommit: which will remove all commits reachable from the specified commit from the list.</p>
+<p>Sorted lists of commits are provided through one of the <code>-arrayOfCommitsSortedBy*</code> methods. </p>
+<h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+<li id="Creating_and_Initialising_Rev-Lists">
+<h3>Creating and Initialising Rev-Lists</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#revListWithCommit:">+ revListWithCommit:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithCommit:">- initWithCommit:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+<li id="Modifying_Rev-Lists">
+<h3>Modifying Rev-Lists</h3>
+<ul class="methods"><li>
+<span class="tooltipRegion"><code><a href="#subtractDescendentsFromCommit:">- subtractDescendentsFromCommit:</a></code></span><span class="tooltip"></span>
+</li></ul>
+</li>
+<li id="Sorted_Lists_from_Rev-Lists">
+<h3>Sorted Lists from Rev-Lists</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#arrayOfCommitsSortedByDate">- arrayOfCommitsSortedByDate</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#arrayOfCommitsSortedByTopology">- arrayOfCommitsSortedByTopology</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#arrayOfCommitsSortedByTopologyAndDate">- arrayOfCommitsSortedByTopologyAndDate</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+</ul>
+<section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="revListWithCommit:"><h3>revListWithCommit:</h3>
+<code class="methodDeclaration">+ (GITRevList *)revListWithCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">head</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>head</dt>
+<dd><p>Commit object to list from </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>New rev list object with the history of the head commit. </p>
+<h5>Discussion</h5>
+<p>Creates and returns a rev list object with the history from the head commit.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithCommit:"><h3>initWithCommit:</h3>
+<code class="methodDeclaration">- (id)initWithCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">head</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>head</dt>
+<dd><p>Commit object to list from </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>Rev list object with the history of the head commit. </p>
+<h5>Discussion</h5>
+<p>Initializes and returns a rev list object with history from the head commit.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section><section class="definition" id="subtractDescendentsFromCommit:"><h3>subtractDescendentsFromCommit:</h3>
+<code class="methodDeclaration">- (void)subtractDescendentsFromCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">tail</span> </code><h5>Discussion</h5>
+<p>Removes commits from the receiver which are in the history of the given tail commit. </p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section><section class="definition" id="arrayOfCommitsSortedByDate"><h3>arrayOfCommitsSortedByDate</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)arrayOfCommitsSortedByDate</code><h5>Return Value</h5>
+<p>array of commits sorted by date </p>
+<h5>Discussion</h5>
+<p>Returns an array of commit objects sorted by their commit date.</p>
+<p>The result of this method is equivalent to <code>git rev-list</code>.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section><section class="definition" id="arrayOfCommitsSortedByTopology"><h3>arrayOfCommitsSortedByTopology</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)arrayOfCommitsSortedByTopology</code><h5>Return Value</h5>
+<p>array of commits sorted by topology </p>
+<h5>Discussion</h5>
+<p>Returns an array of commit objects sorted by topology.</p>
+<p>The result of this method is equivalent to <code>git rev-list --topo-order</code>.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section><section class="definition" id="arrayOfCommitsSortedByTopologyAndDate"><h3>arrayOfCommitsSortedByTopologyAndDate</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)arrayOfCommitsSortedByTopologyAndDate</code><h5>Return Value</h5>
+<p>array of commits sorted by topology and date </p>
+<h5>Discussion</h5>
+<p>Returns an array of commit objects sorted by topology and commit date.</p>
+<p>The result of this method is equivalent to <code>git rev-list --date-order</code>.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2010-10-16</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITRevList Class Reference</a></li>
+</ul></footer>
+</body>
+</html>
