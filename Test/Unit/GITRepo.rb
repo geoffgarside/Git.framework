@@ -95,7 +95,7 @@ describe "GITRepo +repoWithRoot:error:" do
     should "raise an error" do
       @error[0].should.not.be.nil
     end
-    should "raise a path error" do
+    should "raise a sanity error" do
       @error[0].code.should.equal GITRepoErrorRootInsane
     end
   end
