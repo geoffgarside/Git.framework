@@ -99,6 +99,19 @@ describe "GITRepo +repoWithRoot:error:" do
       @error[0].code.should.equal GITRepoErrorRootInsane
     end
   end
+  describe "with missing .git/branches directory" do
+    before do
+      FileUtils.rm_rf("#{simple_repository.root}/.git/branches")
+      @repo = GITRepo.repoWithRoot(simple_repository.root, error:@error)
+    end
+
+    should "open repo" do
+      @repo.root.should.equal "#{simple_repository.root}/.git"
+    end
+    should "not raise an error" do
+      @error[0].should.be.nil
+    end
+  end
 end
 
 describe "GITRepo -branches" do
