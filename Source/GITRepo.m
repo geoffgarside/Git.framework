@@ -35,6 +35,7 @@
 - (NSData *)dataForDescriptionFile;
 - (NSData *)dataForInfoExcludeFile;
 - (NSArray *)arrayOfSkeletonDirectories;
+- (NSArray *)arrayOfLegacySkeletonDirectories;
 - (BOOL)createDirectorySkeletonAtPath: (NSString *)theRoot error: (NSError **)theError;
 
 @end
@@ -250,7 +251,10 @@ done:
 
 }
 - (NSArray *)arrayOfSkeletonDirectories {
-    return [NSArray arrayWithObjects:@"branches", @"hooks", @"info", @"objects/info", @"objects/pack", @"refs/heads", @"refs/tags", nil];
+    return [NSArray arrayWithObjects:@"hooks", @"info", @"objects/info", @"objects/pack", @"refs/heads", @"refs/tags", nil];
+}
+- (NSArray *)arrayOfLegacySkeletonDirectories {
+	return [NSArray arrayWithObjects:@"branches", nil];
 }
 - (BOOL)createDirectorySkeletonAtPath: (NSString *)path error: (NSError **)theError {
     NSFileManager *fm = [[NSFileManager alloc] init];
@@ -268,7 +272,8 @@ done:
     }
 
     NSError *directoryError;
-    for ( NSString *dir in [self arrayOfSkeletonDirectories] ) {
+    NSArray *skeletonDirectories = [[self arrayOfSkeletonDirectories] arrayByAddingObjectsFromArray:[self arrayOfLegacySkeletonDirectories]];
+    for ( NSString *dir in skeletonDirectories ) {
         if ( ![fm createDirectoryAtPath:[gitRoot stringByAppendingPathComponent:dir]
                 withIntermediateDirectories:YES attributes:nil error:&directoryError] ) {
             GITErrorWithInfo(theError, GITRepoErrorSkeletonCreationFailed, NSUnderlyingErrorKey, directoryError,
