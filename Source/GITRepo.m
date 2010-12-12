@@ -254,20 +254,21 @@ done:
     return [NSArray arrayWithObjects:@"hooks", @"info", @"objects/info", @"objects/pack", @"refs/heads", @"refs/tags", nil];
 }
 - (NSArray *)arrayOfLegacySkeletonDirectories {
-	return [NSArray arrayWithObjects:@"branches", nil];
+    return [NSArray arrayWithObjects:@"branches", nil];
 }
 - (BOOL)createDirectorySkeletonAtPath: (NSString *)path error: (NSError **)theError {
     NSFileManager *fm = [[NSFileManager alloc] init];
 
     NSString *gitRoot;
     if ( [path hasSuffix:@".git"] ) {
-        gitRoot = [path copy];
+        gitRoot = [[path copy] autorelease];
     } else {
         gitRoot = [path stringByAppendingPathComponent:@".git"];
     }
 
     if ( [fm fileExistsAtPath:gitRoot] ) {
         GITError(theError, GITRepoErrorSkeletonExists, NSLocalizedString(@"Directory for skeleton exists", @"GITRepoErrorSkeletonExists"));
+        [fm release];
         return NO;
     }
 
