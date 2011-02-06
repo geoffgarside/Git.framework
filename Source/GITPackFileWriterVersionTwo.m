@@ -22,6 +22,7 @@
     if ( ![super init] )
         return nil;
 
+    offset = 0;
     CC_SHA1_Init(&ctx);
 
     return self;
@@ -75,6 +76,12 @@
     NSData *d = [[data copy] autorelease];
     [data release];
     return d;
+}
+
+#pragma mark Writer Methods
+- (NSInteger)writeHeaderToStream: (NSOutputStream *)stream {
+    offset += [self stream:stream writeData:[self packedHeaderDataWithNumberOfObjects:[objects count]]];
+    return offset;
 }
 
 @end

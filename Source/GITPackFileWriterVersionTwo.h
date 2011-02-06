@@ -12,6 +12,7 @@
 
 @interface GITPackFileWriterVersionTwo : GITPackFileWriter {
     CC_SHA1_CTX ctx;
+    NSInteger offset;
     NSArray *objects;
 }
 
