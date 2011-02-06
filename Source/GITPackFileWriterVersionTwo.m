@@ -11,7 +11,12 @@
 #import "GITObject.h"
 
 
+@interface GITPackFileWriterVersionTwo ()
+@property (readwrite,copy) NSArray *objects;
+@end
+
 @implementation GITPackFileWriterVersionTwo
+@synthesize objects;
 
 - (id)init {
     if ( ![super init] )
