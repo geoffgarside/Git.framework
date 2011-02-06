@@ -7,10 +7,11 @@
 //
 
 #import "GITPackIndexWriter.h"
+#import <CommonCrypto/CommonDigest.h>
 
 
 @interface GITPackIndexWriterVersionOne : GITPackIndexWriter {
-
+    CC_SHA1_CTX ctx;
 }
 
 @end
