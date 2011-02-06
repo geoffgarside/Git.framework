@@ -7,6 +7,7 @@
 //
 
 #import "GITPackFileWriterVersionTwo.h"
+#import "GITPackFileVersionTwo.h"
 
 
 @implementation GITPackFileWriterVersionTwo
@@ -35,6 +36,20 @@
     CC_SHA1_Final(checksum, &ctx);
 
     return [stream write:(uint8_t *)checksum maxLength:CC_SHA1_DIGEST_LENGTH];
+}
+
+#pragma mark Helper Methods
+- (NSData *)packedHeaderDataWithNumberOfObjects: (NSUInteger)numberOfObjects {
+    NSMutableData *data = [[NSMutableData alloc] initWithCapacity:12];
+    [data appendBytes:(void *)GITPackFileSignature length:4];
+    [data appendBytes:(void *)GITPackFileVersionTwoVersionBytes length:4];
+
+    uint32_t numberBytes = CFSwapInt32HostToBig(numberOfObjects);
+    [data appendBytes:(void *)&numberBytes length:sizeof(uint32_t)];
+
+    NSData *d = [[data copy] autorelease];
+    [data release];
+    return d;
 }
 
 @end
