@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+extern const char const GITPackIndexVersionDiscriminator[];
+
 /*!
  * Structure representing the information in the Index Fanout Table
  */

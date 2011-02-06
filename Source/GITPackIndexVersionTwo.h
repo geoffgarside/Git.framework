@@ -9,6 +9,8 @@
 #import "GITPackIndex.h"
 
 
+extern const uint8_t const GITPackIndexVersionTwoVersionBytes[];
+
 @interface GITPackIndexVersionTwo : GITPackIndex {
     NSData *data;
     NSArray *fanoutTable;
