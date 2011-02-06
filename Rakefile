@@ -15,6 +15,17 @@ namespace :build do
   end
 end
 
+namespace :clean do
+  desc "Cleans the debug version of the framework"
+  task :debug do
+    sh 'xcodebuild clean -configuration Debug'
+  end
+  desc "Cleans the release version of the framework"
+  task :release do
+    sh 'xcodebuild clean -configuration Release'
+  end
+end
+
 namespace :bridgesupport do
   desc 'Generate the BridgeSupport MetaData'
   task :generate => ['build:release'] do
