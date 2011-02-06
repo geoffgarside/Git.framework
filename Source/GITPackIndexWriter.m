@@ -12,6 +12,7 @@
 
 @implementation GITPackIndexWriter
 
+#pragma mark Class Cluster Methods
 + (id)alloc {
     if ([self isEqual:[GITPackIndexWriter class]])
         return [GITPackIndexWriterPlaceholder alloc];
@@ -26,6 +27,26 @@
 
 - (id)copyWithZone: (NSZone *)zone {
     return self;
+}
+
+#pragma mark Class Initialisers
++ (GITPackIndexWriter *)indexWriter {
+    return [[[self alloc] initWithDefaultVersion] autorelease];
+}
++ (GITPackIndexWriter *)indexWriterVersion: (NSUInteger)version {
+    return [[[self alloc] initWithVersion:version error:NULL] autorelease];
+}
+
+#pragma mark Initialisers
+- (id)initWithDefaultVersion {
+    [self doesNotRecognizeSelector: _cmd];
+    [self release];
+    return nil;
+}
+- (id)initWithVersion: (NSUInteger)version error: (NSError **)error {
+    [self doesNotRecognizeSelector: _cmd];
+    [self release];
+    return nil;
 }
 
 @end

@@ -14,4 +14,10 @@
  */
 @interface GITPackIndexWriter : NSObject { }
 
++ (GITPackIndexWriter *)indexWriter;
++ (GITPackIndexWriter *)indexWriterVersion: (NSUInteger)version;
+
+- (id)initWithDefaultVersion;
+- (id)initWithVersion: (NSUInteger)version error: (NSError **)error;
+
 @end
