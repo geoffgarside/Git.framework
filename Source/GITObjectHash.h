@@ -238,4 +238,14 @@ extern const NSUInteger GITObjectHashPackedLength;
  */
 - (NSComparisonResult)compare: (GITObjectHash *)hash;
 
+/*! \internal
+ * Returns the first packed byte of the receiver.
+ *
+ * The return value of this method is used in the development of a Fanout Table
+ * in the construction of GITPackIndex files.
+ *
+ * \return first packed byte of the receiver.
+ */
+- (uint8_t)firstPackedByte;
+
 @end

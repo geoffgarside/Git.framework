@@ -278,4 +278,8 @@ static signed char from_hex[256] = {
     return NSOrderedDescending;
 }
 
+- (uint8_t)firstPackedByte {
+    return (raw[0] & 0xff);
+}
+
 @end
