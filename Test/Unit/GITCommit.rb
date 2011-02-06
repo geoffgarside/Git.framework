@@ -1,11 +1,13 @@
+require 'zlib'
+
 class Bacon::Context
+  def commitDataForSha(sha)
+    file = "#{simple_repository.root}/.git/objects/%s/%s" % [sha[0,2], sha[2..-1]]
+    Zlib::Inflate.inflate(File.read(file)).split("\x00", 2)[1].to_data
+  end
   def commitForSha(sha)
-    c = NSData.dataWithContentsOfFile("#{@repo.root}/objects/%s/%s" % [sha[0,2], sha[2..-1]]).zlibInflate
-    r = c.rangeOfNullTerminatedBytesFrom(0)
-    p = c.subdataWithRange(NSMakeRange(7, r.length - 7))
-    l = NSString.alloc.initWithData(p, encoding:NSASCIIStringEncoding).to_i
-    d = c.subdataWithRange(NSMakeRange(r.length + 1, l))
-    GITCommit.commitFromData(d, sha1:GITObjectHash.objectHashWithString("sha"), repo:@repo, error:@err)
+    d = commitDataForSha(sha)
+    GITCommit.commitFromData(d, sha1:GITObjectHash.objectHashWithString(sha), repo:@repo, error:@err)
   end
 end
 
@@ -59,6 +61,14 @@ describe 'GITCommit' do
     end
     should 'have message' do
       @commit.message.should == "Update testfile.txt\n"
+    end
+    describe '-rawContent' do
+      before do
+        @data = commitDataForSha(@commit.sha1.unpackedString)
+      end
+      should 'return formatted commit' do
+        @commit.rawContent.should === @data
+      end
     end
   end
   describe "initial commit" do
