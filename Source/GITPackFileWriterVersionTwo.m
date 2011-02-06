@@ -122,4 +122,31 @@
     }
 }
 
+#pragma mark Polling Method
+- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error {
+    offset = 0;
+    NSInteger prevOffset;
+    if ( [stream hasSpaceAvailable] ) {
+        prevOffset = offset;
+        if ( [self writeHeaderToStream:stream] < prevOffset ) {  // if the write operation returned -1 we'll be smaller than the offset
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+
+        while ( objectsWritten < [objects count] ) {
+            prevOffset = offset;
+            if ( [self writeNextObjectToStream:stream] < prevOffset ) {
+                if ( error ) *error = [stream streamError];
+                return -1;
+            }
+        }
+
+        prevOffset = offset;
+        if ( [self writeChecksumToStream:stream] < prevOffset ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+    }
+}
+
 @end
