@@ -64,4 +64,8 @@ enum {
 
 #pragma mark GITObject Parsing Errors
     GITObjectErrorParsingFailed,
+
+#pragma mark GITPackFileWriter Errors
+    GITPackFileWriterErrorVersionUnsupported,
+
 };

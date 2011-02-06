@@ -9,8 +9,15 @@
 #import <Foundation/Foundation.h>
 
 
-@interface GITPackFileWriter : NSObject {
+/*!
+ * A class cluster
+ */
+@interface GITPackFileWriter : NSObject { }
 
-}
++ (GITPackFileWriter *)packWriter;
++ (GITPackFileWriter *)packWriterVersion: (NSUInteger)version;
+
+- (id)initWithDefaultVersion;
+- (id)initWithVersion: (NSUInteger)version error: (NSError **)error;
 
 @end

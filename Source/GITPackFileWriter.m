@@ -29,4 +29,24 @@
     return self;
 }
 
+#pragma mark Class Initialisers
++ (GITPackFileWriter *)packWriter {
+    return [[[self alloc] initWithDefaultVersion] autorelease];
+}
++ (GITPackFileWriter *)packWriterVersion: (NSUInteger)version {
+    return [[[self alloc] initWithVersion:version error:NULL] autorelease];
+}
+
+#pragma mark Initialisers
+- (id)initWithDefaultVersion {
+    [self doesNotRecognizeSelector: _cmd];
+    [self release];
+    return nil;
+}
+- (id)initWithVersion: (NSUInteger)version error: (NSError **)error {
+    [self doesNotRecognizeSelector: _cmd];
+    [self release];
+    return nil;
+}
+
 @end
