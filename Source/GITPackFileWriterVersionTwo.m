@@ -8,6 +8,7 @@
 
 #import "GITPackFileWriterVersionTwo.h"
 #import "GITPackFileVersionTwo.h"
+#import "GITObject.h"
 
 
 @implementation GITPackFileWriterVersionTwo
@@ -47,6 +48,25 @@
     uint32_t numberBytes = CFSwapInt32HostToBig(numberOfObjects);
     [data appendBytes:(void *)&numberBytes length:sizeof(uint32_t)];
 
+    NSData *d = [[data copy] autorelease];
+    [data release];
+    return d;
+}
+
+- (NSData *)packedObjectDataWithType: (GITObjectType)type andData: (NSData *)objData {
+    size_t shift = 4, size = [objData length];
+    uint8_t byte = (type << 4) | ~0x7f;
+
+    NSMutableData *data = [[NSMutableData alloc] initWithCapacity:size + 1];
+
+    byte |= size & 0x0f;
+    while ( byte != 0 ) {
+        [data appendBytes:(void *)&byte length:sizeof(byte)];
+        byte = (size >> shift) & 0x7f;
+        shift += 7;
+    }
+
+    [data appendData:objData];
     NSData *d = [[data copy] autorelease];
     [data release];
     return d;
