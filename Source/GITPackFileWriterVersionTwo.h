@@ -7,10 +7,11 @@
 //
 
 #import "GITPackFileWriter.h"
+#import <CommonCrypto/CommonDigest.h>
 
 
 @interface GITPackFileWriterVersionTwo : GITPackFileWriter {
-
+    CC_SHA1_CTX ctx;
 }
 
 @end
