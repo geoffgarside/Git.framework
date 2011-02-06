@@ -9,6 +9,7 @@
 #import "GITPackFileWriterVersionTwo.h"
 #import "GITPackFileVersionTwo.h"
 #import "GITObject.h"
+#import "NSData+Compression.h"
 
 
 @interface GITPackFileWriterVersionTwo ()
@@ -23,6 +24,7 @@
         return nil;
 
     offset = 0;
+    objectsWritten = 0;
     CC_SHA1_Init(&ctx);
 
     return self;
@@ -81,6 +83,14 @@
 #pragma mark Writer Methods
 - (NSInteger)writeHeaderToStream: (NSOutputStream *)stream {
     offset += [self stream:stream writeData:[self packedHeaderDataWithNumberOfObjects:[objects count]]];
+    return offset;
+}
+
+- (NSInteger)writeNextObjectToStream: (NSOutputStream *)stream {
+    GITObject<GITObject> *obj = [objects objectAtIndex:objectsWritten++];
+    NSData *zData  = [[obj rawContent] zlibDeflate];
+
+    offset += [self stream:stream writeData:[self packedObjectDataWithType:obj.type andData:zData]];
     return offset;
 }
 
