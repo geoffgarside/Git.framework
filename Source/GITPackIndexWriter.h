@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 
-@interface GITPackIndexWriter : NSObject {
-
-}
+/*!
+ * A class cluster
+ */
+@interface GITPackIndexWriter : NSObject { }
 
 @end
