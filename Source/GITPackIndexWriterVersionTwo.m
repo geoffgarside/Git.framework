@@ -7,6 +7,7 @@
 //
 
 #import "GITPackIndexWriterVersionTwo.h"
+#import "GITPackIndexVersionTwo.h"
 
 
 @implementation GITPackIndexWriterVersionTwo
@@ -35,6 +36,17 @@
     CC_SHA1_Final(checksum, &ctx);
 
     return [stream write:(uint8_t *)checksum maxLength:CC_SHA1_DIGEST_LENGTH];
+}
+
+#pragma mark Helper Methods
+- (NSData *)indexHeaderData {
+    NSMutableData *data = [[NSMutableData alloc] initWithCapacity:8];
+    [data appendBytes:(void *)GITPackIndexVersionDiscriminator length:4];
+    [data appendBytes:(void *)GITPackIndexVersionTwoVersionBytes length:4];
+
+    NSData *d = [[data copy] autorelease];
+    [data release];
+    return d;
 }
 
 @end
