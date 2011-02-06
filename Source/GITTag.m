@@ -164,4 +164,12 @@ static parsingRecord tzParsingRecord         = { "", 0, 0, 5, '\n' };
    self.cachedData = nil;
 }
 
+- (BOOL)refersToObjectHash: (GITObjectHash *)objectHash {
+    return [self.targetSha1 isEqualToObjectHash:objectHash];
+}
+
+- (BOOL)refersToObject: (GITObject *)object {
+    return [self refersToObjectHash:[object sha1]];
+}
+
 @end

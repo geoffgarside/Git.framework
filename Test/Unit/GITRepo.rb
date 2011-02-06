@@ -178,6 +178,21 @@ describe "GITRepo -head" do
   end
 end
 
+describe "GITRepo -tags" do
+  before do
+    @repo = simple_repository.git_repo
+    @tags = @repo.tags
+  end
+  should 'not be empty' do
+    @tags.count.should.be > 0
+  end
+  should 'contain GITTag objects' do
+    @tags.each do |tag|
+      tag.should.be.kind_of(GITTag)
+    end
+  end
+end
+
 describe "GITRepo -revList" do
   before do
     @repo = graph_repository.git_repo

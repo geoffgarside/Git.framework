@@ -20,6 +20,7 @@
  */
 @interface GITRevList : NSObject {
     GITGraph *graph;
+    NSMutableArray *excluded;
 }
 
 //! \name Creating and Initialising Rev-Lists
@@ -72,5 +73,24 @@
  * \return array of commits sorted by topology and date
  */
 - (NSArray *)arrayOfCommitsSortedByTopologyAndDate;
+
+/*!
+ * Returns an array of the objects which are reachable from the head of the receiver.
+ *
+ * This is primarily used when collecting the list of objects to include in a PACK file
+ * prior to generation.
+ *
+ * \return Array of objects reachable from the head of the receiver.
+ */
+- (NSArray *)arrayOfReachableObjects;
+
+/*!
+ * Returns an array of the objects and tags which are reachable from the head of the receiver.
+ *
+ * \param tags Array of tags to be considered for inclusion in the resulting array. This should
+ * be an inclusive list of all tags which might be reachable from the head of the receiver.
+ * \return Array of objects and tags reachable from the head of the receiver.
+ */
+- (NSArray *)arrayOfReachableObjectsAndTags: (NSArray *)tags;
 
 @end

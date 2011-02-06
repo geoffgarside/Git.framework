@@ -10,7 +10,12 @@
 #import "GITCommit.h"
 #import "GITGraph.h"
 #import "GITGraphNode.h"
+#import "GITTree.h"
+#import "GITTreeItem.h"
+#import "GITTag.h"
 
+
+static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
 
 @implementation GITRevList
 
@@ -28,12 +33,18 @@
 }
 
 - (void)dealloc {
+    if ( excluded )
+        [excluded release];
+
     [graph release];
     [super dealloc];
 }
 
 - (void)subtractDescendentsFromCommit: (GITCommit *)tail {
     [graph subtractDescendentNodesFromCommit:tail];
+
+    if ( !excluded ) excluded = [[NSMutableArray alloc] initWithCapacity:1];
+    [excluded addObject:[tail tree]];
 }
 
 - (NSArray *)arrayOfCommitsSortedByDate {
@@ -63,5 +74,72 @@
 
     return [[list copy] autorelease];
 }
+- (BOOL)shouldExcludeTreeItem: (GITTreeItem *)treeItem {
+    for ( GITTree *t in excluded ) {
+        if ( [t containsObject:treeItem] )
+            return YES;
+    }
+    return NO;
+}
+- (void)addContentsOfTree: (GITTree *)tree intoArray:(NSMutableArray *)objects {
+    if ( excluded && [excluded containsObject:tree] )
+        return;     // The tree is excluded, so everything known to it is too
+
+    NSArray *items = [tree items];
+    [objects addObject:tree];
+
+    for ( GITTreeItem *treeItem in items ) {
+        if ( [objects containsObject:treeItem] )
+            continue;
+
+        if ( [self shouldExcludeTreeItem:treeItem] )
+            continue;   // The tree item is known to the excluded tree
+
+        [objects addObject:treeItem];
+        if ( [treeItem isDirectory] && ![treeItem isModule] ) {
+            [self addContentsOfTree:(GITTree *)[treeItem item] intoArray:objects];
+        }
+    }
+}
+- (NSArray *)arrayOfReachableObjectsAndTags: (NSArray *)tags {
+    NSArray *commits = [self arrayOfCommitsSortedByDate];
+    NSMutableArray *objects = [[NSMutableArray alloc] initWithCapacity:[commits count]]; // we should have at least as many trees
+
+    NSMutableArray *reachableTags = nil;
+    if ( tags )
+        reachableTags = [[NSMutableArray alloc] initWithCapacity:[tags count]];
+
+    for ( GITCommit *commit in commits ) {
+        if ( tags ) {
+            for ( GITTag *tag in tags ) {
+                if ( [tag refersToObject:commit] )
+                    [reachableTags addObject:tag];
+            }
+        }
+
+        [self addContentsOfTree:[commit tree] intoArray:objects];
+    }
+
+    if ( tags ) {
+        [reachableTags sortUsingFunction:&tagObjectsComparator context:NULL];
+        [reachableTags addObjectsFromArray:objects];
+        [objects release];
+        objects = reachableTags;
+    }
+
+    NSArray *array = [commits arrayByAddingObjectsFromArray:objects];
+    [objects release];
+    return array;
+}
+- (NSArray *)arrayOfReachableObjects {
+    return [self arrayOfReachableObjectsAndTags:nil];
+}
 
 @end
+
+static NSComparisonResult
+tagObjectsComparator(id x, id y, void *ignored) {
+    (void)ignored;
+    GITTag *a = (GITTag *)x, *b = (GITTag *)y;
+    return [[a name] compare:[b name]];
+}
