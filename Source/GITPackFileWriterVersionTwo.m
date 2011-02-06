@@ -23,6 +23,7 @@
     if ( ![super init] )
         return nil;
 
+    state = 0;
     offset = 0;
     objectsWritten = 0;
     CC_SHA1_Init(&ctx);
@@ -92,6 +93,33 @@
 
     offset += [self stream:stream writeData:[self packedObjectDataWithType:obj.type andData:zData]];
     return offset;
+}
+
+#pragma mark NSRunLoop method
+- (void)writeToStream: (NSOutputStream *)stream {
+    switch ( state ) {
+        case 0: // write header
+            [self writeHeaderToStream:stream];
+            state = 1;
+            break;
+        case 1: // write objects
+            [self writeNextObjectToStream:stream];
+            if ( objectsWritten >= [objects count] )
+                state = 2;
+            break;
+        case 2: // write checksum
+            [self writeChecksumToStream:stream];
+            state = 3;
+            break;
+    }
+}
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
+    switch ( eventCode ) {
+        case NSStreamEventHasSpaceAvailable:
+            [self writeToStream:(NSOutputStream *)stream];
+            break;
+    }
 }
 
 @end
