@@ -27,6 +27,7 @@
     if ( ![super init] )
         return nil;
 
+    objectsWritten = 0;
     CC_SHA1_Init(&ctx);
     memset(fanoutTable, 0, sizeof(fanoutTable));
 
@@ -86,6 +87,45 @@
     NSData *d = [[data copy] autorelease];
     [data release];
     return d;
+}
+
+#pragma mark Writer Methods
+- (NSInteger)writeHeaderToStream: (NSOutputStream *)stream {
+    return [self stream:stream writeData:[self indexHeaderData]];
+}
+
+- (NSInteger)writeObjectNameToStream: (NSOutputStream *)stream {
+    GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
+    return [self stream:stream writeData:[[obj sha1] packedData]];
+}
+
+- (NSInteger)writeCRC32ValueToStream: (NSOutputStream *)stream {
+    GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
+
+    uint32_t crc32 = CFSwapInt32HostToBig([obj crc32]);
+    return [self stream:stream write:(uint8_t *)&crc32 maxLength:sizeof(crc32)];
+}
+
+- (NSInteger)writeOffsetValueToStream: (NSOutputStream *)stream {
+    GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
+
+    if ( [obj offset] > (1 << 31) ) {       // extended offset
+        uint64_t v = CFSwapInt64HostToBig((uint64_t)[obj offset]);
+        uint32_t o = [extOffsets length] / 8.0;
+        [extOffsets appendBytes:(void *)&v length:sizeof(v)];
+        return [self stream:stream write:(uint8_t *)&o maxLength:sizeof(o)];
+    }
+
+    uint32_t v = CFSwapInt32HostToBig((uint32_t)[obj offset]);
+    return [self stream:stream write:(uint8_t *)&v maxLength:sizeof(v)];
+}
+
+- (NSInteger)writeExtendedOffsetsToStream: (NSOutputStream *)stream {
+    return [self stream:stream writeData:extOffsets];
+}
+
+- (NSInteger)writePackChecksumToStream: (NSOutputStream *)stream {
+    return [self stream:stream writeData:packChecksum];
 }
 
 @end
