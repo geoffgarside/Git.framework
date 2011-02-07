@@ -27,6 +27,7 @@
     if ( ![super init] )
         return nil;
 
+    state = 0;
     objectsWritten = 0;
     CC_SHA1_Init(&ctx);
     memset(fanoutTable, 0, sizeof(fanoutTable));
@@ -126,6 +127,64 @@
 
 - (NSInteger)writePackChecksumToStream: (NSOutputStream *)stream {
     return [self stream:stream writeData:packChecksum];
+}
+
+#pragma mark NSRunLoop method
+- (void)writeToStream: (NSOutputStream *)stream {
+    switch ( state ) {
+        case 0: // write header
+            [self writeHeaderToStream:stream];
+            state = 1;
+            break;
+        case 1: // write fanout table
+            [self writeFanoutTableToStream:stream];
+            state = 2;
+            break;
+        case 2: // write object names
+            [self writeObjectNameToStream:stream];
+            if ( objectsWritten >= [objects count] ) {
+                objectsWritten = 0;
+                state = 3;
+            }
+            break;
+        case 3: // write crc32 values
+            [self writeCRC32ValueToStream:stream];
+            if ( objectsWritten >= [objects count] ) {
+                objectsWritten = 0;
+                state = 4;
+            }
+            break;
+        case 4: // write offset values
+            [self writeOffsetValueToStream:stream];
+            if ( objectsWritten >= [objects count] ) {
+                objectsWritten = 0;
+                state = 5;
+            }
+            break;
+        case 5: // write extended offsets
+            [self writeExtendedOffsetsToStream:stream];
+            state = 6;
+            break;
+        case 6: // write pack checksum
+            [self writePackChecksumToStream:stream];
+            state = 7;
+            break;
+        case 7: // write checksum
+            [self writeChecksumToStream:stream];
+            state = 8;
+            break;
+        case 8:
+            [stream close];
+            break;
+    }
+}
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
+    switch ( eventCode ) {
+        case NSStreamEventHasSpaceAvailable:
+            [self writeToStream:(NSOutputStream *)stream];
+            break;
+    }
 }
 
 @end

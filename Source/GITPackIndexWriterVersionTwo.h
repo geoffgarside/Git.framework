@@ -15,6 +15,7 @@
     uint32_t fanoutTable[256];      //!< Differs from GITPackIndex fanoutTable in that it isn't an increasing counter
     NSMutableArray *objects;
     NSInteger objectsWritten;
+    char state;
     NSMutableData *extOffsets;
     NSData *packChecksum;
 }
