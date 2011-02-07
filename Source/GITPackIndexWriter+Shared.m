@@ -7,8 +7,10 @@
 //
 
 #import "GITPackIndexWriter+Shared.h"
+#import "GITPackIndexWriterObject.h"
 #import "GITObjectHash.h"
 
+NSComparisonResult GITPackIndexWriterObjectSorter(id objA, id objB, void *context);
 
 @implementation GITPackIndexWriter (Shared)
 
@@ -43,4 +45,15 @@
     return 0;
 }
 
+#pragma mark Objects Array methods
+- (NSArray *)sortedArrayOfObjects: (NSArray *)objects {
+    return [objects sortedArrayUsingFunction:&GITPackIndexWriterObjectSorter context:NULL];
+}
+
 @end
+
+NSComparisonResult GITPackIndexWriterObjectSorter(id objA, id objB, void *context) {
+    GITPackIndexWriterObject *a = (GITPackIndexWriterObject *)objA,
+                             *b = (GITPackIndexWriterObject *)objB;
+    return [[a sha1] compare:[b sha1]];
+}
