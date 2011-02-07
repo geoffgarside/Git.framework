@@ -8,6 +8,8 @@
 
 #import "GITPackIndexWriterVersionOne.h"
 #import "GITPackIndexWriter+Shared.h"
+#import "GITPackIndexWriterObject.h"
+#import "GITObjectHash.h"
 
 
 @interface GITPackIndexWriterVersionOne ()
@@ -54,6 +56,22 @@
     CC_SHA1_Final(checksum, &ctx);
 
     return [stream write:(uint8_t *)checksum maxLength:CC_SHA1_DIGEST_LENGTH];
+}
+
+#pragma mark Object Addition Methods
+- (void)addObjectWithName: (GITObjectHash *)sha1 andData: (NSData *)data atOffset: (NSUInteger)offset {
+    if ( offset > UINT32_MAX ) {
+        return; // really need to put some error somewhere, or else convert
+    }           // us to a VersionTwo index file to save the user some trouble.
+
+    [self addObjectHashToFanoutTable:sha1];
+
+    GITPackIndexWriterObject *obj = [GITPackIndexWriterObject indexWriterObjectWithName:sha1 atOffset:offset];
+    [objects addObject:obj];
+    (void)data;
+}
+- (void)addPackChecksum: (NSData *)packChecksumData {
+    self.packChecksum = packChecksumData;
 }
 
 @end
