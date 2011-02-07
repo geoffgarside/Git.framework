@@ -124,4 +124,34 @@
     }
 }
 
+#pragma mark Polling Method
+- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error {
+    if ( [stream hasSpaceAvailable] ) {
+        if ( [self writeFanoutTableToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+
+        objectsWritten = 0;
+        while ( objectsWritten < [objects count] ) {
+            if ( [self writeObjectEntryToStream:stream] < 0 ) {
+                if ( error ) *error = [stream streamError];
+                return -1;
+            }
+        }
+
+        if ( [self writePackChecksumToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+
+        if ( [self writeChecksumToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+    }
+
+    return 0;
+}
+
 @end
