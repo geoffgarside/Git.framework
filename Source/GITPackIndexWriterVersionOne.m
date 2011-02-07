@@ -7,6 +7,7 @@
 //
 
 #import "GITPackIndexWriterVersionOne.h"
+#import "GITPackIndexWriter+Shared.h"
 
 
 @implementation GITPackIndexWriterVersionOne
@@ -16,8 +17,13 @@
         return nil;
 
     CC_SHA1_Init(&ctx);
+    memset(fanoutTable, 0, sizeof(fanoutTable));
 
     return self;
+}
+
+- (uint32_t *)fanoutTable {
+    return fanoutTable;
 }
 
 #pragma mark Checksumming writer methods
