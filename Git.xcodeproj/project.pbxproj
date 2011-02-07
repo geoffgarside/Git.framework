@@ -127,6 +127,8 @@
 		F5D0136A10A5C836003EFA8F /* GITPackFilePlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136810A5C836003EFA8F /* GITPackFilePlaceholder.m */; };
 		F5D0137110A5DA9B003EFA8F /* GITPackFileVersionTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D0136F10A5DA9B003EFA8F /* GITPackFileVersionTwo.h */; };
 		F5D0137210A5DA9B003EFA8F /* GITPackFileVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */; };
+		F5ECE84712FF68AA00A608AA /* GITPackIndexWriter+Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = F5ECE84512FF68AA00A608AA /* GITPackIndexWriter+Shared.h */; };
+		F5ECE84812FF68AA00A608AA /* GITPackIndexWriter+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECE84612FF68AA00A608AA /* GITPackIndexWriter+Shared.m */; };
 		F5FC28C310A6301D00EFB922 /* GITPackIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = F5FC28C110A6301D00EFB922 /* GITPackIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5FC28C410A6301D00EFB922 /* GITPackIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FC28C210A6301D00EFB922 /* GITPackIndex.m */; };
 		F5FC28C710A630A900EFB922 /* GITPackIndexPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F5FC28C510A630A900EFB922 /* GITPackIndexPlaceholder.h */; };
@@ -263,6 +265,8 @@
 		F5D0136810A5C836003EFA8F /* GITPackFilePlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFilePlaceholder.m; path = Source/GITPackFilePlaceholder.m; sourceTree = "<group>"; };
 		F5D0136F10A5DA9B003EFA8F /* GITPackFileVersionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileVersionTwo.h; path = Source/GITPackFileVersionTwo.h; sourceTree = "<group>"; };
 		F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileVersionTwo.m; path = Source/GITPackFileVersionTwo.m; sourceTree = "<group>"; };
+		F5ECE84512FF68AA00A608AA /* GITPackIndexWriter+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GITPackIndexWriter+Shared.h"; path = "Source/GITPackIndexWriter+Shared.h"; sourceTree = "<group>"; };
+		F5ECE84612FF68AA00A608AA /* GITPackIndexWriter+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GITPackIndexWriter+Shared.m"; path = "Source/GITPackIndexWriter+Shared.m"; sourceTree = "<group>"; };
 		F5F2327311FAFE140004547F /* GITCommitEnumerator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITCommitEnumerator.rb; sourceTree = "<group>"; };
 		F5F2327411FAFE140004547F /* GITGraph.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITGraph.rb; sourceTree = "<group>"; };
 		F5F2327511FAFE140004547F /* GITLooseObject.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITLooseObject.rb; sourceTree = "<group>"; };
@@ -585,6 +589,8 @@
 				F566980712FCE43D0085E769 /* GITPackIndexWriterVersionOne.m */,
 				F566980A12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h */,
 				F566980B12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m */,
+				F5ECE84512FF68AA00A608AA /* GITPackIndexWriter+Shared.h */,
+				F5ECE84612FF68AA00A608AA /* GITPackIndexWriter+Shared.m */,
 			);
 			name = GITPackIndex;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 				F566980412FCE4270085E769 /* GITPackIndexWriterPlaceholder.h in Headers */,
 				F566980812FCE43D0085E769 /* GITPackIndexWriterVersionOne.h in Headers */,
 				F566980C12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h in Headers */,
+				F5ECE84712FF68AA00A608AA /* GITPackIndexWriter+Shared.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,6 +818,7 @@
 				F566980512FCE4270085E769 /* GITPackIndexWriterPlaceholder.m in Sources */,
 				F566980912FCE43D0085E769 /* GITPackIndexWriterVersionOne.m in Sources */,
 				F566980D12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m in Sources */,
+				F5ECE84812FF68AA00A608AA /* GITPackIndexWriter+Shared.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
