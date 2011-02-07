@@ -121,6 +121,9 @@
         case NSStreamEventHasSpaceAvailable:
             [self writeToStream:(NSOutputStream *)stream];
             break;
+        case NSStreamEventErrorOccurred:
+            // should really handle this
+            break;
     }
 }
 
