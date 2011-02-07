@@ -15,6 +15,7 @@
     uint32_t fanoutTable[256];
     NSMutableArray *objects;
     NSInteger objectsWritten;
+    char state;
     NSData *packChecksum;
 }
 

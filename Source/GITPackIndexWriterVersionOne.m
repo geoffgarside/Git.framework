@@ -24,6 +24,7 @@
     if ( ![super init] )
         return nil;
 
+    state = 0;
     objectsWritten = 0;
     CC_SHA1_Init(&ctx);
     memset(fanoutTable, 0, sizeof(fanoutTable));
@@ -87,6 +88,40 @@
 }
 - (NSInteger)writePackChecksumToStream: (NSOutputStream *)stream {
     return [self stream:stream writeData:packChecksum];
+}
+
+#pragma mark NSRunLoop method
+- (void)writeToStream: (NSOutputStream *)stream {
+    switch ( state ) {
+        case 0: // write fanout table
+            [self writeFanoutTableToStream:stream];
+            state = 1;
+            break;
+        case 2: // write object entries
+            [self writeObjectEntryToStream:stream];
+            if ( objectsWritten >= [objects count] )
+                state = 3;
+            break;
+        case 3: // write pack checksum
+            [self writePackChecksumToStream:stream];
+            state = 4;
+            break;
+        case 4: // write checksum
+            [self writeChecksumToStream:stream];
+            state = 5;
+            break;
+        case 5:
+            [stream close];
+            break;
+    }
+}
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
+    switch ( eventCode ) {
+        case NSStreamEventHasSpaceAvailable:
+            [self writeToStream:(NSOutputStream *)stream];
+            break;
+    }
 }
 
 @end
