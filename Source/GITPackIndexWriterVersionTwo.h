@@ -14,6 +14,7 @@
     CC_SHA1_CTX ctx;
     uint32_t fanoutTable[256];      //!< Differs from GITPackIndex fanoutTable in that it isn't an increasing counter
     NSMutableArray *objects;
+    NSMutableData *extOffsets;
     NSData *packChecksum;
 }
 

@@ -16,11 +16,12 @@
 
 @interface GITPackIndexWriterVersionTwo ()
 @property (retain) NSMutableArray *objects;
+@property (retain) NSMutableData *extOffsets;
 @property (copy) NSData *packChecksum;
 @end
 
 @implementation GITPackIndexWriterVersionTwo
-@synthesize objects, packChecksum;
+@synthesize objects, extOffsets, packChecksum;
 
 - (id)init {
     if ( ![super init] )
@@ -30,12 +31,14 @@
     memset(fanoutTable, 0, sizeof(fanoutTable));
 
     self.objects = [NSMutableArray array];
+    self.extOffsets = [NSMutableData data];
 
     return self;
 }
 
 - (void)dealloc {
     self.objects = nil;
+    self.extOffsets = nil;
     self.packChecksum = nil;
     [super dealloc];
 }
