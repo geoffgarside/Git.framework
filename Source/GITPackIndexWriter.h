@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 
+@class GITObjectHash;
+
 /*!
  * A class cluster
  */
@@ -19,5 +21,8 @@
 
 - (id)initWithDefaultVersion;
 - (id)initWithVersion: (NSUInteger)version error: (NSError **)error;
+
+- (void)addObjectWithName: (GITObjectHash *)sha1 andData: (NSData *)data atOffset: (NSUInteger)offset;
+- (void)addPackChecksum: (NSData *)packChecksumData;
 
 @end

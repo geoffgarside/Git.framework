@@ -49,4 +49,14 @@
     return nil;
 }
 
+- (void)addObjectWithName: (GITObjectHash *)sha1 andData: (NSData *)data atOffset: (NSUInteger)offset {
+    [self doesNotRecognizeSelector: _cmd];
+    return;
+}
+
+- (void)addPackChecksum: (NSData *)packChecksumData {
+    [self doesNotRecognizeSelector: _cmd];
+    return;
+}
+
 @end
