@@ -31,6 +31,11 @@
     return self;
 }
 
+- (void)dealloc {
+    self.objects = nil;
+    [super dealloc];
+}
+
 #pragma mark Checksumming writer methods
 - (NSInteger)stream: (NSOutputStream *)stream write: (const uint8_t *)buffer maxLength: (NSUInteger)length {
     CC_SHA1_Update(&ctx, buffer, length);
@@ -147,6 +152,8 @@
             return -1;
         }
     }
+
+    return 0;
 }
 
 @end
