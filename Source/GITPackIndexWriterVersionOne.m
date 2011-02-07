@@ -10,7 +10,12 @@
 #import "GITPackIndexWriter+Shared.h"
 
 
+@interface GITPackIndexWriterVersionOne ()
+@property (retain) NSMutableArray *objects;
+@end
+
 @implementation GITPackIndexWriterVersionOne
+@synthesize objects;
 
 - (id)init {
     if ( ![super init] )
@@ -18,8 +23,14 @@
 
     CC_SHA1_Init(&ctx);
     memset(fanoutTable, 0, sizeof(fanoutTable));
+    self.objects = [NSMutableArray array];
 
     return self;
+}
+
+- (void)dealloc {
+    self.objects = nil;
+    [super dealloc];
 }
 
 - (uint32_t *)fanoutTable {
