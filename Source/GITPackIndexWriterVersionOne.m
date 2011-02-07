@@ -12,10 +12,11 @@
 
 @interface GITPackIndexWriterVersionOne ()
 @property (retain) NSMutableArray *objects;
+@property (copy) NSData *packChecksum;
 @end
 
 @implementation GITPackIndexWriterVersionOne
-@synthesize objects;
+@synthesize objects, packChecksum;
 
 - (id)init {
     if ( ![super init] )
@@ -30,6 +31,7 @@
 
 - (void)dealloc {
     self.objects = nil;
+    self.packChecksum = nil;
     [super dealloc];
 }
 

@@ -14,6 +14,7 @@
     CC_SHA1_CTX ctx;
     uint32_t fanoutTable[256];
     NSMutableArray *objects;
+    NSData *packChecksum;
 }
 
 @end
