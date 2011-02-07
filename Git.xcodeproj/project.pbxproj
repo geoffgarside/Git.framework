@@ -117,6 +117,8 @@
 		F5B28C7110D4799E009A933C /* GITBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C6F10D4799E009A933C /* GITBlob.m */; };
 		F5B28C7410D479AE009A933C /* GITTag.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B28C7210D479AE009A933C /* GITTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5B28C7510D479AE009A933C /* GITTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C7310D479AE009A933C /* GITTag.m */; };
+		F5B8579B12FF5977004EED0C /* NSData+CRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B8579912FF5977004EED0C /* NSData+CRC32.h */; };
+		F5B8579C12FF5977004EED0C /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B8579A12FF5977004EED0C /* NSData+CRC32.m */; };
 		F5BBC1A61063753400EF21A8 /* GITRefResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1A41063753400EF21A8 /* GITRefResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5BBC1A71063753400EF21A8 /* GITRefResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BBC1A51063753400EF21A8 /* GITRefResolver.m */; };
 		F5BBC1DE10659C3100EF21A8 /* GITRef.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1DC10659C3100EF21A8 /* GITRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -253,6 +255,8 @@
 		F5B28C6F10D4799E009A933C /* GITBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITBlob.m; path = Source/GITBlob.m; sourceTree = "<group>"; };
 		F5B28C7210D479AE009A933C /* GITTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITTag.h; path = Source/GITTag.h; sourceTree = "<group>"; };
 		F5B28C7310D479AE009A933C /* GITTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITTag.m; path = Source/GITTag.m; sourceTree = "<group>"; };
+		F5B8579912FF5977004EED0C /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+CRC32.h"; path = "Source/Category/NSData/NSData+CRC32.h"; sourceTree = "<group>"; };
+		F5B8579A12FF5977004EED0C /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+CRC32.m"; path = "Source/Category/NSData/NSData+CRC32.m"; sourceTree = "<group>"; };
 		F5BBC1931062F02500EF21A8 /* TestHelper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TestHelper.rb; sourceTree = "<group>"; };
 		F5BBC1951062F02500EF21A8 /* GITRepo.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRepo.rb; sourceTree = "<group>"; };
 		F5BBC1A41063753400EF21A8 /* GITRefResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRefResolver.h; path = Source/GITRefResolver.h; sourceTree = "<group>"; };
@@ -494,6 +498,8 @@
 		F5AC4DF1106C50230083212A /* NSData */ = {
 			isa = PBXGroup;
 			children = (
+				F5B8579912FF5977004EED0C /* NSData+CRC32.h */,
+				F5B8579A12FF5977004EED0C /* NSData+CRC32.m */,
 				F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */,
 				F57EAA3C10CDDFAA00EE2103 /* NSData+Compression.m */,
 				F575BBF910C12799000458EB /* NSData+SHA1.h */,
@@ -660,6 +666,7 @@
 				F566980812FCE43D0085E769 /* GITPackIndexWriterVersionOne.h in Headers */,
 				F566980C12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h in Headers */,
 				F55454B512FF43D9005AAC0E /* GITPackIndexWriterObject.h in Headers */,
+				F5B8579B12FF5977004EED0C /* NSData+CRC32.h in Headers */,
 				F5ECE84712FF68AA00A608AA /* GITPackIndexWriter+Shared.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -826,6 +833,7 @@
 				F566980912FCE43D0085E769 /* GITPackIndexWriterVersionOne.m in Sources */,
 				F566980D12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m in Sources */,
 				F55454B612FF43D9005AAC0E /* GITPackIndexWriterObject.m in Sources */,
+				F5B8579C12FF5977004EED0C /* NSData+CRC32.m in Sources */,
 				F5ECE84812FF68AA00A608AA /* GITPackIndexWriter+Shared.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
