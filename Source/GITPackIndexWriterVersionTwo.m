@@ -8,7 +8,10 @@
 
 #import "GITPackIndexWriterVersionTwo.h"
 #import "GITPackIndexWriter+Shared.h"
+#import "GITPackIndexWriterObject.h"
 #import "GITPackIndexVersionTwo.h"
+#import "GITObjectHash.h"
+#import "NSData+CRC32.h"
 
 
 @interface GITPackIndexWriterVersionTwo ()
@@ -56,6 +59,19 @@
     CC_SHA1_Final(checksum, &ctx);
 
     return [stream write:(uint8_t *)checksum maxLength:CC_SHA1_DIGEST_LENGTH];
+}
+
+#pragma mark Object Addition Methods
+- (void)addObjectWithName: (GITObjectHash *)sha1 andData: (NSData *)data atOffset: (NSUInteger)offset {
+    [self addObjectHashToFanoutTable:sha1];
+
+    GITPackIndexWriterObject *obj = [GITPackIndexWriterObject indexWriterObjectWithName:sha1 atOffset:offset];
+    [obj setCRC32:[data crc32]];
+    [objects addObject:obj];
+}
+
+- (void)addPackChecksum: (NSData *)packChecksumData {
+    self.packChecksum = packChecksumData;
 }
 
 #pragma mark Helper Methods
