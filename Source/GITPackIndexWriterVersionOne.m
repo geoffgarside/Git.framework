@@ -24,6 +24,7 @@
     if ( ![super init] )
         return nil;
 
+    objectsWritten = 0;
     CC_SHA1_Init(&ctx);
     memset(fanoutTable, 0, sizeof(fanoutTable));
     self.objects = [NSMutableArray array];
@@ -72,6 +73,20 @@
 }
 - (void)addPackChecksum: (NSData *)packChecksumData {
     self.packChecksum = packChecksumData;
+}
+
+#pragma mark Writer Methods
+- (NSInteger)writeObjectEntryToStream: (NSOutputStream *)stream {
+    GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
+
+    NSInteger written = 0;
+    uint32_t offset = CFSwapInt32HostToBig((uint32_t)[obj offset]);
+    written += [self stream:stream write:(uint8_t *)&offset maxLength:sizeof(offset)];
+    written += [self stream:stream writeData:[[obj sha1] packedData]];
+    return written;
+}
+- (NSInteger)writePackChecksumToStream: (NSOutputStream *)stream {
+    return [self stream:stream writeData:packChecksum];
 }
 
 @end
