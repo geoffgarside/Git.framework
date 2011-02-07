@@ -187,4 +187,59 @@
     }
 }
 
+#pragma mark Polling Method
+- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error {
+    if ( [stream hasSpaceAvailable] ) {
+        if ( [self writeHeaderToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+        if ( [self writeFanoutTableToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+
+        objectsWritten = 0;
+        while ( objectsWritten < [objects count] ) {
+            if ( [self writeObjectNameToStream:stream] < 0 ) {
+                if ( error ) *error = [stream streamError];
+                return -1;
+            }
+        }
+
+        objectsWritten = 0;
+        while ( objectsWritten < [objects count] ) {
+            if ( [self writeCRC32ValueToStream:stream] < 0 ) {
+                if ( error ) *error = [stream streamError];
+                return -1;
+            }
+        }
+
+        objectsWritten = 0;
+        while ( objectsWritten < [objects count] ) {
+            if ( [self writeOffsetValueToStream:stream] < 0 ) {
+                if ( error ) *error = [stream streamError];
+                return -1;
+            }
+        }
+
+        if ( [self writeExtendedOffsetsToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+
+        if ( [self writePackChecksumToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+
+        if ( [self writeChecksumToStream:stream] < 0 ) {
+            if ( error ) *error = [stream streamError];
+            return -1;
+        }
+    }
+
+    return 0;
+}
+
 @end
