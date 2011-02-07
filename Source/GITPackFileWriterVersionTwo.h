@@ -10,12 +10,14 @@
 #import <CommonCrypto/CommonDigest.h>
 
 
+@class GITPackIndexWriter;
 @interface GITPackFileWriterVersionTwo : GITPackFileWriter {
     char state;
     CC_SHA1_CTX ctx;
     NSInteger offset;
     NSUInteger objectsWritten;
     NSArray *objects;
+    GITPackIndexWriter *indexWriter;
 }
 
 @end

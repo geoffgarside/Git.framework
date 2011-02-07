@@ -9,6 +9,7 @@
 #import "GITPackFileWriterVersionTwo.h"
 #import "GITPackFileVersionTwo.h"
 #import "GITObject.h"
+#import "GITPackIndexWriter.h"
 #import "NSData+Compression.h"
 
 
@@ -49,6 +50,12 @@
 - (NSInteger)writeChecksumToStream: (NSOutputStream *)stream {
     unsigned char checksum[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1_Final(checksum, &ctx);
+
+    if ( [indexWriter respondsToSelector:@selector(addPackChecksum:)] ) {
+        NSData *checksumData = [[NSData alloc] initWithBytes:checksum length:CC_SHA1_DIGEST_LENGTH];
+        [indexWriter addPackChecksum:checksumData];
+        [checksumData release];
+    }
 
     return [stream write:(uint8_t *)checksum maxLength:CC_SHA1_DIGEST_LENGTH];
 }
@@ -96,6 +103,8 @@
     GITObject<GITObject> *obj = [objects objectAtIndex:objectsWritten++];
     NSData *zData  = [[obj rawContent] zlibDeflate];
 
+    if ( [indexWriter respondsToSelector:@selector(addObjectWithName:andData:atOffset:)] )
+        [indexWriter addObjectWithName:obj.sha1 andData:zData atOffset:offset];
     offset += [self stream:stream writeData:[self packedObjectDataWithType:obj.type andData:zData]];
     return offset;
 }
