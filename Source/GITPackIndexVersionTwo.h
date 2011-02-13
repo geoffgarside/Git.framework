@@ -11,7 +11,7 @@
 
 extern const uint8_t const GITPackIndexVersionTwoVersionBytes[];
 
-@interface GITPackIndexVersionTwo : GITPackIndex {
+@interface GITPackIndexVersionTwo : GITPackIndex <NSStreamDelegate> {
     NSData *data;
     NSArray *fanoutTable;
 }

@@ -9,7 +9,7 @@
 #import "GITPackIndex.h"
 
 
-@interface GITPackIndexVersionOne : GITPackIndex {
+@interface GITPackIndexVersionOne : GITPackIndex <NSStreamDelegate> {
     NSData *data;
     NSArray *fanoutTable;
 }

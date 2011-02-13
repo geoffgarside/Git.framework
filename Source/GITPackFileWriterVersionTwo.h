@@ -11,7 +11,7 @@
 
 
 @class GITPackIndexWriter;
-@interface GITPackFileWriterVersionTwo : GITPackFileWriter {
+@interface GITPackFileWriterVersionTwo : GITPackFileWriter <NSStreamDelegate> {
     char state;
     CC_SHA1_CTX ctx;
     NSInteger offset;
