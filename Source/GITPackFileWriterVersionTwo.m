@@ -42,11 +42,9 @@
     CC_SHA1_Update(&ctx, buffer, length);
     return [stream write:buffer maxLength:length];
 }
-
 - (NSInteger)stream: (NSOutputStream *)stream writeData: (NSData *)data {
     return [self stream:stream write:(uint8_t *)[data bytes] maxLength:[data length]];
 }
-
 - (NSInteger)writeChecksumToStream: (NSOutputStream *)stream {
     unsigned char checksum[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1_Final(checksum, &ctx);
@@ -73,7 +71,6 @@
     [data release];
     return d;
 }
-
 - (NSData *)packedObjectDataWithType: (GITObjectType)type andData: (NSData *)objData {
     size_t shift = 4, size = [objData length];
     uint8_t byte = (type << 4) | ~0x7f;
@@ -95,77 +92,43 @@
 
 #pragma mark Writer Methods
 - (NSInteger)writeHeaderToStream: (NSOutputStream *)stream {
-    offset += [self stream:stream writeData:[self packedHeaderDataWithNumberOfObjects:[objects count]]];
-    return offset;
+    NSInteger written = [self stream:stream writeData:[self packedHeaderDataWithNumberOfObjects:[objects count]]];
+    offset += written;
+    return written;
 }
-
 - (NSInteger)writeNextObjectToStream: (NSOutputStream *)stream {
     GITObject<GITObject> *obj = [objects objectAtIndex:objectsWritten++];
     NSData *zData  = [[obj rawContent] zlibDeflate];
 
     if ( [indexWriter respondsToSelector:@selector(addObjectWithName:andData:atOffset:)] )
         [indexWriter addObjectWithName:obj.sha1 andData:zData atOffset:offset];
-    offset += [self stream:stream writeData:[self packedObjectDataWithType:obj.type andData:zData]];
-    return offset;
-}
 
-#pragma mark NSRunLoop method
-- (void)writeToStream: (NSOutputStream *)stream {
+    NSInteger written = [self stream:stream writeData:[self packedObjectDataWithType:obj.type andData:zData]];
+    offset += written;
+    return written;
+}
+- (NSInteger)writeToStream: (NSOutputStream *)stream {
+    NSInteger written = 0;
     switch ( state ) {
         case 0: // write header
-            [self writeHeaderToStream:stream];
+            written = [self writeHeaderToStream:stream];
             state = 1;
             break;
         case 1: // write objects
-            [self writeNextObjectToStream:stream];
+            written = [self writeNextObjectToStream:stream];
             if ( objectsWritten >= [objects count] )
                 state = 2;
             break;
         case 2: // write checksum
-            [self writeChecksumToStream:stream];
+            written = [self writeChecksumToStream:stream];
             state = 3;
             break;
-    }
-}
-
-- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
-    switch ( eventCode ) {
-        case NSStreamEventHasSpaceAvailable:
-            [self writeToStream:(NSOutputStream *)stream];
-            break;
-        case NSStreamEventErrorOccurred:
-            // should really handle this
+        case 3:
+            // TODO: Kick off the indexWriters write method
+            [stream close];
             break;
     }
-}
-
-#pragma mark Polling Method
-- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error {
-    offset = 0;
-    NSInteger prevOffset;
-    if ( [stream hasSpaceAvailable] ) {
-        prevOffset = offset;
-        if ( [self writeHeaderToStream:stream] < prevOffset ) {  // if the write operation returned -1 we'll be smaller than the offset
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-
-        while ( objectsWritten < [objects count] ) {
-            prevOffset = offset;
-            if ( [self writeNextObjectToStream:stream] < prevOffset ) {
-                if ( error ) *error = [stream streamError];
-                return -1;
-            }
-        }
-
-        prevOffset = offset;
-        if ( [self writeChecksumToStream:stream] < prevOffset ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-    }
-
-    return 0;
+    return written;
 }
 
 @end
