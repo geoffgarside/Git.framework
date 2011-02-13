@@ -60,6 +60,9 @@
     [data release];
     return name;
 }
+- (NSString *)fileName {
+    return [NSString stringWithFormat:@"pack-%@.pack", [self name]];
+}
 
 #pragma mark Checksumming writer methods
 - (NSInteger)stream: (NSOutputStream *)stream write: (const uint8_t *)buffer maxLength: (NSUInteger)length {
