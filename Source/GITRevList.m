@@ -13,6 +13,7 @@
 #import "GITTree.h"
 #import "GITTreeItem.h"
 #import "GITTag.h"
+#import "GITRepo.h"
 
 
 static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
