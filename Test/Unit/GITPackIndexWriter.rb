@@ -21,4 +21,44 @@ describe "GITPackIndexWriter" do
       @writer.fanoutTable[@sha1.firstPackedByte].should.be > 0
     end
   end
+  describe "-writeToStream:error:" do
+    before do
+      @streamErr = Pointer.new(:object)
+      @stream = NSOutputStream.outputStreamToMemory
+    end
+    describe "version one" do
+      before do
+        @writer = GITPackIndexWriter.indexWriterVersion(1)
+        @writer.addObjectWithName(@sha1, andData:@data, atOffset:12)
+        @result = @writer.writeToStream(@stream, error:@streamErr)
+        @output = @stream.propertyForKey(NSStreamDataWrittenToMemoryStreamKey)
+      end
+      should "not have an error" do
+        @streamErr[0].should.be.nil
+      end
+      should "have written to the stream" do
+        @output.should.not.be.nil
+      end
+      should "return 0" do
+        @result.should == 0
+      end
+    end
+    describe "version two" do
+      before do
+        @writer = GITPackIndexWriter.indexWriterVersion(2)
+        @writer.addObjectWithName(@sha1, andData:@data, atOffset:12)
+        @result = @writer.writeToStream(@stream, error:@streamErr)
+        @output = @stream.propertyForKey(NSStreamDataWrittenToMemoryStreamKey)
+      end
+      should "not have an error" do
+        @streamErr[0].should.be.nil
+      end
+      should "have written to the stream" do
+        @output.should.not.be.nil
+      end
+      should "return 0" do
+        @result.should == 0
+      end
+    end
+  end
 end

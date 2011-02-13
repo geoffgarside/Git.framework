@@ -54,11 +54,9 @@
     CC_SHA1_Update(&ctx, buffer, length);
     return [stream write:buffer maxLength:length];
 }
-
 - (NSInteger)stream: (NSOutputStream *)stream writeData: (NSData *)data {
     return [self stream:stream write:(uint8_t *)[data bytes] maxLength:[data length]];
 }
-
 - (NSInteger)writeChecksumToStream: (NSOutputStream *)stream {
     unsigned char checksum[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1_Final(checksum, &ctx);
@@ -74,7 +72,6 @@
     [obj setCRC32:[data crc32]];
     [objects addObject:obj];
 }
-
 - (void)addPackChecksum: (NSData *)packChecksumData {
     self.packChecksum = packChecksumData;
 }
@@ -94,19 +91,16 @@
 - (NSInteger)writeHeaderToStream: (NSOutputStream *)stream {
     return [self stream:stream writeData:[self indexHeaderData]];
 }
-
 - (NSInteger)writeObjectNameToStream: (NSOutputStream *)stream {
     GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
     return [self stream:stream writeData:[[obj sha1] packedData]];
 }
-
 - (NSInteger)writeCRC32ValueToStream: (NSOutputStream *)stream {
     GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
 
     uint32_t crc32 = CFSwapInt32HostToBig([obj crc32]);
     return [self stream:stream write:(uint8_t *)&crc32 maxLength:sizeof(crc32)];
 }
-
 - (NSInteger)writeOffsetValueToStream: (NSOutputStream *)stream {
     GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
 
@@ -120,129 +114,61 @@
     uint32_t v = CFSwapInt32HostToBig((uint32_t)[obj offset]);
     return [self stream:stream write:(uint8_t *)&v maxLength:sizeof(v)];
 }
-
 - (NSInteger)writeExtendedOffsetsToStream: (NSOutputStream *)stream {
     return [self stream:stream writeData:extOffsets];
 }
-
 - (NSInteger)writePackChecksumToStream: (NSOutputStream *)stream {
     return [self stream:stream writeData:packChecksum];
 }
-
-#pragma mark NSRunLoop method
-- (void)writeToStream: (NSOutputStream *)stream {
+- (NSInteger)writeToStream: (NSOutputStream *)stream {
+    NSInteger written = 0;
     switch ( state ) {
         case 0: // write header
-            [self writeHeaderToStream:stream];
+            written = [self writeHeaderToStream:stream];
             state = 1;
             break;
         case 1: // write fanout table
-            [self writeFanoutTableToStream:stream];
+            written = [self writeFanoutTableToStream:stream];
             state = 2;
             break;
         case 2: // write object names
-            [self writeObjectNameToStream:stream];
+            written = [self writeObjectNameToStream:stream];
             if ( objectsWritten >= [objects count] ) {
                 objectsWritten = 0;
                 state = 3;
             }
             break;
         case 3: // write crc32 values
-            [self writeCRC32ValueToStream:stream];
+            written = [self writeCRC32ValueToStream:stream];
             if ( objectsWritten >= [objects count] ) {
                 objectsWritten = 0;
                 state = 4;
             }
             break;
         case 4: // write offset values
-            [self writeOffsetValueToStream:stream];
+            written = [self writeOffsetValueToStream:stream];
             if ( objectsWritten >= [objects count] ) {
                 objectsWritten = 0;
                 state = 5;
             }
             break;
         case 5: // write extended offsets
-            [self writeExtendedOffsetsToStream:stream];
+            written = [self writeExtendedOffsetsToStream:stream];
             state = 6;
             break;
         case 6: // write pack checksum
-            [self writePackChecksumToStream:stream];
+            written = [self writePackChecksumToStream:stream];
             state = 7;
             break;
         case 7: // write checksum
-            [self writeChecksumToStream:stream];
+            written = [self writeChecksumToStream:stream];
             state = 8;
             break;
         case 8:
             [stream close];
             break;
     }
-}
-
-- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
-    switch ( eventCode ) {
-        case NSStreamEventHasSpaceAvailable:
-            [self writeToStream:(NSOutputStream *)stream];
-            break;
-        case NSStreamEventErrorOccurred:
-            // should really handle this
-            break;
-    }
-}
-
-#pragma mark Polling Method
-- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error {
-    if ( [stream hasSpaceAvailable] ) {
-        if ( [self writeHeaderToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-        if ( [self writeFanoutTableToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-
-        objectsWritten = 0;
-        while ( objectsWritten < [objects count] ) {
-            if ( [self writeObjectNameToStream:stream] < 0 ) {
-                if ( error ) *error = [stream streamError];
-                return -1;
-            }
-        }
-
-        objectsWritten = 0;
-        while ( objectsWritten < [objects count] ) {
-            if ( [self writeCRC32ValueToStream:stream] < 0 ) {
-                if ( error ) *error = [stream streamError];
-                return -1;
-            }
-        }
-
-        objectsWritten = 0;
-        while ( objectsWritten < [objects count] ) {
-            if ( [self writeOffsetValueToStream:stream] < 0 ) {
-                if ( error ) *error = [stream streamError];
-                return -1;
-            }
-        }
-
-        if ( [self writeExtendedOffsetsToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-
-        if ( [self writePackChecksumToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-
-        if ( [self writeChecksumToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-    }
-
-    return 0;
+    return written;
 }
 
 @end

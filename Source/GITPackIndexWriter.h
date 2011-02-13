@@ -25,4 +25,7 @@
 - (void)addObjectWithName: (GITObjectHash *)sha1 andData: (NSData *)data atOffset: (NSUInteger)offset;
 - (void)addPackChecksum: (NSData *)packChecksumData;
 
+- (void)writeToStream: (NSOutputStream *)stream inRunLoop: (NSRunLoop *)runloop;
+- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error;
+
 @end

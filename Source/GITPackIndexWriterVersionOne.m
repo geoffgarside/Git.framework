@@ -48,11 +48,9 @@
     CC_SHA1_Update(&ctx, buffer, length);
     return [stream write:buffer maxLength:length];
 }
-
 - (NSInteger)stream: (NSOutputStream *)stream writeData: (NSData *)data {
     return [self stream:stream write:(uint8_t *)[data bytes] maxLength:[data length]];
 }
-
 - (NSInteger)writeChecksumToStream: (NSOutputStream *)stream {
     unsigned char checksum[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1_Final(checksum, &ctx);
@@ -89,72 +87,31 @@
 - (NSInteger)writePackChecksumToStream: (NSOutputStream *)stream {
     return [self stream:stream writeData:packChecksum];
 }
-
-#pragma mark NSRunLoop method
-- (void)writeToStream: (NSOutputStream *)stream {
+- (NSInteger)writeToStream: (NSOutputStream *)stream {
+    NSInteger written = 0;
     switch ( state ) {
         case 0: // write fanout table
-            [self writeFanoutTableToStream:stream];
+            written = [self writeFanoutTableToStream:stream];
             state = 1;
             break;
-        case 2: // write object entries
-            [self writeObjectEntryToStream:stream];
+        case 1: // write object entries
+            written = [self writeObjectEntryToStream:stream];
             if ( objectsWritten >= [objects count] )
-                state = 3;
+                state = 2;
             break;
-        case 3: // write pack checksum
-            [self writePackChecksumToStream:stream];
+        case 2: // write pack checksum
+            written = [self writePackChecksumToStream:stream];
+            state = 3;
+            break;
+        case 3: // write checksum
+            written = [self writeChecksumToStream:stream];
             state = 4;
             break;
-        case 4: // write checksum
-            [self writeChecksumToStream:stream];
-            state = 5;
-            break;
-        case 5:
+        case 4:
             [stream close];
             break;
     }
-}
-
-- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
-    switch ( eventCode ) {
-        case NSStreamEventHasSpaceAvailable:
-            [self writeToStream:(NSOutputStream *)stream];
-            break;
-        case NSStreamEventErrorOccurred:
-            // should really handle this
-            break;
-    }
-}
-
-#pragma mark Polling Method
-- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error {
-    if ( [stream hasSpaceAvailable] ) {
-        if ( [self writeFanoutTableToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-
-        objectsWritten = 0;
-        while ( objectsWritten < [objects count] ) {
-            if ( [self writeObjectEntryToStream:stream] < 0 ) {
-                if ( error ) *error = [stream streamError];
-                return -1;
-            }
-        }
-
-        if ( [self writePackChecksumToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-
-        if ( [self writeChecksumToStream:stream] < 0 ) {
-            if ( error ) *error = [stream streamError];
-            return -1;
-        }
-    }
-
-    return 0;
+    return written;
 }
 
 @end
