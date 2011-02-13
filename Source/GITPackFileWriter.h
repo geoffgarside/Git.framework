@@ -12,7 +12,7 @@
 /*!
  * A class cluster
  */
-@interface GITPackFileWriter : NSObject { }
+@interface GITPackFileWriter : NSObject <NSStreamDelegate> { }
 
 + (GITPackFileWriter *)packWriter;
 + (GITPackFileWriter *)packWriterVersion: (NSUInteger)version;

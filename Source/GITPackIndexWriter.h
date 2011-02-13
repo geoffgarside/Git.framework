@@ -14,7 +14,7 @@
 /*!
  * A class cluster
  */
-@interface GITPackIndexWriter : NSObject { }
+@interface GITPackIndexWriter : NSObject <NSStreamDelegate> { }
 
 + (GITPackIndexWriter *)indexWriter;
 + (GITPackIndexWriter *)indexWriterVersion: (NSUInteger)version;
