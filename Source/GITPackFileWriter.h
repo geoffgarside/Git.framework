@@ -20,4 +20,7 @@
 - (id)initWithDefaultVersion;
 - (id)initWithVersion: (NSUInteger)version error: (NSError **)error;
 
+- (void)writeToStream: (NSOutputStream *)stream inRunLoop: (NSRunLoop *)runLoop;
+- (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error;
+
 @end
