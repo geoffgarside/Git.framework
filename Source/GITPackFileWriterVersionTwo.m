@@ -9,6 +9,7 @@
 #import "GITPackFileWriterVersionTwo.h"
 #import "GITPackFileVersionTwo.h"
 #import "GITObject.h"
+#import "GITObjectHash.h"
 #import "GITPackIndexWriter.h"
 #import "NSData+Compression.h"
 
@@ -42,12 +43,12 @@
     unsigned char digest[CC_SHA1_DIGEST_LENGTH];
 
     NSMutableArray *shas = [[NSMutableArray alloc] initWithCapacity:[objects count]];
-    if ( GITObject<GITObject> *obj in self.objects )
+    for ( GITObject<GITObject> *obj in self.objects )
         [shas addObject:[obj sha1]];
     NSArray *sortedShas  = [shas sortedArrayUsingSelector:@selector(compare:)];
     [shas release];
 
-    CC_SHA1_INIT(&nameCtx);
+    CC_SHA1_Init(&nameCtx);
     for ( GITObjectHash *sha1 in sortedShas ) {
         NSData *d = [sha1 packedData];
         CC_SHA1_Update(&nameCtx, [d bytes], [d length]);
