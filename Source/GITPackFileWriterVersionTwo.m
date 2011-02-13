@@ -37,6 +37,29 @@
     [super dealloc];
 }
 
+- (NSString *)name {
+    CC_SHA1_CTX nameCtx;
+    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+
+    NSMutableArray *shas = [[NSMutableArray alloc] initWithCapacity:[objects count]];
+    if ( GITObject<GITObject> *obj in self.objects )
+        [shas addObject:[obj sha1]];
+    NSArray *sortedShas  = [shas sortedArrayUsingSelector:@selector(compare:)];
+    [shas release];
+
+    CC_SHA1_INIT(&nameCtx);
+    for ( GITObjectHash *sha1 in sortedShas ) {
+        NSData *d = [sha1 packedData];
+        CC_SHA1_Update(&nameCtx, [d bytes], [d length]);
+    }
+    CC_SHA1_Final(digest, &nameCtx);
+
+    NSData *data = [[NSData alloc] initWithBytesNoCopy:digest length:CC_SHA1_DIGEST_LENGTH freeWhenDone:NO];
+    NSString *name = [GITObjectHash unpackedStringFromData:data];
+    [data release];
+    return name;
+}
+
 #pragma mark Checksumming writer methods
 - (NSInteger)stream: (NSOutputStream *)stream write: (const uint8_t *)buffer maxLength: (NSUInteger)length {
     CC_SHA1_Update(&ctx, buffer, length);
