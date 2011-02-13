@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@class GITCommit, GITGraph;
+@class GITRepo, GITCommit, GITGraph;
 
 /*!
  * The GITRevList class lists commit objects in reverse chronological order. A subset
@@ -19,6 +19,7 @@
  * Sorted lists of commits are provided through one of the <tt>-arrayOfCommitsSortedBy*</tt> methods.
  */
 @interface GITRevList : NSObject {
+    GITRepo *repo;
     GITGraph *graph;
     NSMutableArray *excluded;
 }
@@ -83,6 +84,13 @@
  * \return Array of objects reachable from the head of the receiver.
  */
 - (NSArray *)arrayOfReachableObjects;
+
+/*!
+ * Returns an array of the objects and tags which are reachable from the head of the receiver.
+ *
+ * \return Array of objects and tags reachable from the head of the receiver.
+ */
+- (NSArray *)arrayOfReachableObjectsAndTags;
 
 /*!
  * Returns an array of the objects and tags which are reachable from the head of the receiver.

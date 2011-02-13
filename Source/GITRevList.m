@@ -27,6 +27,7 @@ static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
     if ( ![super init] )
         return nil;
 
+    repo = [[head repo] retain];
     graph = [[GITGraph alloc] initWithStartingCommit:head];
 
     return self;
@@ -36,6 +37,7 @@ static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
     if ( excluded )
         [excluded release];
 
+    [repo release];
     [graph release];
     [super dealloc];
 }
@@ -100,6 +102,9 @@ static NSComparisonResult tagObjectsComparator(id x, id y, void *ignored);
             [self addContentsOfTree:(GITTree *)[treeItem item] intoArray:objects];
         }
     }
+}
+- (NSArray *)arrayOfReachableObjectsAndTags {
+    return [self arrayOfReachableObjectsAndTags:[repo tags]];
 }
 - (NSArray *)arrayOfReachableObjectsAndTags: (NSArray *)tags {
     NSArray *commits = [self arrayOfCommitsSortedByDate];
