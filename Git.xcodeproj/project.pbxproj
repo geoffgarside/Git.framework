@@ -969,7 +969,7 @@
 				DOXYCLEAN = "$(SRCROOT)/Documentation/doxyclean";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				EXCLUDE_PATTERNS = "*Test*";
-				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion*";
+				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion* GITPackFileWriterVersion* GITPackIndexWriterVersion*";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INPUT_DIRECTORY = "$(SRCROOT)/Source";
@@ -990,7 +990,7 @@
 				DOXYCLEAN = "$(SRCROOT)/Documentation/doxyclean";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				EXCLUDE_PATTERNS = "*Test*";
-				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion*";
+				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion* GITPackFileWriterVersion* GITPackIndexWriterVersion*";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INPUT_DIRECTORY = "$(SRCROOT)/Source";
 				INTERNAL_DOCS = NO;
