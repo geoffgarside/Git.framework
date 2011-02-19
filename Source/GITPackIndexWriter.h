@@ -12,7 +12,9 @@
 @class GITObjectHash;
 
 /*!
- * A class cluster
+ * GITPackIndexWriter is a class cluster which provides the ability to
+ * create both version one and version two PACK IDX files from data
+ * provided by GITPackFileWriter.
  */
 @interface GITPackIndexWriter : NSObject <NSStreamDelegate> { }
 

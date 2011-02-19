@@ -12,7 +12,8 @@
 @class GITPackIndexWriter, GITRevList, GITCommit;
 
 /*!
- * A class cluster
+ * GITPackFileWriter is a class cluster which provides the ability to
+ * generate PACK files from a given set of objects.
  */
 @interface GITPackFileWriter : NSObject <NSStreamDelegate> { }
 
