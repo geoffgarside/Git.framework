@@ -10,6 +10,11 @@
 
 
 @class GITObjectHash;
+
+/*!
+ * GITPackIndexWriterObject is a class which encapsulates the data required
+ * for writing entries into a PACK index file prior to writing the PACK file.
+ */
 @interface GITPackIndexWriterObject : NSObject {
     GITObjectHash *sha1;    //!< Object hash of the object to store in the index
     NSUInteger offset;      //!< Offset into the PACK file to find the object
