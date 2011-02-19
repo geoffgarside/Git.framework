@@ -50,13 +50,13 @@
 		F55454B612FF43D9005AAC0E /* GITPackIndexWriterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F55454B412FF43D9005AAC0E /* GITPackIndexWriterObject.m */; };
 		F558E43711B828D3003BB2AB /* GITGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = F594CB2511864CE500E82F38 /* GITGraph.h */; };
 		F558E43811B828D3003BB2AB /* GITGraphNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F594CB29118777C800E82F38 /* GITGraphNode.h */; };
-		F56697F412FCE3D40085E769 /* GITPackFileWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697F212FCE3D40085E769 /* GITPackFileWriter.h */; };
+		F56697F412FCE3D40085E769 /* GITPackFileWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697F212FCE3D40085E769 /* GITPackFileWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F56697F512FCE3D40085E769 /* GITPackFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697F312FCE3D40085E769 /* GITPackFileWriter.m */; };
 		F56697F812FCE3E90085E769 /* GITPackFileWriterPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697F612FCE3E90085E769 /* GITPackFileWriterPlaceholder.h */; };
 		F56697F912FCE3E90085E769 /* GITPackFileWriterPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697F712FCE3E90085E769 /* GITPackFileWriterPlaceholder.m */; };
 		F56697FC12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697FA12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.h */; };
 		F56697FD12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697FB12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.m */; };
-		F566980012FCE4100085E769 /* GITPackIndexWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697FE12FCE4100085E769 /* GITPackIndexWriter.h */; };
+		F566980012FCE4100085E769 /* GITPackIndexWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697FE12FCE4100085E769 /* GITPackIndexWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F566980112FCE4100085E769 /* GITPackIndexWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697FF12FCE4100085E769 /* GITPackIndexWriter.m */; };
 		F566980412FCE4270085E769 /* GITPackIndexWriterPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F566980212FCE4270085E769 /* GITPackIndexWriterPlaceholder.h */; };
 		F566980512FCE4270085E769 /* GITPackIndexWriterPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F566980312FCE4270085E769 /* GITPackIndexWriterPlaceholder.m */; };
