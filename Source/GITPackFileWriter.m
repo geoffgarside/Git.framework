@@ -8,6 +8,7 @@
 
 #import "GITPackFileWriter.h"
 #import "GITPackFileWriterPlaceholder.h"
+#import "GITRevList.h"
 
 
 @implementation GITPackFileWriter
@@ -47,6 +48,16 @@
     return nil;
 }
 
+#pragma mark Add Objects to PACK
+- (void)addObjectsFromCommit: (GITCommit *)commit {
+    return [self addObjectsFromRevList:[GITRevList revListWithCommit:commit]];
+}
+
+#pragma mark PACK File Naming
+- (NSString *)fileName {
+    return [NSString stringWithFormat:@"pack-%@.pack", [self name]];
+}
+
 #pragma mark Un-implemented Instance Methods
 - (NSInteger)writeToStream: (NSOutputStream *)stream {
     [self doesNotRecognizeSelector: _cmd];
@@ -58,6 +69,13 @@
 }
 - (void)setIndexWriter: (GITPackIndexWriter *)indexWriter {
     [self doesNotRecognizeSelector: _cmd];
+}
+- (void)addObjectsFromRevList: (GITRevList *)revList {
+    [self doesNotRecognizeSelector: _cmd];
+}
+- (NSString *)name {
+    [self doesNotRecognizeSelector: _cmd];
+    return nil;
 }
 
 #pragma mark NSRunLoop method

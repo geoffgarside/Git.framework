@@ -44,9 +44,6 @@
 - (void)addObjectsFromRevList: (GITRevList *)revList {
     self.objects = [revList arrayOfReachableObjectsAndTags];
 }
-- (void)addObjectsFromCommit: (GITCommit *)commit {
-    return [self addObjectsFromRevList:[GITRevList revListWithCommit:commit]];
-}
 
 #pragma mark PACK File Naming
 - (NSString *)name {
@@ -70,9 +67,6 @@
     NSString *name = [GITObjectHash unpackedStringFromData:data];
     [data release];
     return name;
-}
-- (NSString *)fileName {
-    return [NSString stringWithFormat:@"pack-%@.pack", [self name]];
 }
 
 #pragma mark Checksumming writer methods
