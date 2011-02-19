@@ -10,6 +10,7 @@
 #import "GITPackFileVersionTwo.h"
 #import "GITObject.h"
 #import "GITRevList.h"
+#import "GITTreeItem.h"
 #import "GITObjectHash.h"
 #import "GITPackIndexWriter.h"
 #import "NSData+Compression.h"
@@ -133,9 +134,19 @@
     offset += written;
     return written;
 }
+- (GITObject<GITObject> *)nextObject {
+    id obj = [objects objectAtIndex:objectsWritten++];
+
+    if ( [obj isKindOfClass:[GITTreeItem class]] )
+        return [obj item];
+    else if ( [obj isKindOfClass:[GITObject class]] )
+        return obj;
+    else
+        return nil;
+}
 - (NSInteger)writeNextObjectToStream: (NSOutputStream *)stream {
-    GITObject<GITObject> *obj = [objects objectAtIndex:objectsWritten++];
-    NSData *zData  = [[obj rawContent] zlibDeflate];
+    GITObject<GITObject> *obj = [self nextObject];
+    NSData *zData = [[obj rawContent] zlibDeflate];
 
     if ( [indexWriter respondsToSelector:@selector(addObjectWithName:andData:atOffset:)] )
         [indexWriter addObjectWithName:obj.sha1 andData:zData atOffset:offset];
