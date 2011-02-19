@@ -32,4 +32,28 @@
     [super dealloc];
 }
 
+- (NSUInteger)hash {
+    return [self.sha1 hash];
+}
+- (BOOL)isEqual:(id)other {
+    if ( !other ) return NO;                            // other is nil
+    if ( other == self ) return YES;                    // pointers match?
+
+    if ( [other isKindOfClass:[self class]])            // Same class?
+        return [self isEqualToIndexWriterObject:other];
+    if ( [other isKindOfClass:[GITObjectHash class]] )  // An object hash?
+        return [self isEqualToObjectHash:other];
+
+    return NO;                                          // Definitely not then
+}
+- (BOOL)isEqualToIndexWriterObject: (GITPackIndexWriterObject *)rhs {
+    return [self.sha1 isEqualToObjectHash:rhs.sha1];
+}
+- (BOOL)isEqualToObjectHash: (GITObjectHash *)rhs {
+    return [self.sha1 isEqualToObjectHash:rhs];
+}
+- (NSComparisonResult)compare: (GITPackIndexWriterObject *)obj {
+    return [self.sha1 compare:obj.sha1];
+}
+
 @end

@@ -24,4 +24,20 @@
 
 - (id)initWithName: (GITObjectHash *)sha1 atOffset: (NSUInteger)offset;
 
+- (BOOL)isEqual: (id)other;
+- (BOOL)isEqualToIndexWriterObject: (GITPackIndexWriterObject *)rhs;
+- (BOOL)isEqualToObjectHash: (GITObjectHash *)rhs;
+
+/*!
+ * Returns an NSComparisonResult value that indicates whether the receiver is greater than,
+ * equal to, or less than a given index writer object.
+ *
+ * \param hash The index writer object with which to compare the receiver. This value must
+ * not be nil. If the value is nil, the behavior is undefined.
+ * \return NSOrderedAscending if the value of \a hash is greater than the receiver’s,
+ * NSOrderedSame if they’re equal, and NSOrderedDescending if the value of \a hash is less
+ * than the receiver’s.
+ */
+- (NSComparisonResult)compare: (GITPackIndexWriterObject *)obj;
+
 @end
