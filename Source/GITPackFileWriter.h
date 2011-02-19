@@ -86,7 +86,7 @@
  *
  * \todo We need a way of getting any stream errors sent back to the client
  * \param stream Output stream to write the PACK index data to
- * \param runloop NSRunLoop to schedule the writing in
+ * \param runLoop NSRunLoop to schedule the writing in
  */
 - (void)writeToStream: (NSOutputStream *)stream inRunLoop: (NSRunLoop *)runLoop;
 
