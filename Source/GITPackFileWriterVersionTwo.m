@@ -20,7 +20,7 @@
 @end
 
 @implementation GITPackFileWriterVersionTwo
-@synthesize objects;
+@synthesize objects, indexWriter;
 
 - (id)init {
     if ( ![super init] )

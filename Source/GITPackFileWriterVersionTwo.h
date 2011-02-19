@@ -20,4 +20,6 @@
     GITPackIndexWriter *indexWriter;
 }
 
+@property (retain) GITPackIndexWriter *indexWriter;
+
 @end
