@@ -32,6 +32,7 @@ describe "GITPackIndexWriter" do
         @writer.addObjectWithName(@sha1, andData:@data, atOffset:12)
         @result = @writer.writeToStream(@stream, error:@streamErr)
         @output = @stream.propertyForKey(NSStreamDataWrittenToMemoryStreamKey)
+        @index  = GITPackIndex.alloc.initWithData(@output, error:@err)
       end
       should "not have an error" do
         @streamErr[0].should.be.nil
@@ -41,6 +42,15 @@ describe "GITPackIndexWriter" do
       end
       should "return 0" do
         @result.should == 0
+      end
+      should "be a version one index" do
+        @index.version.should == 1
+      end
+      should "have one object" do
+        @index.numberOfObjects.should == 1
+      end
+      should "have pack offset for indexed object" do
+        @index.packOffsetForSha1(@sha1).should == 12
       end
     end
     describe "version two" do
@@ -49,6 +59,7 @@ describe "GITPackIndexWriter" do
         @writer.addObjectWithName(@sha1, andData:@data, atOffset:12)
         @result = @writer.writeToStream(@stream, error:@streamErr)
         @output = @stream.propertyForKey(NSStreamDataWrittenToMemoryStreamKey)
+        @index  = GITPackIndex.alloc.initWithData(@output, error:@err)
       end
       should "not have an error" do
         @streamErr[0].should.be.nil
@@ -58,6 +69,15 @@ describe "GITPackIndexWriter" do
       end
       should "return 0" do
         @result.should == 0
+      end
+      should "be a version one index" do
+        @index.version.should == 2
+      end
+      should "have one object" do
+        @index.numberOfObjects.should == 1
+      end
+      should "have pack offset for indexed object" do
+        @index.packOffsetForSha1(@sha1).should == 12
       end
     end
   end
