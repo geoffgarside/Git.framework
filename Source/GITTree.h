@@ -56,7 +56,7 @@
  * This method determines whether anObject is present in the array by sending an <tt>isEqual:</tt>
  * message to each of the array’s objects (and passing anObject as the parameter to each <tt>isEqual:</tt> message).
  *
- * \param object An object
+ * \param anObject An object
  * \return \c YES if \a anObject is present in the tree, otherwise \c NO.
  */
 - (BOOL)containsObject: (id)anObject;

@@ -110,7 +110,7 @@ typedef enum {
 /*!
  * Returns a Boolean value that indicates whether the receiver and a given Tree Item are equal.
  *
- * \param hash The Tree Item with which to compare the receiver
+ * \param rhs The Tree Item with which to compare the receiver
  * \return YES if the receiver and hash are equal, otherwise NO
  * \sa isEqual:
  * \sa isEqualToObject:
@@ -120,7 +120,7 @@ typedef enum {
 /*!
  * Returns a Boolean value that indicates whether the receiver and a given GITObject are equal.
  *
- * \param hash The GITObject with which to compare the receiver
+ * \param rhs The GITObject with which to compare the receiver
  * \return YES if the receiver and hash are equal, otherwise NO
  * \sa isEqual:
  * \sa isEqualToTreeItem:
