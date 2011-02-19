@@ -87,6 +87,10 @@
     return d;
 }
 
+- (void)prepareForWriting {
+    [self.objects sortUsingSelector:@selector(compare:)];
+}
+
 #pragma mark Writer Methods
 - (NSInteger)writeHeaderToStream: (NSOutputStream *)stream {
     return [self stream:stream writeData:[self indexHeaderData]];

@@ -60,9 +60,14 @@
     [self doesNotRecognizeSelector: _cmd];
     return -1;
 }
+- (void)prepareForWriting {
+    [self doesNotRecognizeSelector: _cmd];
+    return;
+}
 
 #pragma mark NSRunLoop method
 - (void)writeToStream: (NSOutputStream *)stream inRunLoop: (NSRunLoop *)runLoop {
+    [self prepareForWriting];
     [stream setDelegate:self];
     [stream scheduleInRunLoop:runLoop forMode:NSDefaultRunLoopMode];
     [stream open];
@@ -80,6 +85,7 @@
 
 #pragma mark Polling Method
 - (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error {
+    [self prepareForWriting];
     [stream open];
 
     while ( [stream hasSpaceAvailable] ) {

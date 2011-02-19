@@ -74,6 +74,10 @@
     self.packChecksum = packChecksumData;
 }
 
+- (void)prepareForWriting {
+    [self.objects sortUsingSelector:@selector(compare:)];
+}
+
 #pragma mark Writer Methods
 - (NSInteger)writeObjectEntryToStream: (NSOutputStream *)stream {
     GITPackIndexWriterObject *obj = [objects objectAtIndex:objectsWritten++];
