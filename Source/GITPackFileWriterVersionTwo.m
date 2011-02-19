@@ -9,6 +9,7 @@
 #import "GITPackFileWriterVersionTwo.h"
 #import "GITPackFileVersionTwo.h"
 #import "GITObject.h"
+#import "GITRevList.h"
 #import "GITObjectHash.h"
 #import "GITPackIndexWriter.h"
 #import "NSData+Compression.h"
@@ -38,6 +39,15 @@
     [super dealloc];
 }
 
+#pragma mark Add Objects to PACK
+- (void)addObjectsFromRevList: (GITRevList *)revList {
+    self.objects = [revList arrayOfReachableObjectsAndTags];
+}
+- (void)addObjectsFromCommit: (GITCommit *)commit {
+    return [self addObjectsFromRevList:[GITRevList revListWithCommit:commit]];
+}
+
+#pragma mark PACK File Naming
 - (NSString *)name {
     CC_SHA1_CTX nameCtx;
     unsigned char digest[CC_SHA1_DIGEST_LENGTH];
