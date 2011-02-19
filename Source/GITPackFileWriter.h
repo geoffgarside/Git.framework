@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 
+@class GITPackIndexWriter;
+
 /*!
  * A class cluster
  */
@@ -22,5 +24,8 @@
 
 - (void)writeToStream: (NSOutputStream *)stream inRunLoop: (NSRunLoop *)runLoop;
 - (NSInteger)writeToStream: (NSOutputStream *)stream error: (NSError **)error;
+
+- (GITPackIndexWriter *)indexWriter;
+- (void)setIndexWriter: (GITPackIndexWriter *)indexWriter;
 
 @end

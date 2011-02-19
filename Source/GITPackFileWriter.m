@@ -52,6 +52,13 @@
     [self doesNotRecognizeSelector: _cmd];
     return -1;
 }
+- (GITPackIndexWriter *)indexWriter {
+    [self doesNotRecognizeSelector: _cmd];
+    return nil;
+}
+- (void)setIndexWriter: (GITPackIndexWriter *)indexWriter {
+    [self doesNotRecognizeSelector: _cmd];
+}
 
 #pragma mark NSRunLoop method
 - (void)writeToStream: (NSOutputStream *)stream inRunLoop: (NSRunLoop *)runLoop {
