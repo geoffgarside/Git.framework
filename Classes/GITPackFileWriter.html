@@ -1,0 +1,302 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>GITPackFileWriter Class Reference</title>
+<meta id="Generator" name="Generator" content="Doxyclean">
+<meta id="GeneratorVersion" name="GeneratorVersion" content="2.2">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="../css/print.css">
+<script type="text/javascript">
+				function toggleTOC() {
+					var toc = document.getElementById('tableOfContents');
+					var tocButton = document.getElementById('toc_button');
+					var contents = document.getElementById('contents');
+					if (toc.style.display == 'block') {
+						toc.style.display = 'none';
+						contents.className = '';
+						tocButton.className = '';
+					} else {
+						toc.style.display = 'block';
+						contents.className = 'tableOfContentsOpen';
+						tocButton.className = 'open';
+					}
+				}
+				
+				function toggleTOCItem() {
+					var listItem = event.srcElement;
+					var sublist = listItem.getElementsByTagName('ul')[0];
+					if (sublist.style.display == 'block') {
+						sublist.style.display = 'none';
+						listItem.className = 'expandable';
+					} else {
+						sublist.style.display = 'block';
+						listItem.className = 'expandable expanded';
+					}
+				}
+				
+				function jumpTo() {
+					selectedItem = event.srcElement.options[event.srcElement.selectedIndex].value;
+					window.location = "#" + selectedItem;
+				}
+			</script>
+</head>
+<body>
+<header id="projectHeader"><h1><a href="../index.html">Git.framework Reference Library</a></h1></header><header id="fileHeader"><h1><a href="#classTitle">GITPackFileWriter Class Reference</a></h1></header><nav id="buttons"><ul>
+<li id="toc_button"><button id="table_of_contents" onclick="toggleTOC()">Table of Contents</button></li>
+<li id="jumpto_button"><select id="jumpto" onchange="jumpTo()"><option value="classTitle">Jump To...</option>
+<option value="overview">Overview</option>
+<option value="tasks">Tasks</option>
+<option value="classMethods">Class Methods</option>
+<option value="packWriter">    + packWriter</option>
+<option value="packWriterVersion:">    + packWriterVersion:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="initWithDefaultVersion">    - initWithDefaultVersion</option>
+<option value="initWithVersion:error:">    - initWithVersion:error:</option>
+<option value="addObjectsFromRevList:">    - addObjectsFromRevList:</option>
+<option value="addObjectsFromCommit:">    - addObjectsFromCommit:</option>
+<option value="name">    - name</option>
+<option value="fileName">    - fileName</option>
+<option value="writeToStream:inRunLoop:">    - writeToStream:inRunLoop:</option>
+<option value="writeToStream:error:">    - writeToStream:error:</option>
+<option value="indexWriter">    - indexWriter</option>
+<option value="setIndexWriter:">    - setIndexWriter:</option></select></li>
+</ul></nav><nav id="tableOfContents" style="display: none;"><ul>
+<li><a href="#overview">Overview</a></li>
+<li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
+<a href="#tasks">Tasks</a><ul style="display: none;">
+<li><a href="#Creating_and_Initialising_GITPackFileWriter_objects">Creating and Initialising <code>GITPackFileWriter</code> objects</a></li>
+<li><a href="#Adding_to_the_PACK_file">Adding to the PACK file</a></li>
+<li><a href="#PACK_file_naming">PACK file naming</a></li>
+<li><a href="#Writing_the_PACK_File">Writing the PACK File</a></li>
+<li><a href="#PACK_Index_Writer">PACK Index Writer</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
+<a href="#classMethods">Class Methods</a><ul style="display: none;">
+<li><a href="#packWriter">packWriter</a></li>
+<li><a href="#packWriterVersion:">packWriterVersion:</a></li>
+</ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#initWithDefaultVersion">initWithDefaultVersion</a></li>
+<li><a href="#initWithVersion:error:">initWithVersion:error:</a></li>
+<li><a href="#addObjectsFromRevList:">addObjectsFromRevList:</a></li>
+<li><a href="#addObjectsFromCommit:">addObjectsFromCommit:</a></li>
+<li><a href="#name">name</a></li>
+<li><a href="#fileName">fileName</a></li>
+<li><a href="#writeToStream:inRunLoop:">writeToStream:inRunLoop:</a></li>
+<li><a href="#writeToStream:error:">writeToStream:error:</a></li>
+<li><a href="#indexWriter">indexWriter</a></li>
+<li><a href="#setIndexWriter:">setIndexWriter:</a></li>
+</ul>
+</li>
+</ul></nav><div id="contents">
+<h1 id="classTitle">GITPackFileWriter Class Reference</h1>
+<table id="metadata"><tr class="alt">
+<th>Declared in</th>
+<td>GITPackFileWriter.h</td>
+</tr></table>
+<h2 id="overview">Overview</h2>
+<p><code>GITPackFileWriter</code> is a class cluster which provides the ability to generate PACK files from a given set of objects. </p>
+<h2 id="tasks">Tasks</h2>
+<ul id="tasksList">
+<li id="Creating_and_Initialising_GITPackFileWriter_objects">
+<h3>Creating and Initialising <code>GITPackFileWriter</code> objects</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#packWriter">+ packWriter</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#packWriterVersion:">+ packWriterVersion:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithDefaultVersion">- initWithDefaultVersion</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#initWithVersion:error:">- initWithVersion:error:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+<li id="Adding_to_the_PACK_file">
+<h3>Adding to the PACK file</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#addObjectsFromRevList:">- addObjectsFromRevList:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#addObjectsFromCommit:">- addObjectsFromCommit:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+<li id="PACK_file_naming">
+<h3>PACK file naming</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#name">- name</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#fileName">- fileName</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+<li id="Writing_the_PACK_File">
+<h3>Writing the PACK File</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#writeToStream:inRunLoop:">- writeToStream:inRunLoop:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#writeToStream:error:">- writeToStream:error:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+<li id="PACK_Index_Writer">
+<h3>PACK Index Writer</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#indexWriter">- indexWriter</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#setIndexWriter:">- setIndexWriter:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+</ul>
+<section id="classMethods"><h2>Class Methods</h2>
+<section class="definition" id="packWriter"><h3>packWriter</h3>
+<code class="methodDeclaration">+ (GITPackFileWriter *)packWriter</code><h5>Return Value</h5>
+<p>PACK file writer for the default version </p>
+<h5>Discussion</h5>
+<p>Creates an autoreleased PACK file writer for the default PACK file version.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="packWriterVersion:"><h3>packWriterVersion:</h3>
+<code class="methodDeclaration">+ (GITPackFileWriter *)packWriterVersion:(NSUInteger)<span class="parameter">version</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>version</dt>
+<dd><p>Version of writer to create </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>PACK file writer with the specified version, nil if version is unsupported. </p>
+<h5>Discussion</h5>
+<p>Creates an autoreleased PACK file writer for the specified version.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="initWithDefaultVersion"><h3>initWithDefaultVersion</h3>
+<code class="methodDeclaration">- (id)initWithDefaultVersion</code><h5>Return Value</h5>
+<p>PACK file writer for the default version </p>
+<h5>Discussion</h5>
+<p>Initialises a PACK file writer for the default PACK file version.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="initWithVersion:error:"><h3>initWithVersion:error:</h3>
+<code class="methodDeclaration">- (id)initWithVersion:(NSUInteger)<span class="parameter">version</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>version</dt>
+<dd><p>Version of the writer to create </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing the error that occurred </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>PACK file writer for the specified version, or nil on error </p>
+<h5>Discussion</h5>
+<p>Initialises a PACK file writer for the specified version.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="addObjectsFromRevList:"><h3>addObjectsFromRevList:</h3>
+<code class="methodDeclaration">- (void)addObjectsFromRevList:(<a href="../Classes/GITRevList.html">GITRevList</a> *)<span class="parameter">revList</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>revList</dt>
+<dd><p>Rev list of objects to add to the receiver. </p></dd>
+</dl>
+<h5>Discussion</h5>
+<p>Add the objects reachable from the provided revList to the reciever.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="addObjectsFromCommit:"><h3>addObjectsFromCommit:</h3>
+<code class="methodDeclaration">- (void)addObjectsFromCommit:(<a href="../Classes/GITCommit.html">GITCommit</a> *)<span class="parameter">commit</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>commit</dt>
+<dd><p>Commit object to reach objects from. </p></dd>
+</dl>
+<h5>Discussion</h5>
+<p>Add the objects reachable from the provided commit to the receiver.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#addObjectsFromRevList:">- addObjectsFromRevList:</a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="name"><h3>name</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)name</code><h5>Return Value</h5>
+<p>SHA1 string name of the receiver derived from the objects to the packed </p>
+<h5>Discussion</h5>
+<p>Returns the name of the receiver derived from the objects to be packed.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="fileName"><h3>fileName</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)fileName</code><h5>Return Value</h5>
+<p>File name of the receiver. </p>
+<h5>Discussion</h5>
+<p>Returns the file name of the receiver.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso"><li><code><a href="#name">- name</a></code></li></ul>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="writeToStream:inRunLoop:"><h3>writeToStream:inRunLoop:</h3>
+<code class="methodDeclaration">- (void)writeToStream:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSOutputStream_Class/index.html">NSOutputStream</a> *)<span class="parameter">stream</span> inRunLoop:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSRunLoop_Class/index.html">NSRunLoop</a> *)<span class="parameter">runLoop</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>stream</dt>
+<dd><p>Output stream to write the PACK index data to </p></dd>
+<dt>runLoop</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSRunLoop_Class/index.html">NSRunLoop</a></code> to schedule the writing in </p></dd>
+</dl>
+<h5>Discussion</h5>
+<p>Writes the PACK file contents to the provided stream in the <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSRunLoop_Class/index.html">NSRunLoop</a></code> specified.</p>
+<p></p>
+<h5>Bug</h5>
+<p>We need a way of getting any stream errors sent back to the client </p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="writeToStream:error:"><h3>writeToStream:error:</h3>
+<code class="methodDeclaration">- (NSInteger)writeToStream:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSOutputStream_Class/index.html">NSOutputStream</a> *)<span class="parameter">stream</span> error:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a> **)<span class="parameter">error</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>stream</dt>
+<dd><p>Output stream to write the PACK index data to </p></dd>
+<dt>error</dt>
+<dd><p><code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/index.html">NSError</a></code> describing any error which occurred </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>0 if writing was successful, -1 if an error occurred. </p>
+<h5>Discussion</h5>
+<p>Writes the PACK file contents to the provided steam.</p>
+<p>This method using Polling rather than run-loop scheduling to perform the writing.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="indexWriter"><h3>indexWriter</h3>
+<code class="methodDeclaration">- (<a href="../Classes/GITPackIndex.html">GITPackIndex</a>Writer *)indexWriter</code><h5>Return Value</h5>
+<p>PACK index writer of the receiver </p>
+<h5>Discussion</h5>
+<p>Returns the PACK index writer of the receiver.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section><section class="definition" id="setIndexWriter:"><h3>setIndexWriter:</h3>
+<code class="methodDeclaration">- (void)setIndexWriter:(<a href="../Classes/GITPackIndex.html">GITPackIndex</a>Writer *)<span class="parameter">indexWriter</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>indexWriter</dt>
+<dd><p>PACK index writer for the receiver to populate when it writes itself. </p></dd>
+</dl>
+<h5>Discussion</h5>
+<p>Sets the provided indexWriter on the receiver.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITPackFileWriter</code>.h</code></section></section><hr>
+<p id="lastUpdated">Last updated: 2011-2-20</p>
+</div>
+<footer id="breadcrumbs"><ul>
+<li><a href="../index.html">Git.framework</a></li>
+<li><a href="#classTitle">GITPackFileWriter Class Reference</a></li>
+</ul></footer>
+</body>
+</html>
