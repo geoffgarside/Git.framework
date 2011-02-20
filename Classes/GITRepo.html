@@ -72,9 +72,9 @@
 <option value="enumeratorWithMode:">    - enumeratorWithMode:</option>
 <option value="revList">    - revList</option>
 <option value="revListFromCommit:">    - revListFromCommit:</option>
-<option value="__attribute__">    - __attribute__</option>
-<option value="__attribute__">    - __attribute__</option>
-<option value="__attribute__">    - __attribute__</option></select></li>
+<option value="revListSortedByDate">    - revListSortedByDate</option>
+<option value="revListSortedByTopology">    - revListSortedByTopology</option>
+<option value="revListSortedByTopologyAndDate">    - revListSortedByTopologyAndDate</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
@@ -119,9 +119,9 @@
 <li><a href="#enumeratorWithMode:">enumeratorWithMode:</a></li>
 <li><a href="#revList">revList</a></li>
 <li><a href="#revListFromCommit:">revListFromCommit:</a></li>
-<li><a href="#__attribute__">__attribute__</a></li>
-<li><a href="#__attribute__">__attribute__</a></li>
-<li><a href="#__attribute__">__attribute__</a></li>
+<li><a href="#revListSortedByDate">revListSortedByDate</a></li>
+<li><a href="#revListSortedByTopology">revListSortedByTopology</a></li>
+<li><a href="#revListSortedByTopologyAndDate">revListSortedByTopologyAndDate</a></li>
 </ul>
 </li>
 </ul></nav><div id="contents">
@@ -227,13 +227,13 @@
 <span class="tooltipRegion"><code><a href="#revListFromCommit:">- revListFromCommit:</a></code></span><span class="tooltip"></span>
 </li>
 <li>
-<span class="tooltipRegion"><code><a href="#__attribute__">- __attribute__</a></code></span><span class="tooltip"></span>
+<span class="tooltipRegion"><code><a href="#revListSortedByDate">- revListSortedByDate</a></code></span><span class="tooltip"></span>
 </li>
 <li>
-<span class="tooltipRegion"><code><a href="#__attribute__">- __attribute__</a></code></span><span class="tooltip"></span>
+<span class="tooltipRegion"><code><a href="#revListSortedByTopology">- revListSortedByTopology</a></code></span><span class="tooltip"></span>
 </li>
 <li>
-<span class="tooltipRegion"><code><a href="#__attribute__">- __attribute__</a></code></span><span class="tooltip"></span>
+<span class="tooltipRegion"><code><a href="#revListSortedByTopologyAndDate">- revListSortedByTopologyAndDate</a></code></span><span class="tooltip"></span>
 </li>
 </ul>
 </li>
@@ -469,8 +469,8 @@ provided the path specified passes these tests then the repository object is ret
 <h5>See Also</h5>
 <ul class="seeAlso"><li><code><a href="#revList">- revList</a></code></li></ul>
 <h5>Declared In</h5>
-<code><code>GITRepo</code>.h</code></section><section class="definition" id="__attribute__"><h3>__attribute__</h3>
-<code class="methodDeclaration">- ((deprecated)__attribute__</code><h5>Return Value</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="revListSortedByDate"><h3>revListSortedByDate</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)revListSortedByDate</code><h5>Return Value</h5>
 <p>array of commits sorted by date </p>
 <h5>Discussion</h5>
 <p>Returns an array of commit objects sorted by their commit date.</p>
@@ -484,8 +484,8 @@ provided the path specified passes these tests then the repository object is ret
 <li><code><a href="#arrayOfCommitsSortedByDate%20(GITRevList)">- arrayOfCommitsSortedByDate (<code><a href="../Classes/GITRevList.html">GITRevList</a></code>)</a></code></li>
 </ul>
 <h5>Declared In</h5>
-<code><code>GITRepo</code>.h</code></section><section class="definition" id="__attribute__"><h3>__attribute__</h3>
-<code class="methodDeclaration">- ((deprecated)__attribute__</code><h5>Return Value</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="revListSortedByTopology"><h3>revListSortedByTopology</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)revListSortedByTopology</code><h5>Return Value</h5>
 <p>array of commits sorted by topology </p>
 <h5>Discussion</h5>
 <p>Returns an array of commit objects sorted by topology.</p>
@@ -499,8 +499,8 @@ provided the path specified passes these tests then the repository object is ret
 <li><code><a href="#arrayOfCommitsSortedByTopology%20(GITRevList)">- arrayOfCommitsSortedByTopology (<code><a href="../Classes/GITRevList.html">GITRevList</a></code>)</a></code></li>
 </ul>
 <h5>Declared In</h5>
-<code><code>GITRepo</code>.h</code></section><section class="definition" id="__attribute__"><h3>__attribute__</h3>
-<code class="methodDeclaration">- ((deprecated)__attribute__</code><h5>Return Value</h5>
+<code><code>GITRepo</code>.h</code></section><section class="definition" id="revListSortedByTopologyAndDate"><h3>revListSortedByTopologyAndDate</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)revListSortedByTopologyAndDate</code><h5>Return Value</h5>
 <p>array of commits sorted by topology and date </p>
 <h5>Discussion</h5>
 <p>Returns an array of commit objects sorted by topology and commit date.</p>
@@ -515,7 +515,7 @@ provided the path specified passes these tests then the repository object is ret
 </ul>
 <h5>Declared In</h5>
 <code><code>GITRepo</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-10-16</p>
+<p id="lastUpdated">Last updated: 2011-2-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

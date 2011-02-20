@@ -61,7 +61,10 @@
 <option value="isLink">    - isLink</option>
 <option value="isFile">    - isFile</option>
 <option value="isDirectory">    - isDirectory</option>
-<option value="isModule">    - isModule</option></select></li>
+<option value="isModule">    - isModule</option>
+<option value="isEqual:">    - isEqual:</option>
+<option value="isEqualToTreeItem:">    - isEqualToTreeItem:</option>
+<option value="isEqualToObject:">    - isEqualToObject:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
@@ -69,6 +72,7 @@
 <li><a href="#Properties">Properties</a></li>
 <li><a href="#Creating_and_Initialising_Tree_Items">Creating and Initialising Tree Items</a></li>
 <li><a href="#Item_Mode_Tests">Item Mode Tests</a></li>
+<li><a href="#Testing_Equality">Testing Equality</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
@@ -90,6 +94,9 @@
 <li><a href="#isFile">isFile</a></li>
 <li><a href="#isDirectory">isDirectory</a></li>
 <li><a href="#isModule">isModule</a></li>
+<li><a href="#isEqual:">isEqual:</a></li>
+<li><a href="#isEqualToTreeItem:">isEqualToTreeItem:</a></li>
+<li><a href="#isEqualToObject:">isEqualToObject:</a></li>
 </ul>
 </li>
 </ul></nav><div id="contents">
@@ -148,6 +155,20 @@
 </li>
 <li>
 <span class="tooltipRegion"><code><a href="#isModule">- isModule</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+<li id="Testing_Equality">
+<h3>Testing Equality</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#isEqual:">- isEqual:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#isEqualToTreeItem:">- isEqualToTreeItem:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#isEqualToObject:">- isEqualToObject:</a></code></span><span class="tooltip"></span>
 </li>
 </ul>
 </li>
@@ -238,8 +259,59 @@
 <p>Indicates if the receiver represents a submodule.</p>
 <p></p>
 <h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section><section class="definition" id="isEqual:"><h3>isEqual:</h3>
+<code class="methodDeclaration">- (BOOL)isEqual:(id)<span class="parameter">other</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>other</dt>
+<dd><p>The object to be compared to the receiver </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the receiver and other are equal, otherwise NO </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether the receiver and a given object are equal.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqualToTreeItem:">- isEqualToTreeItem:</a></code></li>
+<li><code><a href="#isEqualToObject:">- isEqualToObject:</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section><section class="definition" id="isEqualToTreeItem:"><h3>isEqualToTreeItem:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToTreeItem:(GITTreeItem *)<span class="parameter">rhs</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>rhs</dt>
+<dd><p>The Tree Item with which to compare the receiver </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the receiver and hash are equal, otherwise NO </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether the receiver and a given Tree Item are equal.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">- isEqual:</a></code></li>
+<li><code><a href="#isEqualToObject:">- isEqualToObject:</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITTreeItem</code>.h</code></section><section class="definition" id="isEqualToObject:"><h3>isEqualToObject:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToObject:(<a href="../Protocols/GITObject.html">GITObject</a> *)<span class="parameter">rhs</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>rhs</dt>
+<dd><p>The <code><a href="../Protocols/GITObject.html">GITObject</a></code> with which to compare the receiver </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the receiver and hash are equal, otherwise NO </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether the receiver and a given <code><a href="../Protocols/GITObject.html">GITObject</a></code> are equal.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">- isEqual:</a></code></li>
+<li><code><a href="#isEqualToTreeItem:">- isEqualToTreeItem:</a></code></li>
+</ul>
+<h5>Declared In</h5>
 <code><code>GITTreeItem</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-10-16</p>
+<p id="lastUpdated">Last updated: 2011-2-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

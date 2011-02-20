@@ -55,13 +55,17 @@
 <option value="taggerDate">    taggerDate</option>
 <option value="message">    message</option>
 <option value="classMethods">Class Methods</option>
-<option value="tagFromData:sha1:repo:error:">    + tagFromData:sha1:repo:error:</option></select></li>
+<option value="tagFromData:sha1:repo:error:">    + tagFromData:sha1:repo:error:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="refersToObjectHash:">    - refersToObjectHash:</option>
+<option value="refersToObject:">    - refersToObject:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
 <li><a href="#Properties">Properties</a></li>
 <li><a href="#Creating_and_Initialising_Tags">Creating and Initialising Tags</a></li>
+<li><a href="#Testing_Object_Target">Testing Object Target</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
@@ -75,6 +79,12 @@
 </li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
 <a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#tagFromData:sha1:repo:error:">tagFromData:sha1:repo:error:</a></li></ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
+<li><a href="#refersToObjectHash:">refersToObjectHash:</a></li>
+<li><a href="#refersToObject:">refersToObject:</a></li>
+</ul>
 </li>
 </ul></nav><div id="contents">
 <h1 id="classTitle">GITTag Class Reference</h1>
@@ -131,6 +141,17 @@
 <span class="tooltipRegion"><code><a href="#tagFromData:sha1:repo:error:">+ tagFromData:sha1:repo:error:</a></code></span><span class="tooltip"></span>
 </li></ul>
 </li>
+<li id="Testing_Object_Target">
+<h3>Testing Object Target</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#refersToObjectHash:">- refersToObjectHash:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#refersToObject:">- refersToObject:</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
 </ul>
 <section id="properties"><h2>Properties</h2>
 <section class="definition" id="name"><h3>name</h3>
@@ -168,8 +189,33 @@
 <p>The data content is parsed to extract the information about the tag such as the name, referenced object, tagger, dates and the tag message.</p>
 <p></p>
 <h5>Declared In</h5>
+<code><code>GITTag</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="refersToObjectHash:"><h3>refersToObjectHash:</h3>
+<code class="methodDeclaration">- (BOOL)refersToObjectHash:(<a href="../Classes/GITObjectHash.html">GITObjectHash</a> *)<span class="parameter">objectHash</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>objectHash</dt>
+<dd><p>Object Hash to compare with the receivers target object hash </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the object hash matches that of the targets object hash, NO otherwise. </p>
+<h5>Discussion</h5>
+<p>Checks if the receivers target object hash matches the objectHash given.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITTag</code>.h</code></section><section class="definition" id="refersToObject:"><h3>refersToObject:</h3>
+<code class="methodDeclaration">- (BOOL)refersToObject:(<a href="../Protocols/GITObject.html">GITObject</a> *)<span class="parameter">object</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>object</dt>
+<dd><p><code><a href="../Protocols/GITObject.html">GITObject</a></code> to compare with the receivers target object. </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the object matches that of the receivers target object, NO otherwise. </p>
+<h5>Discussion</h5>
+<p>Checks if the receivers target matches the object given.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITTag</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-10-16</p>
+<p id="lastUpdated">Last updated: 2011-2-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

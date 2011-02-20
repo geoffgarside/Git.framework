@@ -51,13 +51,16 @@
 <option value="properties">Properties</option>
 <option value="items">    items</option>
 <option value="classMethods">Class Methods</option>
-<option value="treeFromData:sha1:repo:error:">    + treeFromData:sha1:repo:error:</option></select></li>
+<option value="treeFromData:sha1:repo:error:">    + treeFromData:sha1:repo:error:</option>
+<option value="instanceMethods">Instance Methods</option>
+<option value="containsObject:">    - containsObject:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
 <li><a href="#Properties">Properties</a></li>
 <li><a href="#Creating_and_Initialising_Trees">Creating and Initialising Trees</a></li>
+<li><a href="#Querying_a_Tree">Querying a Tree</a></li>
 </ul>
 </li>
 <li class="expandable" id="tocProperties" onclick="toggleTOCItem()">
@@ -65,6 +68,9 @@
 </li>
 <li class="expandable" id="tocClassMethods" onclick="toggleTOCItem()">
 <a href="#classMethods">Class Methods</a><ul style="display: none;"><li><a href="#treeFromData:sha1:repo:error:">treeFromData:sha1:repo:error:</a></li></ul>
+</li>
+<li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
+<a href="#instanceMethods">Instance Methods</a><ul style="display: none;"><li><a href="#containsObject:">containsObject:</a></li></ul>
 </li>
 </ul></nav><div id="contents">
 <h1 id="classTitle">GITTree Class Reference</h1>
@@ -103,6 +109,12 @@
 <span class="tooltipRegion"><code><a href="#treeFromData:sha1:repo:error:">+ treeFromData:sha1:repo:error:</a></code></span><span class="tooltip"></span>
 </li></ul>
 </li>
+<li id="Querying_a_Tree">
+<h3>Querying a Tree</h3>
+<ul class="methods"><li>
+<span class="tooltipRegion"><code><a href="#containsObject:">- containsObject:</a></code></span><span class="tooltip"></span>
+</li></ul>
+</li>
 </ul>
 <section id="properties"><h2>Properties</h2>
 <section class="definition" id="items"><h3>items</h3>
@@ -128,8 +140,22 @@
 <p>The data is parsed to extract the references to the tree contents, the contents are then stored in the <code>items</code> array as <code><a href="../Classes/GITTreeItem.html">GITTreeItem</a></code> objects.</p>
 <p></p>
 <h5>Declared In</h5>
+<code><code>GITTree</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
+<section class="definition" id="containsObject:"><h3>containsObject:</h3>
+<code class="methodDeclaration">- (BOOL)containsObject:(id)<span class="parameter">anObject</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>anObject</dt>
+<dd><p>An object </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p><code>YES</code> if anObject is present in the tree, otherwise <code>NO</code>. </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether a given object is present in the tree.</p>
+<p>This method determines whether anObject is present in the array by sending an <code>isEqual:</code> message to each of the array’s objects (and passing anObject as the parameter to each <code>isEqual:</code> message).</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITTree</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-10-16</p>
+<p id="lastUpdated">Last updated: 2011-2-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

@@ -61,23 +61,24 @@
 <option value="unpackedDataFromBytes:length:">    + unpackedDataFromBytes:length:</option>
 <option value="packedDataFromBytes:length:">    + packedDataFromBytes:length:</option>
 <option value="instanceMethods">Instance Methods</option>
-<option value="isEqual:">    - isEqual:</option>
-<option value="isEqualToData:">    - isEqualToData:</option>
-<option value="isEqualToString:">    - isEqualToString:</option>
-<option value="isEqualToObjectHash:">    - isEqualToObjectHash:</option>
 <option value="initWithString:">    - initWithString:</option>
 <option value="initWithData:">    - initWithData:</option>
 <option value="initWithObjectData:">    - initWithObjectData:</option>
 <option value="unpackedString">    - unpackedString</option>
 <option value="unpackedData">    - unpackedData</option>
-<option value="packedData">    - packedData</option></select></li>
+<option value="packedData">    - packedData</option>
+<option value="isEqual:">    - isEqual:</option>
+<option value="isEqualToData:">    - isEqualToData:</option>
+<option value="isEqualToString:">    - isEqualToString:</option>
+<option value="isEqualToObjectHash:">    - isEqualToObjectHash:</option>
+<option value="compare:">    - compare:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
 <a href="#tasks">Tasks</a><ul style="display: none;">
-<li><a href="#Testing_Equality">Testing Equality</a></li>
 <li><a href="#Creating_and_Initialising_Object_Hashes">Creating and Initialising Object Hashes</a></li>
 <li><a href="#Getting_Packed_and_Unpacked_Forms">Getting Packed and Unpacked Forms</a></li>
+<li><a href="#Testing_Equality">Testing Equality</a></li>
 <li><a href="#Other">Other</a></li>
 </ul>
 </li>
@@ -98,16 +99,17 @@
 </li>
 <li class="expandable" id="tocInstanceMethods" onclick="toggleTOCItem()">
 <a href="#instanceMethods">Instance Methods</a><ul style="display: none;">
-<li><a href="#isEqual:">isEqual:</a></li>
-<li><a href="#isEqualToData:">isEqualToData:</a></li>
-<li><a href="#isEqualToString:">isEqualToString:</a></li>
-<li><a href="#isEqualToObjectHash:">isEqualToObjectHash:</a></li>
 <li><a href="#initWithString:">initWithString:</a></li>
 <li><a href="#initWithData:">initWithData:</a></li>
 <li><a href="#initWithObjectData:">initWithObjectData:</a></li>
 <li><a href="#unpackedString">unpackedString</a></li>
 <li><a href="#unpackedData">unpackedData</a></li>
 <li><a href="#packedData">packedData</a></li>
+<li><a href="#isEqual:">isEqual:</a></li>
+<li><a href="#isEqualToData:">isEqualToData:</a></li>
+<li><a href="#isEqualToString:">isEqualToString:</a></li>
+<li><a href="#isEqualToObjectHash:">isEqualToObjectHash:</a></li>
+<li><a href="#compare:">compare:</a></li>
 </ul>
 </li>
 </ul></nav><div id="contents">
@@ -120,23 +122,6 @@
 <p>The <code><code>GITObjectHash</code></code> class provides methods for packing and unpacking SHA1 hashes in both NSString and <code><a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a></code> forms. <code><code>GITObjectHash</code></code> objects provide </p>
 <h2 id="tasks">Tasks</h2>
 <ul id="tasksList">
-<li id="Testing_Equality">
-<h3>Testing Equality</h3>
-<ul class="methods">
-<li>
-<span class="tooltipRegion"><code><a href="#isEqual:">- isEqual:</a></code></span><span class="tooltip"></span>
-</li>
-<li>
-<span class="tooltipRegion"><code><a href="#isEqualToData:">- isEqualToData:</a></code></span><span class="tooltip"></span>
-</li>
-<li>
-<span class="tooltipRegion"><code><a href="#isEqualToString:">- isEqualToString:</a></code></span><span class="tooltip"></span>
-</li>
-<li>
-<span class="tooltipRegion"><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></span><span class="tooltip"></span>
-</li>
-</ul>
-</li>
 <li id="Creating_and_Initialising_Object_Hashes">
 <h3>Creating and Initialising Object Hashes</h3>
 <ul class="methods">
@@ -171,6 +156,26 @@
 </li>
 <li>
 <span class="tooltipRegion"><code><a href="#packedData">- packedData</a></code></span><span class="tooltip"></span>
+</li>
+</ul>
+</li>
+<li id="Testing_Equality">
+<h3>Testing Equality</h3>
+<ul class="methods">
+<li>
+<span class="tooltipRegion"><code><a href="#isEqual:">- isEqual:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#isEqualToData:">- isEqualToData:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#isEqualToString:">- isEqualToString:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#compare:">- compare:</a></code></span><span class="tooltip"></span>
 </li>
 </ul>
 </li>
@@ -364,79 +369,7 @@
 <ul class="seeAlso"><li><code><a href="#unpackedDataFromBytes:length:">+ unpackedDataFromBytes:length:</a></code></li></ul>
 <h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section></section><section id="instanceMethods"><h2>Instance Methods</h2>
-<section class="definition" id="isEqual:"><h3>isEqual:</h3>
-<code class="methodDeclaration">- (BOOL)isEqual:(id)<span class="parameter">other</span> </code><h5>Parameters</h5>
-<dl class="parameterList">
-<dt>other</dt>
-<dd><p>The object to be compared to the receiver </p></dd>
-</dl>
-<h5>Return Value</h5>
-<p>YES if the receiver and other are equal, otherwise NO </p>
-<h5>Discussion</h5>
-<p>Returns a Boolean value that indicates whether the receiver and a given object are equal.</p>
-<p></p>
-<h5>See Also</h5>
-<ul class="seeAlso">
-<li><code><a href="#isEqualToData:">- isEqualToData:</a></code></li>
-<li><code><a href="#isEqualToString:">- isEqualToString:</a></code></li>
-<li><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></li>
-</ul>
-<h5>Declared In</h5>
-<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToData:"><h3>isEqualToData:</h3>
-<code class="methodDeclaration">- (BOOL)isEqualToData:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
-<dl class="parameterList">
-<dt>data</dt>
-<dd><p>The data object with which to compare the receiver </p></dd>
-</dl>
-<h5>Return Value</h5>
-<p>YES if the receiver and data are equal, otherwise NO </p>
-<h5>Discussion</h5>
-<p>Returns a Boolean value that indicates whether the receiver and a given data object are equal.</p>
-<p></p>
-<h5>See Also</h5>
-<ul class="seeAlso">
-<li><code><a href="#isEqual:">- isEqual:</a></code></li>
-<li><code><a href="#isEqualToString:">- isEqualToString:</a></code></li>
-<li><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></li>
-</ul>
-<h5>Declared In</h5>
-<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToString:"><h3>isEqualToString:</h3>
-<code class="methodDeclaration">- (BOOL)isEqualToString:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
-<dl class="parameterList">
-<dt>str</dt>
-<dd><p>The string with which to compare the receiver </p></dd>
-</dl>
-<h5>Return Value</h5>
-<p>YES if the receiver and str are equal, otherwise NO </p>
-<h5>Discussion</h5>
-<p>Returns a Boolean value that indicates whether the receiver and a given string are equal.</p>
-<p></p>
-<h5>See Also</h5>
-<ul class="seeAlso">
-<li><code><a href="#isEqual:">- isEqual:</a></code></li>
-<li><code><a href="#isEqualToData:">- isEqualToData:</a></code></li>
-<li><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></li>
-</ul>
-<h5>Declared In</h5>
-<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToObjectHash:"><h3>isEqualToObjectHash:</h3>
-<code class="methodDeclaration">- (BOOL)isEqualToObjectHash:(GITObjectHash *)<span class="parameter">hash</span> </code><h5>Parameters</h5>
-<dl class="parameterList">
-<dt>hash</dt>
-<dd><p>The ObjectHash with which to compare the receiver </p></dd>
-</dl>
-<h5>Return Value</h5>
-<p>YES if the receiver and hash are equal, otherwise NO </p>
-<h5>Discussion</h5>
-<p>Returns a Boolean value that indicates whether the receiver and a given ObjectHash are equal.</p>
-<p></p>
-<h5>See Also</h5>
-<ul class="seeAlso">
-<li><code><a href="#isEqual:">- isEqual:</a></code></li>
-<li><code><a href="#isEqualToData:">- isEqualToData:</a></code></li>
-<li><code><a href="#isEqualToString:">- isEqualToString:</a></code></li>
-</ul>
-<h5>Declared In</h5>
-<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="initWithString:"><h3>initWithString:</h3>
+<section class="definition" id="initWithString:"><h3>initWithString:</h3>
 <code class="methodDeclaration">- (id)initWithString:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
 <dl class="parameterList">
 <dt>str</dt>
@@ -520,8 +453,92 @@
 <li><code><a href="#unpackedString">- unpackedString</a></code></li>
 </ul>
 <h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqual:"><h3>isEqual:</h3>
+<code class="methodDeclaration">- (BOOL)isEqual:(id)<span class="parameter">other</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>other</dt>
+<dd><p>The object to be compared to the receiver </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the receiver and other are equal, otherwise NO </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether the receiver and a given object are equal.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqualToData:">- isEqualToData:</a></code></li>
+<li><code><a href="#isEqualToString:">- isEqualToString:</a></code></li>
+<li><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToData:"><h3>isEqualToData:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToData:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> *)<span class="parameter">data</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>data</dt>
+<dd><p>The data object with which to compare the receiver </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the receiver and data are equal, otherwise NO </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether the receiver and a given data object are equal.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">- isEqual:</a></code></li>
+<li><code><a href="#isEqualToString:">- isEqualToString:</a></code></li>
+<li><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToString:"><h3>isEqualToString:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToString:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/index.html">NSString</a> *)<span class="parameter">str</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>str</dt>
+<dd><p>The string with which to compare the receiver </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the receiver and str are equal, otherwise NO </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether the receiver and a given string are equal.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">- isEqual:</a></code></li>
+<li><code><a href="#isEqualToData:">- isEqualToData:</a></code></li>
+<li><code><a href="#isEqualToObjectHash:">- isEqualToObjectHash:</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="isEqualToObjectHash:"><h3>isEqualToObjectHash:</h3>
+<code class="methodDeclaration">- (BOOL)isEqualToObjectHash:(GITObjectHash *)<span class="parameter">hash</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>hash</dt>
+<dd><p>The ObjectHash with which to compare the receiver </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>YES if the receiver and hash are equal, otherwise NO </p>
+<h5>Discussion</h5>
+<p>Returns a Boolean value that indicates whether the receiver and a given ObjectHash are equal.</p>
+<p></p>
+<h5>See Also</h5>
+<ul class="seeAlso">
+<li><code><a href="#isEqual:">- isEqual:</a></code></li>
+<li><code><a href="#isEqualToData:">- isEqualToData:</a></code></li>
+<li><code><a href="#isEqualToString:">- isEqualToString:</a></code></li>
+</ul>
+<h5>Declared In</h5>
+<code><code>GITObjectHash</code>.h</code></section><section class="definition" id="compare:"><h3>compare:</h3>
+<code class="methodDeclaration">- (NSComparisonResult)compare:(GITObjectHash *)<span class="parameter">hash</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>hash</dt>
+<dd><p>The object hash with which to compare the receiver. This value must not be nil. If the value is nil, the behavior is undefined. </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>NSOrderedAscending if the value of hash is greater than the receiver’s, NSOrderedSame if they’re equal, and NSOrderedDescending if the value of hash is less than the receiver’s. </p>
+<h5>Discussion</h5>
+<p>Returns an NSComparisonResult value that indicates whether the receiver is greater than, equal to, or less than a given object hash.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITObjectHash</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-10-16</p>
+<p id="lastUpdated">Last updated: 2011-2-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>

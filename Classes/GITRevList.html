@@ -55,7 +55,10 @@
 <option value="subtractDescendentsFromCommit:">    - subtractDescendentsFromCommit:</option>
 <option value="arrayOfCommitsSortedByDate">    - arrayOfCommitsSortedByDate</option>
 <option value="arrayOfCommitsSortedByTopology">    - arrayOfCommitsSortedByTopology</option>
-<option value="arrayOfCommitsSortedByTopologyAndDate">    - arrayOfCommitsSortedByTopologyAndDate</option></select></li>
+<option value="arrayOfCommitsSortedByTopologyAndDate">    - arrayOfCommitsSortedByTopologyAndDate</option>
+<option value="arrayOfReachableObjects">    - arrayOfReachableObjects</option>
+<option value="arrayOfReachableObjectsAndTags">    - arrayOfReachableObjectsAndTags</option>
+<option value="arrayOfReachableObjectsAndTags:">    - arrayOfReachableObjectsAndTags:</option></select></li>
 </ul></nav><nav id="tableOfContents" style="display: none;"><ul>
 <li><a href="#overview">Overview</a></li>
 <li class="expandable" id="tocTasks" onclick="toggleTOCItem()">
@@ -75,6 +78,9 @@
 <li><a href="#arrayOfCommitsSortedByDate">arrayOfCommitsSortedByDate</a></li>
 <li><a href="#arrayOfCommitsSortedByTopology">arrayOfCommitsSortedByTopology</a></li>
 <li><a href="#arrayOfCommitsSortedByTopologyAndDate">arrayOfCommitsSortedByTopologyAndDate</a></li>
+<li><a href="#arrayOfReachableObjects">arrayOfReachableObjects</a></li>
+<li><a href="#arrayOfReachableObjectsAndTags">arrayOfReachableObjectsAndTags</a></li>
+<li><a href="#arrayOfReachableObjectsAndTags:">arrayOfReachableObjectsAndTags:</a></li>
 </ul>
 </li>
 </ul></nav><div id="contents">
@@ -116,6 +122,15 @@
 </li>
 <li>
 <span class="tooltipRegion"><code><a href="#arrayOfCommitsSortedByTopologyAndDate">- arrayOfCommitsSortedByTopologyAndDate</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#arrayOfReachableObjects">- arrayOfReachableObjects</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#arrayOfReachableObjectsAndTags">- arrayOfReachableObjectsAndTags</a></code></span><span class="tooltip"></span>
+</li>
+<li>
+<span class="tooltipRegion"><code><a href="#arrayOfReachableObjectsAndTags:">- arrayOfReachableObjectsAndTags:</a></code></span><span class="tooltip"></span>
 </li>
 </ul>
 </li>
@@ -174,8 +189,35 @@
 <p>The result of this method is equivalent to <code>git rev-list --date-order</code>.</p>
 <p></p>
 <h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section><section class="definition" id="arrayOfReachableObjects"><h3>arrayOfReachableObjects</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)arrayOfReachableObjects</code><h5>Return Value</h5>
+<p>Array of objects reachable from the head of the receiver. </p>
+<h5>Discussion</h5>
+<p>Returns an array of the objects which are reachable from the head of the receiver.</p>
+<p>This is primarily used when collecting the list of objects to include in a PACK file prior to generation.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section><section class="definition" id="arrayOfReachableObjectsAndTags"><h3>arrayOfReachableObjectsAndTags</h3>
+<code class="methodDeclaration">- (<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)arrayOfReachableObjectsAndTags</code><h5>Return Value</h5>
+<p>Array of objects and tags reachable from the head of the receiver. </p>
+<h5>Discussion</h5>
+<p>Returns an array of the objects and tags which are reachable from the head of the receiver.</p>
+<p></p>
+<h5>Declared In</h5>
+<code><code>GITRevList</code>.h</code></section><section class="definition" id="arrayOfReachableObjectsAndTags:"><h3>arrayOfReachableObjectsAndTags:</h3>
+<code class="methodDeclaration">- (NSArray *)arrayOfReachableObjectsAndTags:(<a href="http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html">NSArray</a> *)<span class="parameter">tags</span> </code><h5>Parameters</h5>
+<dl class="parameterList">
+<dt>tags</dt>
+<dd><p>Array of tags to be considered for inclusion in the resulting array. This should be an inclusive list of all tags which might be reachable from the head of the receiver. </p></dd>
+</dl>
+<h5>Return Value</h5>
+<p>Array of objects and tags reachable from the head of the receiver. </p>
+<h5>Discussion</h5>
+<p>Returns an array of the objects and tags which are reachable from the head of the receiver.</p>
+<p></p>
+<h5>Declared In</h5>
 <code><code>GITRevList</code>.h</code></section></section><hr>
-<p id="lastUpdated">Last updated: 2010-10-16</p>
+<p id="lastUpdated">Last updated: 2011-2-20</p>
 </div>
 <footer id="breadcrumbs"><ul>
 <li><a href="../index.html">Git.framework</a></li>
