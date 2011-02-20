@@ -14,6 +14,5 @@
 
 - (void)addObjectHashToFanoutTable: (GITObjectHash *)sha1;
 - (NSInteger)writeFanoutTableToStream: (NSOutputStream *)stream;
-- (NSArray *)sortedArrayOfObjects: (NSArray *)objects;
 
 @end
