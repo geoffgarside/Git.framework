@@ -10,6 +10,8 @@
 #import "GITPackFilePlaceholder.h"
 
 
+const char const GITPackFileSignature[] = { 'P', 'A', 'C', 'K' };
+
 @implementation GITPackFile
 
 + (id)alloc {

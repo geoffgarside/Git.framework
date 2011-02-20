@@ -46,8 +46,24 @@
 		F553A87110FFDD80007799A9 /* GITLooseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F553A86F10FFDD80007799A9 /* GITLooseObject.m */; };
 		F553A8781101FACC007799A9 /* GITPackCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = F553A8761101FACC007799A9 /* GITPackCollection.h */; };
 		F553A8791101FACC007799A9 /* GITPackCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F553A8771101FACC007799A9 /* GITPackCollection.m */; };
+		F55454B512FF43D9005AAC0E /* GITPackIndexWriterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F55454B312FF43D9005AAC0E /* GITPackIndexWriterObject.h */; };
+		F55454B612FF43D9005AAC0E /* GITPackIndexWriterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F55454B412FF43D9005AAC0E /* GITPackIndexWriterObject.m */; };
 		F558E43711B828D3003BB2AB /* GITGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = F594CB2511864CE500E82F38 /* GITGraph.h */; };
 		F558E43811B828D3003BB2AB /* GITGraphNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F594CB29118777C800E82F38 /* GITGraphNode.h */; };
+		F56697F412FCE3D40085E769 /* GITPackFileWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697F212FCE3D40085E769 /* GITPackFileWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F56697F512FCE3D40085E769 /* GITPackFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697F312FCE3D40085E769 /* GITPackFileWriter.m */; };
+		F56697F812FCE3E90085E769 /* GITPackFileWriterPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697F612FCE3E90085E769 /* GITPackFileWriterPlaceholder.h */; };
+		F56697F912FCE3E90085E769 /* GITPackFileWriterPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697F712FCE3E90085E769 /* GITPackFileWriterPlaceholder.m */; };
+		F56697FC12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697FA12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.h */; };
+		F56697FD12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697FB12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.m */; };
+		F566980012FCE4100085E769 /* GITPackIndexWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F56697FE12FCE4100085E769 /* GITPackIndexWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F566980112FCE4100085E769 /* GITPackIndexWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56697FF12FCE4100085E769 /* GITPackIndexWriter.m */; };
+		F566980412FCE4270085E769 /* GITPackIndexWriterPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F566980212FCE4270085E769 /* GITPackIndexWriterPlaceholder.h */; };
+		F566980512FCE4270085E769 /* GITPackIndexWriterPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F566980312FCE4270085E769 /* GITPackIndexWriterPlaceholder.m */; };
+		F566980812FCE43D0085E769 /* GITPackIndexWriterVersionOne.h in Headers */ = {isa = PBXBuildFile; fileRef = F566980612FCE43D0085E769 /* GITPackIndexWriterVersionOne.h */; };
+		F566980912FCE43D0085E769 /* GITPackIndexWriterVersionOne.m in Sources */ = {isa = PBXBuildFile; fileRef = F566980712FCE43D0085E769 /* GITPackIndexWriterVersionOne.m */; };
+		F566980C12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = F566980A12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h */; };
+		F566980D12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F566980B12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m */; };
 		F5706D4C10FA1E5600DCA823 /* GITActor.h in Headers */ = {isa = PBXBuildFile; fileRef = F5706D4A10FA1E5600DCA823 /* GITActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5706D4D10FA1E5600DCA823 /* GITActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F5706D4B10FA1E5600DCA823 /* GITActor.m */; };
 		F5706D5A10FA28F600DCA823 /* GITDateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = F5706D5810FA28F600DCA823 /* GITDateTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +117,8 @@
 		F5B28C7110D4799E009A933C /* GITBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C6F10D4799E009A933C /* GITBlob.m */; };
 		F5B28C7410D479AE009A933C /* GITTag.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B28C7210D479AE009A933C /* GITTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5B28C7510D479AE009A933C /* GITTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28C7310D479AE009A933C /* GITTag.m */; };
+		F5B8579B12FF5977004EED0C /* NSData+CRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = F5B8579912FF5977004EED0C /* NSData+CRC32.h */; };
+		F5B8579C12FF5977004EED0C /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B8579A12FF5977004EED0C /* NSData+CRC32.m */; };
 		F5BBC1A61063753400EF21A8 /* GITRefResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1A41063753400EF21A8 /* GITRefResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5BBC1A71063753400EF21A8 /* GITRefResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BBC1A51063753400EF21A8 /* GITRefResolver.m */; };
 		F5BBC1DE10659C3100EF21A8 /* GITRef.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BBC1DC10659C3100EF21A8 /* GITRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,6 +131,8 @@
 		F5D0136A10A5C836003EFA8F /* GITPackFilePlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0136810A5C836003EFA8F /* GITPackFilePlaceholder.m */; };
 		F5D0137110A5DA9B003EFA8F /* GITPackFileVersionTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D0136F10A5DA9B003EFA8F /* GITPackFileVersionTwo.h */; };
 		F5D0137210A5DA9B003EFA8F /* GITPackFileVersionTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */; };
+		F5ECE84712FF68AA00A608AA /* GITPackIndexWriter+Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = F5ECE84512FF68AA00A608AA /* GITPackIndexWriter+Shared.h */; };
+		F5ECE84812FF68AA00A608AA /* GITPackIndexWriter+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECE84612FF68AA00A608AA /* GITPackIndexWriter+Shared.m */; };
 		F5FC28C310A6301D00EFB922 /* GITPackIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = F5FC28C110A6301D00EFB922 /* GITPackIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5FC28C410A6301D00EFB922 /* GITPackIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FC28C210A6301D00EFB922 /* GITPackIndex.m */; };
 		F5FC28C710A630A900EFB922 /* GITPackIndexPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = F5FC28C510A630A900EFB922 /* GITPackIndexPlaceholder.h */; };
@@ -153,6 +173,22 @@
 		F553A86F10FFDD80007799A9 /* GITLooseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITLooseObject.m; path = Source/GITLooseObject.m; sourceTree = "<group>"; };
 		F553A8761101FACC007799A9 /* GITPackCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackCollection.h; path = Source/GITPackCollection.h; sourceTree = "<group>"; };
 		F553A8771101FACC007799A9 /* GITPackCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackCollection.m; path = Source/GITPackCollection.m; sourceTree = "<group>"; };
+		F55454B312FF43D9005AAC0E /* GITPackIndexWriterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackIndexWriterObject.h; path = Source/GITPackIndexWriterObject.h; sourceTree = "<group>"; };
+		F55454B412FF43D9005AAC0E /* GITPackIndexWriterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackIndexWriterObject.m; path = Source/GITPackIndexWriterObject.m; sourceTree = "<group>"; };
+		F56697F212FCE3D40085E769 /* GITPackFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileWriter.h; path = Source/GITPackFileWriter.h; sourceTree = "<group>"; };
+		F56697F312FCE3D40085E769 /* GITPackFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriter.m; path = Source/GITPackFileWriter.m; sourceTree = "<group>"; };
+		F56697F612FCE3E90085E769 /* GITPackFileWriterPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileWriterPlaceholder.h; path = Source/GITPackFileWriterPlaceholder.h; sourceTree = "<group>"; };
+		F56697F712FCE3E90085E769 /* GITPackFileWriterPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriterPlaceholder.m; path = Source/GITPackFileWriterPlaceholder.m; sourceTree = "<group>"; };
+		F56697FA12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileWriterVersionTwo.h; path = Source/GITPackFileWriterVersionTwo.h; sourceTree = "<group>"; };
+		F56697FB12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileWriterVersionTwo.m; path = Source/GITPackFileWriterVersionTwo.m; sourceTree = "<group>"; };
+		F56697FE12FCE4100085E769 /* GITPackIndexWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackIndexWriter.h; path = Source/GITPackIndexWriter.h; sourceTree = "<group>"; };
+		F56697FF12FCE4100085E769 /* GITPackIndexWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackIndexWriter.m; path = Source/GITPackIndexWriter.m; sourceTree = "<group>"; };
+		F566980212FCE4270085E769 /* GITPackIndexWriterPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackIndexWriterPlaceholder.h; path = Source/GITPackIndexWriterPlaceholder.h; sourceTree = "<group>"; };
+		F566980312FCE4270085E769 /* GITPackIndexWriterPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackIndexWriterPlaceholder.m; path = Source/GITPackIndexWriterPlaceholder.m; sourceTree = "<group>"; };
+		F566980612FCE43D0085E769 /* GITPackIndexWriterVersionOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackIndexWriterVersionOne.h; path = Source/GITPackIndexWriterVersionOne.h; sourceTree = "<group>"; };
+		F566980712FCE43D0085E769 /* GITPackIndexWriterVersionOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackIndexWriterVersionOne.m; path = Source/GITPackIndexWriterVersionOne.m; sourceTree = "<group>"; };
+		F566980A12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackIndexWriterVersionTwo.h; path = Source/GITPackIndexWriterVersionTwo.h; sourceTree = "<group>"; };
+		F566980B12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackIndexWriterVersionTwo.m; path = Source/GITPackIndexWriterVersionTwo.m; sourceTree = "<group>"; };
 		F5706D4A10FA1E5600DCA823 /* GITActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITActor.h; path = Source/GITActor.h; sourceTree = "<group>"; };
 		F5706D4B10FA1E5600DCA823 /* GITActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITActor.m; path = Source/GITActor.m; sourceTree = "<group>"; };
 		F5706D5810FA28F600DCA823 /* GITDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITDateTime.h; path = Source/GITDateTime.h; sourceTree = "<group>"; };
@@ -219,6 +255,8 @@
 		F5B28C6F10D4799E009A933C /* GITBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITBlob.m; path = Source/GITBlob.m; sourceTree = "<group>"; };
 		F5B28C7210D479AE009A933C /* GITTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITTag.h; path = Source/GITTag.h; sourceTree = "<group>"; };
 		F5B28C7310D479AE009A933C /* GITTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITTag.m; path = Source/GITTag.m; sourceTree = "<group>"; };
+		F5B8579912FF5977004EED0C /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+CRC32.h"; path = "Source/Category/NSData/NSData+CRC32.h"; sourceTree = "<group>"; };
+		F5B8579A12FF5977004EED0C /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+CRC32.m"; path = "Source/Category/NSData/NSData+CRC32.m"; sourceTree = "<group>"; };
 		F5BBC1931062F02500EF21A8 /* TestHelper.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TestHelper.rb; sourceTree = "<group>"; };
 		F5BBC1951062F02500EF21A8 /* GITRepo.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITRepo.rb; sourceTree = "<group>"; };
 		F5BBC1A41063753400EF21A8 /* GITRefResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITRefResolver.h; path = Source/GITRefResolver.h; sourceTree = "<group>"; };
@@ -235,6 +273,8 @@
 		F5D0136810A5C836003EFA8F /* GITPackFilePlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFilePlaceholder.m; path = Source/GITPackFilePlaceholder.m; sourceTree = "<group>"; };
 		F5D0136F10A5DA9B003EFA8F /* GITPackFileVersionTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GITPackFileVersionTwo.h; path = Source/GITPackFileVersionTwo.h; sourceTree = "<group>"; };
 		F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GITPackFileVersionTwo.m; path = Source/GITPackFileVersionTwo.m; sourceTree = "<group>"; };
+		F5ECE84512FF68AA00A608AA /* GITPackIndexWriter+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GITPackIndexWriter+Shared.h"; path = "Source/GITPackIndexWriter+Shared.h"; sourceTree = "<group>"; };
+		F5ECE84612FF68AA00A608AA /* GITPackIndexWriter+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GITPackIndexWriter+Shared.m"; path = "Source/GITPackIndexWriter+Shared.m"; sourceTree = "<group>"; };
 		F5F2327311FAFE140004547F /* GITCommitEnumerator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITCommitEnumerator.rb; sourceTree = "<group>"; };
 		F5F2327411FAFE140004547F /* GITGraph.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITGraph.rb; sourceTree = "<group>"; };
 		F5F2327511FAFE140004547F /* GITLooseObject.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GITLooseObject.rb; sourceTree = "<group>"; };
@@ -458,6 +498,8 @@
 		F5AC4DF1106C50230083212A /* NSData */ = {
 			isa = PBXGroup;
 			children = (
+				F5B8579912FF5977004EED0C /* NSData+CRC32.h */,
+				F5B8579A12FF5977004EED0C /* NSData+CRC32.m */,
 				F57EAA3B10CDDFAA00EE2103 /* NSData+Compression.h */,
 				F57EAA3C10CDDFAA00EE2103 /* NSData+Compression.m */,
 				F575BBF910C12799000458EB /* NSData+SHA1.h */,
@@ -528,6 +570,12 @@
 				F5D0137010A5DA9B003EFA8F /* GITPackFileVersionTwo.m */,
 				F553A8761101FACC007799A9 /* GITPackCollection.h */,
 				F553A8771101FACC007799A9 /* GITPackCollection.m */,
+				F56697F212FCE3D40085E769 /* GITPackFileWriter.h */,
+				F56697F312FCE3D40085E769 /* GITPackFileWriter.m */,
+				F56697F612FCE3E90085E769 /* GITPackFileWriterPlaceholder.h */,
+				F56697F712FCE3E90085E769 /* GITPackFileWriterPlaceholder.m */,
+				F56697FA12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.h */,
+				F56697FB12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.m */,
 			);
 			name = GITPackFile;
 			sourceTree = "<group>";
@@ -543,6 +591,18 @@
 				F5FC28CA10A6393100EFB922 /* GITPackIndexVersionOne.m */,
 				F5FC28D010A63ACD00EFB922 /* GITPackIndexVersionTwo.h */,
 				F5FC28D110A63ACD00EFB922 /* GITPackIndexVersionTwo.m */,
+				F56697FE12FCE4100085E769 /* GITPackIndexWriter.h */,
+				F56697FF12FCE4100085E769 /* GITPackIndexWriter.m */,
+				F566980212FCE4270085E769 /* GITPackIndexWriterPlaceholder.h */,
+				F566980312FCE4270085E769 /* GITPackIndexWriterPlaceholder.m */,
+				F566980612FCE43D0085E769 /* GITPackIndexWriterVersionOne.h */,
+				F566980712FCE43D0085E769 /* GITPackIndexWriterVersionOne.m */,
+				F566980A12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h */,
+				F566980B12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m */,
+				F55454B312FF43D9005AAC0E /* GITPackIndexWriterObject.h */,
+				F55454B412FF43D9005AAC0E /* GITPackIndexWriterObject.m */,
+				F5ECE84512FF68AA00A608AA /* GITPackIndexWriter+Shared.h */,
+				F5ECE84612FF68AA00A608AA /* GITPackIndexWriter+Shared.m */,
 			);
 			name = GITPackIndex;
 			sourceTree = "<group>";
@@ -598,6 +658,16 @@
 				F52D57F8111DA4FC005A461E /* GITCommitEnumerator.h in Headers */,
 				F593ABEC117EE28600B9DEB0 /* Git.h in Headers */,
 				F518F03C11EA47F000538BE8 /* GITRevList.h in Headers */,
+				F56697F412FCE3D40085E769 /* GITPackFileWriter.h in Headers */,
+				F56697F812FCE3E90085E769 /* GITPackFileWriterPlaceholder.h in Headers */,
+				F56697FC12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.h in Headers */,
+				F566980012FCE4100085E769 /* GITPackIndexWriter.h in Headers */,
+				F566980412FCE4270085E769 /* GITPackIndexWriterPlaceholder.h in Headers */,
+				F566980812FCE43D0085E769 /* GITPackIndexWriterVersionOne.h in Headers */,
+				F566980C12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.h in Headers */,
+				F55454B512FF43D9005AAC0E /* GITPackIndexWriterObject.h in Headers */,
+				F5B8579B12FF5977004EED0C /* NSData+CRC32.h in Headers */,
+				F5ECE84712FF68AA00A608AA /* GITPackIndexWriter+Shared.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +774,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#  Build the doxygen documentation for the project and load the docset into Xcode.\n#  If the DOXYGEN_PATH is not correct for you please check the \"Get Info\" for this\n#  target, the majority of variables for this script have been defined there.\n#\n#  Use the following to adjust the value of the $DOXYGEN_PATH User-Defined Setting:\n#    Binary install location: /Applications/Doxygen.app/Contents/Resources/doxygen\n#    Source build install location: /usr/local/bin/doxygen\n#  If the config file doesn't exist, run 'doxygen -g $SOURCE_ROOT/doxygen.config' to \n#  a get default file.\n\nif [ -z $DOXYGEN_PATH -o -z $OUTPUT_DIRECTORY -o -z $INPUT_DIRECTORY ] ; then\n  echo \"DOXYGEN_PATH, OUTPUT_DIRECTORY and INPUT_DIRECTORY must be set in Documentation Target\"\n  exit 1\nfi\n\nPROJECT_NAME=${PROJECT_NAME}.framework\nPROJECT_NUMBER=$(git describe --long | cut -d\"-\" -f1)\n\ncat << EOF > $TEMP_DIR/doxygen.config\nPROJECT_NAME        = $PROJECT_NAME\nPROJECT_NUMBER      = $PROJECT_NUMBER\nOUTPUT_DIRECTORY    = $OUTPUT_DIRECTORY\nTAB_SIZE            = 4\nEXTRACT_ALL         = YES\nEXTRACT_PRIVATE     = YES\nEXTRACT_STATIC      = YES\nINPUT               = $INPUT_DIRECTORY\nRECURSIVE           = YES\nEXCLUDE             = $SRCROOT/.git $SRCROOT/build\nEXCLUDE_PATTERNS    = $EXCLUDE_PATTERNS\nEXCLUDE_SYMBOLS     = $EXCLUDE_SYMBOLS\nGENERATE_HTML       = NO\nDOCSET_FEEDNAME     = $DOCSET_FEEDNAME\nDOCSET_BUNDLE_ID    = $DOCSET_BUNDLE_ID\nSEARCHENGINE        = NO\nGENERATE_LATEX      = NO\nGENERATE_XML        = YES\nXML_OUTPUT          = tmp\nEOF\n\n$DOXYGEN_PATH $TEMP_DIR/doxygen.config\n$DOXYCLEAN/doxyclean.py -v -i $OUTPUT_DIRECTORY/tmp -o $OUTPUT_DIRECTORY -n \"$PROJECT_NAME\"\n\nexit 0\n";
+			shellScript = "#  Build the doxygen documentation for the project and load the docset into Xcode.\n#  If the DOXYGEN_PATH is not correct for you please check the \"Get Info\" for this\n#  target, the majority of variables for this script have been defined there.\n#\n#  Use the following to adjust the value of the $DOXYGEN_PATH User-Defined Setting:\n#    Binary install location: /Applications/Doxygen.app/Contents/Resources/doxygen\n#    Source build install location: /usr/local/bin/doxygen\n#  If the config file doesn't exist, run 'doxygen -g $SOURCE_ROOT/doxygen.config' to \n#  a get default file.\n\nif [ -z $DOXYGEN_PATH -o -z $OUTPUT_DIRECTORY -o -z $INPUT_DIRECTORY ] ; then\n  echo \"DOXYGEN_PATH, OUTPUT_DIRECTORY and INPUT_DIRECTORY must be set in Documentation Target\"\n  exit 1\nfi\n\nPROJECT_NAME=${PROJECT_NAME}.framework\nPROJECT_NUMBER=$(git describe --long | cut -d\"-\" -f1)\n\ncat << EOF > $TEMP_DIR/doxygen.config\nPROJECT_NAME         = $PROJECT_NAME\nPROJECT_NUMBER       = $PROJECT_NUMBER\nOUTPUT_DIRECTORY     = $OUTPUT_DIRECTORY\nTAB_SIZE             = 4\nEXTRACT_ALL          = YES\nEXTRACT_PRIVATE      = YES\nEXTRACT_STATIC       = YES\nINPUT                = $INPUT_DIRECTORY\nRECURSIVE            = YES\nEXCLUDE              = $SRCROOT/.git $SRCROOT/build\nEXCLUDE_PATTERNS     = $EXCLUDE_PATTERNS\nEXCLUDE_SYMBOLS      = $EXCLUDE_SYMBOLS\nGENERATE_HTML        = NO\nDOCSET_FEEDNAME      = $DOCSET_FEEDNAME\nDOCSET_BUNDLE_ID     = $DOCSET_BUNDLE_ID\nSEARCHENGINE         = NO\nGENERATE_LATEX       = NO\nGENERATE_XML         = YES\nXML_OUTPUT           = tmp\nENABLE_PREPROCESSING = YES\nMACRO_EXPANSION      = YES\nEXPAND_ONLY_PREDEF   = YES\nPREDEFINED           = __attribute__(x)=\nEOF\n\n$DOXYGEN_PATH $TEMP_DIR/doxygen.config\n$DOXYCLEAN/doxyclean.py -v -i $OUTPUT_DIRECTORY/tmp -o $OUTPUT_DIRECTORY -n \"$PROJECT_NAME\"\n\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -755,6 +825,16 @@
 				F594CB2811864CE500E82F38 /* GITGraph.m in Sources */,
 				F594CB2C118777C800E82F38 /* GITGraphNode.m in Sources */,
 				F518F03D11EA47F000538BE8 /* GITRevList.m in Sources */,
+				F56697F512FCE3D40085E769 /* GITPackFileWriter.m in Sources */,
+				F56697F912FCE3E90085E769 /* GITPackFileWriterPlaceholder.m in Sources */,
+				F56697FD12FCE3FE0085E769 /* GITPackFileWriterVersionTwo.m in Sources */,
+				F566980112FCE4100085E769 /* GITPackIndexWriter.m in Sources */,
+				F566980512FCE4270085E769 /* GITPackIndexWriterPlaceholder.m in Sources */,
+				F566980912FCE43D0085E769 /* GITPackIndexWriterVersionOne.m in Sources */,
+				F566980D12FCE44C0085E769 /* GITPackIndexWriterVersionTwo.m in Sources */,
+				F55454B612FF43D9005AAC0E /* GITPackIndexWriterObject.m in Sources */,
+				F5B8579C12FF5977004EED0C /* NSData+CRC32.m in Sources */,
+				F5ECE84812FF68AA00A608AA /* GITPackIndexWriter+Shared.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,7 +969,7 @@
 				DOXYCLEAN = "$(SRCROOT)/Documentation/doxyclean";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				EXCLUDE_PATTERNS = "*Test*";
-				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion*";
+				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion* GITPackFileWriterVersion* GITPackIndexWriterVersion*";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INPUT_DIRECTORY = "$(SRCROOT)/Source";
@@ -910,7 +990,7 @@
 				DOXYCLEAN = "$(SRCROOT)/Documentation/doxyclean";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				EXCLUDE_PATTERNS = "*Test*";
-				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion*";
+				EXCLUDE_SYMBOLS = "GIT*Placeholder GITPackFileVersion* GITPackIndexVersion* GITPackFileWriterVersion* GITPackIndexWriterVersion*";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INPUT_DIRECTORY = "$(SRCROOT)/Source";
 				INTERNAL_DOCS = NO;

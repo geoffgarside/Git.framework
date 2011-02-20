@@ -12,9 +12,6 @@
 #import "GITError.h"
 
 
-static const char const GITPackIndexMagicNumber[] = { '\377', 't', 'O', 'c' };
-static const uint8_t const GITPackIndexVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 };
-
 @implementation GITPackIndexPlaceholder
 
 - (id)initWithPath: (NSString *)indexPath error: (NSError **)error {
@@ -48,7 +45,7 @@ static const uint8_t const GITPackIndexVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 
     memset(n, 0x0, 4);
     [indexData getBytes:n range:NSMakeRange(0, 4)];
 
-    if ( memcmp(n, GITPackIndexMagicNumber, 4) != 0 ) {
+    if ( memcmp(n, GITPackIndexVersionDiscriminator, 4) != 0 ) {
         return [[GITPackIndexVersionOne allocWithZone:z] initWithData:indexData error:error];
     }
 
@@ -57,7 +54,7 @@ static const uint8_t const GITPackIndexVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 
     [indexData getBytes:n range:NSMakeRange(4, 4)];
 
     // Version 2?
-    if ( memcmp(n, GITPackIndexVersionTwoBytes, 4) == 0 ) {   // Version 2 Index file
+    if ( memcmp(n, GITPackIndexVersionTwoVersionBytes, 4) == 0 ) {   // Version 2 Index file
         return [[GITPackIndexVersionTwo allocWithZone:z] initWithData:indexData error:error];
     }
 

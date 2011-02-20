@@ -11,6 +11,8 @@
 #import "GITPackIndexPlaceholder.h"
 
 
+const char const GITPackIndexVersionDiscriminator[] = { '\377', 't', 'O', 'c' };
+
 GITFanoutEntry GITMakeFanoutEntry(NSUInteger prior, NSUInteger entries) {
     GITFanoutEntry e;
     e.numberOfPriorEntries = prior;

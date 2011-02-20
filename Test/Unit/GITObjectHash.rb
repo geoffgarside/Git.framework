@@ -216,4 +216,10 @@ describe 'GITObjectHash' do
       end
     end
   end
+
+  describe "-firstPackedByte" do
+    should 'return first packed byte of hash' do
+      @hash.firstPackedByte.should == 190
+    end
+  end
 end

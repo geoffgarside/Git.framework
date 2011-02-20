@@ -15,6 +15,8 @@
 #import "NSData+Compression.h"
 
 
+const uint8_t const GITPackFileVersionTwoVersionBytes[] = { 0x0, 0x0, 0x0, 0x2 };
+
 @implementation GITPackFileVersionTwo
 
 @synthesize data, index;

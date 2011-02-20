@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 
+extern const char const GITPackFileSignature[];
+
 @class GITPackIndex, GITPackObject, GITObjectHash;
 
 /*!

@@ -83,7 +83,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%s <%@>", NSStringFromClass([self class]), [self.sha1 unpackedString]];
+    return [NSString stringWithFormat:@"<%@: %p sha1=%@>", NSStringFromClass([self class]), self, [self.sha1 unpackedString]];
 }
 
 - (NSUInteger)hash {

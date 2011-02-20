@@ -12,6 +12,8 @@
 #import "NSRangeEnd.h"
 
 
+const uint8_t const GITPackIndexVersionTwoVersionBytes[] = { 0x0, 0x0, 0x0, 0x2 };
+
 #define EXTENDED_OFFSET_FLAG (1 << 31)
 
 static const short _fanOutStart     = 8;    //!< Bytes
