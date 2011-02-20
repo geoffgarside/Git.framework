@@ -11,6 +11,7 @@ The currently supported features of the project are
   * Reading branches, both local and remote
   * Enumeration of commits in breadth and depth first orders
   * Rev-list Support to a certain degree, full compatibility with `git rev-list` is not yet available
+  * Preliminary PACK File and Index generation support (API needs work, deltas currently unsupported)
 
 Planned Features
 -----------------
