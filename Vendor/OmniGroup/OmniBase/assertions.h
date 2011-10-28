@@ -27,11 +27,11 @@
 
 /*
  When building with clang, we want it to understand that some of our assertions mean certain paths through the code shouldn't be analyzed. A very common case is asserting that some object is non-nil and then sending a non-void * sized returning message to it.  In this case we'd like to do:
- 
+
  OBASSERT(object);
- 
+
  CGFloat thing = [object stuff];
- 
+
  So, we can annotate the body of the assertion failure with a special clang attribute to discontinue the analysis on that path.  Unlike using __attribute__((noreturn)), this doesn't lie to the compiler's data flow and possibly cause problems due to a function returning when it said it wouldn't.
  */
 
@@ -43,19 +43,19 @@
 
 #if defined(__cplusplus)
 extern "C" {
-#endif    
+#endif
 
 typedef void (*OBAssertionFailureHandler)(const char *type, const char *expression, const char *file, unsigned int lineNumber);
 
 extern void OBLogAssertionFailure(const char *type, const char *expression, const char *file, unsigned int lineNumber); // in case you want to integrate the normal behavior with your handler
 
 #if defined(OMNI_ASSERTIONS_ON)
-    
+
     extern void OBSetAssertionFailureHandler(OBAssertionFailureHandler handler);
 
     extern void OBInvokeAssertionFailureHandler(const char *type, const char *expression, const char *file, unsigned int lineNumber) CLANG_ANALYZER_NORETURN;
     extern void OBAssertFailed(void) __attribute__((noinline)); // This is a convenience breakpoint for in the debugger.
-    
+
     extern BOOL OBEnableExpensiveAssertions;
 
     #define OBPRECONDITION(expression)                                            \
@@ -120,14 +120,14 @@ extern void OBLogAssertionFailure(const char *type, const char *expression, cons
             OBInvokeAssertionFailureHandler("OBASSERT_NOTNULL", #pointer, __FILE__, __LINE__); \
         } \
     } while(NO);
-    
+
     #ifdef __OBJC__
         #import <Foundation/NSObject.h>
         // Useful when you are changing subclass or delegate API and you want to ensure there aren't lingering implementations of API that will no longer get called.
         extern void _OBAssertNotImplemented(id self, SEL sel);
         #define OBASSERT_NOT_IMPLEMENTED(obj, sel) _OBAssertNotImplemented(obj, sel)
     #endif
-    
+
 #else	// else insert blank lines into the code
 
     #define OBPRECONDITION(expression)
@@ -157,7 +157,7 @@ extern void OBLogAssertionFailure(const char *type, const char *expression, cons
             _OBAnalyzerNoReturn(); \
         } \
     } while(NO);
-    
+
     #define OBASSERT_NOT_IMPLEMENTED(obj, sel)
 #endif
 #if defined(__cplusplus)

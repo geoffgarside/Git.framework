@@ -7,11 +7,12 @@
 //
 
 #import "GITPackIndexVersionTwo.h"
-#import "GITPackReverseIndex.h"
 #import "GITObjectHash.h"
 #import "GITError.h"
 #import "NSRangeEnd.h"
 
+
+const uint8_t const GITPackIndexVersionTwoVersionBytes[] = { 0x0, 0x0, 0x0, 0x2 };
 
 #define EXTENDED_OFFSET_FLAG (1 << 31)
 
@@ -19,7 +20,6 @@ static const short _fanOutStart     = 8;    //!< Bytes
 static const short _fanOutSize      = 4;    //!< Bytes
 static const short _fanOutCount     = 256;  //!< Number of entries
 static const short _fanOutEnd       = 1032; //!< Start + (Size * Count)
-static const short _fanOutEntrySize = 24;   //!< Bytes
 
 static const short _crcSize         = 4;    //!< Bytes
 static const short _offsetSize      = 4;    //!< Bytes
@@ -27,7 +27,7 @@ static const short _extOffsetSize   = 8;    //!< Bytes
 
 @implementation GITPackIndexVersionTwo
 
-@synthesize data, fanoutTable, reverseIndex;
+@synthesize data, fanoutTable;
 
 - (NSUInteger)version {
     return 2;
@@ -38,7 +38,6 @@ static const short _extOffsetSize   = 8;    //!< Bytes
         return nil;
 
     self.data = indexData;
-    self.reverseIndex = [GITPackReverseIndex reverseIndexWithPackIndex:self];
 
     return self;
 }
@@ -46,8 +45,7 @@ static const short _extOffsetSize   = 8;    //!< Bytes
 - (void)dealloc {
     self.data = nil;
     self.fanoutTable = nil;
-    self.reverseIndex = nil;
-    
+
     [super dealloc];
 }
 

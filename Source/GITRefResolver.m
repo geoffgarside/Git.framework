@@ -64,7 +64,9 @@
                                                            encoding:NSUTF8StringEncoding error:theError];
             if ( !contents )
                 return nil;
-            return [GITRef refWithName:refName andTarget:contents inRepo:self.repo];
+
+            NSString *trimmed  = [contents stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            return [GITRef refWithName:refName andTarget:trimmed inRepo:self.repo];
         }
     } else {
         NSString *errorDesc = [NSString stringWithFormat:NSLocalizedString(@"Could not resolve ref @%", @"GITRefResolverErrorRefNotFound"), theName];
@@ -176,13 +178,13 @@
     }
 
     NSString *name = nil;
-    if ( name = [self resolvedNameOfReferenceInRefs:theName isPacked:isPacked error:theError] )
+    if ( (name = [self resolvedNameOfReferenceInRefs:theName isPacked:isPacked error:theError]) )
         return name;
-    if ( name = [self resolvedNameOfReferenceInRefsTags:theName isPacked:isPacked error:theError] )
+    if ( (name = [self resolvedNameOfReferenceInRefsTags:theName isPacked:isPacked error:theError]) )
         return name;
-    if ( name = [self resolvedNameOfReferenceInRefsHeads:theName isPacked:isPacked error:theError] )
+    if ( (name = [self resolvedNameOfReferenceInRefsHeads:theName isPacked:isPacked error:theError]) )
         return name;
-    if ( name = [self resolvedNameOfReferenceInRefsRemotes:theName isPacked:isPacked error:theError] )
+    if ( (name = [self resolvedNameOfReferenceInRefsRemotes:theName isPacked:isPacked error:theError]) )
         return name;
     return nil;
 }

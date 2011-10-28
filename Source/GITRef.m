@@ -42,6 +42,10 @@
     [super dealloc];
 }
 
+- (GITObjectHash *)targetObjectHash {
+    return [GITObjectHash objectHashWithString:targetName];
+}
+
 - (GITRef *)resolve {
     if ( !link ) {
         return self;
@@ -52,7 +56,7 @@
 
 - (GITObject *)target {
     GITRef *end = [self resolve];
-    return [self.repo objectWithSha1:[GITObjectHash objectHashWithString:end.targetName] error:NULL];
+    return [self.repo objectWithSha1:[end targetObjectHash] error:NULL];
 }
 
 @end

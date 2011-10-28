@@ -10,12 +10,13 @@ The currently supported features of the project are
   * Resolving refs from `.git/refs`
   * Reading branches, both local and remote
   * Enumeration of commits in breadth and depth first orders
+  * Rev-list Support to a certain degree, full compatibility with `git rev-list` is not yet available
+  * Preliminary PACK File and Index generation support (API needs work, deltas currently unsupported)
 
 Planned Features
 -----------------
 Features which will be implemented at some point (in no particular order)
 
-  * Rev-list Support
   * Pulling changes from a remote repository via either ssh:// or git://
   * Pushing changes to a remote repository via ssh://
   * Mutable objects to enable writing new objects to the repository
@@ -25,6 +26,43 @@ Features which will be implemented at some point (in no particular order)
 Additionally features from [CocoaGit][cocoagit] which are not yet supported will be evaluated and migrated into this project.
 
 \*maybe, as and when things are thought of, suggested, or otherwise materialize, terms and conditions may apply, see binary for details
+
+Adding the Framework to your Mac OS X Application
+--------------------------------------------------
+The first step to this is compiling a *Release* build of Git.framework, this can either be done in Xcode or via `rake` on the command line as
+
+    $ rake build:release
+
+the built product will be in the `builds/Release/` directory.
+
+### Installing in your project
+  * In the Finder, copy `Git.framework` to your project directory (eg MyProject/Frameworks)
+  * Add the `Frameworks/Git.framework` to your *Linked Frameworks* group in Xcode
+  * Open *Get Info* on your Application Target, select the *Build* tab
+  * Change the *Configuration* to `All Configurations`
+  * Enter `Runpath Search Paths` into the *Filter* field
+  * Add `@executable_path/../Frameworks` to the *Runpath Search Paths*
+  * Add a `New Copy Files Build Phase` to your Application Target
+  * Select `Frameworks` from the *Destination* dropdown
+  * Drag `Git.framework` from *Linked Frameworks* to your new *Copy Files* build phase
+
+You might want to rename the *Copy Files* build phase to *Copy Frameworks*
+
+Building in Xcode and Info.plist Versioning
+--------------------------------------------
+Some issues have been reported when building the framework in Xcode and the Info.plist Version script failing to find `git`. The source of this issue stems from how Xcode is started. If Xcode is started from a Terminal session via `open Git.xcodeproj` or similar then Xcode will inherit the `PATH` of the Terminal session. In the majority of cases this is results in no issues.
+
+When Xcode is started from Finder then it inherits the `PATH` from the environment, which unfortunately is not the same as the `PATH` used by shells in Terminal. To change the environment `PATH` requires creating or modifying `~/.MacOSX/environment.plist` with the Property List Editor and adding/editing the `PATH` key in the plist.
+
+As an example my `~/.MacOSX/environment.plist` looks like this when passed to `cat`
+
+    {
+      PATH = "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/geoffgarside/bin";
+    }
+
+After creating or modifying this file you will unfortunately have to login/logout for it to be picked up.
+
+Thanks to Brian Chapados who did the detective work on finding this information out.
 
 Running the Test Suite
 -----------------------

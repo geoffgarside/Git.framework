@@ -15,30 +15,11 @@ extern const NSUInteger GITObjectHashPackedLength;
 /*!
  * The \c GITObjectHash class provides methods for packing and unpacking SHA1
  * hashes in both NSString and NSData forms. \c GITObjectHash objects provide
- * 
+ *
  */
-@interface GITObjectHash : NSObject {
+@interface GITObjectHash : NSObject <NSCopying> {
     uint32_t raw[5];
 }
-
-//! \name Packing and Unpacking SHA1 Hashes
-/*!
- * Returns a string containing the unpacked SHA1 of the packed string.
- *
- * \param str NSString containing the packed SHA1
- * \return NSString containing the unpacked SHA1
- * \sa packedStringFromString:
- */
-+ (NSString *)unpackedStringFromString: (NSString *)str;
-
-/*!
- * Returns a string containing the packed SHA1 of the unpacked string.
- *
- * \param str NSString containing the unpacked SHA1
- * \return NSString containing the packed SHA1
- * \sa unpackedStringFromString:
- */
-+ (NSString *)packedStringFromString: (NSString *)str;
 
 /*!
  * Returns a string containing the unpacked SHA1 of the packed data.
@@ -181,16 +162,6 @@ extern const NSUInteger GITObjectHashPackedLength;
 - (NSString *)unpackedString;
 
 /*!
- * Returns the packed string of the object hash.
- *
- * \return packed string of the object hash
- * \sa unpackedString
- * \sa unpackedData
- * \sa packedData
- */
-- (NSString *)packedString;
-
-/*!
  * Returns the unpacked data of the object hash.
  *
  * \return unpacked data of the object hash
@@ -254,5 +225,27 @@ extern const NSUInteger GITObjectHashPackedLength;
  * \sa isEqualToString:
  */
 - (BOOL)isEqualToObjectHash: (GITObjectHash *)hash;
+
+/*!
+ * Returns an NSComparisonResult value that indicates whether the receiver is greater than,
+ * equal to, or less than a given object hash.
+ *
+ * \param hash The object hash with which to compare the receiver. This value must not be
+ * nil. If the value is nil, the behavior is undefined.
+ * \return NSOrderedAscending if the value of \a hash is greater than the receiver’s,
+ * NSOrderedSame if they’re equal, and NSOrderedDescending if the value of \a hash is less
+ * than the receiver’s.
+ */
+- (NSComparisonResult)compare: (GITObjectHash *)hash;
+
+/*! \internal
+ * Returns the first packed byte of the receiver.
+ *
+ * The return value of this method is used in the development of a Fanout Table
+ * in the construction of GITPackIndex files.
+ *
+ * \return first packed byte of the receiver.
+ */
+- (uint8_t)firstPackedByte;
 
 @end

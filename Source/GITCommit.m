@@ -25,6 +25,10 @@ static parsingRecord committerParsingRecord     = { "committer ", 10, 10, 0, '>'
 static parsingRecord dateParsingRecord          = { " ", 1, 1, 10, ' ' };
 static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
 
+// For parsing out the committer time in the initializer
+static parsingRecord skipAuthorParsingRecord    = { "author ", 7, 7, 0, '\n' };
+static parsingRecord rawDateParsingRecord       = { "committer ", 10, -17, 10, '\n' };
+
 @interface GITCommit ()
 @property (retain) GITObjectHash *treeSha1;
 @property (copy) NSData *cachedData;
@@ -75,7 +79,7 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
         [parentHash release];
     }
 
-    self.parentShas = [theParents copy];
+    self.parentShas = [[theParents copy] autorelease];
     [theParents release];
 
     // We need to store the rest of the data in cachedRawData;
@@ -84,7 +88,21 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     self.cachedData = cached;
     [cached release];
 
+    // Get the committer date information now, to help the GITGraph out
+    const char *rawCommitterDate;
+    parseObjectRecord(&dataBytes, skipAuthorParsingRecord, NULL, NULL);
+    if ( !parseObjectRecord(&dataBytes, rawDateParsingRecord, &rawCommitterDate, NULL) ) {
+        GITError(error, GITObjectErrorParsingFailed, NSLocalizedString(@"Failed parsing committer date from commit", @"GITObjectErrorParsingFailed"));
+        [self release];
+        return nil;
+    }
+    nodeSortTimeInterval = (NSTimeInterval)strtod(rawCommitterDate, NULL);
+
     return self;
+}
+
+- (NSNumber *)nodeSortTimeInterval {
+    return [NSNumber numberWithDouble:nodeSortTimeInterval];
 }
 
 - (void)dealloc {
@@ -200,13 +218,49 @@ static parsingRecord tzParsingRecord            = { "", 0, 0, 5, '\n' };
     self.committerDate      = [self parseDateTimeFromBytes:&dataBytes];
 
     dataBytes++;            //!< Skip over the \n between the header data and the message body
-    NSUInteger messageLen   = [cachedData length] - (dataBytes - start) - 1;
-    NSString *messageString = [[NSString alloc] initWithBytes:dataBytes length:messageLen encoding:NSASCIIStringEncoding];
+    NSUInteger messageLen   = [cachedData length] - (dataBytes - start);
+    NSString *messageString = [[NSString alloc] initWithBytes:dataBytes length:messageLen encoding:NSUTF8StringEncoding];
+    if ( messageString == nil )
+        messageString = [[NSString alloc] initWithBytes:dataBytes length:messageLen encoding:NSASCIIStringEncoding];
 
     self.message            = messageString;
 
     [messageString release];
     self.cachedData = nil;
+}
+
+- (NSData *)rawContent {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];             // Setup a pool for convenience
+
+    // Precompose our author and committer lines for data size calculations
+    NSString *authorLine = [NSString stringWithFormat:@"author %@ %@\n", self.author, self.authorDate];
+    NSString *committerLine = [NSString stringWithFormat:@"committer %@ %@\n", self.committer, self.committerDate];
+
+    // Calculate the size of the data required
+    size_t dataSize = 0;
+    dataSize += 5 + GITObjectHashLength + 1;                                // tree SHA1\n
+    dataSize += (7 + GITObjectHashLength + 1) * [self.parentShas count];    // parent SHA-1\n
+    dataSize += [authorLine length] + [committerLine length];               // author and parent lines
+    dataSize += 1;                                                          // line skip between header and message
+    dataSize += [self.message length];                                      // length of the message
+
+    // Create our data buffer, non-autoreleased so it doesn't swim in the pool.
+    NSMutableData *rawContent = [[NSMutableData alloc] initWithCapacity:dataSize];
+    [rawContent appendData:[[NSString stringWithFormat:@"tree %@\n", self.treeSha1] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    for ( GITObjectHash *sha in self.parentShas )                           // write parents
+        [rawContent appendData:[[NSString stringWithFormat:@"parent %@\n", sha] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [rawContent appendData:[authorLine dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[committerLine dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [rawContent appendData:[self.message dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [pool drain];                                                           // Drain the pool of objects
+
+    NSData *data = [[rawContent copy] autorelease];                         // Create immutable copy
+    [rawContent release];                                                   // Bai bai mutable :'(
+    return data;
 }
 
 @end

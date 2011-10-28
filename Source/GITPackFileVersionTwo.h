@@ -18,8 +18,9 @@ typedef struct {
     int type;
     off_t offset;
     size_t size;
-    size_t dataSize;
 } GITPackFileObjectHeader;
+
+extern const uint8_t const GITPackFileVersionTwoVersionBytes[];
 
 @class GITPackIndex;
 @interface GITPackFileVersionTwo : GITPackFile {

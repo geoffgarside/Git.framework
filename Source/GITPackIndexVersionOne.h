@@ -9,16 +9,13 @@
 #import "GITPackIndex.h"
 
 
-@class GITPackReverseIndex;
 @interface GITPackIndexVersionOne : GITPackIndex {
     NSData *data;
     NSArray *fanoutTable;
-    GITPackReverseIndex *reverseIndex;
 }
 
 @property (copy) NSData *data;
 @property (copy) NSArray *fanoutTable;
-@property (retain) GITPackReverseIndex *reverseIndex;
 
 /*!
  * Parses the fanout table.

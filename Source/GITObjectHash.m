@@ -37,7 +37,6 @@ static signed char from_hex[256] = {
 + (uint8_t *)unpackedBytes: (uint8_t *)unpacked fromBytes: (uint8_t *)bytes length: (size_t)length;
 + (uint8_t *)packedBytes: (uint8_t *)packed fromBytes: (uint8_t *)bytes length: (size_t)length;
 
-- (id)initWithPackedString: (NSString *)str;
 - (id)initWithUnpackedString: (NSString *)str;
 
 - (id)initWithPackedData: (NSData *)data;
@@ -50,19 +49,6 @@ static signed char from_hex[256] = {
 
 @implementation GITObjectHash
 
-//! \name Packing and Unpacking SHA1 Hashes
-+ (NSString *)unpackedStringFromString: (NSString *)str {
-    if ( [str length] == GITObjectHashLength )
-        return str;
-    return [[[NSString alloc] initWithData:[self unpackedDataFromString:str]
-                                  encoding:NSUTF8StringEncoding] autorelease];
-}
-+ (NSString *)packedStringFromString: (NSString *)str {
-    if ( [str length] == GITObjectHashPackedLength )
-        return str;
-    return [[[NSString alloc] initWithData:[self packedDataFromString:str]
-                                  encoding:NSASCIIStringEncoding] autorelease];
-}
 + (NSString *)unpackedStringFromData: (NSData *)data {
     NSStringEncoding encoding = NSASCIIStringEncoding;
     if ( [data length] == GITObjectHashLength )
@@ -84,7 +70,8 @@ static signed char from_hex[256] = {
         return [str dataUsingEncoding:NSASCIIStringEncoding];
     return [self unpackedDataFromData:[str dataUsingEncoding:NSISOLatin1StringEncoding]];
 }
-+ (NSData *)packedDataFromString: (NSString *)str {
++ (NSData *)packedDataFromString: (NSString *)sha {
+    NSString *str = [sha stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     if ( [str length] == GITObjectHashPackedLength )
         return [str dataUsingEncoding:NSISOLatin1StringEncoding];
     return [self packedDataFromData:[str dataUsingEncoding:NSASCIIStringEncoding]];
@@ -172,9 +159,6 @@ static signed char from_hex[256] = {
 - (id)initWithString: (NSString *)str {
     return [self initWithPackedData:[[self class] packedDataFromString:str]];
 }
-- (id)initWithPackedString: (NSString *)str {
-    return [self initWithPackedData:[[self class] packedDataFromString:str]];
-}
 - (id)initWithUnpackedString: (NSString *)str {
     return [self initWithPackedData:[[self class] packedDataFromString:str]];
 }
@@ -222,12 +206,14 @@ static signed char from_hex[256] = {
     return [self initWithData:[objectData sha1Digest]];
 }
 
+//! \name Copying
+- (id)copyWithZone:(NSZone*)zone {
+    return [[[self class] allocWithZone:zone] initWithPackedBytes:(uint8_t *)raw length:GITObjectHashPackedLength];
+}
+
 //! \name Getting Packed and Unpacked Forms
 - (NSString *)unpackedString {
     return [[self class] unpackedStringFromData:[self unpackedData]];
-}
-- (NSString *)packedString {
-    return [[self class] packedStringFromData:[self packedData]];
 }
 - (NSData *)unpackedData {
     return [[self class] unpackedDataFromBytes:(uint8_t*)raw length:GITObjectHashPackedLength];
@@ -281,6 +267,19 @@ static signed char from_hex[256] = {
 }
 - (NSString *)description {
     return [self unpackedString];
+}
+
+- (NSComparisonResult)compare: (GITObjectHash *)other {
+    int result;
+
+    result = memcmp(raw, [other raw], 5);
+    if ( result == 0 ) return NSOrderedSame;
+    if ( result < 0 ) return NSOrderedAscending;
+    return NSOrderedDescending;
+}
+
+- (uint8_t)firstPackedByte {
+    return (raw[0] & 0xff);
 }
 
 @end

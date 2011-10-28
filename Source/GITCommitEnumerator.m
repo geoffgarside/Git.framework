@@ -15,9 +15,9 @@
 @interface GITCommitEnumerator ()
 @property (retain) GITCommit *head;
 @property (assign) GITCommitEnumeratorMode mode;
-@property (retain) NSMutableArray *queue;
-@property (retain) NSMutableArray *merges;
-@property (retain) NSMutableSet *visited;
+@property (assign) NSMutableArray *queue;
+@property (assign) NSMutableArray *merges;
+@property (assign) NSMutableSet *visited;
 
 - (id)nextObjectInBreadthFirstTraversal;
 - (id)nextObjectInDepthFirstTraversal;
@@ -55,8 +55,11 @@
 
 - (void)dealloc {
     self.head = nil;
+    [queue release];
     self.queue = nil;
+    [merges release];
     self.merges = nil;
+    [visited release];
     self.visited = nil;
     [super dealloc];
 }
@@ -76,21 +79,21 @@
     }
 }
 
-- (NSArray *)allObjectsUntilCommit: (GITCommit *)commit {
+- (NSArray *)allObjectsUntilObjectHash: (GITObjectHash *)hash {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
 
     id object;
     while ( object = [self nextObject] ) {
         [array addObject:object];
-        if ( [commit isEqualTo:object] )
+        if ( [hash isEqualToObjectHash:[object sha1]] )
             break;
     }
 
     return [NSArray arrayWithArray:array];
 }
 
-- (NSArray *)allObjectsUntilObjectHash: (GITObjectHash *)hash {
-    return [self allObjectsUntilCommit:(GITCommit *)[self.head.repo objectWithSha1:hash error:NULL]];
+- (NSArray *)allObjectsUntilCommit: (GITCommit *)commit {
+    return [self allObjectsUntilObjectHash:[commit sha1]];
 }
 
 - (NSArray *)allObjectsUntil: (id)obj {

@@ -11,9 +11,6 @@
 #import "GITError.h"
 
 
-static const char const GITPackFileSignature[] = { 'P', 'A', 'C', 'K' };
-static const uint8_t const GITPackFileVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 };
-
 @implementation GITPackFilePlaceholder
 
 - (id)initWithPath: (NSString *)packPath error: (NSError **)error {
@@ -39,28 +36,28 @@ static const uint8_t const GITPackFileVersionTwoBytes[] = { 0x0, 0x0, 0x0, 0x2 }
 - (id)initWithData: (NSData *)packData indexPath: (NSString *)indexPath error: (NSError **)error {
     if ( !packData )
         return nil; // No error explanation, seems a bit silly to say "Oi!! packData was nil."
-    
+
     uint32_t num, *n = &num; // to read file signature and version into
     NSZone *z = [self zone]; [self release];
-    
+
     // Extract signature bytes
     memset(n, 0x0, 4);
     [packData getBytes:n range:NSMakeRange(0, 4)];
-    
+
     if ( memcmp(n, GITPackFileSignature, 4) != 0 ) { // signature doesn't match, not a pack file
         GITError(error, GITPackFileErrorFileIsInvalid, NSLocalizedString(@"PACK Data is missing signature", @"GITPackFileErrorFileIsInvalid"));
         return nil;
     }
-    
+
     // Extract version bytes
     memset(n, 0x0, 4);
     [packData getBytes:n range:NSMakeRange(4, 4)];
-    
+
     // Initialise version specific class
-    if ( memcmp(n, GITPackFileVersionTwoBytes, 4) == 0 ) { // Version 2 PACK file
+    if ( memcmp(n, GITPackFileVersionTwoVersionBytes, 4) == 0 ) { // Version 2 PACK file
         return [[GITPackFileVersionTwo allocWithZone:z] initWithData:packData indexPath:indexPath error:error];
     }
-    
+
     // Raise error as version not supported
     NSString *desc = [NSString stringWithFormat:NSLocalizedString(@"PACK file version %u unsupported", @"GITPackFileErrorVersionUnsupported"), CFSwapInt32BigToHost(num)];
     GITError(error, GITPackFileErrorVersionUnsupported, desc);

@@ -67,4 +67,21 @@
  */
 + (GITTag *)tagFromData: (NSData *)data sha1: (GITObjectHash *)objectHash repo: (GITRepo *)repo error: (NSError **)error;
 
+//! \name Testing Object Target
+/*!
+ * Checks if the receivers target object hash matches the \a objectHash given.
+ *
+ * \param objectHash Object Hash to compare with the receivers target object hash
+ * \return YES if the object hash matches that of the targets object hash, NO otherwise.
+ */
+- (BOOL)refersToObjectHash: (GITObjectHash *)objectHash;
+
+/*!
+ * Checks if the receivers target matches the \a object given.
+ *
+ * \param object GITObject to compare with the receivers target object.
+ * \return YES if the \a object matches that of the receivers target object, NO otherwise.
+ */
+- (BOOL)refersToObject: (GITObject *)object;
+
 @end

@@ -11,6 +11,7 @@
 
 
 @class GITRefResolver, GITPackCollection, GITObject, GITObjectHash, GITCommit;
+@class GITRevList;
 
 /*!
  * The GITRepo class declares the programmatic interface to the repository.
@@ -88,6 +89,41 @@
  */
 - (id)initWithRoot: (NSString *)theRoot error: (NSError **)theError;
 
+//! \name Creating New Repositories
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \return repository created at the \a path
+ */
++ (GITRepo *)createRepoAtPath: (NSString *)path;
+
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \param[out] error NSError describing the error which occurred during creation or initialisation.
+ * \return repository created at the \a path
+ */
++ (GITRepo *)createRepoAtPath: (NSString *)path error: (NSError **)error;
+
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \return repository created at the \a path
+ */
+- (id)initAtPath: (NSString *)path;
+
+/*!
+ * Creates a repository at the specified \a path.
+ *
+ * \param path Path at which to create the repository. A bare repository is created if \a path ends in <tt>.git</tt>.
+ * \param[out] error NSError describing the error which occurred during creation or initialisation.
+ * \return repository created at the \a path
+ */
+- (id)initAtPath: (NSString *)path error: (NSError **)error;
+
 //! \name Instance Methods
 /*!
  * Returns an array containing branches from the receiver.
@@ -160,5 +196,57 @@
  * \sa enumerator
  */
 - (GITCommitEnumerator *)enumeratorWithMode: (GITCommitEnumeratorMode)mode;
+
+/*!
+ * Returns a RevList object based on the HEAD of the receiver.
+ *
+ * \return RevList object based on the HEAD of the receiver.
+ * \sa revListFromCommit:
+ */
+- (GITRevList *)revList;
+
+/*!
+ * Returns a RevList object based on the given \a head.
+ *
+ * \return RevList object based on the given \a head.
+ * \sa revList
+ */
+- (GITRevList *)revListFromCommit: (GITCommit *)head;
+
+/*!
+ * Returns an array of commit objects sorted by their commit date.
+ *
+ * The result of this method is equivalent to <tt>git rev-list HEAD</tt>.
+ *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByDate] instead
+ * \return array of commits sorted by date
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByDate
+ */
+- (NSArray *)revListSortedByDate __attribute__ ((deprecated));
+
+/*!
+ * Returns an array of commit objects sorted by topology.
+ *
+ * The result of this method is equivalent to <tt>git rev-list --topo-order HEAD</tt>.
+ *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByTopology] instead
+ * \return array of commits sorted by topology
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByTopology
+ */
+- (NSArray *)revListSortedByTopology __attribute__ ((deprecated));
+
+/*!
+ * Returns an array of commit objects sorted by topology and commit date.
+ *
+ * The result of this method is equivalent to <tt>git rev-list --date-order HEAD</tt>.
+ *
+ * \deprecated Use [[repo revList] arrayOfCommitsSortedByTopologyAndDate] instead
+ * \return array of commits sorted by topology and date
+ * \sa revList
+ * \sa GITRevList::arrayOfCommitsSortedByTopologyAndDate
+ */
+- (NSArray *)revListSortedByTopologyAndDate __attribute__ ((deprecated));
 
 @end

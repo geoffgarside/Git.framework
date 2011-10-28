@@ -1,6 +1,6 @@
 describe "GITRefResolver +resolverForRepo:" do
   before do
-    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @resolver = GITRefResolver.resolverForRepo(simple_repository.git_repo);
   end
 
   should "not be nil" do
@@ -10,7 +10,7 @@ end
 
 describe "GITRefResolver -resolveRefWithName:" do
   before do
-    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @resolver = GITRefResolver.resolverForRepo(simple_repository.git_repo);
   end
 
   describe "HEAD" do
@@ -23,6 +23,9 @@ describe "GITRefResolver -resolveRefWithName:" do
     end
     should "have name 'HEAD'" do
       @ref.name.should == 'HEAD'
+    end
+    should "have targetName 'ref: refs/heads/master'" do
+      @ref.targetName.should == 'ref: refs/heads/master'
     end
   end
 
@@ -68,7 +71,7 @@ end
 
 describe "GITRefResolver -allRefs" do
   before do
-    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @resolver = GITRefResolver.resolverForRepo(simple_repository.git_repo);
     @refs = @resolver.allRefs.map(&:name)
   end
 
@@ -88,7 +91,7 @@ end
 
 describe "GITRefResolver -headRefs" do
   before do
-    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @resolver = GITRefResolver.resolverForRepo(simple_repository.git_repo);
     @refs = @resolver.headRefs.map(&:name)
   end
 
@@ -105,7 +108,7 @@ end
 
 describe "GITRefResolver -tagRefs" do
   before do
-    @resolver = GITRefResolver.resolverForRepo(default_repository);
+    @resolver = GITRefResolver.resolverForRepo(simple_repository.git_repo);
     @refs = @resolver.tagRefs.map(&:name)
   end
 

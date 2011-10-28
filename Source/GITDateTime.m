@@ -51,6 +51,17 @@
     [super dealloc];
 }
 
+- (NSString *)stringWithFormat: (NSString *)format {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:format];
+
+    NSString *str = [dateFormatter stringFromDate:date];
+    [dateFormatter release];
+
+    return str;
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"%.0f %@",
             [self.date timeIntervalSince1970], [self.timeZone offsetString]];

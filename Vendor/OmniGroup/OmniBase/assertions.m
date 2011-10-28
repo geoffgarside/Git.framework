@@ -26,7 +26,7 @@ static NSString *OBEnableExpensiveAssertionsKey = @"OBEnableExpensiveAssertions"
 static void OBDefaultAssertionHandler(const char *type, const char *expression, const char *file, unsigned int lineNumber)
 {
     OBLogAssertionFailure(type, expression, file, lineNumber);
-    
+
     if ([[NSUserDefaults standardUserDefaults] boolForKey:OBShouldAbortOnAssertFailureEnabled]) {
         // If we are running unit tests, abort on assertion failure.  We could make assertions throw exceptions, but note that this wouldn't catch cases where you are using 'shouldRaise' and hit an assertion.
 #ifdef DEBUG

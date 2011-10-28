@@ -1,10 +1,21 @@
+require 'zlib'
+
+class Bacon::Context
+  def treeDataForSha(sha)
+    file = "#{simple_repository.root}/.git/objects/%s/%s" % [sha[0,2], sha[2..-1]]
+    Zlib::Inflate.inflate(File.read(file)).split("\x00", 2)[1].to_data
+  end
+  def treeForSha(sha)
+    d = treeDataForSha(sha)
+    GITTree.treeFromData(d, sha1:GITObjectHash.objectHashWithString(sha), repo:@repo, error:@err)
+  end
+end
+
 describe 'GITTree' do
   before do
     @err = Pointer.new(:object)
-    @repo = default_repository
-    @treeData = NSData.dataWithContentsOfFile("#{TEST_REPO}/.git/objects/22/7c6c88ba35e67a1341a068c07d1c1639d6582e").zlibInflate
-    @data = @treeData.subdataWithRange(NSMakeRange(8, 78))  # This is specific to this object
-    @tree = GITTree.treeFromData(@data, sha1:GITObjectHash.objectHashWithString("227c6c88ba35e67a1341a068c07d1c1639d6582e"), repo:@repo, error:@err)
+    @repo = simple_repository.git_repo
+    @tree = treeForSha('227c6c88ba35e67a1341a068c07d1c1639d6582e')
   end
 
   should 'not be nil' do
@@ -34,7 +45,7 @@ describe 'GITTree' do
       @item.parent.should == @tree
     end
     should 'have mode' do
-      @item.mode.should == 100644
+      @item.mode.should == 0x100644
     end
     should 'have name' do
       @item.name.should == '.gitignore'
@@ -55,13 +66,22 @@ describe 'GITTree' do
       @item.parent.should == @tree
     end
     should 'have mode' do
-      @item.mode.should == 100644
+      @item.mode.should == 0x100644
     end
     should 'have name' do
       @item.name.should == 'testfile.txt'
     end
     should 'have sha1' do
       @item.sha1.unpackedString.should == 'bd94b5ea8ab503e4e7676ab4668f5f1ec1f523ea'
+    end
+  end
+
+  describe '-rawContent' do
+    before do
+      @data = treeDataForSha(@tree.sha1.unpackedString)
+    end
+    should 'return data in the correct format' do
+      @tree.rawContent.should === @data
     end
   end
 end

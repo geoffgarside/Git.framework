@@ -30,6 +30,8 @@ enum {
     GITRepoErrorRootDoesNotExist,
     GITRepoErrorRootNotAccessible,
     GITRepoErrorRootInsane,
+    GITRepoErrorSkeletonExists,
+    GITRepoErrorSkeletonCreationFailed,
 
 #pragma mark GITRefResolver Errors
     GITRefResolverErrorRefNotFound,
@@ -42,6 +44,7 @@ enum {
     GITPackFileErrorIndexMissing,
     GITPackFileErrorObjectTypeUnknown,
     GITPackFileErrorObjectSizeMismatch,
+    GITPackFileErrorInflationFailed,
 
 #pragma mark GITPackIndex Errors
     GITPackIndexErrorPathNotFound,
@@ -61,4 +64,11 @@ enum {
 
 #pragma mark GITObject Parsing Errors
     GITObjectErrorParsingFailed,
+
+#pragma mark GITPackFileWriter Errors
+    GITPackFileWriterErrorVersionUnsupported,
+
+#pragma mark GITPackIndexWriter Errors
+    GITPackIndexWriterErrorVersionUnsupported,
+
 };

@@ -29,9 +29,9 @@
             return [GITBlob class];
         case GITObjectTypeTag:
             return [GITTag class];
+        default:
+            return nil;
     }
-
-    return nil;
 }
 
 + (NSString *)stringForObjectType: (GITObjectType)type {
@@ -83,7 +83,26 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ <%@>", [self className], [self.sha1 unpackedString]];
+    return [NSString stringWithFormat:@"<%@: %p sha1=%@>", NSStringFromClass([self class]), self, [self.sha1 unpackedString]];
+}
+
+- (NSUInteger)hash {
+    return [sha1 hash];
+}
+- (BOOL)isEqual: (id)other {
+    if ( !other ) return NO;                            // other is nil
+    if ( other == self ) return YES;                    // pointers match?
+
+    if ( [other isKindOfClass:[self class]] )           // Same class?
+        return [self isEqualToObject:other];
+    return NO;                                          // Definitely not then
+}
+- (BOOL)isEqualToObject: (GITObject *)rhs {
+    if ( !rhs )         return NO;
+    if ( self == rhs )  return YES;
+    if ( type == rhs.type && [sha1 isEqualToObjectHash:[rhs sha1]] )
+        return YES;
+    return NO;
 }
 
 @end

@@ -13,7 +13,7 @@
 typedef struct {
     char *startPattern;         //!< String to match at the start of the buffer
     NSUInteger patternLen;      //!< Length of startPattern
-    NSInteger startLen;         //!< 
+    NSInteger startLen;         //!<
     NSUInteger matchLen;        //!< Length of the target string or ZERO if unknown
     char endChar;               //!< Character to terminate matching at, must be set, -1 if you don't care
                                 //!< in which case matchLen must be set
@@ -110,7 +110,7 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
 - (NSString *)newStringWithObjectRecord: (parsingRecord)record bytes: (const char **)bytes;
 
 /*!
- * Creates and returns a string matching the format defined by the \a record. 
+ * Creates and returns a string matching the format defined by the \a record.
  *
  * \param record Record describing the string to match
  * \param bytes Pointer to the byte stream to search
