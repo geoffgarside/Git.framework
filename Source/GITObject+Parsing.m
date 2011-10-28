@@ -32,7 +32,7 @@
 
     if ( !parseObjectRecord(bytes, record, &start, &len) )
         return nil;
-    
+
     string = [[NSString alloc] initWithBytes:start length:len encoding:encoding];
     if ( string == nil )
         string = [[NSString alloc] initWithBytes:start length:len encoding:NSASCIIStringEncoding];
@@ -66,23 +66,23 @@ BOOL parseObjectRecord(const char **buffer, parsingRecord record, const char **m
 
         --end;                                                      // end should point to the delimiting char
     }
-    
+
     // check that end = endChar, otherwise there was a parsing problem
     if ( record.endChar != -1 && end[0] != record.endChar ) {
         NSLog(@"end delimiter (%c) does not match end char:%c\n", record.endChar, end[0]);
         return NO;
-    }    
-    
+    }
+
     // set matchLen
     NSUInteger matchLen = record.matchLen;
     if ( record.matchLen == 0 )
         matchLen = end - start;
-    
+
     if ( matchStart != NULL )
         *matchStart = start;
     if ( matchLength != NULL )
         *matchLength = matchLen;
-    
+
     *buffer = end;
     if ( record.endChar != -1 )
         *buffer += 1; // skip over the delimiting char

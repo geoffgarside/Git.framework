@@ -80,7 +80,7 @@
 - (id)initWithRoot: (NSString *)theRoot error: (NSError **)theError {
     if ( ![super init] )
         return nil;
-    
+
     self.root = [theRoot stringByStandardizingPath];
 
     if ( !(self.bare = [self.root hasSuffix:@".git"]) ) {
@@ -109,7 +109,7 @@
         [self release];
         return nil;
     }
-    
+
     return self;
 }
 

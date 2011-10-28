@@ -33,9 +33,9 @@ typedef struct {
 - (id)initWithData: (NSData *)indexData error: (NSError **)error {
     if ( ![super init] )
         return nil;
-    
+
     self.data = indexData;
-    
+
     return self;
 }
 

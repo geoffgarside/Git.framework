@@ -25,7 +25,7 @@
  * parent d8fd39d0bbdd2dcf322d8b11390a4c5825b11495
  * author A. Developer <dev@example.com> 444123000 +0000
  * committer A. Developer <dev@example.com> 444123000 +0000
- * 
+ *
  * A commit message meant to describe what this commit is all about
  * \endcode
  */

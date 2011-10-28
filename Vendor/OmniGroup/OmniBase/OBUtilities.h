@@ -16,7 +16,7 @@
 #if defined(__cplusplus)
 extern "C" {
 #endif
-    
+
 #if defined(__GNUC__)
 #define NORETURN __attribute__ ((noreturn))
 #else
@@ -25,8 +25,8 @@ extern "C" {
 
 /* The LLVM clang scan-build support has some attributes for declaring exceptions to the normal CF/Cocoa rules.  These are only valid for clang, not GCC. */
 #if defined(__clang__)
-    #define CLANG_RETURNS_NS_RETAINED __attribute__((ns_returns_retained)) 
-    #define CLANG_RETURNS_CF_RETAINED __attribute__((cf_returns_retained)) 
+    #define CLANG_RETURNS_NS_RETAINED __attribute__((ns_returns_retained))
+    #define CLANG_RETURNS_CF_RETAINED __attribute__((cf_returns_retained))
 #else
     #define CLANG_RETURNS_NS_RETAINED
     #define CLANG_RETURNS_CF_RETAINED
@@ -41,7 +41,7 @@ extern "C" {
 #else
 #define OB_DEPRECATED_ATTRIBUTE
 #endif
-    
+
 // This uses the OMNI_BUNDLE_IDENTIFIER compiler define set by the OmniGroup/Configurations/*Global*.xcconfig to look up the bundle for the calling code.
 #define OMNI_BUNDLE _OBBundleWithIdentifier(OMNI_BUNDLE_IDENTIFIER)
 static inline NSBundle *_OBBundleWithIdentifier(NSString *identifier)
@@ -67,7 +67,7 @@ void OBRecordBacktrace(uintptr_t ctxt, int optype);
 /*.doc.
   Records a backtrace for possible debugging use in the future. ctxt and optype are free for the caller to use for their own purposes, but optype must be nonzero.
 */
-    
+
 #undef NORETURN
 
 extern IMP OBRegisterInstanceMethodWithSelector(Class aClass, SEL oldSelector, SEL newSelector);
@@ -107,7 +107,7 @@ static inline BOOL OBPointerIsClass(id object)
     return NO;
 }
 
-// This returns the class object for the given pointer.  For an instance, that means getting the class.  But for a class object, that means returning the pointer itself 
+// This returns the class object for the given pointer.  For an instance, that means getting the class.  But for a class object, that means returning the pointer itself
 
 static inline Class OBClassForPointer(id object)
 {
@@ -136,7 +136,7 @@ extern BOOL OBIsRunningUnitTests(void);
 extern NSString *OBShortObjectDescription(id anObject);
 
 extern CFStringRef const OBBuildByCompilerVersion;
-    
+
 // This macro ensures that we call [super initialize] in our +initialize (since this behavior is necessary for some classes in Cocoa), but it keeps custom class initialization from executing more than once.
 #define OBINITIALIZE \
     do { \

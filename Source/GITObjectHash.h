@@ -15,7 +15,7 @@ extern const NSUInteger GITObjectHashPackedLength;
 /*!
  * The \c GITObjectHash class provides methods for packing and unpacking SHA1
  * hashes in both NSString and NSData forms. \c GITObjectHash objects provide
- * 
+ *
  */
 @interface GITObjectHash : NSObject <NSCopying> {
     uint32_t raw[5];

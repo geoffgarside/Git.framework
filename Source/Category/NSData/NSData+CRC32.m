@@ -62,7 +62,7 @@ static const unsigned long crc32table[] =
 	for (x = 0, y = max; x < y; x++) {
 		crcval = ((crcval >> 8) & 0x00ffffff) ^ crc32table[(crcval ^ (*((unsigned char *)bytes + x))) & 0xff];
 	}
-	
+
 	return (crcval ^ 0xffffffff);
 }
 
