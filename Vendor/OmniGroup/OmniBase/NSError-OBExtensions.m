@@ -57,19 +57,19 @@ static id (*original_initWithDomainCodeUserInfo)(NSError *self, SEL _cmd, NSStri
 
 /*" Returns YES if the receiver or any of its underlying errors has a user info key of OBUserCancelledActionErrorKey with a boolean value of YES.  Under 10.4 and higher, this also returns YES if the receiver or any of its underlying errors has the domain NSCocoaErrorDomain and code NSUserCancelledError (see NSResponder.h). "*/
 - (BOOL)causedByUserCancelling;
-{    
+{
     NSError *error = self;
     while (error) {
 	NSDictionary *userInfo = [error userInfo];
 	if ([[userInfo objectForKey:OBUserCancelledActionErrorKey] boolValue])
 	    return YES;
-	
+
 #if defined(MAC_OS_X_VERSION_10_4) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_4
 	// TJW: There is also NSUserCancelledError in 10.4.  See NSResponder.h -- it says NSApplication will bail on presenting the error if the domain is NSCocoaErrorDomain and code is NSUserCancelledError.  It's unclear if NSApplication checks the whole chain (question open on cocoa-dev as of 2005/09/29).
 	if ([[error domain] isEqualToString:NSCocoaErrorDomain] && [error code] == NSUserCancelledError)
 	    return YES;
 #endif
-	
+
 	error = [userInfo objectForKey:NSUnderlyingErrorKey];
     }
     return NO;
@@ -81,7 +81,7 @@ static void _mapPlistValueToUserInfoEntry(const void *key, const void *value, vo
     NSString *keyString = (NSString *)key;
     id valueObject = (id)value;
     NSMutableDictionary *mappedUserInfo = (NSMutableDictionary *)context;
-    
+
     // This is lossy, but once something is plist-ified, we can't be sure where it came from.
     if ([keyString isEqualToString:NSUnderlyingErrorKey])
         valueObject = [[[NSError alloc] initWithPropertyList:valueObject] autorelease];
@@ -95,17 +95,17 @@ static void _mapPlistValueToUserInfoEntry(const void *key, const void *value, vo
 {
     NSString *domain = [propertyList objectForKey:@"domain"];
     NSNumber *code = [propertyList objectForKey:@"code"];
-    
+
     OBASSERT(domain);
     OBASSERT(code);
-    
+
     NSDictionary *userInfo = [propertyList objectForKey:@"userInfo"];
     if (userInfo) {
         NSMutableDictionary *mappedUserInfo = [NSMutableDictionary dictionary];
         CFDictionaryApplyFunction((CFDictionaryRef)userInfo, _mapPlistValueToUserInfoEntry, mappedUserInfo);
         userInfo = mappedUserInfo;
     }
-    
+
     return [self initWithDomain:domain code:[code intValue] userInfo:userInfo];
 }
 
@@ -118,14 +118,14 @@ static id _mapUserInfoValueToPlistValue(const void *value)
 
     if (!valueObject)
         return @"<nil>";
-    
+
     // Handle some specific non-plist values
     if ([valueObject isKindOfClass:[NSError class]])
         return [(NSError *)valueObject toPropertyList];
-    
+
     if ([valueObject isKindOfClass:[NSURL class]])
         return [valueObject absoluteString];
-    
+
     // Handle containers explicitly since they might contain non-plist values
     if ([valueObject isKindOfClass:[NSArray class]]) {
         NSMutableArray *mapped = [NSMutableArray array];
@@ -143,7 +143,7 @@ static id _mapUserInfoValueToPlistValue(const void *value)
         CFDictionaryApplyFunction((CFDictionaryRef)valueObject, _addMapppedUserInfoValueToDictionary, mapped);
         return mapped;
     }
-    
+
     // We can only bring along plist-able values (so, for example, no NSRecoveryAttempterErrorKey).
     if (![NSPropertyListSerialization propertyList:valueObject isValidForFormat:NSPropertyListXMLFormat_v1_0]) {
 #ifdef DEBUG
@@ -151,7 +151,7 @@ static id _mapUserInfoValueToPlistValue(const void *value)
 #endif
         return [valueObject description];
     }
-    
+
     return valueObject;
 }
 
@@ -180,7 +180,7 @@ static void _addMapppedUserInfoValueToDictionary(const void *key, const void *va
             for (int nameIndex = 0; nameIndex < frameCount; nameIndex++)
                 [namesArray addObject:[NSString stringWithCString:names[nameIndex] encoding:NSUTF8StringEncoding]];
             free(names);
-            
+
             [mappedUserInfo setObject:namesArray forKey:OBBacktraceNamesErrorKey];
             return;
         }
@@ -194,14 +194,14 @@ static void _addMapppedUserInfoValueToDictionary(const void *key, const void *va
 - (NSDictionary *)toPropertyList;
 {
     NSMutableDictionary *plist = [NSMutableDictionary dictionary];
-    
+
     [plist setObject:[self domain] forKey:@"domain"];
     [plist setObject:[NSNumber numberWithInt:[self code]] forKey:@"code"];
-    
+
     NSDictionary *userInfo = [self userInfo];
     if (userInfo)
         [plist setObject:_mapUserInfoValueToPlistValue(userInfo) forKey:@"userInfo"];
-    
+
     return plist;
 }
 

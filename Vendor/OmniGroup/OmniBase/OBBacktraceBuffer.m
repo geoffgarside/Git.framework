@@ -10,7 +10,7 @@
 #include <execinfo.h>  // For backtrace()
 
 #if defined(__GNUC__) && ((__GNUC__ * 100 + __GNUC_MINOR__ ) >= 401)
-#define BUILTIN_ATOMICS  /* GCC 4.1.x has some builtins for atomic operations */ 
+#define BUILTIN_ATOMICS  /* GCC 4.1.x has some builtins for atomic operations */
 #else
 #import <libkern/OSAtomic.h>
 #endif
@@ -29,30 +29,30 @@ const struct OBBacktraceBufferInfo OBBacktraceBufferInfo = {
 void OBRecordBacktrace(uintptr_t ctxt, int optype)
 {
     assert(optype != OBBacktraceBuffer_Unused && optype != OBBacktraceBuffer_Allocated); // 0 and 1 reserved for us
-    
+
     struct OBBacktraceBuffer *buf = OBAcquireBacktraceBuffer();
-    
+
     buf->context = ctxt;
     int got = backtrace(buf->frames, OBBacktraceBufferAddressCount);
     if (got >= 0) {
         while (got < OBBacktraceBufferAddressCount)
             buf->frames[got ++] = 0;
     }
-    
+
     // Memory barrier. We want everything we just did to be committed before we update 'type'.
 #ifdef BUILTIN_ATOMICS
     __sync_synchronize();
 #else
     OSMemoryBarrier();
 #endif
-    
+
     buf->type = optype;
 }
 
 static struct OBBacktraceBuffer *OBAcquireBacktraceBuffer()
 {
     int slot = next_available_backtrace;
-    
+
     for(;;) {
         int next_slot = ( slot >= ( OBBacktraceBufferTraceCount-1 ) ) ? 0 : slot+1;
         int was_slot;
@@ -66,15 +66,15 @@ static struct OBBacktraceBuffer *OBAcquireBacktraceBuffer()
         else
             slot = was_slot;
     }
-    
+
     struct OBBacktraceBuffer *buf = &(backtraces[slot]);
     buf->type = OBBacktraceBuffer_Allocated;
-    
+
 #ifdef BUILTIN_ATOMICS
     __sync_synchronize();
 #else
     OSMemoryBarrier();
 #endif
-    
+
     return buf;
 }

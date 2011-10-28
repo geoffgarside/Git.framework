@@ -19,7 +19,7 @@ NSString * const OBFileNameAndNumberErrorKey = @"com.omnigroup.framework.OmniBas
 static NSMutableDictionary *_createUserInfo(NSString *firstKey, va_list args)
 {
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    
+
     NSString *key = firstKey;
     while (key) { // firstKey might be nil
 	id value = va_arg(args, id);
@@ -27,7 +27,7 @@ static NSMutableDictionary *_createUserInfo(NSString *firstKey, va_list args)
             [userInfo setObject:value forKey:key];
 	key = va_arg(args, id);
     }
-    
+
     return userInfo;
 }
 
@@ -35,19 +35,19 @@ static NSMutableDictionary *_createUserInfo(NSString *firstKey, va_list args)
 static NSError *_OBWrapUnderlyingErrorv(NSError *underlyingError, NSString *domain, int code, const char *fileName, unsigned int line, NSString *firstKey, va_list args)
 {
     NSMutableDictionary *userInfo = _createUserInfo(firstKey, args);
-    
+
     // Add in the previous error, if there was one
     if (underlyingError) {
 	OBASSERT(![userInfo objectForKey:NSUnderlyingErrorKey]); // Don't pass NSUnderlyingErrorKey in the varargs to this macro, silly!
 	[userInfo setObject:underlyingError forKey:NSUnderlyingErrorKey];
     }
-    
+
     // Add in file and line information if the file was supplied
     if (fileName) {
 	NSString *fileString = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:fileName length:strlen(fileName)];
 	[userInfo setObject:[fileString stringByAppendingFormat:@":%d", line] forKey:OBFileNameAndNumberErrorKey];
     }
-    
+
 #if INCLUDE_BACKTRACE_IN_ERRORS
     {
         const int maxFrames = 200;
@@ -59,7 +59,7 @@ static NSError *_OBWrapUnderlyingErrorv(NSError *underlyingError, NSString *doma
         }
     }
 #endif
-    
+
     NSError *error = [NSError errorWithDomain:domain code:code userInfo:userInfo];
     [userInfo release];
     return error;
@@ -69,7 +69,7 @@ static NSError *_OBWrapUnderlyingErrorv(NSError *underlyingError, NSString *doma
 NSError *_OBWrapUnderlyingError(NSError *underlyingError, NSString *domain, int code, const char *fileName, unsigned int line, NSString *firstKey, ...)
 {
     OBPRECONDITION(domain != nil && [domain length] > 0);
-    
+
     va_list args;
     va_start(args, firstKey);
     NSError *result = _OBWrapUnderlyingErrorv(underlyingError, domain, code, fileName, line, firstKey, args);
@@ -99,13 +99,13 @@ NSError *_OBErrorWithErrnoObjectsAndKeys(int errno_value, const char *function, 
         [description appendString:@": "];
     }
     [description appendFormat:@"%s", strerror(errno_value)];
-    
+
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     [userInfo setObject:description forKey:NSLocalizedFailureReasonErrorKey];
     [description release];
     if (localizedDescription)
         [userInfo setObject:localizedDescription forKey:NSLocalizedDescriptionKey];
-    
+
     va_list kvargs;
     va_start(kvargs, localizedDescription);
     for(;;) {
@@ -120,7 +120,7 @@ NSError *_OBErrorWithErrnoObjectsAndKeys(int errno_value, const char *function, 
         [userInfo setObject:anObject forKey:aKey];
     }
     va_end(kvargs);
-    
+
     NSError *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno_value userInfo:userInfo];
     [userInfo release];
     return error;
